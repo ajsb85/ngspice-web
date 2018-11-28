@@ -1,0 +1,375 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd"/>
+
+<html>
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Windows (vers 25 March 2009), see www.w3.org"/>
+
+  <title>Ngspice circuit simulator - Features</title>
+  <link rel="stylesheet" type="text/css" href="ngstyle.css"/>
+  <meta name="generator" content="screem 0.12.2"/>
+  <meta name="author" content="Holger Vogt"/>
+  <meta http-equiv="Content-Type" content=
+  "text/html; charset=us-ascii"/>
+  <meta http-equiv="Content-Script-Type" content="text/javascript"/>
+  <meta http-equiv="Content-Style-Type" content="text/css"/>
+  <meta name="description" content=
+  "Extras and options for ngspice circuit simulator"/>
+  <meta name="keywords" content=
+  "ngspice, spice, spice3, spice3f, spice3f5, circuit, EDA, simulator, electronics, semiconductor"/>
+  </head>
+
+<body>
+  <div id="paper">
+    <div id="header">
+      <table border="0" align="center" cellspacing="1" cellpadding=
+      "1" width="100%">
+        <tr>
+          <td><img src="./images/nglogo.jpg" alt="NGSPICE"></td>
+
+          <td><img src="./images/ngtext.jpg" alt=
+          "Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5"></td>
+
+          <td>
+            <table border="0">
+              <tr>
+                <td><a href=
+                "http://sourceforge.net/projects/ngspice"><img src=
+                "./images/ngsumD.jpg" alt="Summary" border=
+                "0"></a></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div id="navcontainer">
+      <ul id="navlist">
+        <li><a href="./index.html">Home</a></li>
+
+        <li><a href="./screens.html">Screenshots</a></li>
+
+        <li><a href="./download.html">Download</a></li>
+
+        <li><a href="./docs.html">Documentation</a></li>
+
+        <li id="active"><a href="#" id="extras" name=
+        "extras">Extras/Options</a></li>
+
+        <li><a href="./applic.html">Applications</a></li>
+
+        <li><a href="./devel.html">Development</a></li>
+
+        <li><a href="./resources.html">Simulation Environments</a></li>
+
+        <li><a href="./recipes.html">Recipes</a></li>
+
+        <li><a href="./contrib.html">Contributions</a></li>		
+      </ul>
+    </div>
+
+    <div id="left">
+      <div id="context">
+        <div id="contextcontent">
+          <p class="contextual title">XSPICE in ngspice</p>
+
+          <div id="menucontainer">
+            <ul id="menulist">
+              <li><a href="./xspice.html">What is XSPICE ?</a></li>
+
+              <li><a href="./xspicehowto.html">XSPICE and ngspice
+              HOWTO</a></li>
+            </ul>
+            
+            <p class="contextual title">KiCad/Eeschema as GUI for ngspice</p>
+
+            <ul id="menulist">
+              <li><a href="./ngspice-eeschema.html">Tutorial for Eeschema with ngspice</a></li>
+            </ul>
+
+            <p class="contextual title">ngspice as shared library</p>
+
+            <ul id="menulist">
+              <li><a href="./shared.html">Short Intro</a></li>
+              <li><a href="./parallel.html">ngspice parallel</a></li>
+            </ul>
+            
+            <p class="contextual title">CUSPICE</p>
+            <ul id="menulist">
+              <li><a href="./cuspice.html">CUSPICE Intro</a></li>
+            </ul>
+            
+            <p class="contextual title">ADMS for ngspice</p>
+
+            <ul id="menulist">
+              <li><a href="./adms.html">What is ADMS ?</a></li>
+
+              <li><a href="./admshowto.html">ADMS and ngspice
+              HOWTO</a></li>
+            </ul>
+            
+            <p class="contextual title">GSS-TCAD</p>
+
+            <ul id="menulist">
+              <li><a href="./gss.html">GSS</a></li>
+            </ul>
+
+            <p class="contextual title">TCLspice</p>
+
+            <ul id="menulist">
+              <li><a href="./tclspice.html">What is TCLspice
+              ?</a></li>
+
+              <li><a href="./tclusers.html">TCLspice users
+              manual</a></li>
+
+              <li><a href="./tclexamples.html">TCLspice by
+              examples</a></li>
+
+              <li><a href="./tclnotes.html">Designer's
+              note</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="main">
+        <div id="maincontent">
+          <p class="header">Ngspice Features, Extras and
+          Options</p>
+
+          <p class="justified">Ngspice enhances the original
+          spice3f5 in many ways. Here you will find a list and
+          links to the various options. Typically details are not
+          provided here, but are offered by the various links shown
+          on the left or throughout the text. We also recommend to
+          have a look at the <a href=
+          "./docs/ngspice-manual.pdf">actual ngspice
+          manual</a>.</p>
+
+          <p class="header">Programming ngspice</p>
+
+          <p class="justified">Various programming interface are
+          available to add control flows to ngspice simulation or
+          control ngspice from external programs or scripts.</p>
+
+          <ul>
+            <li>The ngspice scripting language (see manual chapter
+            17) allows to add control flows to a single simulation.
+            You may run mathematical operations on simulation
+            results, and start new simulations based on these data.
+            Please have a look at scripts provided with the
+            distribution, or at the examples from the manual. A
+            <a href="#scripts">complete optimizer</a> may be
+            written in this language.</li>
+
+            <li>Ngspice may be controlled via input, output fifos.
+            Please see the manual at chapt. 16.12 for an
+            example.</li>
+
+            <li>The <a href="./shared.html">shared ngspice option</a>
+            is designed to compile ngspice as a shared library or
+			dynamic link library, which may be loaded by any
+			suitable application. This caller has full control
+			over ngspice.</li>			
+
+            <li>The <a href="./tclspice.html">tclspice option</a>
+            is designed to add tcl scripting capability (including
+            a graphics interface) to ngspice.</li>
+
+            <li>The <a href="#ASCOo">ASCO optimizer</a> is a nice
+            example how to control ngspice from another program and
+            how to run several ngspice instances in parallel on a
+            multicore computer.</li>
+          </ul>
+
+          <p class="header">User defined device models</p>
+
+          <ul>
+            <li>The B-, E-, and G-sources (see <a href=
+            "./docs/ngspice-manual.pdf">manual</a> chapt. 5) allow
+            to generate voltages or currents which result from
+            evaluating a mathematical expression, derived from node
+            voltages, branch currents, parameters, and constants.
+            Behavioral R, L, or C devices may depend on exquations
+            as well.</li>
+
+            <li>The <a href="./xspice.html">XSPICE option</a> integrates C language device
+            models (code models) into ngspice. Behavioral modeling
+            is strongly supported by various devices like
+            amplifiers, filters, oscillators, integrators and
+            others. Mixed signal analysis is sped up by event
+            driven simulation of the digital sections. Various
+            models already come along with ngspice to facilitating
+            analog-digital co-simulation (see <a href=
+            "./docs/ngspice-manual.pdf">manual</a> chapt. 12). The
+            user may define his/her own analog, mixed, or digital
+            devices and models (see chapt. 25-29, especially
+            28).</li>
+
+            <li>The <a href="./adms.html">ADMS interface</a>
+            integrates verilog device models into ngspice.</li>
+          </ul>
+
+          <p class="header">Ngspice as a shared library</p>
+
+          <p class="justified">Ngspice may be compiled as a shared 
+		    library (*.so or *.dll). This will offer full control
+			over the simulator from a calling process. 
+			See  <a href="./shared.html">this page</a> or the actual
+			manual at chapter 19 for more 
+			information.</p>		  
+		  
+          <p class="header">Circuit optimization with ngspice</p>
+
+          <p class="justified">Several methods of using ngspice in
+          circuit optimization have been devised by users.</p>
+
+          <ul>
+            <li><a name="scripts" id="scripts">Optimization using a
+            set of ngspice scripts</a>. This is the <a href=
+            "http://members.aon.at/fschmid7/page_2_1.html">original
+            web site</a> by F. Schmidt. A slightly modified
+            <a href="http://ngspice.sourceforge.net/optimizers/ngspice-optimizer.7z">
+            set of scripts</a> is available.</li>
+
+            <li>Optimization using tcl as scripting language. An
+            example is provided with the <a href=
+            "./tclexamples.html">tclspice option</a>. The manual at
+            chapt. 20 has additional infos.</li>
+
+            <li>Werner Hoch has developed a ngspice optimization
+            procedure based on the &rsquo;differential
+            evolution&rsquo; algorithm. On his <a href=
+            "http://www.h-renrew.de/h/python_spice/optimisation.html">
+            web page</a> he provides a Python script containing the
+            control flow and algorithms.</li>
+
+            <li><a name="ASCOo" id="ASCOo">The</a> <a href=
+            "http://asco.sourceforge.net/">ASCO optimizer</a> by
+            Joao Ramos, introduced the &rsquo;differential
+            evolution&rsquo; algorithm for circuit optimization. An
+            enhanced <a href=
+            "http://ngspice.sourceforge.net/optimizers/asco-dist.7z">
+            version 0.4.7.1</a>, adding ngspice as a simulation
+            engine, may be downloaded (including a MS Windows
+            ngspice executable based on CVS). Chapt. 23.5 of the
+            actual manual describes the ngspice specific integration
+            issues and examples. You will need ngspice-24 to run
+            the examples.</li>
+          </ul>
+
+          <p class="header">Statistical circuit analysis with
+          ngspice</p>
+
+          <p>ngspice offers random numbers, as well as dedicated
+          functions and scripts to vary device parameters for
+          circuit simulation.</p>
+
+          <ul>
+            <li>Functions like AGAUSS are available for voltage and
+            current sources (manual, chapt 22.2).</li>
+
+            <li>Random voltage or current values may be generated
+            directly (manual chapt. 4.1.8).</li>
+
+            <li>Behavioral sources (B, E, G, R, L, C) include
+            optionally generated random number values (manual
+            chapt. 22.3).</li>
+
+            <li>The ngspice scripting language uses the above
+            mentioned functions and additional post processing
+            functions (manual chapt. 22.4) for Monte Carlo analysis
+            (manual chapt. 22.5). Example scripts are part of the
+            ngspice distribution.</li>
+
+            <li>Efficient noise voltage generators are part of the
+            independent voltage and current sources (manual chapt.
+            4.1.7). Thermal noise, 1/f noise as well as random
+            telegraph signal noise (RTS noise) are available. These sources are
+            the basis for (time dependent) transient noise
+            simulation with ngspice.</li>
+          </ul>
+
+          <p class="header">RF analysis with ngspice</p>
+
+          <p>High frequency simulation bridges the gap between high
+          end scaled CMOS circuits and digital and analog
+          applications. ngspice provides transistor models, e.g.
+          BSIM4 for RF simulation as well as further tools. This
+          field, however, ist still under development.</p>
+
+          <ul>
+            <li>Various transmission line models are available in
+            ngspice and are decribed in chapt. 6 of the manual.
+            They range from lossless, over lossy, distributed RC up
+            to recursive convolution modelled single and coupled
+            lines.</li>
+
+            <li>You may 'measure' two port Scattering parameters of
+            of your circuit and store them in a Touchstone file
+            (see chapt. 17.8).</li>
+
+            <li>ngspice incorporates a very efficient fast fourier
+            analysis of output vectors (see chapt. 17.4.23).</li>
+
+            <li>Periodic steady state analysis using a shooting
+            method is under development. Test function are
+            available (see chapt. 15.3.11).</li>
+          </ul>
+
+          <p class="header">TCAD and ngspice</p>
+
+          <p>Technology and device simulation, typically assembled
+          in TCAD tools, may be integrated into ngspice. Thus
+          individual devices may be simulated from scratch, being
+          part of e.g. a transient ngspice simulation.</p>
+
+          <ul>
+            <li>An early adoption of this approach is the <a href=
+            "http://www.eecs.berkeley.edu/Pubs/TechRpts/1993/2382.html">
+            cider option</a>, fully integrated into ngspice. Part
+            of the documentation is available in the ngspice
+            manual, chapt 30.</li>
+
+            <li>ngspice is integrated into a more recent TCAD tool
+            <a href="./gss.html">gss</a>.</li>
+
+            <li>The successor to gss is the <a href=
+            "http://www.cogenda.com/article/download">Genius Device
+            Simulator</a> which applies ngspice for device and
+            circuit co-simulation.</li>
+          </ul>
+
+          <p>Please send your comments, suggestions, and
+          corrections on this page to the <a href=
+          "http://sourceforge.net/mailarchive/forum.php?forum_name=ngspice-devel">
+          ngspice developers' list.</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer">
+      <table align="center" width="100%">
+        <tr>
+          <td align="left" width="25%"><a href=
+          "http://sourceforge.net"><img src=
+          "http://sourceforge.net/sflogo.php?group_id=38962&amp;type=1"
+          width="88" height="31" border="0" alt=
+          "SourceForge.net Logo"></a></td>
+
+          <td align="center">All text is available under the terms
+          of the <a class="internal" href=
+          "http://www.gnu.org/licenses/fdl.html">GNU Free
+          Documentation License</a></td>
+
+          <td align="right" width="25%"><img src=
+          "./images/spice.jpg" alt=""></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Windows (vers 25 March 2009), see www.w3.org">
+
+  <title>Ngspice circuit simulator - XSPICE</title>
+  <link rel="stylesheet" type="text/css" href="ngstyle.css">
+  <meta name="generator" content="screem 0.12.2">
+  <meta name="author" content="Holger Vogt">
+  <meta http-equiv="Content-Type" content=
+  "text/html; charset=us-ascii">
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="description" content=
+  "Ngspice circuit simulator - XSPICE">
+  <meta name="keywords" content=
+  "xspice, spice, spice3,spice3f,spice3f5, circuit, EDA, simulator, electronics, semiconductor">
+  </head>
+
+<body>
+  <div id="paper">
+    <div id="header">
+      <table border="0" align="center" cellspacing="1" cellpadding=
+      "1" width="100%">
+        <tr>
+          <td><img src="./images/nglogo.jpg" alt="NGSPICE"></td>
+
+          <td><img src="./images/ngtext.jpg" alt=
+          "Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5"></td>
+
+          <td>
+            <table border="0">
+               <tr>
+                <td><a href=
+                "http://sourceforge.net/projects/ngspice"><img src=
+                "./images/ngsumD.jpg" alt="Summary" border=
+                "0"></a></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div id="navcontainer">
+      <ul id="navlist">
+        <li><a href="./index.html">Home</a></li>
+
+        <li><a href="./screens.html">Screenshots</a></li>
+
+        <li><a href="./download.html">Download</a></li>
+
+        <li><a href="./docs.html">Documentation</a></li>
+
+        <li><a href="./extras.html">Extras/Options</a></li>
+
+        <li><a href="./applic.html">Applications</a></li>
+
+        <li id="active"><a href="#" id="current" name=
+        "current">Development</a></li>
+
+        <li><a href="./resources.html">Simulation Environments</a></li>
+
+        <li><a href="./recipes.html">Recipes</a></li>
+
+        <li><a href="./contrib.html">Contributions</a></li>		
+      </ul>
+    </div>
+
+    <div id="left">
+      <div id="context">
+        <div id="contextcontent">
+          <p class="contextual title">Ngspice Development</p>
+
+          <div id="menucontainer">
+            <ul id="menulist">
+              <li><a href="./devel.html">Developers Info</a></li>
+
+              <li><a href="./bugrep.html">Bug Reports</a></li>
+
+              <li><a href="./gitaccess.html">GIT Access</a></li>
+
+              <li><a href="./devdocs.html">Docs for
+              developers</a></li>
+
+              <li><a href="./mlarch.html">Mailing List
+              Archives</a></li>
+
+              <li><a href="./relinfo.html">Releases Info</a></li>
+
+              <li><a href="./roadmap.html">Roadmap</a></li>
+
+              <li><a href="./docwrite.html">Writing Docs</a></li>
+
+              <li>
+                <hr>
+              </li>
+
+              <li><a href="./bench.html">Benchmarks</a></li>
+            </ul>
+
+            <p class="contextual title">XSPICE in ngspice</p>
+
+            <ul id="menulist">
+              <li><a href="./xspice.html">What is XSPICE ?</a></li>
+
+              <li><a href="./xspicehowto.html">XSPICE and ngspice
+              HOWTO</a></li>
+            </ul>
+            
+            <p class="contextual title">KiCad/Eeschema as GUI for ngspice</p>
+
+            <ul id="menulist">
+              <li><a href="./ngspice-eeschema.html">Tutorial for Eeschema with ngspice</a></li>
+            </ul>
+            
+            <p class="contextual title">adms for ngspice</p>
+
+            <ul id="menulist">
+              <li id="active"><a href="./adms.html">What is ADMS
+              ?</a></li>
+
+              <li><a href="./admshowto.html">ADMS and ngspice
+              HOWTO</a></li>
+            </ul>
+
+            <p class="contextual title">GSS-TCAD</p>
+
+            <ul id="menulist">
+              <li><a href="./gss.html">GSS</a></li>
+            </ul>
+
+            <p class="contextual title">TCLspice</p>
+
+            <ul id="menulist">
+              <li><a href="./tclspice.html">What is TCLspice
+              ?</a></li>
+
+              <li><a href="./tclusers.html">TCLspice users
+              manual</a></li>
+
+              <li><a href="./tclexamples.html">TCLspice by
+              examples</a></li>
+
+              <li><a href="./tclnotes.html">Designer's
+              note</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="main">
+        <div id="maincontent">
+          <p class="header">XSPICE in Ngspice for behavioral analog
+          and event driven modeling</p>
+
+          <p class="justified">XSPICE is an extension to the
+          ngspice circuit simulator that provides the ability to
+          use code modeling techniques to add new models. The
+          XSPICE code model library distributed with ngspice
+          contains over 40 functional blocks including summers,
+          multipliers, integrators, memristor, magnetics models,
+          limiters, S-domain transfer functions, digital gates,
+          digital storage elements, and a generalized digital
+          state-machine.</p>
+
+          <p class="header">What is the XSPICE mixed-signal
+          simulation capability ?</p>
+
+          <p class="justified">Digital functions are simulated in
+          XSPICE through an embedded event-driven algorithm added
+          to the Ngspice core. This algorithm is coordinated with
+          the analog simulation algorithm to provide fast and
+          accurate simulation of mixed-signal circuits and systems.
+          The event-driven algorithm supports a "User-Defined Node"
+          capability allowing additional event-driven data types to
+          be defined and used. XSPICE comes with a 12-state digital
+          data type as well as a user-defined node library that
+          includes 'real' and 'integer' types useful in simulating
+          sampled-data systems such as Digital Signal Processing
+          algorithms.</p>
+
+          <p class="header">XSPICE distribution in Ngspice</p>
+
+          <p class="justified">XSPICE is fully integrated into
+          Ngspice. The code models are grouped into several code
+          model libraries. These are shared libraries *.cm
+          (equivalent to *.so or *.dll), made during compilation
+          with gcc.</p>
+
+          <p class="justified">Adding new models to the existing
+          library or adding new libraries are straightforward. An
+          example is given on the <a href=
+          "./xspicehowto.html">XSPICE and ngspice HOWTO</a> page.
+          Details are described in the <a href=
+          "./docs/ngspice-manual.pdf">actual Ngspice
+          manual</a>.</p>
+
+          <p class="header">XSPICE Licensing</p>
+
+          <p class="justified">XSPICE sources and documentation are
+          in the public domain.</p>
+
+          <p class="header">About the authors</p>
+
+          <p class="justified">XSPICE was developed by Fred Cox,
+          Bill Kuhn, and their colleagues at the Georgia Tech
+          Research Institute, a unit of the Georgia Institute of
+          Technology.</p>
+          
+          <p class="header">Original XSPICE source code from Georgia Tech</p>
+
+          <p class="justified">Due to the fact that the Georgia Tech XSPICE web
+          page is no longer on-line, the original C sources are made available
+          <a href="xspice/xspice-1-0.tar">here</a>.</p>          
+
+          <p class="header">Relevant Links</p>
+
+          <ul>
+            <li><a href="./xspicehowto.html">XSPICE and Ngspice
+            HOWTO</a>: XSPICE code model generation starter and
+            example.</li>
+
+            <li><a href="%3Ca%20href=">Ngspice manual</a>: The
+            actual ngspice manual, describing the most recent
+            Ngspice in Git.</li>
+
+            <li><a href=
+            "./devdocs.html">XSPICE
+            docs</a>: The original XSPICE documentation from Georgia Tech.</li>
+
+            <li><a href=
+            "http://fides.fe.uni-lj.si/spice/xspice.html">Spice
+            OPUS</a>: XSPICE page for the Spice OPUS
+            simulator.</li>
+
+            <li><a href=
+            "http://www.intusoft.com/articles/xspiceover.htm">ICAP/4</a>:
+            XSPICE for the ICAP/4 simulator.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer">
+      <table align="center" width="100%">
+        <tr>
+          <td align="left" width="25%"><a href=
+          "http://sourceforge.net"><img src=
+          "http://sourceforge.net/sflogo.php?group_id=38962&amp;type=1"
+          width="88" height="31" border="0" alt=
+          "SourceForge.net Logo"></a></td>
+
+          <td align="center">All text is available under the terms
+          of the <a class="internal" href=
+          "http://www.gnu.org/licenses/fdl.html">GNU Free
+          Documentation License</a></td>
+
+          <td align="right" width="25%"><img src=
+          "./images/spice.jpg" alt=""></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

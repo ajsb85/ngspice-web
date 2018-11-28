@@ -1,0 +1,673 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Linux (vers 25 March 2009), see www.w3.org" />
+
+  <title>Ngspice circuit simulator - FAQ</title>
+  <link rel="stylesheet" type="text/css" href="faq-Dateien/ngstyle.css" />
+  <meta name="generator" content="screem 0.12.2" />
+  <meta name="author" content="Paolo Nenzi" />
+  <meta name="author" content="Holger Vogt" />  
+  <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+                                
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="description" content="F.A.Q. for the ngspice circuit simulator" />
+                                                
+  <meta name="keywords" content=
+  "spice, spice3,spice3f,spice3f5, circuit, EDA, simulator, electronics, semiconductor" />
+  </head>
+
+<body>
+  <div id="paper">
+    <div id="header">
+      <table align="center" border="0" cellpadding="1" cellspacing="1" width="100%">
+        <tbody>
+          <tr>
+            <td><img src="faq-Dateien/nglogo.jpg" alt="NGSPICE" /></td>
+
+            <td><img src="faq-Dateien/ngtext.jpg" alt=
+            "Mixed mode - moxed level circuit simulator - based on Berkeley's Spice3f5" /></td>
+
+            <td>
+              <table border="0">
+                <tbody>
+                  <tr>
+                    <td><a href="http://sourceforge.net/projects/ngspice"><img src=
+                    "faq-Dateien/ngsumD.jpg" alt="Summary" border="0" /></a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="navcontainer">
+      <ul id="navlist">
+        <li id="active"><a href="#" id="current" name="current">Home</a></li>
+
+        <li><a href="http://ngspice.sourceforge.net/screens.html">Screenshots</a></li>
+
+        <li><a href="http://ngspice.sourceforge.net/download.html">Download</a></li>
+
+        <li><a href="http://ngspice.sourceforge.net/docs.html">Documentation</a></li>
+
+        <li><a href="http://ngspice.sourceforge.net/extras.html">Extras/Options</a></li>
+
+        <li><a href="http://ngspice.sourceforge.net/contrib.html">Contributions</a></li>
+
+        <li><a href="http://ngspice.sourceforge.net/devel.html">Development</a></li>
+
+        <li><a href="http://ngspice.sourceforge.net/resources.html">Simulation
+        Environments</a></li>
+
+        <li><a href="http://ngspice.sourceforge.net/recipes.html">Recipes</a></li>
+      </ul>
+    </div>
+
+    <div id="left">
+      <div id="context">
+        <div id="contextcontent">
+          <p class="contextual title">Ngspice Home</p>
+
+          <div id="menucontainer">
+            <ul id="menulist">
+              <li><a href="http://ngspice.sourceforge.net/index.html">News</a></li>
+
+              <li><a href="http://ngspice.sourceforge.net/presentation.html">What is
+              ngspice ?</a></li>
+
+              <li><a href="http://ngspice.sourceforge.net/history.html">History</a></li>
+
+              <li id="active"><a href="#" id="current" name="current">F.A.Q.</a></li>
+
+              <li><a href="http://ngspice.sourceforge.net/status.html">Status</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="main">
+        <div id="maincontent">
+          <p class="header">Ngspice Frequently Asked Questions</p>
+
+          <div>
+            <ul id="finfo">
+              <li>Document Revsion: 1.7</li>
+
+              <li>Document Maintainer: Holger Vogt</li>
+
+              <li>Last Update: 17-03-2018</li>
+            </ul>
+          </div>
+
+          <div id="ftoc">
+            <p>F.A.Q. Table of Contents</p>
+
+            <ul>
+              <li>1. INTRODUCTION AND GENERAL INFORMATION
+
+                <ul>
+                  <li>1.1 What is ngspice?</li>
+
+                  <li>1.2 Why resurrecting Berkeley's Spice?</li>
+
+                  <li>1.3 What is the project's goal?</li>
+
+                  <li>1.4 What you are going to do?</li>
+
+                  <li>1.5 Legal issues</li>
+
+                  <li>1.6 What mailing lists exist for ngspice?</li>
+
+                  <li>1.7 Are the mailing lists archived anywhere?</li>
+
+                  <li>1.8 What newsgroups exist for ngspice?</li>
+
+                  <li>1.9 Where can I get a copy of ngspice?</li>
+
+                  <li>1.10 Where should I look on the World Wide Web for ngspice
+                  stuff?</li>
+
+                  <li>1.11 Where should I look on the World Wide Web for Spice
+                  documentation?</li>
+                </ul>
+              </li>
+
+              <li>2. DEVELOPMENT
+
+                <ul>
+                  <li>2.1 What is the current version?</li>
+
+                  <li>2.2 What are the latest features in the current release?</li>
+
+                  <li>2.3 What does it look like?</li>
+
+                  <li>2.4 Who are the authors of ngspice?</li>
+
+                  <li>2.5 How can I report a bug/request for a feature?</li>
+
+                  <li>2.6 How can I join the development?</li>
+                </ul>
+              </li>
+
+              <li>3. SOLUTIONS TO COMMON MISCELLANEOUS PROBLEMS
+
+                <ul>
+                  <li>3.1 What systems are supported?</li>
+
+                  <li>3.2 I get errors when I try to compile the source code, why?</li>
+
+                  <li>3.3 This document didn't answer my question. Where else can I look
+                  for an answer?</li>
+                </ul>
+              </li>
+
+              <li>4. ADMINISTRATIVE INFORMATION AND ACKNOWLEDGEMENTS
+
+                <ul>
+                  <li>4.1 Feedback</li>
+
+                  <li>4.2 Formats in which this FAQ is available</li>
+
+                  <li>4.3 Authorship and acknowledgements</li>
+
+                  <li>4.4 Disclaimer and Copyright</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            1. INTRODUCTION AND GENERAL INFORMATION
+
+            <div id="faq">
+              <div id="fquest">
+                1.1 What is ngspice ?
+              </div>
+
+              <div id="fans">
+                Ngspice is a mixed-level/mixed-signal circuit simulator based on three
+                open source software packages: Spice3f5, Cider1b1 and Xspice:
+
+                <ul>
+                  <li>Spice3 is the most famous and used circuit simulator. It was
+                  developed University of California at Berkeley (UCB), by "a cast of
+                  thousand" (as they say).</li>
+
+                  <li>Cider is a mixed-level simulator that already includes Spice3f5 and
+                  adds a device simulator to it: DSIM. Cider couples the circuit level
+                  simulator to the device simulator to provide greater simulation
+                  accuracy (at the expense of greater simulation time). Critical devices
+                  can be described with technology parameters (numerical models) and non
+                  critical ones with the original spice's compact models.</li>
+
+                  <li>Xspice is an extension to Spice3 that provides code modeling
+                  support and simulation of digital components through an embedded event
+                  driven algorithm.</li>
+
+                  <li>The NG prefix has lot of meanings: Next Generation, New Good, etc.
+                  Choose or invent the one you prefer. The heart of the project is the
+                  ngspice program.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div id="faq">
+              <div id="fquest">
+                1.2 Why resurrecting Berkeley's Spice ?
+              </div>
+
+              <div id="fans">
+                Berkeley's Spice can be considered the father of most circuit simulators
+                available today. It is an old but still good piece of software, it may
+                not be the fastest or the most reliable but it's free, it's available in
+                source code and most of the electrical simulators inherited it's syntax.
+                On the more technical side, spice3 uses good numerical algorithms (most
+                commercial implementations have only strengthened them), implements most
+                of the models for MOSFET submicron designs and has a powerful set of
+                analyses. On the more "social" side, spice3 it's well introduced in the
+                academic environment.
+              </div>
+            </div>
+
+            <div id="faq">
+              <div id="fquest">
+                1.3 What is the project's goal ?
+              </div>
+
+              <div id="fans">
+                The project goal evolved during project development, at first the final
+                goal was to develop a reliable, fast and friendly circuit simulator for
+                mixed signal/mixed level simulation. During development it become
+                apparent that to reach the goal a complete rewrite of spice was needed.
+                Since it was almost absurd to rewrite Spice and since a new simulator was
+                already under development: ACS (Al's Circuit Simulator), now GNUCap (GNU
+                Circuit Analysis package), the goal of nspice became less utopical: merge
+                Spice3f5, Xspice and Cider into a mixed-signal/mixed-level simulator that
+                can be used as a reliable engine.
+              </div>
+            </div>
+
+            <div id="faq">
+              <div id="fquest">
+                1.4 What you are going to do ?
+              </div>
+
+              <div id="fans">
+                We are going to develop a mixed-signal/mixed-level circuit simulation
+                program integrating three different spice based simulators: Spice, Xspice
+                and Cider.
+
+                <p>Xspice is a mixed-signal circuit simulator developed by GTRI (Georgia
+                Tech Research Institute) at Georgia Institute of Technology. Xspice was
+                originally developed as an extension over Spice3c1. Xspice introduces
+                code modeling and a digital simulator into ngspice. The "home site" of
+                Xspice at GTRI is no longer available.</p>
+
+                <p>Cider is a mixed-level circuit and device simulator based on Spice3f5
+                that couples a device simulator (DSIM) to Spice.</p>
+
+                <p>The merging process has been done some 10 years ago, accompanied with
+                bug fixing and improvement of the three simulators. The improvements are
+                concentrated into 7 directions:</p>
+
+                <ul>
+                  <li>
+                    <p>Compact models: the improvements in compact models will address
+                    mainly the implementation of additional effects not available in the
+                    original code. Device specific improvements are documented on
+                    ngspice's documentation and in the DEVICE file in project's
+                    tarball.</p>
+
+                    <p>Improvements that affects all devices already implemented are:
+                    "dtemp" option to set instance's temperature relative to the circuit
+                    one and "m" parallel multiplier to simulate an arbitrary number of
+                    instances of the same kind connected in parallel.</p>
+                  </li>
+
+                  <li>
+                    <p>Simulator's analyses: this is a low priority area. Planned
+                    improvements include the implementation of parametric analyses, to
+                    analyse the behaviour of the circuit as a parameter changes.
+                    Parameter sweep, Monte Carlo and Worst Case fall in this
+                    category.</p>
+                  </li>
+
+                  <li>
+                    <p>Numerical analysis code: the improvements within the numerical
+                    code must be done with extreme care. Planned improvements are the use
+                    of a KLU library as possible Sparse library replacement and the
+                    upload of matrix solver and device evaluation to the GPU.</p>
+                  </li>
+
+                  <li>
+                    <p>Spice language: The language used to input the circuit to the
+                    simulator has been extended and now allows the user to input
+                    parametric values for components (the numparam library). Planned
+                    improvements includes a better support for circuit hierarchy, and
+                    netlist manipulation via command line (adding and removing
+                    instances).</p>
+                  </li>
+
+                  <li>
+                    <p>Frontend: The design of a new spice frontend is not of interest
+                    because free and commercial frontends are available.</p>
+                  </li>
+
+                  <li>
+                    <p>ngspice as shared library: ngspice may be compiled as a shared
+                    library with a C interface offering access to all simulation data and
+                    allowing full control of the simulator from a calling program. By
+                    integrating tclspice, ngspice may also be compiled as a TCL/TK
+                    library.</p>
+                  </li>
+
+                  <li>
+                    <p>Documentation: Commercial simulators come with very good manuals
+                    containing tutorials, description of models equations, example of
+                    use, suggestions, etc. Spice came with little documentation. The
+                    Spice3f manual, available on the Internet has been used as the basis
+                    for the new manual. It will be constantly improved during ngspice
+                    development and will be timely available with each new release.</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div id="faq">
+              <div id="fquest">
+                1.5 Legal issues
+              </div>
+
+              <div id="fans">
+                Ngspice merges three different simulators: spice3f5 and CIDER are 
+                covered by the modified BSD license (see
+                http://embedded.eecs.berkeley.edu/pubs/downloads/spice/index.htm, 
+                https://embedded.eecs.berkeley.edu/pubs/downloads/cider/index.htm, and
+                ftp://ftp.cs.berkeley.edu/pub/4bsd/README.Impt.License.Change).
+                Xspice is in the public domain. The ngspice license is the modified BSD
+                license. The ngspice manual is released under Creative Commons
+                Attribution Share-Alike (CC-BY-SA) v4.0.
+              </div>
+            </div>
+
+            <div id="faq">
+              <div id="fquest">
+                1.6. What mailing lists exist for ngspice ?
+              </div>
+
+              <div id="fans">
+                There are two active mailing lists dedicated to the ngspice project.
+
+                <p>Users mailing list: &lt;ngspice-users@lists.sourceforge.net&gt; This
+                list is for ngspice users, examples, problems, bug reports and general
+                discussion on ngspice can be sent here.</p>
+
+                <p>Developers mailing list: &lt;ngspice-devel@lists.sourceforge.net&gt;
+                The list dedicated to ngspice development. Developers shold subscribe
+                here, to follow the program development. May be used to send patches, and
+                technical discussion on ngspice.</p>
+
+                <p>Send an empty message with Subject "help" to the following addresses
+                to get instructions.</p>
+
+                <p><a href=
+                "mailto:ngspice-users-request@lists.sourceforge.net">ngspice-users-request@lists.sourceforge.net</a></p>
+
+                <p><a href=
+                "mailto:ngspice-devel-request@lists.sourceforge.net">ngspice-devel-request@lists.sourceforge.net</a></p>
+
+                <p>Send an empty message to the following address to Subscribe.</p>
+
+                <p><a href=
+                "mailto:ngspice-users-join@lists.sourceforge.net">ngspice-users-join@lists.sourceforge.net</a></p>
+
+                <p><a href=
+                "mailto:ngspice-devel-join@lists.sourceforge.net">ngspice-devel-join@lists.sourceforge.net</a></p>
+
+                <p>Documentation about the user interface of these mailing lists can be
+                found at:</p>
+
+                <p><a href=
+                "http://www.gnu.org/software/mailman/mailman-member">http://www.gnu.org/software/mailman/mailman-member</a></p>
+              </div>
+            </div>
+
+            <div id="faq">
+              <div id="fquest">
+                1.7. Are the mailing lists archived anywhere ?
+              </div>
+
+              <div id="fans">
+                Yes, the lists are archived. There are two places where to look for
+                archives. The project started on the IEEE Central and South Italy web
+                server and then moved to sourceforge. Sourceforge provides an archiving
+                service that cam be accessed via the summary page:
+
+                <p><a href=
+                "https://sourceforge.net/p/ngspice/mailman/?source=navbar">https://sourceforge.net/p/ngspice/mailman/?source=navbar</a></p>
+              </div>
+            </div>
+
+            <div id="faq">
+              <div id="fquest">
+                1.8. What newsgroups exist for ngspice ?
+              </div>
+
+              <div id="fans">
+                There is no ngspice specific newsgroup. Anyway ngspice threads appear on
+                newsgroups dedicated to circuit simulation and electronic design. An
+                (incomplete) list is:
+
+                <ul>
+                  <li>sci.electronics.cad</li>
+
+                  <li>comp.lsi.cad</li>
+                </ul>
+              </div>
+            </div>
+
+            <div id="faq">
+              <div id="fquest">
+                1.9. Where can I get a copy of ngspice ?
+              </div>
+
+              <div id="fans">
+                You can download ngspice from:
+
+                <p><a href=
+                "http://sourceforge.net/projects/ngspice">http://sourceforge.net/projects/ngspice</a></p>
+              </div>
+            </div>
+
+            <div id="faq">
+              <div id="fquest">
+                1.10. Where should I look on the World Wide Web for ngspice stuff?
+              </div>
+
+              <div id="fans">
+                Look at the official Ngspice Web Page:
+
+                <p><a href=
+                "http://ngspice.sourceforge.net/">http://ngspice.sourceforge.net</a></p>
+              </div>
+            </div>
+
+            <div id="faq">
+              <div id="fquest">
+                1.11. Where should I look on the World Wide Web for Spice documentation ?
+              </div>
+
+              <div id="fans">
+                There are a lot of Internet sites that have information on spice, the
+                best way is to point to your preferred search engine. Some interesting
+                sites are:
+
+                <p>The Spice Home Page:</p>
+
+                <p><a href=
+                "http://bwrc.eecs.berkeley.edu/Classes/IcBook/SPICE/">http://bwrc.eecs.berkeley.edu/Classes/IcBook/SPICE/</a></p>
+
+                <p>The Spice Download Page:</p>
+
+                <p><a href=
+                "http://embedded.eecs.berkeley.edu/pubs/downloads/spice/index.htm">http://embedded.eecs.berkeley.edu/pubs/downloads/spice/index.htm</a></p>
+
+                <p>Cider Page:</p>
+
+                <p><a href=
+                "http://www-cad.eecs.berkeley.edu/Software/cider.html">http://www-cad.eecs.berkeley.edu/Software/cider.html</a></p>
+
+                <p>Spice benchmarks:</p>
+
+                <p><a href=
+                "http://www.cbl.ncsu.edu/pub/Benchmark_dirs">http://www.cbl.ncsu.edu/pub/Benchmark_dirs</a></p>
+              </div>
+            </div>2. DEVELOPMENT
+
+            <div id="faq">
+              <div id="fquest">
+                2.1. What is the current version ?
+              </div>
+
+              <div id="fans">
+                The latest version released is:
+
+                <ul>
+                  <li>ngspice-27 (released on 09/17/2017)</li>
+                </ul>
+              </div>
+            </div>
+
+            <div id="faq">
+              <div id="fquest">
+                2.2. What are the latest features in the current release ?
+              </div>Please have a look at the ngspice main page
+
+              <p><a href="http://ngspice.sourceforge.net/">ngspice main page</a></p>
+            </div>
+          </div>
+
+          <div id="faq">
+            <div id="fquest">
+              2.3. What does it looks like ?
+            </div>
+
+            <div id="fans">
+              Ngspice, as the original Spice3 (and Xspice and Cider) is a command line
+              simulator, with X11 or Windows graphics plotting.
+            </div>
+          </div>
+
+          <div id="faq">
+            <div id="fquest">
+              2.4. Who are the authors of ngspice ?
+            </div>
+
+            <div id="fans">
+              The development is open to anyone who wish to contribute. If the original
+              Spice3 was made with the contribution of "a cast of thousand", ngspice can
+              only increase that number. An incomplete list of contributor makes the
+              "acknowledgements" page of ngspice documentation.
+            </div>
+          </div>
+
+          <div id="faq">
+            <div id="fquest">
+              2.5. How can I report a bug/request for a feature ?
+            </div>
+
+            <div id="fans">
+              The ngspice summary page (hosted on Sourceforge) has bug-reporting,
+              feature-request and bugs trackers. You can use them or subscribe to mailing
+              lists and post there. The former is preferred since it allows to follow up
+              the status of improvements.
+            </div>
+          </div>
+
+          <div id="faq">
+            <div id="fquest">
+              2.6. How can I join the development ?
+            </div>
+
+            <div id="fans">
+              To join the development just code the feature you want to add and send your
+              patch in the mailing list. Before you start coding check the latest
+              development release of ngspice from our CVS. It might be that your feature
+              has already been implemented.
+
+              <p>There is no bureaucracy here.</p>
+            </div>
+          </div>3. SOLUTIONS TO COMMON MISCELLANEOUS PROBLEMS
+
+          <div id="faq">
+            <div id="fquest">
+              3.1. What systems are supported ?
+            </div>
+
+            <div id="fans">
+              Ngspice is written in C, and may be compiled under FreeBSD, LINUX, Solaris,
+              MacOS, under Windows using MS Visual Studio, mingw, or cygwin environment.
+            </div>
+          </div>
+
+          <div id="faq">
+            <div id="fquest">
+              3.2. I get errors when I try to compile the source code, why ?
+            </div>
+
+            <div id="fans">
+              This is a one-million-euros question :).
+
+              <p>Write a mail to the user's list describing the problem and providing
+              information on the type of hardware, the flavour of operating system.</p>
+            </div>
+          </div>
+
+          <div id="faq">
+            <div id="fquest">
+              3.3. This document didn't answer my question. Where else can I look for an
+              answer ?
+            </div>
+
+            <div id="fans">
+              Read old messages from the mailing list archive, search the web site or
+              read the docs. Upgrade to the latest version of ngspice, many problems are
+              fixed in the new versions. If you still can't find an answer, post your
+              question to the mailing lists.
+            </div>
+          </div>4. ADMINISTRATIVE INFORMATION AND ACKNOWLEDGEMENTS
+
+          <div id="faq">
+            <div id="fquest">
+              4.1. Feedback
+            </div>
+
+            <div id="fans">
+              Send your comments about this F.A.Q. and about ngspice to the users list
+
+              <p>ngspice-users@lists.sourceforge.net.</p>
+            </div>
+          </div>
+
+          <div id="faq">
+            <div id="fquest">
+              4.2. Formats in which this FAQ is available
+            </div>
+
+            <div id="fans">
+              This document is available only in ASCII format in the ngspice source
+              package.
+            </div>
+          </div>
+
+          <div id="faq">
+            <div id="fquest">
+              4.3. Authorship and acknowledgements
+            </div>
+
+            <div id="fans">
+              Parts of the questions and answers are originate from Paolo Nenzi.
+            </div>
+          </div>
+
+          <div id="faq">
+            <div id="fquest">
+              4.4. Disclaimer and Copyright
+            </div>
+
+            <div id="fans">
+              This document is provided as is. The information in it is not warranted to
+              be correct: you use it at your own risk.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer">
+    <table align="center" width="100%">
+      <tbody>
+        <tr>
+          <td align="left" width="25%"><a href="http://sourceforge.net/"><img src=
+          "faq-Dateien/sflogo.png" alt="SourceForge.net Logo" border="0" height="31"
+          width="88" /></a></td>
+
+          <td align="center">All text is available under the terms of the <a class=
+          "internal" href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation
+          License</a></td>
+
+          <td align="right" width="25%"><img src="faq-Dateien/spice.jpg" alt="" /></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

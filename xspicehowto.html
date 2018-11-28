@@ -1,0 +1,420 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Windows (vers 25 March 2009), see www.w3.org">
+
+  <title>Ngspice circuit simulator - XSPICE</title>
+  <link rel="stylesheet" type="text/css" href="ngstyle.css">
+  <meta name="generator" content="screem 0.12.2">
+  <meta name="author" content="Holger Vogt">
+  <meta http-equiv="Content-Type" content=
+  "text/html; charset=us-ascii">
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="description" content=
+  "Ngspice circuit simulator - XSPICE howto">
+  <meta name="keywords" content=
+  "xspice, spice, spice3,spice3f,spice3f5, circuit, EDA, simulator, electronics, semiconductor">
+  </head>
+
+<body>
+  <div id="paper">
+    <div id="header">
+      <table border="0" align="center" cellspacing="1" cellpadding=
+      "1" width="100%" summary="table aligns title and links">
+        <tr>
+          <td><img src="./images/nglogo.jpg" alt="NGSPICE"></td>
+
+          <td><img src="./images/ngtext.jpg" alt=
+          "Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5"></td>
+
+          <td>
+            <table border="0" summary=
+            "table aligns links to sourceforge and GEDA">
+              <tr>
+                <td><a href=
+                "http://sourceforge.net/projects/ngspice"><img src=
+                "./images/ngsumD.jpg" alt="Summary" border=
+                "0"></a></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div id="navcontainer">
+      <ul id="navlist">
+        <li><a href="./index.html">Home</a></li>
+
+        <li><a href="./screens.html">Screenshots</a></li>
+
+        <li><a href="./download.html">Download</a></li>
+
+        <li><a href="./docs.html">Documentation</a></li>
+
+        <li><a href="./extras.html">Extras/Options</a></li>
+
+        <li><a href="./applic.html">Applications</a></li>
+
+        <li id="active"><a href="#" id="current" name=
+        "current">Development</a></li>
+
+        <li><a href="./resources.html">Simulation Environments</a></li>
+
+        <li><a href="./recipes.html">Recipes</a></li>
+
+        <li><a href="./contrib.html">Contributions</a></li>
+      </ul>
+    </div>
+
+    <div id="left">
+      <div id="context">
+        <div id="contextcontent">
+          <p class="contextual title">Ngspice Development</p>
+
+          <div id="menucontainer">
+            <ul id="menulist">
+              <li><a href="./devel.html">Developers Info</a></li>
+
+              <li><a href="./bugrep.html">Bug Reports</a></li>
+
+              <li><a href="./gitaccess.html">GIT Access</a></li>
+
+              <li><a href="./devdocs.html">Docs for
+              developers</a></li>
+
+              <li><a href="./mlarch.html">Mailing List
+              Archives</a></li>
+
+              <li><a href="./relinfo.html">Releases Info</a></li>
+
+              <li><a href="./roadmap.html">Roadmap</a></li>
+
+              <li><a href="./docwrite.html">Writing Docs</a></li>
+
+              <li>
+                <hr>
+              </li>
+
+              <li><a href="./bench.html">Benchmarks</a></li>
+            </ul>
+
+            <p class="contextual title">XSPICE in ngspice</p>
+
+            <ul id="menulist">
+              <li><a href="./xspice.html">What is XSPICE ?</a></li>
+
+              <li><a href="./xspicehowto.html">XSPICE and ngspice
+              HOWTO</a></li>
+            </ul>
+            
+            <p class="contextual title">KiCad/Eeschema as GUI for ngspice</p>
+
+            <ul id="menulist">
+              <li><a href="./ngspice-eeschema.html">Tutorial for Eeschema with ngspice</a></li>
+            </ul>
+            
+            <p class="contextual title">adms for ngspice</p>
+
+            <ul id="menulist">
+              <li><a href="./adms.html">What is ADMS ?</a></li>
+
+              <li><a href="./admshowto.html">ADMS and ngspice
+              HOWTO</a></li>
+            </ul>
+
+            <p class="contextual title">GSS-TCAD</p>
+
+            <ul id="menulist">
+              <li><a href="./gss.html">GSS</a></li>
+            </ul>
+
+            <p class="contextual title">TCLspice</p>
+
+            <ul id="menulist">
+              <li><a href="./tclspice.html">What is TCLspice
+              ?</a></li>
+
+              <li><a href="./tclusers.html">TCLspice users
+              manual</a></li>
+
+              <li><a href="./tclexamples.html">TCLspice by
+              examples</a></li>
+
+              <li><a href="./tclnotes.html">Designer's
+              note</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="main">
+        <div id="maincontent">
+          <p class="header">XSPICE in Ngspice howto</p>
+
+          <p class="header">Ngspice and XSPICE installation</p>
+
+          <p class="justified">Please first of all check that you
+          have installed Ngspice including the XSPICE option
+          properly. The installation procedure has been described
+          in the <a href="./docs/ngspice-manual.pdf">Ngspice
+          manual</a> at chapter 31.1 (for LINUX) or 31.2 (for MS
+          Windows). Then run one or all of the examples to be found
+          in the actual distribution or in git at <a href=
+          "http://ngspice.git.sourceforge.net/git/gitweb.cgi?p=ngspice/ngspice;a=tree;f=examples/xspice;hb=HEAD">
+          ngspice/examples/xspice</a>. To ensure that no hidden
+          error is slipping through, you might add the line "set
+          strict_errorhandling" to either file spinit or
+          .spiceinit.</p>
+
+          <p class="header">Amplifier code model</p>
+
+          <p class="justified">Coming soon.</p>
+
+          <p class="header"><a name="memr" id="memr">Memristor code model</p>
+
+          <p class="justified">A memristor subcircuit model,
+          available from git at <a href=
+          "http://ngspice.git.sourceforge.net/git/gitweb.cgi?p=ngspice/ngspice;a=blob;f=examples/memristor/memristor.sp">
+          ngspice/examples/memristor/memristor.sp</a> has been
+          translated into an XSPICE code model. The source files
+          are available from git at <a href=
+          "http://ngspice.git.sourceforge.net/git/gitweb.cgi?p=ngspice/ngspice;a=tree;f=src/xspice/icm/xtradev/memristor;hb=HEAD">
+          ngspice/src/xspice/icm/xtradev/memristor</a>, an example
+          circuit may be downloaded as <a href=
+          "http://ngspice.git.sourceforge.net/git/gitweb.cgi?p=ngspice/ngspice;a=blob;f=examples/memristor/memristor_x.sp">
+          ngspice/examples/memristor/memristor_x.sp</a>. Some
+          details of its usage are available from the <a href=
+          "./docs/ngspice-manual.pdf">Ngspice manual</a> at chapter
+          12.2.26.</p>
+
+          <p class="justified">In the follwing you will find my
+          ideas (h_vogt) on the implementation of this model.
+          Please consult the manual at chapter 12.1 and the model
+          files cfunc.mod and ifspec.ifs from the actual ngspice
+          git repository for further details.</p>
+
+          <ul>
+            <li>The model is added to the already existing code
+            model library xtradev. So create a new directory
+            /src/xspice/icm/xtradev/memristor/. Add the directory
+            name 'memristor' to file
+            /src/xspice/icm/xtradev/modpath.lst. Copy the two files
+            cfunc.mod and ifspec.ifs from /icm/xtradev/capacitor/
+            to /icm/xtradev/memristor/, so to have a starting
+            point.</li>
+
+            <li>Edit /memristor/ifspec.ifs (see also manual chapter
+            27.6): Change the Spice_Model_Name to memristor. This
+            will become the model name in the .model line. Replace
+            the C_Function_Name cm_capacitor by cm_memristor.
+            Select a suitable description. Select a port name (e.g.
+            memris), to be used in cfunc.mod. We want to describe a
+            resistor, so we have two terminals, which are input and
+            output at the same time, therefore Direction: is inout.
+            Our resistor has voltage as input and current as
+            output, so we select Default_Type: gd (differential
+            voltage controlled current source), and no other than
+            [gd] allowed. The parameter table lists the 6 model
+            parameters rmin, rmax, rinit, alpha, beat, and vt, with
+            their defaults, all being real values.</li>
+
+            <li>Edit /memristor/cfunc.mod (see also manual chapter
+            27.7): Replace cm_capacitor by cm_memristor. This is
+            the central function containing the model code. We have
+            to rewrite it completely, when started with
+            cm_capacitor(). After defining some variables and
+            getting some of the parameters by using the PARAM
+            macro, we have to allocate memory for the state
+            variable rval and initialize it to rinit. For transient
+            simulation we then calculate the output according to
+            the given model equations. The resistance relies in a
+            specific fashion on the time integral of the input
+            voltage (see argument to the cm_analog_integrate()
+            function). A special consideration has to be given to
+            the PARTIAL macro. Partial derivatives are required by
+            the simulator to allow it to solve the non-linear
+            equations that describe circuit behavior for analog
+            nodes. We have I = V/Rval, so we have to find dI/dV =
+            1/Rval + V*(d(1/Rval)/dV). As a first approximation we
+            just use dI/dV = 1/Rval, but this shurely can be
+            improved. DC and AC simulation are not defined for a
+            memristor, because calculation of a dc bias point,
+            without taking the time into acount, will not be
+            possible. The model for now just returns rinit. Small
+            signal noise modelling is not possible for the same
+            reason, but has not been integrated into XSPICE anyway.
+            You may try using transient noise instead (manual
+            chapter 15.3.10).</li>
+
+            <li>Compilation and installation of the new memristor
+            code model is now a simple make, sudo make install !
+            Using the model is described in the manual, chapter at
+            chapter 12.2.26.</li>
+          </ul>
+
+          <div id="topimage"><img src="./images/memrisoutp4.png"
+          alt="Memristor current versus voltage" width="100%"
+          height="100%"></div>
+
+          <p class="justified">On the right you see the output plot
+          of memristor current versus voltage, as obtained from
+          memristor_x.sp. The exciting voltage is a sine with
+          frequency increasing from tran1 over tran2 to tran3 by
+          20% per step.</p>
+
+          <p class="justified">The typical memristive behaviour is
+          obvious: The v-i plane exhibits a pinched hysteresis
+          loop, when driven by a bipolar periodic voltage. The loop
+          shrinks towards a straight line with increasing
+          excitation frequency.</p>
+
+          <p class="justified">Adding another memristor model is as
+          simple as applying the procedure as described above. The
+          main task is generating the C model code and (not so
+          easily) obtaining the partial derivative dI/dV. Models
+          with more than one state variable may be integrated as
+          well.</p><br>
+
+          <p class="header">Digital code model</p>
+
+          <p class="justified">Coming soon!</p>
+
+          <p class="header"><a name="pll" id="pll">Mixed mode
+          circuit: Phase-locked loop with analog devices and
+          digital code models</a></p>
+
+          <p class="justified"><a name="pll" id="pll">A
+          phase-locked loop circuit is available at git in
+          directory</a> <a href=
+          "http://ngspice.git.sourceforge.net/git/gitweb.cgi?p=ngspice/ngspice;a=tree;f=examples/xspice/pll;hb=HEAD">
+          /ngspice/examples/xspice/pll/</a>. The pll consists of
+          several circuit blocks: a voltage controlled oscillator
+          (vco), a digital frequency divider, the digital
+          reference, the digital phase and frequency comparator,
+          and the loop filter.</p>
+
+          <p class="justified">The analog vco is a 7 stage ring
+          oscillator made of gain cells. As an (faster simulating)
+          alternative you may use a controlled digital oscillator,
+          readily available as a code model, whose frequency versus
+          voltage characteristics has been made similar to the ring
+          oscillator. The loop filter uses switched current sources
+          as charge pump and a second order passive RC network. As
+          an alternative there is available a CMOS transistor pair
+          for charging and a 3rd order passive filter. The digital
+          blocks are described by XSPICE code models, dac and adc
+          bridges connect the digital and analog worlds.</p>
+
+          <p class="justified">The parameters of the loop filter
+          are far from being optimized. You may use <a href=
+          "http://www.national.com/assets/en/boards/deansbook4.pdf">
+          Dean Banerjee's book</a> for a detailed instruction how
+          to get best pll performance.</p>
+
+          <p class="header"><a name="dsc" id="dsc">Mixed mode
+          circuit: delta-sigma converter with analog devices and
+          digital code models</a></p>
+
+          <p class="justified"><a name="dsc" id="dsc">A delta-sigma
+          9 bit converter circuit is available at git in
+          directory</a> <a href=
+          "http://ngspice.git.sourceforge.net/git/gitweb.cgi?p=ngspice/ngspice;a=tree;f=examples/xspice/delta-sigma;hb=HEAD">
+          /ngspice/examples/xspice/delta-sigma/</a>. The converter
+          consists of several circuit blocks: a first order
+          continuous time modulator (mod1), and a sinc filter and
+          decimator.</p>
+
+          <p class="justified">The first order modulator consists
+          of an integrator (xspice gain code model) and a latched
+          comparator (B source and xspice D-latch) with feed back
+          to the integrator input. This continuous time circuit
+          also serves as an anti-aliasing filter. The
+          sinc-filter/decimator is a binary 10 bit counter made of
+          xspice J-K flip flops and some logic and latches. After N
+          counts, determined by a divider code model, the counter
+          contents is latched, the counter resetted.</p>
+
+          <p class="justified">This example is a very simple
+          delta-sigma converter, not a 'productive' circuit, but
+          demonstrates the cooperation of xspice code models
+          (digital and analog) and analog devices in ngspice.</p>
+
+          <p class="header">Debugging xspice code models in
+          ngspice</p>
+
+          <p class="justified">The code model libraries are shared
+          libraries (or dlls) loaded at runtime. Thus it is a
+          little tricky to debug them during development.</p>
+
+          <p class="justified">There is some discussion about that
+          in the net (see the <a href=
+          "http://forums.ni.com/t5/Circuit-Design-Suite-Multisim/debugging-xspice-code-models/td-p/1049895">
+          Multisim discussion forum</a>), where it is suggested to
+          add a file for collecting debug output.</p>
+
+          <p class="justified">For developers using MS Visual
+          Studio I have provided a Visual Studio project <a href=
+          "./experimental/xspice-gen.7z">xspice-gen.7z</a> for
+          download. It allows you to generate a code model in a
+          library to be loaded into ngspice and to use the powerful
+          debugger offered by MS Visual Studio in a step by step
+          mode. Install the project into a directory of your choice
+          and have a look at xspice-debug-howto.txt for further
+          instructions.</p>
+
+          <p class="header">Relevant Links</p>
+
+          <ul>
+            <li><a href="./xspice.html">XSPICE and Ngspice
+            introduction</a>: XSPICE code model support for
+            Ngspice.</li>
+
+            <li><a href="./docs/ngspice-manual.pdf">Ngspice
+            manual</a>: The actual ngspice manual, describing the
+            most recent Ngspice in Git.</li>
+
+            <li><a href=
+            "http://users.ece.gatech.edu/~mrichard/Xspice/">XSPICE
+            home</a>: The XSPICE home page at Georgia Tech.</li>
+
+            <li><a href=
+            "http://fides.fe.uni-lj.si/spice/xspice.html">Spice
+            OPUS</a>: XSPICE page for the Spice OPUS
+            simulator.</li>
+
+            <li><a href=
+            "http://www.intusoft.com/articles/xspiceover.htm">ICAP/4</a>:
+            XSPICE for the ICAP/4 simulator.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer">
+      <table align="center" width="100%" summary=
+      "table aligns logos and license information">
+        <tr>
+          <td align="left" width="25%"><a href=
+          "http://sourceforge.net"><img src=
+          "http://sourceforge.net/sflogo.php?group_id=38962&amp;type=1"
+          width="88" height="31" border="0" alt=
+          "SourceForge.net Logo"></a></td>
+
+          <td align="center">All text is available under the terms
+          of the <a class="internal" href=
+          "http://www.gnu.org/licenses/fdl.html">GNU Free
+          Documentation License</a></td>
+
+          <td align="right" width="25%"><img src=
+          "./images/spice.jpg" alt=""></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

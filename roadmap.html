@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<title>Ngspice circuit simulator - Project Roadmap</title>
+		<link rel="stylesheet" type="text/css" href="ngstyle.css">
+		<meta name="generator" content="screem 0.12.2" >
+		<meta name="author" content="Paolo Nenzi" >
+		<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" >
+		<meta http-equiv="Content-Script-Type" content="text/javascript" >
+		<meta http-equiv="Content-Style-Type" content="text/css" >
+		<meta name="description" content="Ngspice circuit simulator - development roadmap">
+		<meta name="keywords" content="spice, spice3,spice3f,spice3f5, circuit, EDA, simulator, electronics, semiconductor">
+	</head>
+	<body>
+<DIV id="paper">	
+<DIV id="header">
+<table border="0" align="center" cellspacing="1" cellpadding="1" width="100%" >
+<tr>
+<td><img src="./images/nglogo.jpg" alt="NGSPICE" > </td>
+<td><img src="./images/ngtext.jpg" alt="Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5" ></td>
+<td>
+ <TABLE border="0">
+ <tr><td><a href="http://sourceforge.net/projects/ngspice" ><img src="./images/ngsumD.jpg" alt="Summary" border="0"> </a></td></tr>
+</TABLE>
+</td>
+</tr>
+</table>	
+</DIV>
+
+<DIV id="navcontainer">
+<ul id="navlist">
+<li><a href="./index.html">Home</a></li>
+<li><A  href="./screens.html">Screenshots</A></li>
+<li><A  href="./download.html">Download</A></li>
+<li><A  href="./docs.html">Documentation</A></li>
+<li><A  href="./extras.html">Extras/Options</A></li>
+<li><A  href="./contrib.html">Contributions</A></li>
+<li id="active"><A  href="#" id="current">Development</A></li>
+<li><A  href="./resources.html">Simulation Environments</A></li>
+<li><A  href="./recipes.html">Recipes</A></li>
+</DIV>
+
+<div id="left">
+    <div  id="context"> 
+        <div id="contextcontent">
+<p class="contextual title">Ngspice Development</p>
+<div id="menucontainer">
+<ul id="menulist">
+<li><A  href="./devel.html">Developers Info</A></li>
+<li><A href="./bugrep.html">Bug Reports</A></li>
+<li><A  href="./cvsaccess.html" >CVS Access</A></li>
+<li><A href="./devdocs.html">Docs for developers</A></li>
+<li><A  href="./mlarch.html">Mailing List Archives</A></li>
+<li><A href="./relinfo.html">Releases Info</A></li>
+<li id="active"><A href="#" id="current">Roadmap</A></li>
+<li><A href="./docwrite.html">Writing Docs</A></li>
+<li><hr></li>
+<li><A href="./bench.html">Benchmarks</A></li>
+</ul>
+</div>
+
+
+             </div>
+         </div>
+
+    <div id="main">
+        <div id="maincontent">
+            <p class="header">Ngspice development roadmap</p>
+<p class="justified"><span class="justified">There is no "official" development roadmap. 
+What follows is a list of topics that we think should be addressed. There is no priority given
+in the</span><span class="justified" style="font-family: monospace;"> </span><span class="justified">list 
+below,&nbsp;and</span><span class="justified" style="font-family: monospace;"> </span><span class="justified">we
+need people interested in contributing&nbsp;code.</span><span class="justified" style="font-family: monospace;"></span><span class="justified"> This is an
+open source project and we will choose the options where we have most
+fun&nbsp;</span><span class="justified" style="font-family: monospace;"></span><span class="justified">coding
+and testing.</span><br>
+</p>
+<p class="header">Guidelines:</p>
+<p class="justified" style="text-align: justify;">Ngspice
+it is the latest incarnation of
+the spice3 circuit simulator, which is often referred as a "de facto"
+industry standard. Keeping spice3 compatibiliy should be a general
+guideline. Compatibility with other simulators is another guideline. It
+is important to use a common interface to share netlists and output
+vectors with other simulators.</p>
+<p class="header">Frontend related topics:<span style="text-decoration: underline;"></span></p>
+<ul>
+<li>&nbsp;<span style="font-style: italic;">Use utf8 encoding and
+support UNICODE characters.</li>
+<li>&nbsp;<span style="font-style: italic;">Add new output formats</span>:
+Adding new structured output formats to ngspice will allow integration
+with powerful post-processing applications. New formats may include CSV
+(Comma Separated Value), HDF, etc. (partially done, see wrdata command)</li>
+<li>&nbsp;<span style="font-style: italic;">Unify access to built in functions</span>:
+The three internal function parsers (numparam,. B source, command interpreter) have
+partially different built in functions available. Unify them to make access transparent 
+to the user (mostly done).</li>
+</ul>
+<p><span class="header">Analyses related topics:</span></p>
+<ul class="justified">
+<li><span style="font-style: italic;">Add steady
+state analysis capability.</span> (ongoing)</li>
+</ul>
+<p class="header">Devices related topics:</p>
+<ul><li><span style="font-style: italic;">Add device
+parameters (@dev[param]) to be used in B source.</span></li>
+<li><span style="font-style: italic;">Add 'digital' input to
+independent voltage and current source (e.g. PATTERN).</span></li>
+<li><span style="font-style: italic;">Add 'file' input to
+independent voltage and current sources.</span> (done, see XSPICE File Source codemodel)</li>
+<li><span style="font-style: italic;">Add noise
+support to ADMS compiled devices.</span></li>
+<li><span style="font-style: italic;">Add new Berkeley MOS
+models (IMG, CMG, Bulk) to ADMS compiled devices.</span> (ongoing)</li>
+<li><span style="font-style: italic;">Add table
+lookup functions for controlled generators</span> (done, see XSPICE 2D and 3D table models.</li>
+<li><span style="font-style: italic;">Add a
+saturable core inductor to ngspice 
+(e.g.&nbsp;</span><a href="http://fmtt.com/Transformer%20SPICE%20Model%202-14-08.pdf">
+this one</a>).</li>
+</ul>
+<p class="header">Documentation related topics:</p>
+<ul><li><span style="font-style: italic;">Update
+documentation with latest additions.</span> (ongoing)</li>
+<li><span style="font-style: italic;">Expand
+documentation with examples and recipes for the novice users.</span> (ongoing)</li>
+<li><span style="font-style: italic;">Provide web browseable documentation.</span></li>
+</ul>
+<p class="header">Code quality related topics:</p>
+<ul><li><span style="font-style: italic;">Remove memory
+leaks.</span> (done)</li>
+<li><span style="font-style: italic;">Build a non
+regression test suite.</span></li>
+<li><span style="font-style: italic;">Allow separate object file directories</span>: remove
+mixing of source code files and newly created object and library files. (done)</li>
+<li><span style="font-style: italic;">Improve transfer function and pole-zero code.</span>
+Improve convergence, (almost) always return correct number of poles and zeros.</li>
+</ul>
+<p class="header">Performance related topics:</p>
+<ul><li><span style="font-style: italic;">Investigate
+if the basic numeric loops in ngspice are efficient on modern CPUs. Shall we exploit
+the capabilities of modern GPUs?</span> (almost done, see 
+<a href="./cuspice.html">CUSPICE)</a></li>
+<li><span style="font-style: italic;">Investigate if an alternative matrix solver can 
+<a href="http://www.siam.org/news/news.php?id=1121">improve
+simulation speed </a></span>(done, KLU is available for testing).<br>
+</li>
+</ul>
+<p class="header">Interfaces with other software:</p>
+<ul><li><span style="font-style: italic;">Circuit optimization: In this field 
+<a href="http://asco.sourceforge.net/">ASCO</a> is a good
+starting point.</span> (done)</li>
+<li><span style="font-style: italic;">GHDL co-simulation:&nbsp;</span>
+<a href="http://ghdl.free.fr/">GHDL</a> is a VHDL simulator which compiles VHDL
+sources and links it with a runtime library that performs event driven
+simulation of the device. Modification of the runtime library can make
+it possible to interface it with the xspice interface of ngspice. Then
+mixed mode simulations can be performed with spice netlists for analogue part, and
+vhdl code for digital parts. </li>
+<li>The 
+<a href="http://en.wikipedia.org/wiki/Verilog_Procedural_Interface">vpi interface</a>
+is under consideration as another option to link ngspice and VHDL.</li>
+</ul>
+<p class="header">Curiosities:</p>
+<p class="justified">There is a patch to import sound files into ngspice that can be
+used as starting point. <a href="http://mir.dnsalias.com/oss/spicesound/start">link</a></p>
+</div>
+    </div>
+</div>
+<div id="footer">
+<table align="center" width="100%">
+<tbody><tr>
+<td align="left" width="25%"> <a href="http://sourceforge.net"> 
+<img src="http://sourceforge.net/sflogo.php?group_id=38962&amp;type=1" alt="SourceForge.net Logo" border="0" height="31" width="88"></a></td>
+<td align="center"> All text is available under the terms of the 
+    <a class="internal" href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation 
+    License</a></td>
+<td align="right" width="25%"><img src="./images/spice.jpg" alt=""></td>
+</tr>
+</tbody></table>
+</div>
+</div>	
+	</body></html>
