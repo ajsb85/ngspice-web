@@ -1,0 +1,303 @@
+/* Style sheet for ngspice web site*/
+/* Paolo Nenzi 2005 V 1.0*/
+
+body {background-color: white;
+      color: black;
+      font-family: Arial, Helvetica, sans-serif;
+     }
+
+/*p {text-align: left;} */
+.justified {text-align: justify;}
+.centered  {text-align: center;}
+.header {text-align: left; font-weight: bold; font-size: 110%;}
+.author {font-variant: small-caps; font-size: 100%;}
+
+.contexual {text-align: center;}
+.contextual.title {
+                   text-align:center;
+                   font-weight: bold; 
+                   font-size:110%;
+		   border: medium double #9DB9D3;
+		   padding: 0.5em;}
+	   		   		   
+#code {
+       white-space: pre;
+       font-family: monospace;
+}
+
+/********************************************************************/
+/* STYLES FOR LINKS                                                 */
+/********************************************************************/
+
+/* General links */
+A:link {color: red;}
+/* A:visited {color: blue;} */
+A:hover {color: yellow;}
+A:active {color: green;}
+ 
+	    
+/********************************************************************/
+/* Horizontal navbar                                                */
+/********************************************************************/
+
+#navcontainer ul
+{
+padding-left: 0;
+margin-left: 0;
+background-color: #036;
+color: White;
+float: left;
+width: 100%;
+font-family: arial, helvetica, sans-serif;
+font-size: 75%;
+}
+
+#navcontainer ul li { display: inline; }
+
+#navcontainer ul li a
+{
+padding: 0.2em 1em;
+background-color: #036;
+color: White;
+text-decoration: none;
+float: left;
+border-right: 1px solid #fff;
+}
+
+#navcontainer ul li a:hover
+{
+background-color: #369;
+color: #fff;
+}
+
+/********************************************************************/
+/* Contextual Menu                                                  */
+/********************************************************************/
+
+
+#menucontainer ul
+{
+margin-left: 0;
+padding-left: 0;
+list-style-type: none;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 75%;
+}
+
+#menucontainer a
+{
+display: block;
+padding: 3px;
+width: 90%;
+background-color: #036;
+border-bottom: 1px solid #eee;
+}
+
+#menucontainer a:link 
+{
+color: #EEE;
+text-decoration: none;
+}
+
+#menucontainer a:hover
+{
+background-color: #369;
+color: #fff;
+}
+
+#menulist a:visited
+{
+color: #EEE;
+text-decoration: none;
+}
+
+
+/********************************************************************/
+/* Page layout                                                      */
+/********************************************************************/
+
+
+#paper  {
+         max-width: 1024px;
+	 min-width:420px;
+        }
+
+#header {
+        margin: 1em auto;
+        width: 100%;
+	background-color: white;
+        }
+
+#footer {
+        margin: 1em auto;
+        width: 100%;
+	background-color: white;
+	font-size:75%;
+	font-family: Arial, Helvetica, sans-serif;
+        } 
+	 
+#left{
+      width: 100%;
+      margin:1em auto;
+      text-align:left;
+      }
+   
+#main {
+       margin:0 0 0 20%; 
+       padding:0;
+       }
+
+#maincontent {
+       margin:0; 
+       padding: 0.5em 1em;
+       font-size: 100%;
+       }       
+
+#context{
+       float: left;
+       width: 20%;
+       margin:0; 
+       padding:0;
+       background-color: #AECAE4;
+       border: 1px solid black;
+       }
+
+#contextcontent {
+       margin:0; 
+       padding: 0.5em 0.5em;
+       }         
+               
+#latest {
+      position: relative;
+      left: 12.5%;
+      width: 75%;
+      background-color: #eeeeee;
+      border: solid black 2pt;
+      border-color: #aaaaaa;
+      }
+
+/********************************************************************/
+/* F.A.Q. layout                                                    */
+/********************************************************************/
+
+#finfo { 
+         font-size: 75%;
+	 font-family: Arial, Helvetica, sans-serif;
+	 list-style-type: none;
+	 background-color: #eeeeee;
+        }
+	
+#ftoc { margin-bottom: 1em;
+        border-bottom: solid black 2pt;
+      }
+#faq {
+      background-color: #eeeeee;
+      border: solid black 1pt;
+      border-color: #aaaaaa;
+      padding:0.2em;
+      margin-bottom: 0.2em;
+      }
+      
+#fquest {
+	    font-style: italic;
+	    background-color:#aaaaaa;
+	    padding: 0.2em;
+	  }
+
+#fans {
+
+            text-align: justify;
+	    margin-top:0.2em;
+}	        
+
+/********************************************************************/
+/* Packages layout                                                  */
+/********************************************************************/
+
+#distribution {
+               border: solid black 1pt;
+	       padding: 0.5em;
+	       margin-top: 0.5em;
+}
+
+#distlogo {
+           float:right;
+}
+
+#distname {
+           font-size:150%;
+	   
+}
+
+/********************************************************************/
+/* Books layout                                                     */
+/********************************************************************/
+
+#book {
+      border: solid black 1pt;
+      padding: 0.5em;
+      margin-top: 0.5em;
+
+}
+
+#btitle {
+         font-size:125%;
+	 border-bottom: solid gray 1pt;
+
+}
+
+#bitem {
+        float: left;
+	width: 20%;
+
+}
+
+#bauthor {
+         font-style: italic;
+
+}
+
+#breview {
+         padding: 0.2em;
+	 margin-top: 0.3em;
+	 text-align: justify;
+}
+
+/********************************************************************/
+/* Releases layout                                                  */
+/********************************************************************/
+#release {
+          border: solid black 1pt;
+	  padding: 0.5em;
+	  margin-top: 0.5em;
+}
+
+#relheader {
+          border-bottom: solid gray 1pt;
+	  font-size: 125%;
+}
+
+#reldate {
+         margin-top: 0.5em;
+	 font-weight: bold;
+	 background-color: #eeeeee;
+}
+
+#relname {
+         font-size:125%;
+}
+
+#reltext {
+         text-align: justify;
+	 margin-top: 0.3em;
+	 padding: 0.2em;
+}
+
+/********************************************************************/
+/* Paragraphs                                                       */
+/********************************************************************/
+
+#topimage{
+       float: right;
+       padding: 0.5em;
+       }
