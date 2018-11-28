@@ -1,0 +1,354 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+  
+  <meta name="generator" content="HTML Tidy for Windows (vers 25 March 2009), see www.w3.org"><title>Ngspice circuit simulator - NEWS</title>
+  
+  <link rel="stylesheet" type="text/css" href="ngstyle.css">
+  
+  <meta name="generator" content="screem 0.12.2">
+  
+  <meta name="author" content="Paolo Nenzi">
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
+  
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+  
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="News for ngspice circuit simulator">
+  
+  <meta name="keywords" content="ngspice, spice, spice3,spice3f,spice3f5, circuit, EDA, simulator, electronics, semiconductor"></head><body>
+<div id="paper">
+<div id="header">
+<table align="center" border="0" cellpadding="1" cellspacing="1" width="100%">
+  <tbody>
+    <tr>
+      <td><img src="./images/nglogo.jpg" alt="NGSPICE"></td>
+      <td><img src="./images/ngtext.jpg" alt="Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5"></td>
+      <td>
+      <table border="0">
+        <tbody>
+          <tr>
+            <td><a href="http://sourceforge.net/projects/ngspice"><img src="./images/ngsumD.jpg" alt="Developer Pages" border="0"></a></td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div id="navcontainer">
+<ul id="navlist">
+  <li id="active"><a href="#" id="current" name="current">Home</a></li>
+  <li><a href="./screens.html">Screenshots</a></li>
+  <li><a href="./download.html">Download</a></li>
+  <li><a href="./docs.html">Documentation</a></li>
+  <li><a href="./extras.html">Extras/Options</a></li>
+  <li><a href="./applic.html">Applications</a></li>
+  <li><a href="./devel.html">Development</a></li>
+  <li><a href="./resources.html">Simulation Environments</a></li>
+  <li><a href="./recipes.html">Recipes</a></li>
+  <li><a href="./contrib.html">Contributions</a></li>
+</ul>
+</div>
+<div id="left">
+<div id="context">
+<div id="contextcontent">
+<p class="contextual title">Ngspice Home</p>
+<div id="menucontainer">
+<ul id="menulist">
+  <li id="active"><a href="#">News</a></li>
+  <li><a href="presentation.html">What is ngspice ?</a></li>
+  <li><a href="extras.html">Features, Extras &amp; Options</a></li>
+  <li><a href="faq.html">F.A.Q.</a></li>
+  <li><a href="status.html">Status</a></li>
+  <li><a href="tutorials.html">Tutorials</a></li>
+  <li>
+    <hr> </li>
+  <li><a href="http://sourceforge.net/projects/ngspice/">Sourceforge
+Developer Pages</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="main">
+<div id="maincontent">
+<p class="header">NEWS</p>
+<div class="justified justified">
+<p class="header">ngspice release 29, October 27th, 2018</p>
+<p class="justified">A new ngspice release is available. 
+ngspice-29 offers several new features:</p>
+<ul>
+  <li>Bug fixes: Small bugs fixed, lots of memory leaks removed.</li>
+  <li>New features: Enhanced compatibility modes with PSPICE (.include
+  files or the complete netlist), LTSPICE compatibility started, 
+  not yet complete.    New 'sidiode' simple diode model, new command 
+  'setseed', new internal variables 'no_auto_gnd' and 'inputdir'. 
+  Environmental variable SOURCE_DATE_EPOCH is supported. </li>
+  <li>Documentation: Updated pdf manual and other documentation.</li>
+</ul>
+<p class="header">ngspice release 28, June 1st, 2018</p>
+<p class="justified">A new ngspice release is published. 
+ngspice-28 offers several new features:</p>
+<ul>
+  <li>License: All licenses involved are DFSG compatible.</li>
+  <li>Bug fixes: Small bugs fixed, memory leaks removed, code reorganized 
+  to improve its readability and safety.</li>
+  <li>New features: new VDMOS power MOS model, ngspice reads device libs 
+  with PSPICE syntax, old apps like ngnutmeg are made only upon user reqest, 
+  new commands 'mc_source' and 'alterparam', instance parameters may be 
+  added to the .model line, new variable 'sim_status', ngspice shared 
+  library supports XSPICE digital event data over its interface, 
+  pkg-config added . </li>
+  <li>Documentation: Updated pdf manual and other documentation.</li>
+</ul>
+<p class="header">ngspice release 27, September 17th, 2017</p>
+<p class="justified">After more than three years of quiet but
+continuous development a new release is due. Many new features 
+have been added to ngspice-27, improving its applicability and compatibility.</p>
+<ul>
+  <li>Bug fixes: Several small bugs removed, improved code compliance.</li>
+  <li>New features: XSPICE 2D and 3D table models, digital LUT models; updates 
+to HiSIM and BSIM4 models; new commands 'edisplay' and 'eprvcd'; improved command
+'wrdata'; relative cm paths for shared ngspice; OpenMP support for BSIM4.5 
+and bsim3v3.24 models; new function stddev; new variables 'interactive'
+'sqrnoise', and 'batchmode'; improved support for VS2015/2017 compilation, 
+including the code models; new option 'savecurrents'. </li>
+  <li>Documentation: Updated pdf manual and other documentation.</li>
+</ul>
+<p class="header">CUSPICE Launched, April 28th, 2014</p>
+<p class="justified"> CUSPICE is the revolutionary ngspice on CUDA
+platforms. The ngspice simulator has been modified to exploit
+the parallelism offered by CUDA platforms. The code has been
+uploaded in the source repository. CUSPICE now supports only a small
+(growing) set of ngspice devices: BSIM4v7, Capacitor, Self and Mutual
+Inductor, Current Source, Resistor and Voltage Source.</p>
+<p class="justified">CUSPICE requires an NVIDIA video card with Fermi
+(or newer) architecture and a working CUDA enviroment installation.</p>
+<p class="justified">CUSPICE speeds up model evaluation, circuit and
+right hand side creation steps up to 3x. Interested testers of the code 
+should read the <a href="cuspice/CUSPICE_User_Guide.pdf">user guide</a>
+and have a look at the <a href="./cuspice.html">CUSPICE</a> web page.
+Feedbacks from testers of this code are appreciated!</p>
+<p class="header">ngspice release 26, January 12th, 2014</p>
+<p class="justified">Several new features have been added to
+ngspice-26, improving its applicability and compatibility.</p>
+<ul>
+  <li>Bug fixes: Many small bugs removed, handling of libraries
+updated, improved code compliance.</li>
+  <li>New features: fft command optionally using fftw3; new functions
+nint, asinh, acosh, atanh, pwr; 'temper' in behavioural devices; check
+for soa (safe operating area); shared ngspice as a shared object or
+dynamic link library; hash table to parsing the netlist; basic
+.if/.else block; Area Calculation Method (ACM) for BSIM3.3.0; `tc1',
+`tc2' instance parameters. </li>
+  <li>Documentation: Updated pdf manual and other documentation.</li>
+</ul>
+<p class="header">ngspice release 25, January 3rd, 2013</p>
+<p class="justified">As always: new features have been added to
+ngspice-25, improving its applicability and stability.</p>
+<ul>
+  <li>Bug fixes: Memory leaks removed, especially for several XSPICE
+devices, improved code compliance.</li>
+  <li>New features: CMC model qa check for actual BSIM and hisim
+devices; additional parameters accessible in bsim3; new or updated
+commands: 'snsave', 'snload'; new code model 'memristor'; hisim models
+updated; 'measure' speed enhanced; port for Mac OS X.</li>
+  <li>Documentation: Updated pdf manual and other documentation.</li>
+</ul>
+<p class="header">ngspice release 24, January 31st, 2012</p>
+<p class="justified">More features have been added to ngspice in this
+update, improving ngspice applicability and compatibility.</p>
+<ul>
+  <li>Compatibility: Extended syntax for behavioral E and G sources.</li>
+  <li>Bug fixes: Enhanced stability for several device models, code
+compliance.</li>
+  <li>New features: New or updated commands: wrdata, remcirc, altermod,
+inventory, devhelp, reset; new functions ceil, floor, cph; new code
+model 'filesource'; 64 Bit compilation capability with MINGW, MS Visual
+Studio, LINUX.</li>
+  <li>Documentation: Updated pdf manual and other documentation.</li>
+</ul>
+<p class="header">ngspice release 23, June 5th, 2011</p>
+<p class="justified">More features have been added to ngspice in this
+update, improving ngspice applicability.</p>
+<ul>
+  <li>Compatibility: More code cleanup considerably reduces compiler
+warnings.</li>
+  <li>New devices: HiSIM2 and HiSIM_HV models from Hiroshima University
+have been added.</li>
+  <li>New features: Ngspice builds in a separate directory (e.g. in
+ng-spice-rework/release); transient noise simulation, a random voltage
+generator option trrandom and random telegraph noise added to
+independent voltage and current sources; command wrs2p to write a
+s-parameter file using Touchstone vers. 1 format.</li>
+  <li>Documentation: Updated pdf manual and other documentation.</li>
+</ul>
+<p class="header">ngspice release 22, Sept 26th, 2010</p>
+<p class="justified">More features have been added to ngspice in this
+update, improving ngspice compatibility, speed, and stability.</p>
+<ul>
+  <li>Compatibility: An extensive code cleanup considerably reduces
+compiler warnings.</li>
+  <li>Speed: OpenMP multicore support for BSIM3, BSIM4, and BSIMSOI4 is
+now available, speeding up a transistor loaded simulation by a factor
+of two.</li>
+  <li>New features: Reinstate {$var} expansion in interactive
+interpreter; .TITLE line added; update to 'spectrum' script;
+par('expression') in .four, .plot, .print, .meas, .save commands;
+command 'option' for use in spinit, .spiceinit, and in scripts; adms
+procedure updated; new random number generator, new random functions
+sunif() and sgauss(), and scripts for Monte Carlo simulations, new plot
+vectors allv, alli, ally.</li>
+  <li>Documentation: Updated pdf manual and other documentation.</li>
+</ul>
+<p class="header">ngspice release 21, June 21st, 2010</p>
+<p class="justified">This update is another cornerstone in improving
+ngspice compatibility, stability and reliability.</p>
+<ul>
+  <li>Compatibility: Added compatibility mode for dealing with other
+simulators.</li>
+  <li>Devices: BSIMSOI: update to version 4.3.1. Transmission lines
+were updated with txl and cpl from kspice. B sources now include PWL
+function handling, with variables "HERTZ", "time" and "temper" and
+Ternary function added. E and G sources, as well as R, C, L devices may
+contain expressions as value. PWL sources have got a repeat parameter
+(r=value) and a delay parameter (td=value).</li>
+  <li>Interface: Added "-p" option for running in "pipe mode". Improved
+measures: added "meas" command in control section. Added "wrdata"
+command for tabulated data out.</li>
+  <li>Documentation: Updated documentation available in pdf as a
+separate package.</li>
+</ul>
+<p class="header">ngspice release 20, November 16th, 2009</p>
+<p class="justified">Ngspice release 20 is the second release of the
+simulator in 2009.</p>
+<ul>
+  <li>Fixes: model names starting with a number (1n4001) are now
+correctly parsed. The .global command has been reinstated (it was
+previously disabled) and error messages now display the corresponding
+line numberin the input deck.</li>
+  <li>New Features: .measure command for transient, ac and dc analyses
+(still not complete, e.g. DERIV is missing).</li>
+  <li>Devices: Updated BISM4 model to revision 4.6.5. Added PWL
+(PieceWise Linear) functionality for B (arbitrary generator) sources.</li>
+</ul>
+<p class="header">ngspice release 19, April 23rd, 2009</p>
+<p class="justified">Ngspice release 19 came early after release 18. It
+reveals an important work in compile scripts, many bug fixes in memory
+management, interface, and work in device models.</p>
+<ul>
+  <li>Compile scripts: tclspice and ADMS compiling fixes. Architecture
+compiling fixes for SunOS, MS Visual Studio, MINGW, Cygwin.</li>
+  <li>Memory management: fixed memory leaks, modifies memory management
+for MS Windos, integration of espice bugfixes and enhancements, bug
+fixes in plots and cli interface.</li>
+  <li>Rework of BSim models, integration of EPFL-EKV model V2.63, ADMS
+models mextram, hicum0, hicum2.</li>
+</ul>
+<p class="header">ngspice release 18, December 1st, 2008</p>
+<p class="justified">After a long periode of silence, NGspice team is
+proud to announce you that ng-spice-rework-18 will be released the 1st
+of december. This is an incredible gift, you can offer your collegues,
+your friends or your familly. A lot of work have been done since
+August, 30th 2005: Bug fixes and new features. Ngspice gets every
+release closer from a state of the art simulator. Road is long, but
+release 18 is a step more, and overall it is a promising step. The main
+interest of ngspice it that it makes converge the many divergent spice
+implementations, by collecting papers, and looking at the
+functionalities of other spice branches. Some features have been added
+at netlist level, as parametrical netlists and .lib statement. Ngspice
+is now one of most versatile spice implementation as it can deal with a
+very large set of netlists functionalities.</p>
+<ul>
+  <li>A special thanks to Phil Bakers, for contributing numparam, the
+parametrical netlist. and .lib statement</li>
+  <li>Holger Vogt for windows integration and fft command on spice
+vectors</li>
+  <li>Gong Ding for the interface with GSS-TCAD semiconductor simulator.</li>
+  <li>Lionel Sainte Cluque from bringing back tclspice in ngspice.</li>
+  <li>Thanks to Paolo Nenzi, Dietmar Warning, Steven Borley for their
+huge contribution.</li>
+</ul>
+<p class="justified">I would say that the importance of release 18 is
+not only the features it provides, but the basis it makes for futur
+developpement of ngspice. Ngspice is in the short list of the high
+quality open source circuit simulation programs. For this reason it has
+been integrated with little or great success in many EDA workflows.
+Nevertheless, I think that better integration can be achieved, and open
+source EDA suites are, for the moment, and I hope this will change, of
+a much lower quality that proprietary ones. It lacks features, and it
+lacks integration between tools. NGspice make a step toward others open
+source EDA softwares by clarifying its license and providing tclspice.
+Tclspice, released under GNU LGPL, is a library loadable in a tcl
+interpreter that gives acces to spice simulation through tcl commands.
+I hope that soon, some nice tcl interfaces can bundle schematic
+editors, spice pre/post processors, BOM databases, and so on.</p>
+<p class="justified">A reflexion has been undertaken on the evolutions
+that can be made. Many big features are planned. I hope these project
+will take form soon. As an open source project, you are welcome to
+contribute. Please, visit the <a href="./devel.html">Developement</a>
+and <a href="./roadmap.html">Roadmap pages</a> .</p>
+<div id="latest">
+<table align="center" width="80%" border="0">
+  <tbody>
+    <tr bgcolor="#aaaaaa">
+      <td>Latest Release</td>
+      <td>Release Date</td>
+    </tr>
+    <tr>
+      <td>ngspice-29</td>
+      <td>27-October-2018</td>
+    </tr>
+    <tr bgcolor="#aaaaaa">
+      <td><br>
+      </td>
+      <td>Release Date</td>
+    </tr>    
+    <tr>
+      <td>ngspice-28</td>
+      <td>01-June-2018</td>
+    </tr>
+    <tr bgcolor="#aaaaaa">
+      <td><br>
+      </td>
+      <td>Release Date</td>
+    </tr>    
+    <tr>
+      <td>ngspice-27</td>
+      <td>17-September-2017</td>
+    </tr>
+    <tr bgcolor="#aaaaaa">
+      <td><br>
+      </td>
+      <td>Release Date</td>
+    </tr>
+    <tr>
+      <td>ngspice-26</td>
+      <td>12-January-2014</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<table align="center" width="100%">
+  <tbody>
+    <tr>
+      <td align="left" width="25%"><a href="http://sourceforge.net"><img src="http://sourceforge.net/sflogo.php?group_id=38962&amp;type=1" alt="SourceForge.net Logo" border="0" height="31" width="88"></a></td>
+      <td align="center">All text is available under the terms of the <a class="internal" href="http://www.gnu.org/licenses/fdl.html">GNU Free
+Documentation License</a></td>
+      <td align="right" width="25%"><img src="./images/spice.jpg" alt=""></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+
+</body></html>
