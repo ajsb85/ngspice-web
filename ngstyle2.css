@@ -1,5 +1,7 @@
-/* Style sheet for ngspice web site*/
+/* Style sheet for ngspice web site */
+/* License: Creative Commons Attribution Share-Alike (CC-BY-SA) v4.0 */
 /* Paolo Nenzi 2005 V 1.0*/
+/* Holger Vogt 2018 V 2.0*/
 
 body {background-color: white;
       color: black;
@@ -195,6 +197,12 @@ text-decoration: none;
       border: solid black 2pt;
       border-color: #aaaaaa;
       }
+
+picture
+{
+    text-align: center; 
+    margin: 0 5% 20px 5%;    
+}
       
 pframe      
  {
@@ -214,7 +222,7 @@ pic3 {
 @media (min-width: 560px) {
   pframe {
 	grid-template-columns:  1fr 1fr;
-  }
+  }	
   pic1{
     grid-column-start: 1;
   }  
