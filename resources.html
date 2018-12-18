@@ -1,532 +1,628 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html><head>
-  
-  <meta name="generator" content="HTML Tidy for Windows (vers 25 March 2009), see www.w3.org">
-  <title>Ngspice circuit simulator - Schematic entry and GUIs, Simulation Environments</title>
-
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for HTML5 for Windows version 5.6.0">
+  <title>Ngspice circuit simulator - Schematic entry and GUIs, Simulation
+  Environments</title>
   <link rel="stylesheet" type="text/css" href="ngstyle2.css">
-  
   <meta name="generator" content="screem 0.12.2">
   <meta name="author" content="Paolo Nenzi">
-  <meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
   <meta http-equiv="Content-Style-Type" content="text/css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Ngspice circuit simulator - Simulation Environments">
-  <meta name="keywords" content="ngspice, spice, spice3, spice3f, spice3f5, circuit, EDA, simulator, electronics, semiconductor">
-
-</head><body>
-<div id="paper">
-<div id="header">
-  <pframe>
-    <pic1>
-      <img src="./images/nglogo.jpg" alt="NGSPICE">
-    </pic1>
-    <pic2>
-      <img src="./images/ngtext2.jpg" alt="Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5">
-    </pic2>
-    <pic3>
-     <a href="http://sourceforge.net/projects/ngspice"><img src="./images/ngsumD.jpg" alt="Developer Pages" border="0"></a>
-    </pic3>
-  </pframe>
-<div id="navcontainer">
-<ul id="navlist">
-  <li><a href="./index.html">Home</a></li>
-  <li><a href="./screens.html">Screenshots</a></li>
-  <li><a href="./download.html">Download</a></li>
-  <li><a href="./docs.html">Documentation</a></li>
-  <li><a href="./extras.html">Extras/Options</a></li>
-  <li><a href="./applic.html">Applications</a></li>
-  <li><a href="./devel.html">Development</a></li>
-  <li id="active"><a href="#" id="current" name="current">Simulation Environments</a></li>
-  <li><a href="./recipes.html">Recipes</a></li>
-  <li><a href="./contrib.html">Contributions</a></li>
-</ul>
-</div>
-<div id="left">
-<div id="context">
-<div id="contextcontent">
-<p class="contextual title">Simulation Environments</p>
-<div id="menucontainer">
-<ul id="menulist">
-  <li id="active"><a href="#" id="current" name="current">Tools using
-ngspice<br>
-    </a></li>
-  <li><a href="./spices.html">Spice Simulators</a></li>
-  <li><a href="./sppatches.html">Patches to spice</a></li>
-  <li><a href="./spdevs.html">Devices Models</a></li>
-  <li>
-    <hr> </li>
-  <li><a href="./relapp.html">Related applications</a></li>
-</ul>
-</div>
-</div>
-</div>
-<div id="main">
-<div id="maincontent">
-<p class="header">Tools that use ngspice as simulator<br>
-</p>
-<p class="justified">In more than 15 years of maintenance and
-development, ngspice earned a good reputation among free spice-based
-simulators.&nbsp; Ngspice is used as simulator in different tools, both
-free and commercial. Here is the list of the tools we know about
-(in alphabetical order). You 
-may find  <a href="#GUIs">graphical user interfaces</a> with or without schematic capture, 
-<a href="#GUIs">circuit development tools</a> as well as 
-<a href="#DevEnvs">development environments for models and devices</a>
-.&nbsp;</p>
-<br>
-<a name="GUIs"></a>
-<p class="header">Tools for circuit simulation with ngspice<br>
-</p>
-<table style="text-align: left; width: 100%; height: 90px;" border="0" cellpadding="2" cellspacing="2">
-  <tbody>
-    <tr>
-      <td style="vertical-align: top;"><a href="http://sites.prenninger.com/blackboard/"><img style="border: 0px solid ; width: 106px; height: 24px;" alt="http://sites.prenninger.com/blackboard/" title="Blackboard" src="images/blackboard.gif"></a><br>
-      </td>
-      <td style="vertical-align: top; text-align: justify;"> 
-      <a style="font-weight: bold;" href="http://sites.prenninger.com/blackboard/">
-	  Blackboard</a> allows to generate circuits on stripboards 
-	  and uses ngspice for circuit simulation. The author has stopped 
-      its development, the sources are available 
-      <a href="https://github.com/mpue/blackboard">here</a>.<br>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<br>
-<table style="text-align: left; width: 100%; height: 90px;" border="0" cellpadding="2" cellspacing="2">
-  <tbody>
-    <tr>
-      <td style="vertical-align: top;"><a href="http://sourceforge.net/projects/imepspiceinterface"><img style="border: 0px solid ; width: 106px; height: 77px;" alt="http://sourceforge.net/projects/imepspiceinterface" title="ngspice in CADENCE" src="images/cadence.png"></a><br>
-      </td>
-      <td style="vertical-align: top; text-align: justify;"> <a style="font-weight: bold;" href="http://sourceforge.net/projects/imepspiceinterface">
-	  ngspice integration</a> into the <a href="http://www.cadence.com">CADENCE</a> 
-	  circuit design environment is promoted by a toolset offered 
-	  <a href="http://sourceforge.net/projects/imepspiceinterface">here</a>.<br>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<br>
-<table style="text-align: left; width: 100%; height: 90px;" border="0" cellpadding="2" cellspacing="2">
-  <tbody>
-    <tr>
-      <td style="vertical-align: top;"><a href="http://coolcadelectronics.com/coolspice"><img style="border: 0px solid ; width: 106px; height: 88px;" alt="http://coolcadelectronics.com/coolspice/" title="CoolSpice" src="images/coolcad.png"></a><br>
-      </td>
-      <td style="vertical-align: top; text-align: justify;"> <a style="font-weight: bold;" href="http://coolcadelectronics.com/coolspice">
-	  CoolSpice</a> is a SPICE suite 
-	  and circuit simulation software package. 
-	  CoolSpice contains ngspice, a schematics editor with GUI, 
-	  a plotter application, and a text editor for manually editing netlists. 
-      <br>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<br>
-<table style="text-align: left; width: 100%; height: 90px;" border="0" cellpadding="2" cellspacing="2">
-  <tbody>
-    <tr>
-      <td style="vertical-align: top;"><a href="http://www.cppsim.com"><img style="border: 0px solid ; width: 106px; height: 78px;" alt="www.cppsim.com" title="www.cppsim.com" src="images/cppsim.jpg"></a><br>
-      </td>
-      <td style="vertical-align: top; text-align: justify;"> <a style="font-weight: bold;" href="http://www.cppsim.com">Cppsim</a> is
-a system simulator that integrates ngspice as transistor-level
-simulator. Ngspice shares the schematic capture and postprocessing
-tools with the other simulators included in the suite (C++ and Verilog).<br>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<br>
-<table style="text-align: left; width: 100%; height: 90px;" border="0" cellpadding="2" cellspacing="2">
-  <tbody>
-    <tr>
-      <td style="vertical-align: top;"><a href="https://www.autodesk.com/products/eagle/overview"><img style="border: 0px solid ; width: 106px; height: 106px;" alt="https://www.autodesk.com/products/eagle/overview" title="Eagle" src="images/eagle.png"></a><br>
-      </td>
-      <td style="vertical-align: top; text-align: justify;"> <a style="font-weight: bold;" href="https://www.autodesk.com/products/eagle/overview">
-	  Eagle</a> is the well known and widely distributed PCB layout software for every engineer.
-      It offers a complete set of PCB layout and schematic editing tools, library content, 
-      and community-driven features. The recent version 8.4 integrates ngspice for circuit
-      simulation.
-<br>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<br>
-<table style="text-align: left; width: 100%; height: 90px;" border="0" cellpadding="2" cellspacing="2">
-  <tbody>
-    <tr>
-      <td style="vertical-align: top;"><a href="https://easyeda.com/"><img style="border: 0px solid ; width: 106px; height: 30px;" alt="href="https://easyeda.com/" title="EasyEDA" src="images/easyeda.png"></a><br>
-      </td>
-      <td style="vertical-align: top; text-align: justify;"> <a style="font-weight: bold;" href="https://easyeda.com/">
-	  EasyEDA</a> is a tool for  online circuit simulation, PCB design, and Electronic circuit design.
-      ngspice is the simulation engine.<br>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<table style="text-align: left; width: 100%; height: 90px;" border="0" cellpadding="2" cellspacing="2">
-  <tbody>
-    <tr>
-      <td style="vertical-align: top;"><a href="http://esim.fossee.in"><img style="border: 0px solid ; width: 106px; height: 106px;" alt="href="http://oscad.in/home" title="Oscad" src="images/oscad.gif"></a><br>
-      </td>
-      <td style="vertical-align: top; text-align: justify;"> <a style="font-weight: bold;" href="http://esim.fossee.in">
-	  eSim</a> is an open source EDA tool for circuit design, simulation, 
-	  analysis and PCB design. It is an integrated tool built using open 
-	  source software packages KiCad, ngspice and Scilab and runs on 
-	  LINUX and MS Windows. <br>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<br>
-<br>
-<table style="text-align: left; width: 100%; height: 90px;" border="0" cellpadding="2" cellspacing="2">
-  <tbody>
-    <tr>
-      <td style="vertical-align: top;"><a href="http://wiki.geda-project.org/geda:ngspice_and_gschem"><img style="border: 0px solid ; width: 106px; height: 78px;" alt="http://wiki.geda-project.org/geda:ngspice_and_gschem" title="geda project" src="images/geda.gif"></a><br>
-      </td>
-      <td style="vertical-align: top; text-align: justify;"> The <a style="font-weight: bold;" href="http://www.geda-project.org/">
-	  gEDA project</a> is a full suite and toolkit of Electronic Design 
-	  Automation tools. It uses ngspice for 
-	  <a style="font-weight: bold;" href="http://wiki.geda-project.org/geda:ngspice_and_gschem">
-	  circuit simulation</a>. <br>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<br>
-<table style="text-align: left; width: 100%; height: 90px;" border="0" cellpadding="2" cellspacing="2">
-  <tbody>
-    <tr>
-      <td style="vertical-align: top;"><a href="http://www.isotel.eu/mixedsim/index.html">
-      <img style="border: 0px solid ; width: 106px; height: 29px;" alt="http://www.isotel.eu/mixedsim/index.html" title="Isotel" src="images/Isotel_logo.png"></a><br>
-      </td>
-      <td style="vertical-align: top; text-align: justify;"> <a style="font-weight: bold;" href="http://www.isotel.eu/index.html">
-	  Isotel</a> has developed an  
-	  <a style="font-weight: bold;" href="http://www.isotel.eu/mixedsim/index.html">
-	  open source software kit</a> for mixed signal simulation and synthesis using 
-      <a style="font-weight: bold;" href=https://www.autodesk.com/products/eagle/overview"> Eagle</a> 
-      and ngspice. A combination of mature open source packages yields a usable 
-      and working solution of Verilog simulation with mixed-signal spice, integrating ngspice with
-      <a href="http://www.clifford.at/yosys"> Yosys</a> for Verilog RTL synthesis,
-      <a href="http://iverilog.icarus.com/"> Icarus Verilog</a> for Verilog simulation and synthesis,
-      <a href="http://gtkwave.sourceforge.net/"> gtkwave</a> for debugging on Verilog simulation models, and
-      <a href="http://www.graphviz.org/"> graphviz</a> for graph visualization.
-      <br>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<br>
-<table style="text-align: left; width: 100%; height: 90px;" border="0" cellpadding="2" cellspacing="2">
-  <tbody>
-    <tr>
-      <td style="vertical-align: top;"><a href="http://kicad-pcb.org/"><img style="border: 0px solid ; width: 106px; height: 50px;" alt="http://kicad-pcb.org" title="KiCad" src="images/KiCad.png"></a><br>
-      </td>
-      <td style="vertical-align: top; text-align: justify;"> <a style="font-weight: bold;" href="http://kicad-pcb.org/">
-	  KiCad</a> is a cross platform and open source electronics 
-      design automation suite. Its schematic editor 
-      <a style="font-weight: bold;" href="http://kicad-pcb.org/discover/eeschema/">Eeschema</a>
-      fully integrates <a href="./shared.html">shared ngspice</a> as the simulation tool. The current release of
-      KiCad, version 5.0.0 contains ngspice as its standard simulator.
-      A <a href="https://www.youtube.com/watch?v=A2_-hdRcf4U">Youtube video</a> gives a short introduction, 
-      a <a href="./ngspice-eeschema.html">tutorial</a> is available.<br>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<br>
-<table style="text-align: left; width: 100%; height: 90px;" border="0" cellpadding="2" cellspacing="2">
-  <tbody>
-    <tr>
-      <td style="vertical-align: top;"><a href="http://sourceforge.net/projects/kjwaves"><img style="border: 0px solid ; width: 106px; height: 77px;" alt="http://sourceforge.net/projects/kjwaves" title="KJwaves" src="images/shotkjwaves.jpg"></a><br>
-      </td>
-      <td style="vertical-align: top; text-align: justify;"> <a style="font-weight: bold;" href="http://sourceforge.net/projects/kjwaves">
-	  Kjwaves</a> is a frontend for ngspice written in Java 
-	  using NetBeans and runs on any platform where you can install 
-	  1.5 release of Java virtual machine. Kjwaves can be used as a 
-	  simple plotting program to display the content of a spice RAW 
-	  file or as a complete frontend to the simulator.  Information 
-	  on using Kjwaves with ngspice is found 
-	  <a href="./kjwaves.html">here</a>. Unfortunately its 
-	  development has stalled since 2007.<br>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<br>
-<table style="text-align: left; width: 100%; height: 90px;" border="0" cellpadding="2" cellspacing="2">
-  <tbody>
-    <tr>
-      <td style="vertical-align: top;"><a href="http://www.layouteditor.net"><img style="border: 0px solid ; width: 106px; height: 78px;" alt="www.layouteditor.net" title="www.layouteditor.net" src="images/layouteditor.png"></a><br>
-      </td>
-      <td style="vertical-align: top; text-align: justify;"> <a style="font-weight: bold;" href="http://www.layouteditor.net">Layouteditor</a>
-includes a <a style="font-weight: bold;" href="http://www.layouteditor.net/wiki/SchematicEditor">schematic
-editor</a> with an interface to ngspice for circuit simulation.<br>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<br>
-<table style="text-align: left; width: 100%; height: 90px;" border="0" cellpadding="2" cellspacing="2">
-  <tbody>
-    <tr>
-      <td style="vertical-align: top;"><a href="http://sourceforge.net/projects/mseuniverse"><img style="border: 0px solid ; width: 106px; height: 77px;" alt="http://sourceforge.net/projects/mseuniverse" title="MSEspice" src="images/msespice.jpg"></a><br>
-      </td>
-      <td style="vertical-align: top; text-align: justify;"> <a style="font-weight: bold;" href="http://sourceforge.net/projects/mseuniverse">
-	  MSEspice</a> is a handy graphical front-end for ngspice. 
-	  It is made with the MSEide+MSEgui cross platform development environment for 
-	  <a href="http://sourceforge.net/projects/mseide-msegui/">Free Pascal</a>.<br>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<br>
-<table style="text-align: left; width: 100%; height: 85px;" border="0" cellpadding="2" cellspacing="2">
-  <tbody>
-    <tr>
-      <td style="vertical-align: top;"><a href="https://github.com/drahnr/oregano"><img style="border: 0px solid ; width: 106px; height: 85px;" alt="oregano - an electrical engineering tool" title="Oregano" src="images/oregano.png"></a><br>
-      </td>
-      <td style="vertical-align: top; text-align: justify;"> <a href="https://github.com/drahnr/oregano"><span style="font-weight: bold;">Oregano</span></a>
-is an application for schematic capture and simulation of electronic circuits. 
-The actual simulation is performed by ngspice or other simulators.<br>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<br>
-<table style="text-align: left; width: 100%; height: 85px;" border="0" cellpadding="2" cellspacing="2">
-  <tbody>
-    <tr>
-      <td style="vertical-align: top;"><a href="http://www.partsim.com"><img style="border: 0px solid ; width: 106px; height: 73px;" alt="www.partsim.com" title="www.partsim.com" src="images/partsim_dot_com.gif"></a><br>
-      </td>
-      <td style="vertical-align: top; text-align: justify;"> <a href="http://www.partsim.com"><span style="font-weight: bold;">PartSim</span></a>
-is available in your web browser, again using ngspice as back-end
-engine. The application allows creating circuits with schematic entry
-from within the local browser window. The simulation is run on a remote
-server and the results are transferred back to the web browser for
-visualization and analysis.<br>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<br>
-<table style="text-align: left; width: 100%; height: 85px;" border="0" cellpadding="2" cellspacing="2">
-  <tbody>
-    <tr>
-      <td style="vertical-align: top;"><a href="https://ra3xdh.github.io/"><img style="border: 0px solid ; width: 106px; height: 60px;" alt="https://ra3xdh.github.io/" title="Qucs-S" src="images/Qucs-S.png"></a><br>
-      </td>
-      <td style="vertical-align: top; text-align: justify;"> <a href="https://ra3xdh.github.io/"><span style="font-weight: bold;">
- Qucs-S</span></a> (Qucs with Spice) is a Qucs subproject using free 
- SPICE circuit simulation kernels (ngspice recommended) with the Qucs GUI. 
- It merges the power of SPICE and the simplicity of the Qucs GUI.
-<br>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<br>
-<table style="text-align: left; width: 100%; height: 85px;" border="0" cellpadding="2" cellspacing="2">
-  <tbody>
-    <tr>
-      <td style="vertical-align: top;"><a href="http://www.lindentree.eu/index.php"><img style="border: 0px solid ; width: 106px; height: 73px;" alt="https://play.google.com/store/apps/details?id=eu.lindentree.wespicedemo" title="WeSpice" src="images/wespice.png"></a><br>
-      </td>
-      <td style="vertical-align: top; text-align: justify;"> <a href="http://www.lindentree.eu/index.php"><span style="font-weight: bold;">
- WeSpice</span></a> is an Android application for circuit simulation that actually runs ngspice simulation engine 
- on tablets. WeSpice allows to build hierarchical schematics, symbols and models, perform simulations and analyze
- results, locally on the table without permanent Internet connection.
-
-<br>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<br>
-<table style="text-align: left; width: 100%; height: 85px;" border="0" cellpadding="2" cellspacing="2">
-  <tbody>
-    <tr>
-      <td style="vertical-align: top;"><a href="http://opencircuitdesign.com/xcircuit/tutorial/tutorial2.html"><img style="border: 0px solid ; width: 106px; height: 73px;" alt="http://opencircuitdesign.com/xcircuit/tutorial/tutorial2.html" title="XCircuit" src="images/xcircuit.png"></a><br>
-      </td>
-      <td style="vertical-align: top; text-align: justify;"> <a href="http://opencircuitdesign.com/xcircuit"><span style="font-weight: bold;">
- XCircuit</span></a> is an open source UNIX/X11 (and Windows) 
- program for drawing publishable-quality electrical circuit schematic diagrams and related 
- figures, and produce ngspice circuit netlists through 
- <a href="http://opencircuitdesign.com/xcircuit/tutorial/tutorial2.html">
- schematic capture</a>.
-
-<br>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<br>
-<a name="DevEnvs"></a>
-<p class="header">Tools for system and device modeling (and others) integrating ngspice<br>
-</p>
-<table style="text-align: left; width: 100%; height: 85px;" border="0" cellpadding="2" cellspacing="2">
-  <tbody>
-    <tr>
-      <td style="vertical-align: top;"><a href="http://www.bbspice.org/"><img style="border: 0px solid ; width: 106px; height: 27px;" alt="http://bbspice.org/" title="BBSPICE" src="images/BBSpice.gif"></a><br>
-      </td>
-      <td style="vertical-align: top; text-align: justify;"> <a href="http://www.bbspice.org/"><span style="font-weight: bold;">
- BBSPICE</span></a> with its online simulator is a set of 
- <a href="https://osf.io/8d269/">Python scripts</a> 
- to enable simulation for synthetic biology with ngspice. A description is found  
- <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0182385">here</a>.
- <br>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<br>
-<table style="text-align: left; width: 100%; height: 85px;" border="0" cellpadding="2" cellspacing="2">
-  <tbody>
-    <tr>
-      <td style="vertical-align: top;"><a href="https://efabless.com/"><img style="border: 0px solid ; width: 106px; height: 34px;" alt="https://efabless.com/" title="efabless" src="images/efabless.png"></a><br>
-      </td>
-      <td style="vertical-align: top; text-align: justify;"> <a href="https://efabless.com/"><span style="font-weight: bold;">
- efabless</span></a> has been set up to re-invent the semiconductor product creation. 
- The company applies collective and multidisciplinary community knowledge to all aspects 
- of semiconductor product development. It uses ngspice in the tool chain.
-<br>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<br>
-<table style="text-align: left; width: 100%; height: 85px;" border="0" cellpadding="2" cellspacing="2">
-  <tbody>
-    <tr>
-      <td style="vertical-align: top;"><a href="http://www.feko.info"><img style="border: 0px solid ; width: 106px; height: 30px;" alt="http://www.feko.info" title="FEKO" src="images/feko.png"></a><br>
-      </td>
-      <td style="vertical-align: top; text-align: justify;"> <a href="http://www.feko.info"><span style="font-weight: bold;">
- FEKO</span></a> 
- is a comprehensive electromagnetic simulation software tool, 
- based on state of the art computational electromagnetics (CEM) 
- techniques. It enables users to solve a wide range of electromagnetic 
- problems. ngspice allows the integration of SPICE subcircuits for 
- non-radiating networks as an addition to the FEKO electromagnetic models.
-<br>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<br>
-
-<table style="text-align: left; width: 100%; height: 85px;" border="0" cellpadding="2" cellspacing="2">
-  <tbody>
-    <tr>
-      <td style="vertical-align: top;"><a href="http://www.gnu.org/software/octave"><img style="border: 0px solid ; width: 106px; height: 73px;" alt="http://www.gnu.org/software/octave" title="GNU Octave" src="images/octspshot.jpg"></a><br>
-      </td>
-      <td style="vertical-align: top; text-align: justify;"> <a href="http://www.gnu.org/software/octave"><span style="font-weight: bold;">
- GNU Octave</span></a> 
- is a high-level language, primarily intended for numerical computations. 
- It provides a convenient command line interface for solving linear and nonlinear 
- problems numerically, and for performing other numerical experiments using 
- a language that is mostly compatible with Matlab. Information on interfacing 
- Octave with ngspice is found <a href="http://www.dsprelated.com/showarticle/707.php">here</a>.
- Octave may be used for <a href="./octavespice.html">post-processing</a> (e.g. plotting) ngspice rawfile data.
-<br>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<br>
-<table style="text-align: left; width: 100%; height: 85px;" border="0" cellpadding="2" cellspacing="2">
-  <tbody>
-    <tr>
-      <td style="vertical-align: top;"><a href="http://i-mos.org"><img style="border: 0px solid ; width: 106px; height: 33px;" alt="http://i-mos.org" title="GNU Octave" src="images/imos.png"></a><br>
-      </td>
-      <td style="vertical-align: top; text-align: justify;"> <a href="http://i-mos.org"><span style="font-weight: bold;">
- i-MOS</span></a> 
-  is an open platform for model developers and circuit designers to interact. 
-  Model developers can implement their models over the i-MOS platform to 
-  promote their acceptance and obtain user feedback. Circuit designers 
-  can use the platform to try out the most recent models of many newly 
-  developed devices. The platform provides ngspice as an online simulation 
-  engine.
-<br>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<br>
-<table style="text-align: left; width: 100%; height: 85px;" border="0" cellpadding="2" cellspacing="2">
-  <tbody>
-    <tr>
-      <td style="vertical-align: top;"><a href="https://de.mathworks.com"><img style="border: 0px solid ; width: 106px; height: 22px;" alt="https://de.mathworks.com" title="MATLAB" src="images/Matlab.gif"></a><br>
-      </td>
-      <td style="vertical-align: top; text-align: justify;"> <a href="https://de.mathworks.com"><span style="font-weight: bold;">
- MATLAB</span></a> 
- may be used for post-processing of ngspice simulation results. A 
- <a href="https://de.mathworks.com/matlabcentral/fileexchange/37457-run-ngspice-simulation-and-import-rawfile?focused=5235655&tab=function">script</span></a>
- is availble for loading the simulation output (ngspice rawfile) into MATLAB.
-<br>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<br>
-<table style="text-align: left; width: 100%; height: 85px;" border="0" cellpadding="2" cellspacing="2">
-  <tbody>
-    <tr>
-      <td style="vertical-align: top;"><a href="https://powersimtech.com/products/psim/"><img style="border: 0px solid ; width: 106px; height: 48px;" alt="https://powersimtech.com/products/psim/" title="PSIM" src="images/psim.gif"></a><br>
-      </td>
-      <td style="vertical-align: top; text-align: justify;"> <a href="https://powersimtech.com/products/psim/"><span style="font-weight: bold;">
- PSIM</span></a> 
- is a design and simulation software to empower engineers 
- in the power electronics design industry. PSIM's SPICE Module, 
- powered by CoolCAD Electronics' <a href="http://coolcadelectronics.com/coolspice">
- CoolSpice</a>, and thus using ngspice as its engine,
- provides the capability to run SPICE simulation in the PSIM environment.
-<br>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<br>
-<table style="text-align: left; width: 100%; height: 85px;" border="0" cellpadding="2" cellspacing="2">
-  <tbody>
-    <tr>
-      <td style="vertical-align: top;"><a href="http://sourceforge.net/projects/rlabplus"><img style="border: 0px solid ; width: 106px; height: 73px;" alt="http://sourceforge.net/projects/rlabplus" title="rlabplus" src="images/rlabplus.jpg"></a><br>
-      </td>
-      <td style="vertical-align: top; text-align: justify;"> <a href="https://sourceforge.net/projects/rlabplus"><span style="font-weight: bold;">
- rlabplus</span></a> for LINUX is an interactive, interpreted scientific programming 
- environment which provides fast prototyping and program development, similar to Matlab(c). 
- It integrates ngspice as a simulation tool.
-
-<br>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<br>
-<p class="justified"><br>
-</p>
-<p class="justified"><br>
-</p>
-<p class="justified"><br>
-</p>
-</div>
-</div>
-</div>
-<div id="footer">
-  <pframe>
-    <pic1>
-      <img src="http://sourceforge.net/sflogo.php?group_id=38962&amp;type=1" alt="SourceForge.net Logo" border="0" height="31" width="88">
-    </pic1>
-    <pic2>
-      All text is available under the terms of the <a class="internal" href="http://www.gnu.org/licenses/fdl.html">GNU Free
-Documentation License</a>
-    </pic2>
-    <pic3>
-     <img src="./images/spice.jpg" alt="">
-    </pic3>
-  </pframe>
-</div>
-</div>
-
-</body></html>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content=
+  "Ngspice circuit simulator - Simulation Environments">
+  <meta name="keywords" content=
+  "ngspice, spice, spice3, spice3f, spice3f5, circuit, EDA, simulator, electronics, semiconductor">
+</head>
+<body>
+  <div id="paper">
+    <div id="header">
+      <pframe>
+        <pic1><img src="./images/nglogo.jpg" alt="NGSPICE"></pic1>
+        <pic2><img src="./images/ngtext2.jpg" alt=
+        "Mixed mode - mixed level circuit simulator - based on Berkeley&#39;s Spice3f5"></pic2>
+        <pic3><a href="http://sourceforge.net/projects/ngspice"><img src=
+        "./images/ngsumD.jpg" alt="Developer Pages" border="0"></a></pic3>
+      </pframe>
+      <div id="navcontainer">
+        <ul id="navlist">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./screens.html">Screenshots</a></li>
+          <li><a href="./download.html">Download</a></li>
+          <li><a href="./docs.html">Documentation</a></li>
+          <li><a href="./extras.html">Extras/Options</a></li>
+          <li><a href="./applic.html">Applications</a></li>
+          <li><a href="./devel.html">Development</a></li>
+          <li id="active"><a href="#" id="current" name="current">Simulation
+          Environments</a></li>
+          <li><a href="./recipes.html">Recipes</a></li>
+          <li><a href="./contrib.html">Contributions</a></li>
+        </ul>
+      </div>
+      <div id="left">
+        <div id="context">
+          <div id="contextcontent">
+            <p class="contextual title">Simulation Environments</p>
+            <div id="menucontainer">
+              <ul id="menulist">
+                <li id="active"><a href="#" id="current" name="current">Tools
+                using ngspice<br></a></li>
+                <li><a href="./spices.html">Spice Simulators</a></li>
+                <li><a href="./sppatches.html">Patches to spice</a></li>
+                <li><a href="./spdevs.html">Devices Models</a></li>
+                <li>
+                  <hr>
+                </li>
+                <li><a href="./relapp.html">Related applications</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="main">
+          <div id="maincontent">
+            <p class="header">Tools that use ngspice as simulator<br></p>
+            <p class="justified">In more than 15 years of maintenance and
+            development, ngspice earned a good reputation among free
+            spice-based simulators.&#160; Ngspice is used as simulator in
+            different tools, both free and commercial. Here is the list of the
+            tools we know about (in alphabetical order). You may find <a href=
+            "#GUIs">graphical user interfaces</a> with or without schematic
+            capture, <a href="#GUIs">circuit development tools</a> as well as
+            <a href="#DevEnvs">development environments for models and
+            devices</a> .&#160;</p><br>
+            <a name="GUIs"></a>
+            <p class="header">Tools for circuit simulation with ngspice<br></p>
+            <table style="text-align: left; width: 100%; height: 90px;" border=
+            "0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;"><a href=
+                  "http://sites.prenninger.com/blackboard/"><img style=
+                  "border: 0px solid ; width: 106px; height: 24px;" alt=
+                  "http://sites.prenninger.com/blackboard/" title="Blackboard"
+                  src="images/blackboard.gif"></a><br></td>
+                  <td style="vertical-align: top; text-align: justify;">
+                  <a style="font-weight: bold;" href=
+                  "http://sites.prenninger.com/blackboard/">Blackboard</a>
+                  allows to generate circuits on stripboards and uses ngspice
+                  for circuit simulation. The author has stopped its
+                  development, the sources are available <a href=
+                  "https://github.com/mpue/blackboard">here</a>.<br></td>
+                </tr>
+              </tbody>
+            </table><br>
+            <table style="text-align: left; width: 100%; height: 90px;" border=
+            "0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;"><a href=
+                  "http://sourceforge.net/projects/imepspiceinterface"><img style="border: 0px solid ; width: 106px; height: 77px;"
+                  alt="http://sourceforge.net/projects/imepspiceinterface"
+                  title="ngspice in CADENCE" src=
+                  "images/cadence.png"></a><br></td>
+                  <td style="vertical-align: top; text-align: justify;">
+                  <a style="font-weight: bold;" href=
+                  "http://sourceforge.net/projects/imepspiceinterface">ngspice
+                  integration</a> into the <a href=
+                  "http://www.cadence.com">CADENCE</a> circuit design
+                  environment is promoted by a toolset offered <a href=
+                  "http://sourceforge.net/projects/imepspiceinterface">here</a>.<br>
+                  </td>
+                </tr>
+              </tbody>
+            </table><br>
+            <table style="text-align: left; width: 100%; height: 90px;" border=
+            "0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;"><a href=
+                  "http://coolcadelectronics.com/coolspice"><img style=
+                  "border: 0px solid ; width: 106px; height: 88px;" alt=
+                  "http://coolcadelectronics.com/coolspice/" title="CoolSpice"
+                  src="images/coolcad.png"></a><br></td>
+                  <td style="vertical-align: top; text-align: justify;">
+                  <a style="font-weight: bold;" href=
+                  "http://coolcadelectronics.com/coolspice">CoolSpice</a> is a
+                  SPICE suite and circuit simulation software package.
+                  CoolSpice contains ngspice, a schematics editor with GUI, a
+                  plotter application, and a text editor for manually editing
+                  netlists.<br></td>
+                </tr>
+              </tbody>
+            </table><br>
+            <table style="text-align: left; width: 100%; height: 90px;" border=
+            "0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;"><a href=
+                  "http://www.cppsim.com"><img style=
+                  "border: 0px solid ; width: 106px; height: 78px;" alt=
+                  "www.cppsim.com" title="www.cppsim.com" src=
+                  "images/cppsim.jpg"></a><br></td>
+                  <td style="vertical-align: top; text-align: justify;">
+                  <a style="font-weight: bold;" href=
+                  "http://www.cppsim.com">Cppsim</a> is a system simulator that
+                  integrates ngspice as transistor-level simulator. Ngspice
+                  shares the schematic capture and postprocessing tools with
+                  the other simulators included in the suite (C++ and
+                  Verilog).<br></td>
+                </tr>
+              </tbody>
+            </table><br>
+            <table style="text-align: left; width: 100%; height: 90px;" border=
+            "0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;"><a href=
+                  "https://www.autodesk.com/products/eagle/overview"><img style="border: 0px solid ; width: 106px; height: 106px;"
+                  alt="https://www.autodesk.com/products/eagle/overview" title=
+                  "Eagle" src="images/eagle.png"></a><br></td>
+                  <td style="vertical-align: top; text-align: justify;">
+                  <a style="font-weight: bold;" href=
+                  "https://www.autodesk.com/products/eagle/overview">Eagle</a>
+                  is the well known and widely distributed PCB layout software
+                  for every engineer. It offers a complete set of PCB layout
+                  and schematic editing tools, library content, and
+                  community-driven features. The recent version 8.4 integrates
+                  ngspice for circuit simulation.<br></td>
+                </tr>
+              </tbody>
+            </table><br>
+            <table style="text-align: left; width: 100%; height: 90px;" border=
+            "0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;"><a href=
+                  "https://easyeda.com/"><img style=
+                  "border: 0px solid ; width: 106px; height: 30px;" alt="href="
+                  title="EasyEDA" src="images/easyeda.png"></a><br></td>
+                  <td style="vertical-align: top; text-align: justify;">
+                  <a style="font-weight: bold;" href=
+                  "https://easyeda.com/">EasyEDA</a> is a tool for online
+                  circuit simulation, PCB design, and Electronic circuit
+                  design. ngspice is the simulation engine.<br></td>
+                </tr>
+              </tbody>
+            </table>
+            <table style="text-align: left; width: 100%; height: 90px;" border=
+            "0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;"><a href=
+                  "http://esim.fossee.in"><img style=
+                  "border: 0px solid ; width: 106px; height: 106px;" alt=
+                  "href=" title="Oscad" src="images/oscad.gif"></a><br></td>
+                  <td style="vertical-align: top; text-align: justify;">
+                  <a style="font-weight: bold;" href=
+                  "http://esim.fossee.in">eSim</a> is an open source EDA tool
+                  for circuit design, simulation, analysis and PCB design. It
+                  is an integrated tool built using open source software
+                  packages KiCad, ngspice and Scilab and runs on LINUX and MS
+                  Windows.<br></td>
+                </tr>
+              </tbody>
+            </table><br>
+            <br>
+            <table style="text-align: left; width: 100%; height: 90px;" border=
+            "0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;"><a href=
+                  "http://wiki.geda-project.org/geda:ngspice_and_gschem"><img style="border: 0px solid ; width: 106px; height: 78px;"
+                  alt="http://wiki.geda-project.org/geda:ngspice_and_gschem"
+                  title="geda project" src="images/geda.gif"></a><br></td>
+                  <td style="vertical-align: top; text-align: justify;">The
+                  <a style="font-weight: bold;" href=
+                  "http://www.geda-project.org/">gEDA project</a> is a full
+                  suite and toolkit of Electronic Design Automation tools. It
+                  uses ngspice for <a style="font-weight: bold;" href=
+                  "http://wiki.geda-project.org/geda:ngspice_and_gschem">circuit
+                  simulation</a>.<br></td>
+                </tr>
+              </tbody>
+            </table><br>
+            <table style="text-align: left; width: 100%; height: 90px;" border=
+            "0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;"><a href=
+                  "http://www.isotel.eu/mixedsim/index.html"><img style=
+                  "border: 0px solid ; width: 106px; height: 29px;" alt=
+                  "http://www.isotel.eu/mixedsim/index.html" title="Isotel"
+                  src="images/Isotel_logo.png"></a><br></td>
+                  <td style="vertical-align: top; text-align: justify;">
+                  <a style="font-weight: bold;" href=
+                  "http://www.isotel.eu/index.html">Isotel</a> has developed an
+                  <a style="font-weight: bold;" href=
+                  "http://www.isotel.eu/mixedsim/index.html">open source
+                  software kit</a> for mixed signal simulation and synthesis
+                  using <a style="font-weight: bold;" href=
+                  "https://www.autodesk.com/products/eagle/overview&quot;">Eagle</a>
+                  and ngspice. A combination of mature open source packages
+                  yields a usable and working solution of Verilog simulation
+                  with mixed-signal spice, integrating ngspice with <a href=
+                  "http://www.clifford.at/yosys">Yosys</a> for Verilog RTL
+                  synthesis, <a href="http://iverilog.icarus.com/">Icarus
+                  Verilog</a> for Verilog simulation and synthesis, <a href=
+                  "http://gtkwave.sourceforge.net/">gtkwave</a> for debugging
+                  on Verilog simulation models, and <a href=
+                  "http://www.graphviz.org/">graphviz</a> for graph
+                  visualization.<br></td>
+                </tr>
+              </tbody>
+            </table><br>
+            <table style="text-align: left; width: 100%; height: 90px;" border=
+            "0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;"><a href=
+                  "http://kicad-pcb.org/"><img style=
+                  "border: 0px solid ; width: 106px; height: 50px;" alt=
+                  "http://kicad-pcb.org" title="KiCad" src=
+                  "images/KiCad.png"></a><br></td>
+                  <td style="vertical-align: top; text-align: justify;">
+                  <a style="font-weight: bold;" href=
+                  "http://kicad-pcb.org/">KiCad</a> is a cross platform and
+                  open source electronics design automation suite. Its
+                  schematic editor <a style="font-weight: bold;" href=
+                  "http://kicad-pcb.org/discover/eeschema/">Eeschema</a> fully
+                  integrates <a href="./shared.html">shared ngspice</a> as the
+                  simulation tool. The current release of KiCad, version 5.0.0
+                  contains ngspice as its standard simulator. A <a href=
+                  "https://www.youtube.com/watch?v=A2_-hdRcf4U">Youtube
+                  video</a> gives a short introduction, a <a href=
+                  "./ngspice-eeschema.html">tutorial</a> is available.<br></td>
+                </tr>
+              </tbody>
+            </table><br>
+            <table style="text-align: left; width: 100%; height: 90px;" border=
+            "0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;"><a href=
+                  "http://sourceforge.net/projects/kjwaves"><img style=
+                  "border: 0px solid ; width: 106px; height: 77px;" alt=
+                  "http://sourceforge.net/projects/kjwaves" title="KJwaves"
+                  src="images/shotkjwaves.jpg"></a><br></td>
+                  <td style="vertical-align: top; text-align: justify;">
+                  <a style="font-weight: bold;" href=
+                  "http://sourceforge.net/projects/kjwaves">Kjwaves</a> is a
+                  frontend for ngspice written in Java using NetBeans and runs
+                  on any platform where you can install 1.5 release of Java
+                  virtual machine. Kjwaves can be used as a simple plotting
+                  program to display the content of a spice RAW file or as a
+                  complete frontend to the simulator. Information on using
+                  Kjwaves with ngspice is found <a href=
+                  "./kjwaves.html">here</a>. Unfortunately its development has
+                  stalled since 2007.<br></td>
+                </tr>
+              </tbody>
+            </table><br>
+            <table style="text-align: left; width: 100%; height: 90px;" border=
+            "0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;"><a href=
+                  "http://www.layouteditor.net"><img style=
+                  "border: 0px solid ; width: 106px; height: 78px;" alt=
+                  "www.layouteditor.net" title="www.layouteditor.net" src=
+                  "images/layouteditor.png"></a><br></td>
+                  <td style="vertical-align: top; text-align: justify;">
+                  <a style="font-weight: bold;" href=
+                  "http://www.layouteditor.net">Layouteditor</a> includes a
+                  <a style="font-weight: bold;" href=
+                  "http://www.layouteditor.net/wiki/SchematicEditor">schematic
+                  editor</a> with an interface to ngspice for circuit
+                  simulation.<br></td>
+                </tr>
+              </tbody>
+            </table><br>
+            <table style="text-align: left; width: 100%; height: 90px;" border=
+            "0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;"><a href=
+                  "http://sourceforge.net/projects/mseuniverse"><img style=
+                  "border: 0px solid ; width: 106px; height: 77px;" alt=
+                  "http://sourceforge.net/projects/mseuniverse" title=
+                  "MSEspice" src="images/msespice.jpg"></a><br></td>
+                  <td style="vertical-align: top; text-align: justify;">
+                  <a style="font-weight: bold;" href=
+                  "http://sourceforge.net/projects/mseuniverse">MSEspice</a> is
+                  a handy graphical front-end for ngspice. It is made with the
+                  MSEide+MSEgui cross platform development environment for
+                  <a href="http://sourceforge.net/projects/mseide-msegui/">Free
+                  Pascal</a>.<br></td>
+                </tr>
+              </tbody>
+            </table><br>
+            <table style="text-align: left; width: 100%; height: 85px;" border=
+            "0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;"><a href=
+                  "https://github.com/drahnr/oregano"><img style=
+                  "border: 0px solid ; width: 106px; height: 85px;" alt=
+                  "oregano - an electrical engineering tool" title="Oregano"
+                  src="images/oregano.png"></a><br></td>
+                  <td style="vertical-align: top; text-align: justify;">
+                  <a href="https://github.com/drahnr/oregano"><span style=
+                  "font-weight: bold;">Oregano</span></a> is an application for
+                  schematic capture and simulation of electronic circuits. The
+                  actual simulation is performed by ngspice or other
+                  simulators.<br></td>
+                </tr>
+              </tbody>
+            </table><br>
+            <table style="text-align: left; width: 100%; height: 85px;" border=
+            "0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;"><a href=
+                  "http://www.partsim.com"><img style=
+                  "border: 0px solid ; width: 106px; height: 73px;" alt=
+                  "www.partsim.com" title="www.partsim.com" src=
+                  "images/partsim_dot_com.gif"></a><br></td>
+                  <td style="vertical-align: top; text-align: justify;">
+                  <a href="http://www.partsim.com"><span style=
+                  "font-weight: bold;">PartSim</span></a> is available in your
+                  web browser, again using ngspice as back-end engine. The
+                  application allows creating circuits with schematic entry
+                  from within the local browser window. The simulation is run
+                  on a remote server and the results are transferred back to
+                  the web browser for visualization and analysis.<br></td>
+                </tr>
+              </tbody>
+            </table><br>
+            <table style="text-align: left; width: 100%; height: 85px;" border=
+            "0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;"><a href=
+                  "https://ra3xdh.github.io/"><img style=
+                  "border: 0px solid ; width: 106px; height: 60px;" alt=
+                  "https://ra3xdh.github.io/" title="Qucs-S" src=
+                  "images/Qucs-S.png"></a><br></td>
+                  <td style="vertical-align: top; text-align: justify;">
+                  <a href="https://ra3xdh.github.io/"><span style=
+                  "font-weight: bold;">Qucs-S</span></a> (Qucs with Spice) is a
+                  Qucs subproject using free SPICE circuit simulation kernels
+                  (ngspice recommended) with the Qucs GUI. It merges the power
+                  of SPICE and the simplicity of the Qucs GUI.<br></td>
+                </tr>
+              </tbody>
+            </table><br>
+            <table style="text-align: left; width: 100%; height: 85px;" border=
+            "0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;"><a href=
+                  "http://www.lindentree.eu/index.php"><img style=
+                  "border: 0px solid ; width: 106px; height: 73px;" alt=
+                  "https://play.google.com/store/apps/details?id=eu.lindentree.wespicedemo"
+                  title="WeSpice" src="images/wespice.png"></a><br></td>
+                  <td style="vertical-align: top; text-align: justify;">
+                  <a href="http://www.lindentree.eu/index.php"><span style=
+                  "font-weight: bold;">WeSpice</span></a> is an Android
+                  application for circuit simulation that actually runs ngspice
+                  simulation engine on tablets. WeSpice allows to build
+                  hierarchical schematics, symbols and models, perform
+                  simulations and analyze results, locally on the table without
+                  permanent Internet connection.<br></td>
+                </tr>
+              </tbody>
+            </table><br>
+            <table style="text-align: left; width: 100%; height: 85px;" border=
+            "0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;"><a href=
+                  "http://opencircuitdesign.com/xcircuit/tutorial/tutorial2.html">
+                  <img style="border: 0px solid ; width: 106px; height: 73px;"
+                  alt=
+                  "http://opencircuitdesign.com/xcircuit/tutorial/tutorial2.html"
+                  title="XCircuit" src="images/xcircuit.png"></a><br></td>
+                  <td style="vertical-align: top; text-align: justify;">
+                  <a href="http://opencircuitdesign.com/xcircuit"><span style=
+                  "font-weight: bold;">XCircuit</span></a> is an open source
+                  UNIX/X11 (and Windows) program for drawing
+                  publishable-quality electrical circuit schematic diagrams and
+                  related figures, and produce ngspice circuit netlists through
+                  <a href=
+                  "http://opencircuitdesign.com/xcircuit/tutorial/tutorial2.html">
+                  schematic capture</a>.<br></td>
+                </tr>
+              </tbody>
+            </table><br>
+            <a name="DevEnvs"></a>
+            <p class="header">Tools for system and device modeling (and others)
+            integrating ngspice<br></p>
+            <table style="text-align: left; width: 100%; height: 85px;" border=
+            "0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;"><a href=
+                  "http://www.bbspice.org/"><img style=
+                  "border: 0px solid ; width: 106px; height: 27px;" alt=
+                  "http://bbspice.org/" title="BBSPICE" src=
+                  "images/BBSpice.gif"></a><br></td>
+                  <td style="vertical-align: top; text-align: justify;">
+                  <a href="http://www.bbspice.org/"><span style=
+                  "font-weight: bold;">BBSPICE</span></a> with its online
+                  simulator is a set of <a href="https://osf.io/8d269/">Python
+                  scripts</a> to enable simulation for synthetic biology with
+                  ngspice. A description is found <a href=
+                  "http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0182385">
+                  here</a>.<br></td>
+                </tr>
+              </tbody>
+            </table><br>
+            <table style="text-align: left; width: 100%; height: 85px;" border=
+            "0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;"><a href=
+                  "https://efabless.com/"><img style=
+                  "border: 0px solid ; width: 106px; height: 34px;" alt=
+                  "https://efabless.com/" title="efabless" src=
+                  "images/efabless.png"></a><br></td>
+                  <td style="vertical-align: top; text-align: justify;">
+                  <a href="https://efabless.com/"><span style=
+                  "font-weight: bold;">efabless</span></a> has been set up to
+                  re-invent the semiconductor product creation. The company
+                  applies collective and multidisciplinary community knowledge
+                  to all aspects of semiconductor product development. It uses
+                  ngspice in the tool chain.<br></td>
+                </tr>
+              </tbody>
+            </table><br>
+            <table style="text-align: left; width: 100%; height: 85px;" border=
+            "0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;"><a href=
+                  "http://www.feko.info"><img style=
+                  "border: 0px solid ; width: 106px; height: 30px;" alt=
+                  "http://www.feko.info" title="FEKO" src=
+                  "images/feko.png"></a><br></td>
+                  <td style="vertical-align: top; text-align: justify;">
+                  <a href="http://www.feko.info"><span style=
+                  "font-weight: bold;">FEKO</span></a> is a comprehensive
+                  electromagnetic simulation software tool, based on state of
+                  the art computational electromagnetics (CEM) techniques. It
+                  enables users to solve a wide range of electromagnetic
+                  problems. ngspice allows the integration of SPICE subcircuits
+                  for non-radiating networks as an addition to the FEKO
+                  electromagnetic models.<br></td>
+                </tr>
+              </tbody>
+            </table><br>
+            <table style="text-align: left; width: 100%; height: 85px;" border=
+            "0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;"><a href=
+                  "http://www.gnu.org/software/octave"><img style=
+                  "border: 0px solid ; width: 106px; height: 73px;" alt=
+                  "http://www.gnu.org/software/octave" title="GNU Octave" src=
+                  "images/octspshot.jpg"></a><br></td>
+                  <td style="vertical-align: top; text-align: justify;">
+                  <a href="http://www.gnu.org/software/octave"><span style=
+                  "font-weight: bold;">GNU Octave</span></a> is a high-level
+                  language, primarily intended for numerical computations. It
+                  provides a convenient command line interface for solving
+                  linear and nonlinear problems numerically, and for performing
+                  other numerical experiments using a language that is mostly
+                  compatible with Matlab. Information on interfacing Octave
+                  with ngspice is found <a href=
+                  "http://www.dsprelated.com/showarticle/707.php">here</a>.
+                  Octave may be used for <a href=
+                  "./octavespice.html">post-processing</a> (e.g. plotting)
+                  ngspice rawfile data.<br></td>
+                </tr>
+              </tbody>
+            </table><br>
+            <table style="text-align: left; width: 100%; height: 85px;" border=
+            "0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;"><a href=
+                  "http://i-mos.org"><img style=
+                  "border: 0px solid ; width: 106px; height: 33px;" alt=
+                  "http://i-mos.org" title="GNU Octave" src=
+                  "images/imos.png"></a><br></td>
+                  <td style="vertical-align: top; text-align: justify;">
+                  <a href="http://i-mos.org"><span style=
+                  "font-weight: bold;">i-MOS</span></a> is an open platform for
+                  model developers and circuit designers to interact. Model
+                  developers can implement their models over the i-MOS platform
+                  to promote their acceptance and obtain user feedback. Circuit
+                  designers can use the platform to try out the most recent
+                  models of many newly developed devices. The platform provides
+                  ngspice as an online simulation engine.<br></td>
+                </tr>
+              </tbody>
+            </table><br>
+            <table style="text-align: left; width: 100%; height: 85px;" border=
+            "0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;"><a href=
+                  "https://de.mathworks.com"><img style=
+                  "border: 0px solid ; width: 106px; height: 22px;" alt=
+                  "https://de.mathworks.com" title="MATLAB" src=
+                  "images/Matlab.gif"></a><br></td>
+                  <td style="vertical-align: top; text-align: justify;">
+                  <a href="https://de.mathworks.com"><span style=
+                  "font-weight: bold;">MATLAB</span></a> may be used for
+                  post-processing of ngspice simulation results. A <a href=
+                  "https://de.mathworks.com/matlabcentral/fileexchange/37457-run-ngspice-simulation-and-import-rawfile?focused=5235655&tab=function">
+                  script</a> is availble for loading the simulation output
+                  (ngspice rawfile) into MATLAB.<br></td>
+                </tr>
+              </tbody>
+            </table><br>
+            <table style="text-align: left; width: 100%; height: 85px;" border=
+            "0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;"><a href=
+                  "https://powersimtech.com/products/psim/"><img style=
+                  "border: 0px solid ; width: 106px; height: 48px;" alt=
+                  "https://powersimtech.com/products/psim/" title="PSIM" src=
+                  "images/psim.gif"></a><br></td>
+                  <td style="vertical-align: top; text-align: justify;">
+                  <a href="https://powersimtech.com/products/psim/"><span style="font-weight: bold;">
+                  PSIM</span></a> is a design and simulation software to
+                  empower engineers in the power electronics design industry.
+                  PSIM&#39;s SPICE Module, powered by CoolCAD Electronics&#39;
+                  <a href=
+                  "http://coolcadelectronics.com/coolspice">CoolSpice</a>, and
+                  thus using ngspice as its engine, provides the capability to
+                  run SPICE simulation in the PSIM environment.<br></td>
+                </tr>
+              </tbody>
+            </table><br>
+            <table style="text-align: left; width: 100%; height: 85px;" border=
+            "0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;"><a href=
+                  "http://sourceforge.net/projects/rlabplus"><img style=
+                  "border: 0px solid ; width: 106px; height: 73px;" alt=
+                  "http://sourceforge.net/projects/rlabplus" title="rlabplus"
+                  src="images/rlabplus.jpg"></a><br></td>
+                  <td style="vertical-align: top; text-align: justify;">
+                  <a href="https://sourceforge.net/projects/rlabplus"><span style="font-weight: bold;">
+                  rlabplus</span></a> for LINUX is an interactive, interpreted
+                  scientific programming environment which provides fast
+                  prototyping and program development, similar to Matlab(c). It
+                  integrates ngspice as a simulation tool.<br></td>
+                </tr>
+              </tbody>
+            </table><br>
+            <p class="justified"><br></p>
+            <p class="justified"><br></p>
+            <p class="justified"><br></p>
+          </div>
+        </div>
+      </div>
+      <div id="footer">
+        <pframe>
+          <pic1><img src=
+          "http://sourceforge.net/sflogo.php?group_id=38962&amp;type=1" alt=
+          "SourceForge.net Logo" border="0" height="31" width="88"></pic1>
+          <pic2>All text is available under the terms of the <a class=
+          "internal" href="http://www.gnu.org/licenses/fdl.html">GNU Free
+          Documentation License</a></pic2>
+          <pic3><img src="./images/spice.jpg" alt=""></pic3>
+        </pframe>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
