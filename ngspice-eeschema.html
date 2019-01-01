@@ -150,39 +150,19 @@ The second circuit is an amplifier with a bipolar npn transistor that
 requires specific model parameters from an external source for the
 built-in transistor model. The third circuit is an
 OpAmp amplifier that relies on an external OpAmp model for simulation.</p>
+<p class="justified">Ngspice-30 reads PSPICE device libs. These are often provided by the semiconductor device manufacturers for design support. Internally ngspice translates the PSPICE syntax to ngspice before simulating. No more manual tweaking of the library description is required.
+
 <br>
 <br>
 <div id="setting"></div>
 <p class="header">1) Setting up Eeschema and ngspice</p>
 
-Highly recommended: Install the KiCad 5.0 release version from 
+Highly recommended: Install the KiCad 5.0.2 release version from 
 <a href="http://kicad-pcb.org/download/">http://kicad-pcb.org/download/</a>.
-
-<p class="justified">The following actions were necessary when adding a
-<a href="http://downloads.kicad-pcb.org/windows/nightly/">Windows nightly</a>
-overwriting an older KiCad installation: Delete file sym-lib-table in
-C:\Users\yourname\AppData\Roaming\kicad\
-(if there is any). It may be left over from a previous installation
-and may contain incomplete data on symbol libraries, or none at all.</p>
-
-<p class="justified">Start eeschema.</p>
-
-<p class="justified">Because sym-lib-table is missing, a window pops up.
-Select 'copy default global symbol library table', then 'ok'. 
-A new file sym-lib-table is copied to the above mentioned directory. 
-Now all symbol libraries from c:\Program Files\KiCad\share\kicad\library
-are available in the library browser.
-The library folder has been set automatically by eeschema by
-setting the environmental variable KICAD_SYMBOL_DIR.</p>
-
-<p class="justified">You may view the symbol libraries by selecting
-eeschema -> Preferences -> Manage Symbol Libraries</p>
 
 <br>
 
-<p class="justified">Ngspice-30 reads PSPICE device libs. These are often provided by the semiconductor device manufacturers for design support. Internally ngspice translates the PSPICE syntax to ngspice before simulating. No more manual tweaking of the library description is required (hopefully).
-
-<p class="justified">How to make use of ngspice-30 in KiCad (instead of ngspice-26 delivered with KiCad 5.0)?</p>
+<p class="justified">How to make use of ngspice-30 in KiCad (instead of ngspice-26 delivered with KiCad 5.0.2)?</p>
 <p class="justified">If you are on MS Windows, do the following:</p>
 <p class="justified">After installing <a href="http://kicad-pcb.org/download/">KiCad 5.0</a>,
 download the ngspice dll available in 
