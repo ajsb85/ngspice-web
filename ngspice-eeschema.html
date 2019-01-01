@@ -146,8 +146,8 @@ is a very nice GUI that may
 ideally be used in coopration with ngspice to allow schematic entry of
 eletronic circuits, simulation, and plotting of the results.</p>
 
-<p class="justified">All experiments described here require using a
-pre-release of KiCad Version 5, and have been done with the MS Windows nightly.
+<p class="justified">All experiments described here require using at
+least KiCad Version 5, and have been done with a MS Windows nightly.
 This tutorial reflects my first steps using the Eeschema GUI. Most
 items covered should be similar with KiCad/ngspice under LINUX.
 For more detailed information on the Eeschema-ngspice interface and its usage,
@@ -191,14 +191,14 @@ eeschema -> Preferences -> Manage Symbol Libraries</p>
 
 <br>
 
-<p class="justified">Ngspice-29 reads PSPICE device libs. These are often provided by the semiconductor device manufacturers for design support. Internally ngspice translates the PSPICE syntax to ngspice before simulating. No more manual tweaking of the library description is required (hopefully).
+<p class="justified">Ngspice-30 reads PSPICE device libs. These are often provided by the semiconductor device manufacturers for design support. Internally ngspice translates the PSPICE syntax to ngspice before simulating. No more manual tweaking of the library description is required (hopefully).
 
-<p class="justified">How to make use of ngspice-29 in KiCad (instead of ngspice-26 delivered with KiCad 5.0)?</p>
+<p class="justified">How to make use of ngspice-30 in KiCad (instead of ngspice-26 delivered with KiCad 5.0)?</p>
 <p class="justified">If you are on MS Windows, do the following:</p>
 <p class="justified">After installing <a href="http://kicad-pcb.org/download/">KiCad 5.0</a>,
 download the ngspice dll available in 
-<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/29/ngspice-29_dll_64.zip/download">
-ngspice-29_dll_64.zip</a>.</p>
+<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/30/ngspice-30_dll_64.zip/download">
+ngspice-30_dll_64.zip</a>.</p>
 <p class="justified">Copy msys-ngspice-0.dll from folder Spice64_dll\dll-mingw\ of the zip file into Programs\KiCad\bin. Within the bin folder remane libngspice-0.dll to libngspice-0-orig.dll. Now rename msys-ngspice-0.dll to libngspice-0.dll.</p>
 <p class="justified">Put a text file named .spiceinit into your user directory (C:\users\'your name', found also in
 environmental variable USERPROFILE). Add the two lines
@@ -211,8 +211,8 @@ set ngbehavior=ps
 to .spiceinit. If the file name .spiceinit does not work for you, use the alternative file name spice.rc . And that's it!</p>
 
 <p class="justified">If you are using LINUX, please check if your distribution already
-offers the ngspice-29 shared library. If not, you may need to download 
-<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/29/ngspice-29.tar.gz/download">ngspice-29.tar.gz</a>
+offers the ngspice-30 shared library. If not, you may need to download 
+<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/30/ngspice-30.tar.gz/download">ngspice-30.tar.gz</a>
 and compile the shared library with
 <pre>
 <code>
@@ -227,10 +227,10 @@ environmental variable HOME). In admin mode, it may be the root
 directory. Add the two lines as noted above to the file. As an example, some details for Ubuntu are reported by
 <a href="https://forum.kicad.info/t/ngspice-28-for-kicad/10968/19">mifi</a>. Please check
 also chapt. 32.1 of the
-<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/29/ngspice-29-manual.pdf/download">ngspice manual</a>
-for prerequisites and procedures for compiling ngspice-29.</p>
+<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/30/ngspice-30-manual.pdf/download">ngspice manual</a>
+for prerequisites and procedures for compiling ngspice-30.</p>
 <p class="justified">MacOS users may need to do the same. We will check 
-if a compiled shared library can be made available with ngspice-29.</p>
+if a compiled shared library can be made available with ngspice-31.</p>
 <br>
 <br>
 <div id="rc"></div>
