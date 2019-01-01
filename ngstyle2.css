@@ -33,10 +33,10 @@ body {background-color: white;
 /********************************************************************/
 
 /* General links */
-A:link {color: red;}
+A:link {color: blue;}
 /* A:visited {color: blue;} */
-A:hover {color: yellow;}
-A:active {color: green;}
+A:hover {color: green;}
+A:active {color: red;}
 
 
 /********************************************************************/
