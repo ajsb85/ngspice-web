@@ -126,7 +126,8 @@
   <li> <a href="#rc">Circuit with Passive Elements</a></li> 
   <li> <a href="#BipAmp">Bipolar Amplifier</a></li> 
   <li> <a href="#OpAmp">Inverting Amplifier with OpAmp</a></li>
-  <li> <a href="#digi">Digital Simulation</a></li>  
+  <li> <a href="#digi">Digital Simulation</a></li>
+  <li> <a href="#external">Using external ngspice</a></li>  
 </ol> 
 <div id="intro"></div>
 <p class="header">Introduction</p>
@@ -422,8 +423,60 @@ with 4*3+2 pins. Our simulation model in the 74HCng.lib has only 3 + 2 pins (in1
 This is a start, but there is still some improvement required in Eeschema.</p>
 
 <p class="justified">So digital simulation still will need some effort to become really useful in KiCad/ngspice.</p>
+<br>
+<br>
+<div id="external"></div>
+<p class="header">6) Using external ngspice</p>
+<p class="justified">The Eeschema interface to ngspice is currently still rather limited. And unfortunately there is a bug in the Eeschema plotting procedures in KiCad version 5.1.0 that makes some plot looking ugly. And there is the ngspice update issue (ngspice-27 delivered instead of ngspice-30). Therefore it might be a good idea to use Eeschema for schematic capture (do the circuit design) and have it create the ngspice netlist, but then use the actual (or the nightly) standard ngspice executable for simulation.</p>
 
+<p class="justified">A step by step approach for Windows 7 / 10 reads:</p>
+<li>Expand recent <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/30/ngspice-30_64.zip/download">ngspice</a> into directory C:\, so you have ngspice in C:\Spice64\bin.</li>
 
+<li>Install recent <a href="http://kicad-pcb.org/download/windows/">KiCad 5.1.0</a>.</li>
+
+<li>Copy C:\Program Files\KiCad\share\kicad\demos\simulation\laser_driver into C:\KiCad, to get C:\KiCad\laser_driver\. This just serves as an example for an arbitrary eeschema project placed into an arbitrary folder.</li>
+
+<li>Set the access for the whole directory trees C:\KiCad and C:\Spice64 to full access for all users. This allows KiCad and ngspice to read and write to these directories without the need for having admin rights.</li>
+
+<li>Run eeschema.</li>
+
+<li>Open file C:\KiCad\laser_driver\laser_driver.sch.</li>
+
+<li>Complement the text box entry 
+<pre>
+<code>
+.tran 10p 150n
+</code>
+</pre>
+by a control language snippet that sets the simulation type, starts the simulation, prints some simulation info, writes the results into a Spice raw file and plots the data. It has been necessary to place "" around the nodes /in and /out to comply with the ngspice control language parser. This should be improved in a future KiCad version.
+<pre>
+<code>
+.tran 10p 150n
+.control
+run
+rusage
+set filetype=ascii
+write C:\KiCad\laser_driver\laser.out "/in" "/out"
+plot "/in" "/out"
+.endc
+</code>
+</pre>
+</li>
+<li>File-->Save current sheet </li>
+<li>Tools-->Generate netlist file...-->Spice</li>
+<li>Select 'Default format'</li>
+<li>Simulator command: C:\Spice64\bin\ngspice.exe</li>
+<li>Button: Generate netlist</li>
+<li>Button: Save   (Store laser_driver.cir to C:\KiCad\laser_driver\)</li>
+<li>Again Button: Generate Netlist File...</li>
+<li>Button: Run Simulator</li>
+
+          <div id="topimage"><img src="./kicad-images/net-gen-15-3.png" alt=
+          "Netlist generation" width="100%" height="100%"></div>
+          Fig. 15   Laser driver circuit, Netlist Generator Window, plot after simulation
+<br>
+<br>
+<p class="justified">Voila: ngspice.exe simulates the file laser_driver.cir and plots the resulting output. </p>
         </div>
       </div>
     </div>
