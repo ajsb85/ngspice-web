@@ -1,0 +1,473 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd"/>
+
+<html>
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Windows (vers 25 March 2009), see www.w3.org"/>
+
+  <title> ngspice tutorial for beginners</title>
+  <link rel="stylesheet" type="text/css" href="ngstyle2.css"/>
+  <meta name="generator" content="screem 0.12.2"/>
+  <meta name="author" content="Holger Vogt"/>
+  <meta http-equiv="Content-Type" content=
+  "text/html; charset=us-ascii"/>
+  <meta http-equiv="Content-Script-Type" content="text/javascript"/>
+  <meta http-equiv="Content-Style-Type" content="text/css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content=
+  "This tutorial describes how to set up Eeschema for simulating analog or digital circuits."/>
+  <meta name="keywords" content=
+  "tutorial, ngspice, circuit simulation, EDA, simulator, electronics, semiconductor"/>
+  </head>
+
+<body>
+  <div id="paper">
+    <div id="header">
+      <pframe>
+        <pic1><img src="./images/nglogo.jpg" alt="NGSPICE"></pic1>
+        <pic2><img src="./images/ngtext2.jpg" alt=
+        "Mixed mode - mixed level circuit simulator - based on Berkeley&#39;s Spice3f5"></pic2>
+        <pic3><a href="http://sourceforge.net/projects/ngspice"><img src=
+        "./images/ngsumD.jpg" alt="Developer Pages" border="0"></a></pic3>
+      </pframe>
+    </div>
+
+    <div id="navcontainer">
+      <ul id="navlist">
+        <li><a href="./index.html">Home</a></li>
+
+        <li><a href="./news.html">News</a></li>
+        
+        <li><a href="./screens.html">Screenshots</a></li>
+
+        <li><a href="./download.html">Download</a></li>
+
+        <li><a href="./docs.html">Documentation</a></li>
+
+        <li><a href="./extras.html">Extras/Options</a></li>
+
+        <li><a href="./applic.html">Applications</a></li>
+
+        <li><a href="./devel.html">Development</a></li>
+
+        <li><a href="./resources.html">Simulation Environments</a></li>
+
+        <li><a href="./recipes.html">Recipes</a></li>
+
+      </ul>
+    </div>
+
+    <div id="left">
+      <div id="context">
+        <div id="contextcontent">
+          <p class="contextual title">XSPICE in ngspice</p>
+
+          <div id="menucontainer">
+            <ul id="menulist">
+              <li><a href="./xspice.html">What is XSPICE ?</a></li>
+
+              <li><a href="./xspicehowto.html">XSPICE and ngspice
+              HOWTO</a></li>
+            </ul>
+
+            <p class="contextual title">ngspice as shared library</p>
+
+            <ul id="menulist">
+              <li><a href="./shared.html">Short Intro</a></li>
+              <li><a href="./parallel.html">ngspice parallel</a></li>
+            </ul>
+
+            <p class="contextual title">CUSPICE</p>
+            <ul id="menulist">
+              <li><a href="./cuspice.html">CUSPICE Intro</a></li>
+            </ul>
+
+            <p class="contextual title">ADMS for ngspice</p>
+
+            <ul id="menulist">
+              <li><a href="./adms.html">What is ADMS ?</a></li>
+
+              <li><a href="./admshowto.html">ADMS and ngspice
+              HOWTO</a></li>
+            </ul>
+
+            <p class="contextual title">GSS-TCAD</p>
+
+            <ul id="menulist">
+              <li><a href="./gss.html">GSS</a></li>
+            </ul>
+
+            <p class="contextual title">TCLspice</p>
+
+            <ul id="menulist">
+              <li><a href="./tclspice.html">What is TCLspice
+              ?</a></li>
+
+              <li><a href="./tclusers.html">TCLspice users
+              manual</a></li>
+
+              <li><a href="./tclexamples.html">TCLspice by
+              examples</a></li>
+
+              <li><a href="./tclnotes.html">Designer's
+              note</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="main">
+        <div id="maincontent">
+<p class="header">Tutorial: ngspice for beginners</p>
+<ol start="0"> 
+  <li> <a href="#intro">Introduction</a></li>
+  <li> <a href="#downloadw">Download and Install ngspice (MS Windows)</a></li>
+  <li> <a href="#downloadl">Download and Install ngspice (Linux)</a></li>
+  <li> <a href="#rr">Circuit with Passive Elements, Operating Point</a></li>
+  <li> <a href="#rc">Circuit with Passive Elements, Transient Simulation</a></li>
+  <li> <a href="#ac">Circuit with Passive Elements, small signal AC Simulation</a></li>
+  <li> <a href="#downloadl">Download and Install a Simple GUI (MS Windows)</a></li>
+  <li> <a href="#BipAmp">Bipolar Amplifier</a></li> 
+  <li> <a href="#OpAmp">Inverting Amplifier with OpAmp</a></li>
+</ol> 
+<div id="intro"></div>
+<p class="header">Introduction</p>
+<p class="justified">ngspice is a circuit simulator that numerically solves equations describing (electronic) circuits: These are made of passive and active devices. Time varying currents and voltages are simulated as well as noise and small signal behaviour. ngspice is the Open Source successor of the venerable spice3f5 from UC at Berkeley.
+</p>
+          <div id="topimage"><img src="./tutorial-images/intro1.png" alt=
+          "Circuit-netlist-output" width="100%" height="100%"></div>
+          Fig. 1
+<p class="justified">As shown in Fig. 1, you start with a circuit (here: an inverter). 
+You have to create a netllist describing this circuit. The netlist is the input to ngspice, telling it about the circuit to be simulated. Together with some simulation commands this input cares for reading and parsing the netlist, starting the simulation and plotting the output. The output voltage (plotted in red) is the inverse of the (green) input. Both voltages are plotted versus time.</p>
+
+<p class="justified">The input to ngspice is read from a file, and it may be enhanced by commands given on the command line. The simulated output may be written to a file, or be plotted as a y-x graph or a smith chart. There is no graphical user interface with schematic capture of circuit diagrams and automatic netlist generation, however there are <a href="./resources.html">third party tools</a> available to deaw the circuit and generate a ngspice netlist.</p>
+<p class="justified">There is a detailed <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/30/ngspice-30-manual.pdf/download">
+reference manual</a> available for ngspice. This manual describes all commands and procedures available in ngspice and lists numerous examples. However, it is not an ngspice how-to or introductory text. This tutorial here gives you some information how to start. If you interested in getting more in-depth information, you may refer to our <a href="./books.html">book page</a> or to a list of third party <a href="./tutorials.html">tutorials</a>.</p>
+
+<br>
+<div id="downloadw"></div>
+<p class="header">1) Download and Install ngspice (MS Windows, 64 Bit)</p>
+
+<p class="justified">Download the zip file for<a href="http://sourceforge.net/projects/ngspice/files/ng-spice-rework/30/ngspice-30_64.zip">
+ngspice-30</a> (about 8.7 MB). Expand this zip file into directory C:\. In MS Windows 10 you might need admin rights to do so. Thus you will get C:\Spice64 with several sub-directories. The main program ngspice.exe resides in folder C:\Spice64\bin.</p>
+
+<p class="justified">Put a text file named .spiceinit into your user directory (C:\users\'your name', found also in
+environmental variable USERPROFILE). Add the two lines
+<pre>
+<code>
+* user provided init file
+set ngbehavior=ps
+</code>
+</pre>
+to .spiceinit. If the file name .spiceinit does not work for you, use the alternative file name spice.rc . And that's it!</p>
+<p class="justified">After a double click on C:\Spice64\bin\ngspice.exe, the ngspice main window pops up.</p>
+          <picture><img src="./tutorial-images/fig2-complete.png" alt=
+          "ngspice main window" width="80%" height="auto"></picture>
+<p class="justified">Fig. 2</p>
+<br>
+<div id="downloadl"></div>
+<p class="header">2) Download and Install ngspice (Linux)</p>
+
+<p class="justified">If you are using LINUX, please check if your distribution already
+offers a <a href="./packages.html">ngspice package</a> for installation. You may then use the distribution's package manager (apt, Yast, etc.) for installation.</p> 
+<p class="justified">If not, you will need to download 
+<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/30/ngspice-30.tar.gz/download">ngspice-30.tar.gz</a>
+and compile ngspice with
+<pre>
+<code>
+./configure --with-x --enable-xspice --enable-cider --enable-openmp --disable-debug CFLAGS="-m64 -O2" LDFLAGS="-m64 -s"
+make -j8
+sudo make install
+</code>
+</pre>
+</p>
+<p class="justified">Please check chapt. 32.1 of the
+<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/30/ngspice-30-manual.pdf/download">ngspice manual</a> for prerequisites and procedures for compiling ngspice-30. After compilation put a text file named .spiceinit into your home/username directory (address to be found also in the
+environmental variable HOME). In admin mode, it may be the root 
+directory. Add the two lines as noted above to the file. </p> 
+<p class="justified">MacOS users may ckeck for a package available or install 
+<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/30/ngspice-30.pkg/download">ngspice for macOS</a>. </p>
+<p class="justified">The input and output is now via the console. Below there is a typical via after a transient simulation of a circuit.</p> 
+<pre>
+<code>
+******
+** ngspice-30 : Circuit level simulation program
+** The U. C. Berkeley CAD Group
+** Copyright 1985-1994, Regents of the University of California.
+** Please get your ngspice manual from http://ngspice.sourceforge.net/docs.html
+** Please file your bug-reports at http://ngspice.sourceforge.net/bugrep.html
+** Creation Date: Sun Mar 17 18:39:55 UTC 2019
+******
+ngspice 6 -> source /home/holger/software/ngspice/examples/soi/inv_tr.sp
+
+Circuit: soi inverter
+
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+vd                                         1.5
+vs                                           0
+gate                                         0
+out                                    1.49993
+vgate#branch                       1.63484e-06
+vgnd#branch                        1.64402e-06
+vpower#branch                     -1.64402e-06
+
+No. of Data Rows : 222
+ngspice 7 -> 
+</code>
+</pre>
+<div id="rr"></div>
+<p class="header">3) Circuit with Passive Elements, Operating Point</p>
+<p class="justified"> Now let's do a first circuit. We need a dc voltage source and 
+two resistors that build a simple resistive voltage divider.</p>
+          <picture><img src="./tutorial-images/fig3.png" alt=
+          "voltage devider circuit diagram" width="60%" height="auto"></picture>
+<p class="justified">           Fig. 3</p>
+<p class="justified">What is the netlist of this circuit? The volatege source is connencted between 0 (ground) and node "in", value 1, R1 between "in" and "out" with value 1k, R2 between "out" and ground and value 2k.</p>
+<pre>
+<code>
+voltage divider netlist
+V1 in 0 1
+R1 in out 1k
+R2 out 0 2k
+.end
+</code>
+</pre>
+<p class="justified">Line 1 is a title line. .end in line 5 denotes the end of the netlist. Put these lines into a text file named vdiv.cir and save it to the folder C:\Spice64\bin (If you are with MS Windows). Now start ngspice by double click onto ngspice.exe in C:\Spice64\bin. Load the netlist into ngsppice by entering the command
+<code>
+source vdiv.cir
+</code>.
+ngspice is now ready for simulation, the netlist is loaded. What kind of simulation do we now want to have? Of interest is the DC voltage at node "out". This is the operating point of the circuit. We will get this by entering the
+<code>
+op
+</code>
+command. Then we want to get the voltage value at node "out". Let's enter the
+<code>
+print out
+</code>
+command. This is the output you will get with ngspice for the complete sequence, and you see the voltage at node "out":
+<pre>
+<code>
+******
+** ngspice-30+ : Circuit level simulation program
+** The U. C. Berkeley CAD Group
+** Copyright 1985-1994, Regents of the University of California.
+** Please get your ngspice manual from http://ngspice.sourceforge.net/docs.html
+** Please file your bug-reports at http://ngspice.sourceforge.net/bugrep.html
+** Creation Date: Mar 30 2019   09:37:02
+******
+ngspice 1 -> source vdiv.cir
+
+Circuit: voltage divider netlist
+
+ngspice 2 -> op
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+No. of Data Rows : 1
+ngspice 3 -> print out
+out = 6.666667e-01
+ngspice 4 ->
+</code>
+</pre>
+If you are with Linux, you might put vdiv.cir into a folder of your chioce. Then cd into that folder and call ngspice from your command line window. You will not need the <code>source</code> command, when you directly call 
+<pre>
+<code>
+ngspice vdiv.cir
+</code>
+</pre>
+Then the circuit is loaded immediately, and the next command you enter is <code>op</code> (see above).
+</p>
+<br>
+<div id="rc"></div>
+<p class="header">4) Circuit with Passive Elements, Transient Simulation</p>
+<p class="justified">The first example is a simple rc ladder, and we want to
+do a transient simulation. The input is a voltage waveform (a pulse) versus time, and the output is a waveform as well, as you might see on an oscilloscope. This is our circuit:</p>
+          <picture><img src="./tutorial-images/fig4.png" alt=
+          "dual RC circuit diagram" width="60%" height="auto"></picture>
+<p class="justified">           Fig. 4</p>
+The netlist then is
+<pre>
+<code>
+.title dual rc ladder
+R1 int in 10k
+V1 in 0 dc 0 PULSE (0 5 1u 1u 1u 1 1)
+R2 out int 1k
+C1 int 0 1u
+C2 out 0 100n
+.end
+</code>
+</pre>
+We have to talk about the voltage source V1. In the previous example it just emits a constan 1V. Now it is more complex. The manual says in chapt. 4.1.1: For a pulse we have to add PULSE(VL VH TD TR TF PW PER PHASE) to the DC voltage of our voltage source, where VL is the starting, VH the end voltage, TD a delay, TR and TF are rise and fall times, PW is the pulse width, PER the period of repitition, PHASE a phase shift. We have a pulse from 0 to 5 V, the delay before the pulse starts, its rise and fall times are all 1 us. Pulse width and pulse period are 1 s each, far beyond our intended simulation time. Phase does not matter here, we omit it. So here we see just the rising edge of the pulse.
+</p>
+<p class="justified">What is now the simulation time we will need. The time constant of our low pass filter is dominated by R1C1 and is about 1uF*10kOhm = 10ms. So we might be well off by starting at 0 and simulate until 50 ms. We should use 1000 points, so step size is 50 us. Thus, when you have loaded the circuit, the simulation command now is
+<pre>
+<code>
+tran 100u 100m
+</code>
+</pre>
+The result is shown in Fig. 5 after plotting with command <code>plot in int out</code>. The voltages at nodes 'int' and 'out' barely differ. This is because the first R1C1 dominates the circuit. The time constant of the second R2C2 is a factor of 100 smaller, so charging C2 is quick and easy compared to charging C1. The voltage at input node 'int' rises so fast that you do not see its slope.
+</p>
+          <picture><img src="./tutorial-images/fig5-2.png" alt=
+          "transient output for dual RC circuit" width="70%" height="auto"></picture>
+<p class="justified">           Fig. 5</p>
+
+<br>
+<div id="ac"></div>
+<p class="header">5) Circuit with Passive Elements, small signal AC  Simulation</p>
+<p class="justified">Now we wnat to see what the small signal behaviour of this rc ladder network might be. Small signalmeans that we set a dc operating point to our circuit. Then we add a small ac signal to the input and simulate what the output ac voltage might be versus frequency. So we have to vary the frequency of this small input signal. And we are not interested at the absolute output voltage value, but its relation to the input (gain) and its phase shift in relation to the inpt (phase). Fortunately there is the 'ac' command in ngspice that makes life easy. Firstly we have to tell ngspice where to input ther samm signal ac voltage. We choose node 'in', that is our voltage source V1. V1 now becomes
+<pre>
+<code>
+V1 in 0 dc 0 ac 1 PULSE (0 5 1u 1u 1u 1 1)
+</code>
+</pre>
+We simply added 'ac 1'. The 'dc 0' sets the operating point (which does not matter because of our simple circuit), 'PULSE' does matter only during transient simulation, so we keep it for simplicity. The 1 in 'ac 1' just helps us getting the ratio out/in, by dividing the output by 1, or just take it as is. The simulation command is
+<pre>
+<code>
+ac dec 10 1 100k
+</code>
+</pre>
+We want to do an 'ac' simulation. We vary the frequency as if plotted logarithmically, with 10 points per decade. The starting frequency is 1 Hz, the stopping frequency is 100 kHz. So we will get 51 data points. If now plotted with the command <code>plot out</code>, the graph looks ugly (output below 0?). Well, we are dealing with ac signals. These are complex numbers, consisting of a real and an imaginary part (or magnitude and phase). Traditionally <code>plot out</code> only delivers the real part of the signal. But we want to see magnitude (or gain) and phase, like in a Bode plot. So one should use <code>plot vdb(out)</code> for the gain in dB and <code>plot ph(out)</code> for the phase. Now the graphs are o.k., but titles and labels are not yet satisfactory. ngspice plotting procedures here need some manual tweaking.</p> 
+
+<p class="justified">But before we move on, we have to streamline our approach. Typing to the console seems to rise excessively. ngspice has a mechanisma to assemble all interactive (typed) commands into a .control ... .endc section. This .control section may be added to the netlist, which now looks like
+
+<pre>
+<code>
+.title dual rc ladder
+* file name rcrcac.cir
+R1 int in 10k
+V1 in 0 dc 0 ac 1 PULSE (0 5 1u 1u 1u 1 1)
+R2 out int 1k
+C1 int 0 1u
+C2 out 0 100n
+
+.control
+ac dec 10 1 100k
+plot vdb(out)
+plot ph(out)
+.endc
+
+.end
+</code>
+</pre>
+We now may start ngspice by <code>ngspice rcrcac.cir</code>. The netlist is read, the commands in the .control section are executed automatically. Still we have to improve the graphics. We do this by using several extra commands, that we add to the .control section. All of them are described in the <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/30/ngspice-30-manual.pdf/download">ngspice manual</a>, chapt. 17.5. The complete input file now reads:
+<pre>
+<code>
+.title dual rc ladder
+* file name rcrcac.cir
+R1 int in 10k
+V1 in 0 dc 0 ac 1 PULSE (0 5 1u 1u 1u 1 1)
+R2 out int 1k
+C1 int 0 1u
+C2 out 0 100n
+
+.control
+ac dec 10 1 100k
+settype decibel out
+plot vdb(out) xlimit 1 100k ylabel 'small signal gain'
+settype phase out
+plot cph(out) xlimit 1 100k ylabel 'phase (in rad)'
+let outd = 180/PI*cph(out)
+settype phase outd
+plot outd xlimit 1 100k ylabel 'phase'
+.endc
+
+.end
+</code>
+</pre>
+And this is what we see after simulation and plotting:
+</p>
+          <picture><img src="./tutorial-images/fig6.png" alt=
+          "ac output for dual RC circuit" width="100%" height="auto"></picture>
+<p class="justified">           Fig. 6 Small Signal Magnitude and Phase for dual RC ladder</p>
+
+<br>
+<br>
+<div id="downloadl"></div>
+ <p class="header">6) Download and Install a Simple GUI (MS Windows)</p>
+<p class="justified"> I am used to MS Windows, and so I do not want to type in everything, but use the mouse to select files, start simulation and plot the results. Therefore I use (and have made available for <a href="http://ngspice.sourceforge.net/download.html#bin1"> download</a>) a small GUI that is shown in Fig. 7. To
+install, just expand the four files into a folder of your choice. DuSpiceStart.exe is the main executable.
+DuSpicePlot.exe raeds a raw file and prepares plotting. DuSpiceStart.ini contain the setup data.
+plot_spex3.xlsm containes some VB macros that allow plotting with EXCEL.</p>
+
+ 
+          <picture><img src="./tutorial-images/fig7.png" alt=
+          "GUI with Setup and Plot Window" width="100%" height="auto"></picture>
+<p class="justified">           Fig. 7   MS Windows GUI with Setup and Plot Window</p>
+<p class="justified"> If you hover your mouse over a button or edit box, a small hint will pop up and give you some information on the usage of this item.</p>
+<dl>
+   <dt>Main window</dt><dd>
+   <li>Drop down box on top: Select one of the recent 5 files as input for simulation</li>
+   <li>Start batch: Start ngspice in batch mode, like <code>ngspice -b -r rcrcac.out -o rcrcac.log rcrcac.cir</code></li>
+   <li>New file: Select a new input file (e.g. rcrcac.cir)</li>
+   <li>Plot: Open the Plot window by calling DuSpicePlot.exe, only useful if simulation has been run in batch mode</li>
+   <li>Setup: Open the Setup window</li>
+   <li>Title: Show the title lne of the input file</li>
+   <li>Start interact.: Start ngspice in interactive mode</li>
+   <li>Edit input: Open the input file in the editor</li>
+   <li>View output: Open the output file (e.g. rcrcac.out) in the editor</li>
+   <li>View *.log: Open the log file (e.g. rcrcac.log) in the editor</li>
+   <li>Quit: Quit the GUI</li>
+   </dd>
+</dl>
+<dl>
+   <dt>Setup window</dt><dd>
+   <li>Viewer: Select a file viewer (recommended: Notepad++)</li>
+   <li>Editor: Select an editor (recommended: Notepad++)</li>
+   <li>Return: Back to Main window</li>
+   <li>Path to ngspice executable: Double click on edit box to select ngspice path and exe</li>
+   <li>Spice start options: Select ngspice or another spice</li>
+   <li>file select options: Start ngspice automatical in interactive or in batch mode, 
+   or do not start automatically and wait for user to start ngspice from main window</li>
+   <li>batch start options: If 'Start batch' from main window is selected, start either with rawfile (e.g. -r rcrcac.out) or without. Then output gets into rcrcac.log only (like the ancient printer plot)</li>
+   <li>interactive log file options: Start interactive simulation either with output going to the ngspice output window or into the log file</li>
+   </dd>
+</dl>
+<dl>
+   <dt>Plot window</dt><dd>
+   <li>plot Spice: Start another instance of ngspice, load the *.out file and start plotting</li>
+   <li>plot gnuplot: Start gnuplot (if available) and start plotting</li>
+   <li>plot EXCEL: Start MS EXCEL (if available) and start plotting</li>
+   <li>all: select all output vectors for plotting</li>
+   <li>cancel: deselect all output vectors</li>
+   <li>commands: Check the check box and type in any vector or allowed function of a vector to be plotted. All parameters that are valid following the 'plot' command are allowed.</li>
+   <li>input file: Show the output (raw) file selected for plotting</li>
+   <li>new file: Select a new raw file for plotting</li>
+   <li>quit: Quit plot window</li>
+   </dd>
+</dl>
+<br>
+<br>
+ 
+<br>
+<div id="BipAmp"></div>
+<p class="header">7) Bipolar amplifier</p>
+
+<br>
+<br>
+<div id="OpAmp"></div>
+<p class="header">8) Inverting amplifier with OpAmp</p>
+
+<br>
+<br>
+
+    <div id="footer">
+        <pframe>
+          <pic1><a href="http://sourceforge.net"><img src=
+          "http://sourceforge.net/sflogo.php?group_id=38962&amp;type=1" alt=
+          "SourceForge.net Logo" border="0" height="31" width="88"></a></pic1>
+          <pic2>All text is available under the terms of the <a class=
+          "internal" href="http://www.gnu.org/licenses/fdl.html">GNU Free
+          Documentation License</a></pic2>
+          <pic3><img src="./images/spice.jpg" alt=""></pic3>
+        </pframe>
+    </div>
+  </div>
+</body>
+</html>
