@@ -282,8 +282,8 @@ transistor model (equations to calculate currents as function of terminal voltag
 hard-coded in ngspice. This model however requires model parameters to make these calculations
 specific for the transistor that was selected (BC546). These data are not delivered with KiCad.
 They are device manufacturer specific and may be obtained from their web sites or from other sites
-(here e.g. from <a href="https://www.electronicspoint.com/threads/bc549c-spice-model.37724/">BC546 model parameters</a> ).
-The model parameters are
+(here e.g. from <a href="https://www.electronicspoint.com/threads/bc549c-spice-model.37724/">BC546 model parameters</a>, see also the <a href="http://espice.ugr.es/espice/src/modelos_subckt/">espice spice model pages</a> for many more).
+The BC546 model parameters are
 organised in a single line starting with '.model BC546 npn (...)'. Put
 this line into a file BC546.lib. Double click onto the BC546 symbol. The 'Symbol Properties'
 window pops up. Select 'Edit Spice Model'. In the 'Spice Model Editor' select 'Select File'
@@ -339,7 +339,7 @@ input voltage source.</p>
           Fig. 12
 <p class="justified"> There is no model for OpAmps delivered with ngspice. Nor does KiCad
 deliver such a model. So you have to search in the web for a device maker's model, e.g. from the
-<a href="http://www.ti.com/lit/zip/snom255">TI web pages</a> as LF356.mod.</p>
+<a href="http://www.ti.com/lit/zip/snom255">TI web pages</a> as LF356.mod. A whealth of models for discretes and ICs from the early 2000s is available at the <a href="http://espice.ugr.es/espice/src/modelos_subckt/">espice spice model pages</a> and its sub-folders.</p>
 <p class="justified">If you have a look at LF356.mod, there you find the circuit assembled in a subcircuit (.subckt
 line) with name LF356 and 5 connecting nodes. Obviously the two offset cancelation nodes
 1 and 5 of the KiCad symbol are not served by this model.</p>
