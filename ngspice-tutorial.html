@@ -133,7 +133,7 @@
 </ol> 
 <div id="intro"></div>
 <p class="header">Introduction</p>
-<p class="justified">ngspice is a circuit simulator that numerically solves equations describing (electronic) circuits: These are made of passive and active devices. Time varying currents and voltages are simulated as well as noise and small signal behaviour. ngspice is the Open Source successor of the venerable spice3f5 from UC at Berkeley.
+<p class="justified">ngspice is a circuit simulator that numerically solves equations describing (electronic) circuits: These are made of passive and active devices. Time varying currents and voltages are simulated as well as noise and small signal behavior. ngspice is the Open Source successor of the venerable spice3f5 from UC at Berkeley.
 </p>
           <div id="topimage"><img src="./tutorial-images/intro1.png" alt=
           "Circuit-netlist-output" width="100%" height="100%"></div>
@@ -141,7 +141,7 @@
 <p class="justified">As shown in Fig. 1, you start with a circuit (here: an inverter). 
 You have to create a netllist describing this circuit. The netlist is the input to ngspice, telling it about the circuit to be simulated. Together with some simulation commands this input cares for reading and parsing the netlist, starting the simulation and plotting the output. The output voltage (plotted in red) is the inverse of the (green) input. Both voltages are plotted versus time.</p>
 
-<p class="justified">The input to ngspice is read from a file, and it may be enhanced by commands given on the command line. The simulated output may be written to a file, or be plotted as a y-x graph or a smith chart. There is no graphical user interface with schematic capture of circuit diagrams and automatic netlist generation, however there are <a href="./resources.html">third party tools</a> available to deaw the circuit and generate a ngspice netlist.</p>
+<p class="justified">The input to ngspice is read from a file, and it may be enhanced by commands given on the command line. The simulated output may be written to a file, or be plotted as a y-x graph or a smith chart. There is no graphical user interface with schematic capture of circuit diagrams and automatic netlist generation, however there are <a href="./resources.html">third party tools</a> available to draw the circuit and generate a ngspice netlist.</p>
 <p class="justified">There is a detailed <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/30/ngspice-30-manual.pdf/download">
 reference manual</a> available for ngspice. This manual describes all commands and procedures available in ngspice and lists numerous examples. However, it is not an ngspice how-to or introductory text. This tutorial here gives you some information how to start. If you interested in getting more in-depth information, you may refer to our <a href="./books.html">book page</a> or to a list of third party <a href="./tutorials.html">tutorials</a>.</p>
 
@@ -230,7 +230,7 @@ two resistors that build a simple resistive voltage divider.</p>
           <picture><img src="./tutorial-images/fig3.png" alt=
           "voltage devider circuit diagram" width="60%" height="auto"></picture>
 <p class="justified">           Fig. 3</p>
-<p class="justified">What is the netlist of this circuit? The volatege source is connencted between 0 (ground) and node "in", value 1, R1 between "in" and "out" with value 1k, R2 between "out" and ground and value 2k.</p>
+<p class="justified">What is the netlist of this circuit? The voltage source is connected between 0 (ground) and node "in", value 1, R1 between "in" and "out" with value 1k, R2 between "out" and ground and value 2k.</p>
 <pre>
 <code>
 voltage divider netlist
@@ -276,7 +276,7 @@ out = 6.666667e-01
 ngspice 4 ->
 </code>
 </pre>
-If you are with Linux, you might put vdiv.cir into a folder of your chioce. Then cd into that folder and call ngspice from your command line window. You will not need the <code>source</code> command, when you directly call 
+If you are with Linux, you might put vdiv.cir into a folder of your choice. Then cd into that folder and call ngspice from your command line window. You will not need the <code>source</code> command, when you directly call 
 <pre>
 <code>
 ngspice vdiv.cir
@@ -304,7 +304,7 @@ C2 out 0 100n
 .end
 </code>
 </pre>
-We have to talk about the voltage source V1. In the previous example it just emits a constan 1V. Now it is more complex. The manual says in chapt. 4.1.1: For a pulse we have to add PULSE(VL VH TD TR TF PW PER PHASE) to the DC voltage of our voltage source, where VL is the starting, VH the end voltage, TD a delay, TR and TF are rise and fall times, PW is the pulse width, PER the period of repitition, PHASE a phase shift. We have a pulse from 0 to 5 V, the delay before the pulse starts, its rise and fall times are all 1 us. Pulse width and pulse period are 1 s each, far beyond our intended simulation time. Phase does not matter here, we omit it. So here we see just the rising edge of the pulse.
+We have to talk about the voltage source V1. In the previous example it just emits a constant 1V. Now it is more complex. The manual says in chapt. 4.1.1: For a pulse we have to add PULSE(VL VH TD TR TF PW PER PHASE) to the DC voltage of our voltage source, where VL is the starting, VH the end voltage, TD a delay, TR and TF are rise and fall times, PW is the pulse width, PER the period of repetition, PHASE a phase shift. We have a pulse from 0 to 5 V, the delay before the pulse starts, its rise and fall times are all 1 us. Pulse width and pulse period are 1 s each, far beyond our intended simulation time. Phase does not matter here, we omit it. So here we see just the rising edge of the pulse.
 </p>
 <p class="justified">What is now the simulation time we will need. The time constant of our low pass filter is dominated by R1C1 and is about 1uF*10kOhm = 10ms. So we might be well off by starting at 0 and simulate until 50 ms. We should use 1000 points, so step size is 50 us. Thus, when you have loaded the circuit, the simulation command now is
 <pre>
@@ -321,7 +321,7 @@ The result is shown in Fig. 5 after plotting with command <code>plot in int out<
 <br>
 <div id="ac"></div>
 <p class="header">5) Circuit with Passive Elements, small signal AC  Simulation</p>
-<p class="justified">Now we wnat to see what the small signal behaviour of this rc ladder network might be. Small signalmeans that we set a dc operating point to our circuit. Then we add a small ac signal to the input and simulate what the output ac voltage might be versus frequency. So we have to vary the frequency of this small input signal. And we are not interested at the absolute output voltage value, but its relation to the input (gain) and its phase shift in relation to the inpt (phase). Fortunately there is the 'ac' command in ngspice that makes life easy. Firstly we have to tell ngspice where to input ther samm signal ac voltage. We choose node 'in', that is our voltage source V1. V1 now becomes
+<p class="justified">Now we wnat to see what the small signal behavior of this rc ladder network might be. Small signal means that we set a dc operating point to our circuit. Then we add a small ac signal to the input and simulate what the output ac voltage might be versus frequency. So we have to vary the frequency of this small input signal. And we are not interested at the absolute output voltage value, but its relation to the input (gain) and its phase shift in relation to the input (phase). Fortunately there is the 'ac' command in ngspice that makes life easy. Firstly we have to tell ngspice where to input their small signal ac voltage. We choose node 'in', that is our voltage source V1. V1 now becomes
 <pre>
 <code>
 V1 in 0 dc 0 ac 1 PULSE (0 5 1u 1u 1u 1 1)
@@ -335,7 +335,7 @@ ac dec 10 1 100k
 </pre>
 We want to do an 'ac' simulation. We vary the frequency as if plotted logarithmically, with 10 points per decade. The starting frequency is 1 Hz, the stopping frequency is 100 kHz. So we will get 51 data points. If now plotted with the command <code>plot out</code>, the graph looks ugly (output below 0?). Well, we are dealing with ac signals. These are complex numbers, consisting of a real and an imaginary part (or magnitude and phase). Traditionally <code>plot out</code> only delivers the real part of the signal. But we want to see magnitude (or gain) and phase, like in a Bode plot. So one should use <code>plot vdb(out)</code> for the gain in dB and <code>plot ph(out)</code> for the phase. Now the graphs are o.k., but titles and labels are not yet satisfactory. ngspice plotting procedures here need some manual tweaking.</p> 
 
-<p class="justified">But before we move on, we have to streamline our approach. Typing to the console seems to rise excessively. ngspice has a mechanisma to assemble all interactive (typed) commands into a .control ... .endc section. This .control section may be added to the netlist, which now looks like
+<p class="justified">But before we move on, we have to streamline our approach. Typing to the console seems to rise excessively. ngspice has a mechanism to assemble all interactive (typed) commands into a .control ... .endc section. This .control section may be added to the netlist, which now looks like
 
 <pre>
 <code>
@@ -393,8 +393,8 @@ And this is what we see after simulation and plotting:
  <p class="header">6) Download and Install a Simple GUI (MS Windows)</p>
 <p class="justified"> I am used to MS Windows, and so I do not want to type in everything, but use the mouse to select files, start simulation and plot the results. Therefore I use (and have made available for <a href="http://ngspice.sourceforge.net/download.html#bin1"> download</a>) a small GUI that is shown in Fig. 7. To
 install, just expand the four files into a folder of your choice. DuSpiceStart.exe is the main executable.
-DuSpicePlot.exe raeds a raw file and prepares plotting. DuSpiceStart.ini contain the setup data.
-plot_spex3.xlsm containes some VB macros that allow plotting with EXCEL.</p>
+DuSpicePlot.exe reads a raw file and prepares plotting. DuSpiceStart.ini contain the setup data.
+plot_spex3.xlsm contains some VB macros that allow plotting with EXCEL.</p>
 
  
           <picture><img src="./tutorial-images/fig7.png" alt=
@@ -408,7 +408,7 @@ plot_spex3.xlsm containes some VB macros that allow plotting with EXCEL.</p>
    <li>New file: Select a new input file (e.g. rcrcac.cir)</li>
    <li>Plot: Open the Plot window by calling DuSpicePlot.exe, only useful if simulation has been run in batch mode</li>
    <li>Setup: Open the Setup window</li>
-   <li>Title: Show the title lne of the input file</li>
+   <li>Title: Show the title line of the input file</li>
    <li>Start interact.: Start ngspice in interactive mode</li>
    <li>Edit input: Open the input file in the editor</li>
    <li>View output: Open the output file (e.g. rcrcac.out) in the editor</li>
@@ -423,7 +423,7 @@ plot_spex3.xlsm containes some VB macros that allow plotting with EXCEL.</p>
    <li>Return: Back to Main window</li>
    <li>Path to ngspice executable: Double click on edit box to select ngspice path and exe</li>
    <li>Spice start options: Select ngspice or another spice</li>
-   <li>file select options: Start ngspice automatical in interactive or in batch mode, 
+   <li>file select options: Start ngspice automatically in interactive or in batch mode, 
    or do not start automatically and wait for user to start ngspice from main window</li>
    <li>batch start options: If 'Start batch' from main window is selected, start either with rawfile (e.g. -r rcrcac.out) or without. Then output gets into rcrcac.log only (like the ancient printer plot)</li>
    <li>interactive log file options: Start interactive simulation either with output going to the ngspice output window or into the log file</li>
@@ -435,7 +435,7 @@ plot_spex3.xlsm containes some VB macros that allow plotting with EXCEL.</p>
    <li>plot gnuplot: Start gnuplot (if available) and start plotting</li>
    <li>plot EXCEL: Start MS EXCEL (if available) and start plotting</li>
    <li>all: select all output vectors for plotting</li>
-   <li>cancel: deselect all output vectors</li>
+   <li>cancel: unselect all output vectors</li>
    <li>commands: Check the check box and type in any vector or allowed function of a vector to be plotted. All parameters that are valid following the 'plot' command are allowed.</li>
    <li>input file: Show the output (raw) file selected for plotting</li>
    <li>new file: Select a new raw file for plotting</li>
@@ -468,7 +468,7 @@ They are device manufacturer specific and may be obtained from their web sites o
 </code>
 </pre>
 
-It is a line starting with .model, followed by its corresponding name BC546B and the device type, that is a npn transistor. In brackets then we have all the model parameters that, in coalition with the hard coded model, will yield the dc, ac, transient or noise behaviour of the transistor. All of the line might come in a single row. For readabilitry reasons you might want to split this overly long line into e.g. four. Each consecutive line the has to start with a +. Internally ngspice adds all of the consecutive lines into a single one. The resulting netlist (file bipamp.cir) is</p>
+It is a line starting with .model, followed by its corresponding name BC546B and the device type, that is a npn transistor. In brackets then we have all the model parameters that, in coalition with the hard coded model, will yield the dc, ac, transient or noise behavior of the transistor. All of the line might come in a single row. For readability reasons you might want to split this overly long line into e.g. four. Each consecutive line the has to start with a +. Internally ngspice adds all of the consecutive lines into a single one. The resulting netlist (file bipamp.cir) is</p>
 <pre>
 <code>
 bipolar amplifier
@@ -516,7 +516,7 @@ by <code>ngspice bipamp.cir</code>.</p>
 <div id="OpAmp"></div>
 <p class="header">8) Inverting amplifier with OpAmp</p>
 <p class="justified">The final example is an inverting amplifier using the operational amplifier LF356.
-Its gain is set by the ratio of R2 to R1. The amplifier inverts the input polarity. Thus the ouput will be
+Its gain is set by the ratio of R2 to R1. The amplifier inverts the input polarity. Thus the output will be
 V(out) = -R2/R1*V(in) = -100*V(in).</p>
           <picture><img src="./tutorial-images/fig10.png" alt=
           "OpAmp amplifier" width="100%" height="auto"></picture>
@@ -529,8 +529,8 @@ the folder that will also contain the netlist OpAmp.cir. Add the line <code>.inc
 to the netlist file OpAmp.cir. </p>
 
 <p class="justified">How to invoke the model in the netlist? This is done by an X line (see manual chapt. 2.4)
-like <code>XU1 3 2 7 4 6 LF356/NS</code>. The pin numbers correspond to the pins of the IC as found in its data sheet. We have decide to use the pin mubers as node names for the netlist. We might have chosen
-other net names as well. The circuit pin name/pin number pairs are
+like <code>XU1 3 2 7 4 6 LF356/NS</code>. The pin numbers correspond to the pins of the IC as found in its data sheet. We have decide to use the pin numbers as node names for the netlist. We might have chosen
+other net names as well. The 'circuit pin name'/'pin number' pairs are
 (in)-/2 (in)+/3 V+/7 V-/4 out/6. The model requires a sequence
 <ul>
 <li>non-inverting input</li>
@@ -555,7 +555,7 @@ R2 6 2 100k
 .end
 </code>
 </pre>
-This time we want to do a dc simulation, that is we vary the input with a shlightly rising dc voltage
+This time we want to do a dc simulation, that is we vary the input with a slightly rising dc voltage
 and measure the output. One has to remember that the power supply delivers +-5 V, so the output can't be larger, and the amplification is -100. So we use the command <code>dc Vin -50m 50m 2m</code> to vary Vin
 from -50 mV to 50 mV with a step size of 2 mV. We may either add the command
 <pre>
