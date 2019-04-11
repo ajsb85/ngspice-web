@@ -133,8 +133,8 @@
 <p class="header">Introduction</p>
 <p class="justified"><a href="http://kicad-pcb.org/">KiCad/Eeschema</a>
 is a very nice GUI that may
-ideally be used in coopration with ngspice to allow schematic entry of
-eletronic circuits, simulation, and plotting of the results.</p>
+ideally be used in cooperation with ngspice to allow schematic entry of
+electronic circuits, simulation, and plotting of the results.</p>
 
 <p class="justified">All experiments described here require using at
 least KiCad Version 5, and have been done with a MS Windows nightly.
@@ -261,9 +261,9 @@ shall now be computed versus time.</p>
 <p class="justified">First we have to change the input voltage signal. A step voltage from 0 to 5 V is intended.
 This will be available (see ngspice manual chapt. 4.1.1) with the PULSE source. 'dc 0 ac 1' is to be
 replaced by 'PULSE (0 5 1u 1u 1u 1 1)'. The input voltage rises from 0 to 5 V after a
-delay of 1 us. Pulse width and repitition time are 1s and thus far beyond the simulation time
+delay of 1 us. Pulse width and repetition time are 1s and thus far beyond the simulation time
 of 100 ms. So within our simulation time we will see only the rising edge of the input signal.
-The simulation command now is set to '.tran 1u 100m'. The ouput (V(out) plotted
+The simulation command now is set to '.tran 1u 100m'. The output (V(out) plotted
 versus time) does show the expected behavior, rising from 0 to 5 V, and is shown in Fig.4.</p>
           <div id="topimage"><img src="./kicad-images/Fig4.jpg" alt=
           "RC transient output" width="100%" height="100%"></div>
@@ -284,7 +284,7 @@ specific for the transistor that was selected (BC546). These data are not delive
 They are device manufacturer specific and may be obtained from their web sites or from other sites
 (here e.g. from <a href="https://www.electronicspoint.com/threads/bc549c-spice-model.37724/">BC546 model parameters</a>, see also the <a href="http://espice.ugr.es/espice/src/modelos_subckt/">espice spice model pages</a> for many more).
 The BC546 model parameters are
-organised in a single line starting with '.model BC546 npn (...)'. Put
+organized in a single line starting with '.model BC546 npn (...)'. Put
 this line into a file BC546.lib. Double click onto the BC546 symbol. The 'Symbol Properties'
 window pops up. Select 'Edit Spice Model'. In the 'Spice Model Editor' select 'Select File'
 and search for  BC546.lib. Its contents (the .model line) will show up in the window (Fig.5). </p>
@@ -339,9 +339,9 @@ input voltage source.</p>
           Fig. 12
 <p class="justified"> There is no model for OpAmps delivered with ngspice. Nor does KiCad
 deliver such a model. So you have to search in the web for a device maker's model, e.g. from the
-<a href="http://www.ti.com/lit/zip/snom255">TI web pages</a> as LF356.mod. A whealth of models for discretes and ICs from the early 2000s is available at the <a href="http://espice.ugr.es/espice/src/modelos_subckt/">espice spice model pages</a> and its sub-folders.</p>
+<a href="http://www.ti.com/lit/zip/snom255">TI web pages</a> as LF356.mod. A wealth of models for discretes and ICs from the early 2000s is available at the <a href="http://espice.ugr.es/espice/src/modelos_subckt/">espice spice model pages</a> and its sub-folders.</p>
 <p class="justified">If you have a look at LF356.mod, there you find the circuit assembled in a subcircuit (.subckt
-line) with name LF356 and 5 connecting nodes. Obviously the two offset cancelation nodes
+line) with name LF356 and 5 connecting nodes. Obviously the two offset cancellation nodes
 1 and 5 of the KiCad symbol are not served by this model.</p>
 
 <p class="justified">How to add the ngspice model? Double click on the LF356 symbol in the circuit drawing.
@@ -406,14 +406,14 @@ right now, just for testing the basics. </p>
 three gates U1A U2A U3B making the half adder, and two load ballast gates U4A, U5A. Then we
 have the five power lines (VCC and ground each) for each gate. Two obtain this schematic,
 the same procedure, as described in the previous chapter, applies: Get the symbols from
-the 'pspce' and '74xx' libraries. Draw the wiring. Add a suitable pulse form to the VSOURCEs.
+the 'pspice' and '74xx' libraries. Draw the wiring. Add a suitable pulse form to the VSOURCEs.
 You may consult the ngspice manual, chapter 4.1.1 for an explanation. Double click on each
 symbol to open the 'symbol Properties' window, select 'Edit Spice Model', enter the
 simulation library name and path, the gate's model (e.g. 74HC00), and the 'Type Subcircuit'.
 Don't forget setting the proper pin sequence, e.g. 1 2 3 14 7.
 Add the simulation command. We want a transient simulation, so we enter '.tran 1n 4u'
 into a text box.</p>
-<p class="justified">Some pecularities become immediately obvious. The two load ballast
+<p class="justified">Some peculiarities become immediately obvious. The two load ballast
 gates are required, otherwise the previous gate's output is named 'NC001', i.e. not connected
 and cannot be used (e.g. plotted), even if you have given a tag to them. 
 The 74HC00 is a two input NAND gate * 4, however
