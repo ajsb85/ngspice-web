@@ -186,9 +186,9 @@ sudo make install
 <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/30/ngspice-30-manual.pdf/download">ngspice manual</a> for prerequisites and procedures for compiling ngspice-30. After compilation put a text file named .spiceinit into your home/username directory (address to be found also in the
 environmental variable HOME). In admin mode, it may be the root 
 directory. Add the two lines as noted above to the file. </p> 
-<p class="justified">MacOS users may ckeck for a package available or install 
+<p class="justified">MacOS users may check for a package available or install 
 <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/30/ngspice-30.pkg/download">ngspice for macOS</a>. </p>
-<p class="justified">The input and output is now via the console. Below there is a typical via after a transient simulation of a circuit.</p> 
+<p class="justified">The input and output is now via the console. Below there is a typical view after a transient simulation of a circuit.</p> 
 <pre>
 <code>
 ******
@@ -448,7 +448,7 @@ plot_spex3.xlsm containes some VB macros that allow plotting with EXCEL.</p>
 <br>
 <div id="BipAmp"></div>
 <p class="header">7) Bipolar amplifier</p>
-<p class="justified">The next example is a bipolar amplifier. A npn bipolar transistor BC546 is the amplifying device. Two resistors R1, R2 determine the base current, R3 is the dc load resistor. RLoad is required because ngspice will not accept a capacitor that does not have a dc connection at each terminal. VCC is the power supply, Vin the voltage input source.</p>
+<p class="justified">The next example is a bipolar amplifier. A npn bipolar transistor BC546 is the amplifying device. Two resistors R1, R2 determine the base current, R3 is the dc load resistor. RLoad is required because ngspice will not accept a capacitor that does not have a dc connection at each terminal. VCC is the power supply, Vin the input voltage source.</p>
           <picture><img src="./tutorial-images/fig8.png" alt=
           "bipolar amplifier" width="100%" height="auto"></picture>
 <p class="justified">           Fig. 8</p>
@@ -458,13 +458,25 @@ transistor model (equations to calculate currents as function of terminal voltag
 hard-coded in ngspice. This model however requires model parameters to make these calculations
 specific for the transistor that was selected (BC546). These data are not delivered with ngspice.
 They are device manufacturer specific and may be obtained from their web sites or from other sites
-(here e.g. from <a href="https://www.electronicspoint.com/threads/bc549c-spice-model.37724/">BC546 model parameters</a>, see also the <a href="http://espice.ugr.es/espice/src/modelos_subckt/">espice spice model pages</a> for many more). The model parameters are stored in file BC546.lib. Place this file into the
-same folder as the input file bipamp.cir. The resulting netlist (file bipamp.cir) is</p>
+(here e.g. from <a href="https://www.electronicspoint.com/threads/bc549c-spice-model.37724/">BC546 model parameters</a>, see also the <a href="http://espice.ugr.es/espice/src/modelos_subckt/">espice spice model pages</a> for many more). What do we get from there?
+<pre>
+<code>
+.model BC546B npn ( IS=7.59E-15 VAF=73.4 BF=480 IKF=0.0962 NE=1.2665
++ ISE=3.278E-15 IKR=0.03 ISC=2.00E-13 NC=1.2 NR=1 BR=5 RC=0.25 CJC=6.33E-12
++ FC=0.5 MJC=0.33 VJC=0.65 CJE=1.25E-11 MJE=0.55 VJE=0.65 TF=4.26E-10
++ ITF=0.6 VTF=3 XTF=20 RB=100 IRB=0.0001 RBM=10 RE=0.5 TR=1.50E-07)
+</code>
+</pre>
+
+It is a line starting with .model, followed by its corresponding name BC546B and the device type, that is a npn transistor. In brackets then we have all the model parameters that, in coalition with the hard coded model, will yield the dc, ac, transient or noise behaviour of the transistor. All of the line might come in a single row. For readabilitry reasons you might want to split this overly long line into e.g. four. Each consecutive line the has to start with a +. Internally ngspice adds all of the consecutive lines into a single one. The resulting netlist (file bipamp.cir) is</p>
 <pre>
 <code>
 bipolar amplifier
 * file bipamp.cir
-.include "BC546.lib"
+.model BC546B npn ( IS=7.59E-15 VAF=73.4 BF=480 IKF=0.0962 NE=1.2665
++ ISE=3.278E-15 IKR=0.03 ISC=2.00E-13 NC=1.2 NR=1 BR=5 RC=0.25 CJC=6.33E-12
++ FC=0.5 MJC=0.33 VJC=0.65 CJE=1.25E-11 MJE=0.55 VJE=0.65 TF=4.26E-10
++ ITF=0.6 VTF=3 XTF=20 RB=100 IRB=0.0001 RBM=10 RE=0.5 TR=1.50E-07)
 R3 vcc intc 10k
 R1 vcc intb 68k
 R2 intb 0 10k
@@ -479,14 +491,14 @@ Q1 intc intb 0 BC546B
 .end
 </code>
 </pre>
-<p class="justified">Place the file The bipolar parameter library is included by the .include command. With the line <code>.tran 10u 10m</code> it contains a new element, another dot command.
+<p class="justified">The .model line directly corrsponds with the Q1 line in that it now delivers the necessary model parameters. With the line <code>.tran 10u 10m</code> the netlist contains another new element, again a dot command.
 This is useful if you want to run ngspice in batch mode. The next line <code>*.ac dec 10 10 1Meg</code>
 is prepended by *. This serves for commenting out the line. Each line starting with * is treated
 as a comment and is ignored during simulation. Placing the * allows selecting a simulation type.</p>
 <p class="justified">If you are on MS Windows, start the GUI, Newfile bipamp.cir, Start batch, Plot, check
 v(out) and v(in), plot gnuplot: this is the result:</p>
           <picture><img src="./tutorial-images/fig9.png" alt=
-          "bipolar amplifier" width="100%" height="auto"></picture>
+          "bipamp simulation output" width="100%" height="auto"></picture>
 <p class="justified">           Fig. 9 GUI, Plot window and gnuplot graph</p>
 <p class="justified">With Linux you might add a .control section like
 <pre>
@@ -503,7 +515,76 @@ by <code>ngspice bipamp.cir</code>.</p>
 <br>
 <div id="OpAmp"></div>
 <p class="header">8) Inverting amplifier with OpAmp</p>
-<p class="justified">Still missing</p>
+<p class="justified">The final example is an inverting amplifier using the operational amplifier LF356.
+Its gain is set by the ratio of R2 to R1. The amplifier inverts the input polarity. Thus the ouput will be
+V(out) = -R2/R1*V(in) = -100*V(in).</p>
+          <picture><img src="./tutorial-images/fig10.png" alt=
+          "OpAmp amplifier" width="100%" height="auto"></picture>
+<p class="justified">           Fig. 10 Inverting amplifier with OpAmp</p>
+<p class="justified"> There is no model for OpAmps delivered with ngspice. So you have to search in the web for a device manufacturer's model, e.g. from the
+<a href="http://www.ti.com/lit/zip/snom255">TI web pages</a> as LF356.mod. A whealth of models for discretes and ICs from the early 2000s is available at the <a href="http://espice.ugr.es/espice/src/modelos_subckt/">espice spice model pages</a> and its sub-folders.</p>
+<p class="justified">If you have a look at LF356.mod, there you find the circuit assembled in a subcircuit (between the .subckt and the .ends lines) with name LF356 and 5 connecting nodes. </p>
+<p class="justified">How to add the LF356 model to the ngspice netlist? Copy the file LF356.mod into
+the folder that will also contain the netlist OpAmp.cir. Add the line <code>.include LF356.mod</code>
+to the netlist file OpAmp.cir. </p>
+
+<p class="justified">How to invoke the model in the netlist? This is done by an X line (see manual chapt. 2.4)
+like <code>XU1 3 2 7 4 6 LF356/NS</code>. The pin numbers correspond to the pins of the IC as found in its data sheet. We have decide to use the pin mubers as node names for the netlist. We might have chosen
+other net names as well. The circuit pin name/pin number pairs are
+(in)-/2 (in)+/3 V+/7 V-/4 out/6. The model requires a sequence
+<ul>
+<li>non-inverting input</li>
+<li>inverting input</li>
+<li>positive power supply</li>
+<li>negative power supply</li>
+<li>output</li>
+</ul>
+<p class="justified">as described in the model file. Therefore the nodes in the X line have to be ordered into this sequence, i.e. 3 2 7 4 6. The complete netlist now looks like:
+<pre>
+<code>
+.title Inverting OpAmp amplifier
+*file OpAmp.cir
+.include LF356.MOD
+XU1 3 2 7 4 6 LF356/NS
+R1 2 in 1k
+Vin in 0 dc 0 ac 1
+Vp 7 0 5
+Vm 4 0 -5
+Vin+ 3 0 0
+R2 6 2 100k
+.end
+</code>
+</pre>
+This time we want to do a dc simulation, that is we vary the input with a shlightly rising dc voltage
+and measure the output. One has to remember that the power supply delivers +-5 V, so the output can't be larger, and the amplification is -100. So we use the command <code>dc Vin -50m 50m 2m</code> to vary Vin
+from -50 mV to 50 mV with a step size of 2 mV. We may either add the command
+<pre>
+<code>
+.dc Vin -50m 50m 2m
+</code>
+</pre>
+to our netlist and use the GUI, or we add the .control section
+<pre>
+<code>
+.control
+dc Vin -50m 50m 2m
+plot v(in) v(6)
+.endc
+</code>
+</pre>
+to the netlist, cd into this input folder and run
+<pre>
+<code>
+ngspice OpAmp.cir
+</code>
+</pre>
+in the Cygwin or Linux console. The plotted output the is</p>
+          <picture><img src="./tutorial-images/fig11.png" alt=
+          "OpAmp amplifier" width="100%" height="auto"></picture>
+<p class="justified">           Fig. 11 OpAmp dc simulation in and out</p>
+<p class="justified">The input voltage variation is barely to be seen. 
+The OpAmp output saturates already at +-3V, far away from rail-to-rail which is possible
+with modern OpAmps.</p>
 <br>
 <br>
 <p class="justified">A final remark: If you want a GUI with schematic capture, we recommend 
