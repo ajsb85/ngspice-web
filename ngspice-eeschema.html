@@ -158,14 +158,14 @@ OpAmp amplifier that relies on an external OpAmp model for simulation.</p>
 <div id="setting"></div>
 <p class="header">1) Setting up Eeschema and ngspice</p>
 
-Highly recommended: Install the KiCad 5.0.2 release version from 
+Highly recommended: Install the KiCad 5.1.2 release version from 
 <a href="http://kicad-pcb.org/download/">http://kicad-pcb.org/download/</a>.
 
 <br>
 
-<p class="justified">How to make use of ngspice-30 in KiCad (instead of ngspice-26 delivered with KiCad 5.0.2)?</p>
+<p class="justified">How to make use of ngspice-30 in KiCad (instead of ngspice-27 delivered with KiCad 5.1.2)?</p>
 <p class="justified">If you are on MS Windows, do the following:</p>
-<p class="justified">After installing <a href="http://kicad-pcb.org/download/">KiCad 5.0</a>,
+<p class="justified">After installing <a href="http://kicad-pcb.org/download/">KiCad 5.1.2</a>,
 download the ngspice dll available in 
 <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/30/ngspice-30_dll_64.zip/download">
 ngspice-30_dll_64.zip</a>.</p>
@@ -427,12 +427,12 @@ This is a start, but there is still some improvement required in Eeschema.</p>
 <br>
 <div id="external"></div>
 <p class="header">6) Using external ngspice</p>
-<p class="justified">The Eeschema interface to ngspice is currently still rather limited. And unfortunately there is a bug in the Eeschema plotting procedures in KiCad version 5.1.0 that makes some plot looking ugly. And there is the ngspice update issue (ngspice-27 delivered instead of ngspice-30). Therefore it might be a good idea to use Eeschema for schematic capture (do the circuit design) and have it create the ngspice netlist, but then use the actual (or the nightly) standard ngspice executable for simulation.</p>
+<p class="justified">The Eeschema interface to ngspice is currently still rather limited. And there is the ngspice update issue (ngspice-27 delivered instead of ngspice-30). Therefore it might be a good idea to use Eeschema for schematic capture (do the circuit design) and have it create the ngspice netlist, but then use the actual (or the nightly) standard ngspice executable for simulation.</p>
 
 <p class="justified">A step by step approach for Windows 7 / 10 reads:</p>
 <li>Expand recent <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/30/ngspice-30_64.zip/download">ngspice</a> into directory C:\, so you have ngspice in C:\Spice64\bin.</li>
 
-<li>Install recent <a href="http://kicad-pcb.org/download/windows/">KiCad 5.1.0</a>.</li>
+<li>Install recent <a href="http://kicad-pcb.org/download/windows/">KiCad 5.1.2</a>.</li>
 
 <li>Copy C:\Program Files\KiCad\share\kicad\demos\simulation\laser_driver into C:\KiCad, to get C:\KiCad\laser_driver\. This just serves as an example for an arbitrary eeschema project placed into an arbitrary folder.</li>
 
