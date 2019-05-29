@@ -374,30 +374,32 @@ increasing frequency.</p>
 <br>
 <div id="digi"></div>
 <p class="header">5) Digital Simulation</p>
-<p class="justified">If you have only a few digital gates, you may pursue an analog simulation with digital
-gates described at transistor level. Currently I am not aware of calibrated fully functional and open
-source gate models. The semiconductor manufacturer Nexperia's models are not fully
-functional gates and may be used only for delay calculations. However, bobc started
-generating a basic <a href="https://github.com/bobc/kicad-simulation-examples">library</a>
-at transistor level.</p>
+<p class="justified">Three levels of digital simulation are available in ngspice, only
+two of them are currently supported by the KiCAD-ngspice interface.</p>
+<p class="justified">You may pursue a simulation with digital gates described at 
+transistor level. In reality this is an analog simulation. Simulation speed is 
+somewhat low, so this is o.k. if you have only a few gates.
+Currently I am not aware of calibrated fully functional and open source gate models. 
+However, bobc has started generating a basic 
+<a href="https://github.com/bobc/kicad-simulation-examples">library</a>
+at transistor level. </p>
 
-<p class="justified">There are some other simulation libs available for
-download, unfortunately only for Orcad or LTSPICE, both not compatible with ngspice.
-The gates comprise of lumped elements like special switches (e.g. A elements in LTSPICE,
-U elements in Orcad/PSPICE) that mimic the gate behavior like delay time, input levels 
+<p class="justified">Using XSPICE event based digital models,
+embedded in analog i/o structures, yields digital gate models with analog interface,
+that mimic the gate behavior like delay time, input levels 
 and output drive capability. This behavioral simulation offers higher simulation speed
 compared to transistor level gates.</p>
 
-<p class="justified">ngspice includes XSPICE that presents true digital event simulation capability, the
-fastest method so far. This is not (yet?) supported by KiCad, and you would need
-again a library reflecting actual circuit data.</p>
+<p class="justified">ngspice also presents true digital event simulation capability, the
+fastest method among the three, again by applying XSPICE. This is not yet supported by KiCad.</p>
 
-<p class="justified">Even if not very advanced and complete, let's start something. The symbol
+<p class="justified">Even if not very advanced and complete, let's start something using
+behavioral modeling. The symbol
 library (see Tools->Symbol Library Editor) is 74xx, and we choose the 74HC variant. Now we need
 a corresponding ngspice library. There is none available, so I started a behavioral lib
 <a href="http://ngspice.sourceforge.net/experimental/74HCng.lib"><strong>74HCng.lib</strong></a>,
-based on the LTSPICE lib, replacing the A devices by XSPICE logic. Each 74xx gate has an analog 
-input/output interface, with the event-based logic in between. Only very few gates are there
+derived from a LTSPICE lib, by replacing their A devices by XSPICE logic. Each 74xx gate has an analog 
+input/output interface, surrounding the internal event-based logic. Only very few gates are there
 right now, just for testing the basics. </p>
           <div id="topimage"><img src="./kicad-images/Fig11.jpg" alt=
           "Half Adder" width="100%" height="100%"></div>
