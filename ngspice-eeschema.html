@@ -158,20 +158,15 @@ OpAmp amplifier that relies on an external OpAmp model for simulation.</p>
 <div id="setting"></div>
 <p class="header">1) Setting up Eeschema and ngspice</p>
 
-Highly recommended: Install the KiCad 5.1.2 release version from 
+<p class="justified">Highly recommended: Install the KiCad 5.1.2 release version from 
 <a href="http://kicad-pcb.org/download/">http://kicad-pcb.org/download/</a>.
-
-<br>
-
-<p class="justified">How to make use of ngspice-30 in KiCad (instead of ngspice-27 delivered with KiCad 5.1.2)?</p>
-<p class="justified">If you are on MS Windows, do the following:</p>
-<p class="justified">After installing <a href="http://kicad-pcb.org/download/">KiCad 5.1.2</a>,
-download the ngspice dll available in 
-<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/30/ngspice-30_dll_64.zip/download">
-ngspice-30_dll_64.zip</a>.</p>
-<p class="justified">Copy msys-ngspice-0.dll from folder Spice64_dll\dll-mingw\ of the zip file into Programs\KiCad\bin. Within the bin folder remane libngspice-0.dll to libngspice-0-orig.dll. Now rename msys-ngspice-0.dll to libngspice-0.dll.</p>
-<p class="justified">Put a text file named .spiceinit into your user directory (C:\users\'your name', found also in
-environmental variable USERPROFILE). Add the two lines
+Since May 6th, 2019, ngspice-30 is delivered with this distribution. It is also
+available in all (Windows) nightlies.</p>
+<p class="justified">Put a text file named .spiceinit into your user directory (For Windows:
+C:\users\'your name', found also in
+environmental variable USERPROFILE, for Linux: home/username directory, found also in
+environmental variable HOME, for macOS: I don't know). 
+Add the two lines
 <pre>
 <code>
 * user provided init file
@@ -180,6 +175,16 @@ set ngbehavior=ps
 </pre>
 to .spiceinit. If the file name .spiceinit does not work for you, use the alternative file name spice.rc . 
 Then start or restart KiCad. And that's it!</p>
+<br>
+
+<p class="justified">If you happen to use an older version of KiCad and want to make use of ngspice-30,
+please read on. Otherwise skip downloading, and move on to chapt. 2.</p>
+<p class="justified">If you are on MS Windows, do the following:</p>
+<p class="justified">After installing <a href="http://kicad-pcb.org/download/">KiCad 5.1.2</a>,
+download the ngspice dll available in 
+<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/30/ngspice-30_dll_64.zip/download">
+ngspice-30_dll_64.zip</a>.</p>
+<p class="justified">Copy msys-ngspice-0.dll from folder Spice64_dll\dll-mingw\ of the zip file into Programs\KiCad\bin. Within the bin folder remane libngspice-0.dll to libngspice-0-orig.dll. Now rename msys-ngspice-0.dll to libngspice-0.dll.</p>
 
 <p class="justified">If you are using LINUX, please check if your distribution already
 offers the ngspice-30 shared library. If not, you may need to download 
@@ -193,14 +198,11 @@ sudo make install
 </code>
 </pre>
 </p>
-<p class="justified">Put the text file named .spiceinit into your home/username directory (found also in
-environmental variable HOME). In admin mode, it may be the root 
-directory. Add the two lines as noted above to the file. Then restart KiCad. 
-As an example, some details for Ubuntu are reported by
+<p class="justified">As an example, some details for Ubuntu are reported by
 <a href="https://forum.kicad.info/t/ngspice-28-for-kicad/10968/19">mifi</a>. Please check
 also chapt. 32.1 of the
 <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/30/ngspice-30-manual.pdf/download">ngspice manual</a>
-for prerequisites and procedures for compiling ngspice-30.</p>
+for prerequisites and procedures for compiling ngspice.</p>
 <p class="justified">MacOS users may need to do the same. We will check 
 if a compiled shared library can be made available with ngspice-31.</p>
 <br>
@@ -487,9 +489,7 @@ plot "/in" "/out"
 
     <div id="footer">
         <pframe>
-          <pic1><a href="http://sourceforge.net"><img src=
-          "http://sourceforge.net/sflogo.php?group_id=38962&amp;type=1" alt=
-          "SourceForge.net Logo" border="0" height="31" width="88"></a></pic1>
+          <pic1>Copyright: Holger Vogt</pic1>
           <pic2>All text is available under the terms of the <a class=
           "internal" href="http://www.gnu.org/licenses/fdl.html">GNU Free
           Documentation License</a></pic2>
