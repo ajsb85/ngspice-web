@@ -127,7 +127,8 @@
   <li> <a href="#BipAmp">Bipolar Amplifier</a></li> 
   <li> <a href="#OpAmp">Inverting Amplifier with OpAmp</a></li>
   <li> <a href="#digi">Digital Simulation</a></li>
-  <li> <a href="#external">Using external ngspice</a></li>  
+  <li> <a href="#external">Using external ngspice</a></li>
+  <li> <a href="#multi">Using a dual OpAmp</a></li>
 </ol> 
 <div id="intro"></div>
 <p class="header">Introduction</p>
@@ -138,8 +139,7 @@ electronic circuits, simulation, and plotting of the results.</p>
 
 <p class="justified">All experiments described here require using at
 least KiCad Version 5, and have been done with a MS Windows nightly.
-This tutorial reflects my first steps using the Eeschema GUI. Most
-items covered should be similar with KiCad/ngspice under LINUX.
+Most items covered should be similar with KiCad/ngspice under LINUX.
 For more detailed information on the Eeschema-ngspice interface and its usage,
 please check out the 
 <a href="http://docs.kicad-pcb.org/5.0.2/en/eeschema/eeschema.html#simulator">KiCad/Eeschema manual</a>.</p>
@@ -162,8 +162,9 @@ OpAmp amplifier that relies on an external OpAmp model for simulation.</p>
 <a href="http://kicad-pcb.org/download/">http://kicad-pcb.org/download/</a>.
 Since May 6th, 2019, ngspice-30 is delivered with this distribution. It is also
 available in all (Windows) nightlies.</p>
-<p class="justified">Put a text file named .spiceinit into your user directory (For Windows:
-C:\users\'your name', found also in
+<p class="justified">If you want to make use of PSPICE device models (often provided
+by the semicondctor companies), put a text file named .spiceinit into your user 
+directory (For Windows: C:\users\'your name', found also in
 environmental variable USERPROFILE, for Linux: home/username directory, found also in
 environmental variable HOME, for macOS: I don't know). 
 Add the two lines
@@ -425,7 +426,8 @@ The 74HC00 is a two input NAND gate * 4, however
 we have defined U2 ... U5, that is 4 different units (ICs). Normally you would design with 
 a single IC offering U2A ... U2D and U2E (power). Eeschema then asks for a NAND gate model 
 with 4*3+2 pins. Our simulation model in the 74HCng.lib has only 3 + 2 pins (in1 in2 out vcc gnd). 
-This is a start, but there is still some improvement required in Eeschema.</p>
+This is a start, but some more action is required to obtain suitable device models. For analog
+multi unit ICs, see chapter <a href="#multi">Using a dual OpAmp</a>.</p>
 
 <p class="justified">So digital simulation still will need some effort to become really useful in KiCad/ngspice.</p>
 <br>
@@ -482,6 +484,70 @@ plot "/in" "/out"
 <br>
 <br>
 <p class="justified">Voila: ngspice.exe simulates the file laser_driver.cir and plots the resulting output. </p>
+<br>
+<br>
+<div id="multi"></div>
+<p class="header">7) Using a Dual OpAmp</p>
+<p class="justified">As already seen in chapt.5, KiCad symbols and Spice model files 
+do not fit, if multi-part devices are designed in. Here as an example we want to set up a
+bandpass filter that adds two Sallen-Key filters. Such a low pass filter is distributed
+with KiCad in the folder "KiCad\share\kicad\demos\simulation\sallen_key". The bandpass
+will need two Sallen-Keys in series, on high-pass and one low-pass filter with
+suitable cut-off frequencies.</p>
+<p class="justified">For designing the filter, we need two operational amplifiers. 
+It is reasonable to select a dual OpAmp, e.g. a TI TL072 that contains two amplifiers 
+in an 8 pin package. Start the design in Eeschema by selecting the TL072 from
+the Amplifier_Operational library. Place all three units (UnitA as ampflifier
+1, UnitB as amp 2, and UnitC as the power pins). Select the passives, connections,
+ground, input voltage and power supply, as shown in fig. 16.</p>
+          <div id="topimage"><img src="./kicad-images/fig16-filter-diag.png" alt=
+          "Bandpass filter" width="100%" height="100%"></div>
+          Fig. 16   Bandpass filter with dual OpAmp
+<p class="justified">You need to add the spice model for the opamp. Download
+the model TL072.301 from the TI web pages. Unfortunately the model has only  5 pins 
+(in+, in-, v+, v- and out). However according to the TL072 data sheet and your 
+circuit design you will need 8 pins (1in+,1in-, v+, v-,1out, 
+2in+, 2in-, and 2out) and need calling the opamp model twice, because we have two
+amplifiers in our circuit. So you cannot use 
+the TI model TL072.301 directly, but need to convert it into a 2-opamp model version, 
+as the TL072 contains two opamps. The following code sequence demonstrates how this
+is done by a ngspice subcircuit.
+Put the code into a file TL072-dual.lib, store it in the same folder as the TL072.301.
+</p>
+<pre>
+<code>
+* A dual opamp ngspice model
+* file name: TL072-dual.lib
+.subckt TL072c 1out 1in- 1in+ vcc- 2in+ 2in- 2out vcc+
+.include TL072.301
+XU1A 1in+ 1in- vcc+ vcc- 1out TL072
+XU1B 2in+ 2in- vcc+ vcc- 2out TL072
+.ends
+</code>
+</pre>
+<p class="justified">The .subckt line contains 8 subcircuit nodes, following after 
+the ".subckt" token and the subcircuit name. The sequence of these nodes 
+(1out 1in- 1in+ vcc- 2in+ 2in- 2out vcc+) is chosen so that it fits the TL072 
+pin number sequence (1 2 3 4 5 6 7 8) as given in the data sheet.
+The .include line includes the TI model. The XU1A and XU1B lines are the instantiations of
+the two amplifiers. Their node sequence is determined by the model (see file TL072.301).
+Amp 1 uses 1out 1in- 1in+, amp 2 uses 2in+ 2in- 2out, the power pins are common for
+both amps. In fact the subcircuit transfers the pin numbers 1 - 8 via the nodes on
+the .subckt line to the proper nodes in the model.</p> 
+<p class="justified">
+You will need to add TL072-dual.lib as a subcircuit model to each unit of the amplifier
+IC (now called U1A, U1B and U1C in the Eeschma circuit drawing). This is done by double
+clicking onto each unit, and then selecting the button "Edit Spice Model...". 
+Eeschema automatically generates an instance of the complete TL072 with its nodes 1 - 8.
+Thus no "Alternative node squence" is required during editing the spice model in eeschema.
+If done, you are ready for simulating. The ac simulation result of the /bandpass node 
+(magnitude in dB and phase in degrees versus frequency) is presented in Fig. 17.
+          <div id="topimage"><img src="./kicad-images/fig17-filter-out.png" alt=
+          "Bandpass filter simulation output" width="100%" height="100%"></div>
+          Fig. 17   Bandpass filter ac simulation output
+</p>
+<br>
+<br>
         </div>
       </div>
     </div>
