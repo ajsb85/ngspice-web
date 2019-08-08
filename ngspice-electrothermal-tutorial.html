@@ -1,0 +1,565 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd"/>
+
+<html>
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Windows (vers 25 March 2009), see www.w3.org"/>
+
+  <title>ngspice tutorial for electro-thermal simulation</title>
+  <link rel="stylesheet" type="text/css" href="ngstyle2.css"/>
+  <meta name="generator" content="screem 0.12.2"/>
+  <meta name="author" content="Holger Vogt"/>
+  <meta http-equiv="Content-Type" content=
+  "text/html; charset=us-ascii"/>
+  <meta http-equiv="Content-Script-Type" content="text/javascript"/>
+  <meta http-equiv="Content-Style-Type" content="text/css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content=
+  "This tutorial describes the parallel simulation of electrical and thermal behavior of a circuit (electro-thermal modeling)."/>
+  <meta name="keywords" content=
+  "tutorial, ngspice, electro-thermal, circuit simulation, EDA, simulator, electronics, semiconductor"/>
+  </head>
+
+<body>
+  <div id="paper">
+    <div id="header">
+      <pframe>
+        <pic1><img src="./images/nglogo.jpg" alt="NGSPICE"></pic1>
+        <pic2><img src="./images/ngtext2.jpg" alt=
+        "Mixed mode - mixed level circuit simulator - based on Berkeley&#39;s Spice3f5"></pic2>
+        <pic3><a href="http://sourceforge.net/projects/ngspice"><img src=
+        "./images/ngsumD.jpg" alt="Developer Pages" border="0"></a></pic3>
+      </pframe>
+    </div>
+
+    <div id="navcontainer">
+      <ul id="navlist">
+        <li><a href="./index.html">Home</a></li>
+
+        <li><a href="./news.html">News</a></li>
+
+        <li><a href="./screens.html">Screenshots</a></li>
+
+        <li><a href="./download.html">Download</a></li>
+
+        <li><a href="./docs.html">Documentation</a></li>
+
+        <li><a href="./extras.html">Extras/Options</a></li>
+
+        <li><a href="./applic.html">Applications</a></li>
+
+        <li><a href="./devel.html">Development</a></li>
+
+        <li><a href="./resources.html">Simulation Environments</a></li>
+
+        <li><a href="./recipes.html">Recipes</a></li>
+
+      </ul>
+    </div>
+
+    <div id="left">
+      <div id="context">
+        <div id="contextcontent">
+          <p class="contextual title">XSPICE in ngspice</p>
+
+          <div id="menucontainer">
+            <ul id="menulist">
+              <li><a href="./xspice.html">What is XSPICE ?</a></li>
+
+              <li><a href="./xspicehowto.html">XSPICE and ngspice
+              HOWTO</a></li>
+            </ul>
+
+            <p class="contextual title">ngspice as shared library</p>
+
+            <ul id="menulist">
+              <li><a href="./shared.html">Short Intro</a></li>
+              <li><a href="./parallel.html">ngspice parallel</a></li>
+            </ul>
+
+            <p class="contextual title">CUSPICE</p>
+            <ul id="menulist">
+              <li><a href="./cuspice.html">CUSPICE Intro</a></li>
+            </ul>
+
+            <p class="contextual title">ADMS for ngspice</p>
+
+            <ul id="menulist">
+              <li><a href="./adms.html">What is ADMS ?</a></li>
+
+              <li><a href="./admshowto.html">ADMS and ngspice
+              HOWTO</a></li>
+            </ul>
+
+            <p class="contextual title">GSS-TCAD</p>
+
+            <ul id="menulist">
+              <li><a href="./gss.html">GSS</a></li>
+            </ul>
+
+            <p class="contextual title">TCLspice</p>
+
+            <ul id="menulist">
+              <li><a href="./tclspice.html">What is TCLspice
+              ?</a></li>
+
+              <li><a href="./tclusers.html">TCLspice users
+              manual</a></li>
+
+              <li><a href="./tclexamples.html">TCLspice by
+              examples</a></li>
+
+              <li><a href="./tclnotes.html">Designer's
+              note</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="main">
+        <div id="maincontent">
+<p class="header">Tutorial: ngspice electro-thermal simulation</p>
+<ol start="0">
+  <li> <a href="#intro">Introduction</a></li>
+  <li> <a href="#thermo">Thermal modeling</a></li>
+  <li> <a href="#rheat">A resistor is heated</a></li>
+  <li> <a href="#rheatsink">Resistor with heat sink</a></li>  
+  <li> <a href="#rheatmod">Resistor with thermal model</a></li>
+  <li> <a href="#thrunaway">Thermal runaway</a></li>
+  <li> <a href="#PowerMos">Power transistor with subcircuit model</a></li>
+  <li> <a href="#VDMOS">Power transistor with ngspice VDMOS model</a></li>
+  <li> <a href="#app">Appendix: Some equations</a></li>
+</ol>
+<div id="intro"></div>
+<p class="header">Introduction</p>
+<p class="justified">If you run an electronic circuit, a large amount of
+the electrical power put into it may be "lost", and converted to heat.
+The circuit may comprise of an integrated circuit, a discrete power
+transistor, or a passive resistor etc..</p>
+
+<p class="justified">This heat has to find a path to flow away. If this is
+not possible, that is the device is (more or less) thermally isolated,
+it will "heat up", or to be more precise, its temperature compared to
+its environment will rise continuously, unlimited (well, probably not, but
+rather limited by melting or evaporation).</p>
+
+<p class="justified">The heat flow will be best along a metal path, like
+the one offered by a heat sink, and is impeded if such cooling measures are
+missing. So there is a resistance against heat flow, less if we have
+a metal path, larger if we just have air cooling of the bare device.
+Less cooling capability, i.e. higher thermal resistance, will yield
+higher temperatures of the devices.</p>
+
+<p class="justified">This temperature increase (to be more precise: the
+increase of the temperature difference between the device and its
+environment) does not reach its final value immediately
+after the power has been switched on. It may take some
+time. If the power is removed, the temperature does not drop
+instantaneously, but again this will take some time. So there seems to be
+some heat storage mechanism, with charging and discharging phenomena.</p>
+<br>
+<br>
+<div id="thermo"></div>
+<p class="header">1) Thermal modeling</p>
+
+<p class="justified">If you look at the wording in the intro section above,
+several notions resemble what we are used to in electrical engineering, even
+if we talk about thermal issues. We have thermal resistance, similar
+to electrical, heat (flow) resembles current flow, the temperature difference,
+generated by a heat flow through a thermal resistor, sounds like a potential
+difference (aka voltage), charging and discharging a heat storage seems to
+be similar to charging or discharging a capacitor. And exactly that's it:
+we may model thermal effects with an electrical equivalent circuit. The
+following table lists the corresponding electrical and thermal terms. </p>
+
+<table>
+  <tr>
+    <th colspan="2" align="center">Thermal</th>
+    <th width=20p></th>
+    <th colspan="2" align="center">Electrical</th>
+  </tr>
+  <tr>
+    <td>Heat (dissipated power)</td>
+    <td>[W]</td>
+    <td width=20p></td>
+    <td>Current</td>
+    <td>[A]</td>
+  </tr>
+  <tr>
+    <td>Temperature difference</td>
+    <td>[&ordm;C] or [K]</td>
+    <td width=20p></td>
+    <td>Voltage</td>
+    <td>[V]</td>
+  </tr>
+  <tr>
+    <td>Thermal resistance</td>
+    <td>[W/K]</td>
+    <td width=20p></td>
+    <td>Electrical resistance</td>
+    <td>[V/A] or [&Omega;]</td>
+  </tr>
+  <tr>
+    <td>Thermal capacitance</td>
+    <td>[J/K]</td>
+    <td width=20p></td>
+    <td>Electrical capacitance</td>
+    <td>[As/V] or [F]</td>
+  </tr>
+</table>
+
+
+<p class="justified">For electro-thermal simulation we now will use two 
+circuit diagrams. The electronic circuit comprises of all the usual 
+devices like ICs, transistors, passive components etc. Simulating this circuit
+yiels the node voltages and branch currents, as usual. Especially for
+power transistors it is of interest to learn about their thermal
+behavior. So each of these devices will get its additional thermal circuit,
+comprising of a controlled current source as the heat source,
+resistors and capacitors to create the heat flow path (e.g. the 
+heat sink, or air cooling), and voltage sources to set temperatures.
+The thermal circuit delivers as a simulation result the temperatures
+for example of the transistor junction or channel T<sub>j</sub> and its 
+case temperature T<sub>c</sub>,
+when a specific ambient temperature T<sub>a</sub> is given.</p>
+<p class="justified">The first link between the two circuits is 
+that the electrical power dissipated by
+the electronic device sets the current (heat flow) in the thermal
+equivalent circuit. The second link is a feedback loop, in that the
+calculated junction temperature T<sub>j</sub> will influence the electrical behaviour
+of the device. This feedback however requires a device simulation model 
+that allows to set its temperature on the fly during the simulation, not only
+at the beginning, while setting up the simulation.</p>
+
+<br>
+<br>
+<div id="rheat"></div>
+<p class="header">2) A resistor is heated</p>
+
+<p class="justified">The first example is a simple resistor R1, with applied
+voltage V1, resulting in a dissipated power I1 * V1, where I1 is the current 
+through R1. The 0 V voltage source Vmeas serves to measure this current.</p>
+<p class="justified">In this example the resistor is assumed to be a surface mounted
+1206 device with 100 &Omega;. This small 1206 package, soldered to a pcb, will yield
+a thermal resistance of about 200 K/W. The heat will be taken away by air (via
+natural convection) and through the device's pads.</p> 
+<p class="justified">Our thermal circuits thus comprises of
+a current source equivalent to the electrical power (the Bq... line). The
+current flows through the resistor Rja that equals the thermal resistance,
+the ambient is at temperature tamb, set by the voltage source Vamb.</p>
+<p class="justified">The ngspice netlist contains both the electrical
+and the thermal circuits and some simulation controls:</p>
+<pre>
+<code>
+electro-thermal simple resistor
+* electrically heated resistor
+
+***electrical circuit**********
+*voltage V1 across resistor R1
+V1 1 0 dc 5
+*measure the current through R1
+Vmeas 11 1 0
+R1 11 0 100
+
+***thermal circuit*************
+*power (heat flow) to current
+Bq tj 0 I = i(Vmeas) * v(11)
+
+*thermal resistance from 1206 resistor to ambient 
+Rja tj tamb 200
+
+*ambient temperature
+Vamb tamb 0 40
+
+***simulation control**********
+.control
+op
+print tj
+.endc
+
+.end
+
+</code>
+</pre>
+<p class="justified">The result of the electrical circuit is a power 
+of 250 mW dissipated in the resistor as heat. This heat flows
+through the thermal resistance of 200 K/W, yielding a temperature
+difference of 50 K. The ambient temp is 40 &ordm;C, the resistor
+thus heats up to 90 &ordm;C.</p>
+<p class="justified">[1] <a href="https://www.vishay.com/docs/53048/pprachp.pdf">https://www.vishay.com/docs/53048/pprachp.pdf</a></p>
+
+<br>
+<br>
+<div id="rheatsink"></div>
+<p class="header">3) Resistor with heat sink</p>
+
+<p class="justified">The next example is a power resistor R1 in a TO263 package,
+mounted on a heat sink. Again a voltage V1 is applied, resulting in a dissipated 
+power I1 * V1, where I1 is the current 
+through R1. The 0 V voltage source Vmeas serves to measure this current.
+The thermal circuit is somewhat more complex now, so there is a circuit diagram
+shown below in Fig.1.</p>
+          <div id="topimage"><img src="./el-th-images/Fig1.png" alt=
+          "Resistor wit heat sink" width="100%" height="100%"></div>
+          Fig. 1
+<p class="justified">The thermal circuit starts on the left with
+the behavioral source Bq, issuing a current proportional to the
+dissipated power I1 * V1. The example power resistor D2TO35 has a 
+thermal resistance from its resistance layer (traditionally called "junction")
+to the outside case of 4.28 K/W. The capacitor Cj mimics the thermal capacitance 
+of the resistor chip in its TO263 package. This package is mounted to
+a heat sink by clipping or screwing, using thermal grease, that leads to a low
+thermal resistance between package and heat sink Rch of only 0.1 K/W. The
+heat sink is estimated to have a thermal resistance Rha = 5 K/W and a thermal capacitance 
+Ch = 0.3 J/K. The ambient temp is 40 &ordm;C. Of interest is the junction 
+temperature Tj, that is limited according to the data sheet to 175 &ordm;C.
+Fig. 2 shows the result of a dc simulation, varying the voltage on the
+10&Omega; resistor from 0 to 10 V. The curve plots the final temperature Tj,
+measured at node tj. Even at 10 V, yielding a power dissipation of 10 W,
+the temperature rises to no more than 134 &ordm;C,
+still below the specified maximum of 175 &ordm;C.</p>
+
+<table style="text-align: center; width: auto; height: auto;" border="0" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+          <td style="vertical-align: center;"><img src="./el-th-images/Fig2.png" alt=
+          "OpAmp circuit" width="95%" height=auto></td>
+          <td style="vertical-align: center;"><img src="./el-th-images/Fig3.png" alt=
+          "OpAmp circuit" width="95%" height=auto></td>
+    </tr>
+    <tr>
+          <td style="vertical-align: center;">Fig. 2</td>
+          <td style="vertical-align: center;">Fig. 3</td>
+    </tr>
+  </tbody>
+</table>
+<p class="justified">If you replace
+<pre>
+<code>
+.dc V1 0 10 1
+</code>
+</pre>
+by
+<pre>
+<code>
+.ic V(/tj) = 40
+.tran 0.02 2
+</code>
+</pre>
+then the temperature rise is simulated versus time. Fig. 3 
+is such a plot of T versus time. It takes 2 to 3 seconds 
+before the final temperature has been reached.</p>
+<p class="justified">The files to create fig. 1 and a commented 
+ngspice netlist are available <a href="./el-th-images/fig1.7z">here</a>.</p>
+<p class="justified">[2] Data sheet D2TO35: <a href="www.vishay.com/docs/51058/d2to35.pdf">www.vishay.com/docs/51058/d2to35.pdf</a></p>
+
+<br>
+<br>
+<div id="rheatmod"></div>
+<p class="header">4) Resistor with thermal model</p>
+<p class="justified">What is still missing in the examples so far is the 
+feedback loop. The device temperature, its "junction" temperature rises, 
+and this should have an influence on the device parameters. So for a metal
+thin film, if its temperatures rises, its resistance rises as well,
+again influencing the power dissipation, thus changing the temperature etc...,
+a classical feedback situation.</p>
+<p class="justified">Unfortunately the standard ngspice resistor (manual
+chapt. 3.2.1) model is not adequate, because the temperature dependencies 
+listed there are all static, that is they are evaluated before the simulation starts.
+We need a behavioral model, an electrical model that reads and takes into account 
+the (varying) junction temperature Tj during the simulation. This may be served by a subcircuit model,
+having 2 in/out nodes, a node tj for the junction temperature, and a
+node tcase for the case temperature. The junction temperature is what we are interested in,
+so we use this node tj to measure Tj. The case is the device's thermal
+connection, where to add the
+heat sink. If no heat sink is used, a (typically large) thermal resistance
+applies, given by natural convection around the device package.
+An example of such a subcircuit model is given below.</p>
+<pre>
+<code>
+* subcircuit resistor model
+.subckt resmod n1 n2 tj tcase rr=1 tcr1=0 tcr2=0
+***electrical circuit
+R1 n1 n22  R = {rr * (1 + tcr1 * V(tj, tref) + tcr2 * V(tj, tref) * V(tj, tref))}
+* measure the resistor current
+Vmeas n22 n2 0
+***thermal circuit
+*power to heat flow
+Bq tj tamb I = i(Vmeas) * v(n1, n2) *(-1)
+*thermal resistance from resistor (aka junction) to case
+Rjc tj tcase 0.72
+*thermal capacity of resistor
+Cth tj 0 3m   $ the die
+*internal minimum R case to ambient
+Rca tcase tamb 100 $ just an estimate, as if no heat sink is applied
+.ends
+</code>
+</pre>
+The main equation 
+<pre>
+<code>
+R1 n1 n22  R = {rr * (1 + tcr1 * V(tj, tref) + tcr2 * V(tj, tref) * V(tj, tref))}
+</code>
+</pre>
+calculates the resistance as function of the resistor layer temperature Tj
+(the junction), compared to the reference temperature Tref, where
+only the zero resistance rr applies. Linear (tcr1) and quadratic (tcr2) temperature
+coefficients determine the temperature behavior. The resistor may now be instantiated
+in the circuit by
+<pre>
+<code>
+XR1 1 0 tj tdev resmod rr=1 tcr1=0.05 tcr2=1e-4
+</code>
+</pre>
+Thus the feedbackloop is closed: Bq provides the power information, Tj rises do to the
+heat flow through the series of thermal resistances and finally feeds back the temperature
+to the device.
+The complete, commented ngspice netlist is available <a href="./el-th-images/el-th-chapt4.cir">here</a>.</p>
+<br>
+<br>
+<div id="thrunaway"></div>
+<p class="header">5) Thermal runaway</p>
+<p class="justified">The above example uses a resistor with a positive temperature
+coefficient, as it is typical in metals (well, somewhat exaggerated to show the effect, 
+tcr1=0.005 is closer to reality than 0.05). What will happen if we have a
+semiconductor resistor with negative coefficient, that is a rising temperature
+decreases the resistance, e.g. with linear coefficient -0.03/K?
+<pre>
+<code>
+XR1 1 0 tj tdev resmod rr=1 tcr1=-0.03 tcr2=1e-4
+</code>
+</pre>
+The result is shown in figs. 4 and 5:
+</p>
+<table style="text-align: center; width: auto; height: auto;" border="0" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+          <td style="vertical-align: center;"><img src="./el-th-images/Fig4.png" alt=
+          "OpAmp circuit" width="95%" height=auto></td>
+          <td style="vertical-align: center;"><img src="./el-th-images/Fig5.png" alt=
+          "OpAmp circuit" width="95%" height=auto></td>
+    </tr>
+    <tr>
+          <td style="vertical-align: center;">Fig. 4</td>
+          <td style="vertical-align: center;">Fig. 5</td>
+    </tr>
+  </tbody>
+</table>
+<p class="justified">As a function of the voltage applied to the resistor,
+the final junction temperature Tj rises faster and faster in Fig. 4, 
+above 0.75 V ngspice does not converge any more, the temperature rises beyond bounds.
+In Fig. 5 we have applied 1 V to the resistor and start the device simulation
+at an ambient temperature of 42 &ordm;C.
+The temperature rises versus time, finally beyond bounds. This is a typical
+thermal runaway that would lead to device destruction, if not limited
+externally.
+</p>
+<br>
+<br>
+<div id="PowerMos"></div>
+<p class="header">6) Power transistor with subcircuit model</p>
+<p class="justified">To optimize power electronic circuits, we want to use
+smaller transistors and less bulky heat sinks. On the other hand there is
+always heat generated in the transistor channels and junctions. Therefore 
+we need power transistor models with access to "heat" nodes and an internal
+feedback, as we have already seen in <a href="#rheatmod">chapt 4</a> for
+our temperature dependent resistor.</p>
+<p class="justified">Such a class of models is for example offered by
+Infineon with its Level3 subcircuit models for MOS power devices [3],
+[4]. The
+transistor now has 5 nodes. Besides D, G, and S we have tj and tcase.
+Heat is generated in the MOS channel (or junction in bipolar devices),
+its temperature is available and may be measured at node tj, 
+and is fed back internally 
+into the device equations. Within the transistor package the heat is
+flowing from the channel to the metal surface of the case, at node tcase.
+Here you may connect a heat sink, to offer a flow path for the heat
+away from the device. The internal heat resistance is Rjc (junction to
+case), a typical data sheet value. The model also includes the heat
+capacitance of the semiconductor die and package (typically not
+available in the data sheet, so to be estimated only).</p>
+<p class="justified">A simple circuit for characterizing a power MOS
+device is shown in fig. 6, together with its current and temperature
+simulations in fig. 7. The standard MOS symbol has been modified in
+fig. 6 (Drawing done with KiCad/Eeschema):
+Two extra nodes provide the connections to the thermal circuit. tj
+may be used to read the junction temperature. Reistor Rj is just
+a dummy load so Eeschema will not complain about not connected nodes.
+Rca is our heat sink with 1 K/W, connected between the transistor
+package metal back plate (the case) and the ambient temperature
+set to 42 &ordm;C by the voltage source Vamb.</p>
+<table style="text-align: center; width: auto; height: auto;" border="0" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+          <td style="vertical-align: center;"><img src="./el-th-images/IPP083N10N5-circ.png" alt=
+          "Transistor test circuit" width="95%" height=auto></td>
+          <td style="vertical-align: center;"><img src="./el-th-images/IPP083N10N5.png" alt=
+          "Transistor test circuit results" width="95%" height=auto></td>
+    </tr>
+    <tr>
+          <td style="vertical-align: center;">Fig. 6</td>
+          <td style="vertical-align: center;">Fig. 7</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="justified">And we may check the simulation results: At gate voltage
+4.31 V we have a drain current Id = 15.2 A. Multiplied by the 2 V drain voltage, 
+we get a power dissipation of 30.4 W. The internal Rjc is 1.1 K/W,
+the heat sink thermal resistance Rca is 1 K/W, the ambient temperature
+is 42 &ordm;C. The resulting junction temperature is calculated to
+Tj = P * (Rjc + Rca) + 42 &ordm;C = 105.8 &ordm;C, as we also roughly
+read from the graph of Tj. The case temperature follows as Tcase = P * Rca + 42 &ordm;C
+ = 72.1 &ordm;C. Besides other MOS devices [5] also GaN FETs [6] use such
+five-terminal models.</p>
+<p class="justified">[3] <a href="https://www.infineon.com/dgdl/Infineon-ApplicationNote_PowerMOSFET_SimulationModels-AN-v01_00-EN.pdf?fileId=5546d46250cc1fdf0151588db5ef1b18">https://www.infineon.com/dgdl/Infineon-ApplicationNote_PowerMOSFET_SimulationModels-AN-v01_00-EN.pdf</a></p>
+<p class="justified">[4] <a href="https://www.infineon.com/dgdl/Thermal+Modeling.pdf?fileId=db3a30431441fb5d011472fd33c70aa3">https://www.infineon.com/dgdl/Thermal+Modeling.pdf</a></p>
+<p class="justified">[5] <a href="https://www.onsemi.com/pub/Collateral/AN-7532.pdf.pdf">https://www.onsemi.com/pub/Collateral/AN-7532.pdf.pdf</a></p>
+<p class="justified">[6] <a href="https://gansystems.com/wp-content/uploads/2018/02/GN007-%E2%80%93-Modelling-Thermal-Behavior-of-GaNPX-packages-Using-RC-Thermal-SPICE-Models-Rev-180216.pdf">https://gansystems.com/wp-content/uploads/2018/02/GN007-%E2%80%93-Modelling-Thermal-Behavior-of-GaNPX-packages-Using-RC-Thermal-SPICE-Models-Rev-180216.pdf</a></p>
+<p class="justified">A small analog circuit, a 10 W power amplifier with 2 NMOS power 
+transistors in the output stage [7] serves as an example for the electro-thermal simulation.</p>
+<table style="text-align: center; width: auto; height: auto;" border="0" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+          <td style="vertical-align: center;"><img src="./el-th-images/Dual-NMOS-amp.png" alt=
+          "Dual NMOS amplifier" width="100%" height=auto></td>
+          <td style="vertical-align: center;"><img src="./el-th-images/Dual_NMOS_Temp.png" alt=
+          "Temperature in Dual NMS amplifier" width="100%" height=auto></td>
+    </tr>
+    <tr>
+          <td style="vertical-align: center;">Fig. 8</td>
+          <td style="vertical-align: center;">Fig. 9</td>
+    </tr>
+  </tbody>
+</table>
+<p class="justified">[7] <a href="http://www.tubecad.com/2009/08/blog0168.htm">http://www.tubecad.com/2009/08/blog0168.htm</a></p>
+
+<br>
+<br>
+<div id="VDMOS"></div>
+<p class="header">7) Power transistor with ngspice VDMOS model</p>
+<p class="justified">t.b.d.</p>
+
+<br>
+<br>
+<div id="app"></div>
+<p class="header">8) Appendix: Some equations</p>
+<p class="justified">t.b.d.</p>
+
+        </div>
+      </div>
+    </div>
+
+    <div id="footer">
+        <pframe>
+          <pic1>Copyright: Holger Vogt, 2019</pic1>
+          <pic2>All text is available under the terms of the <a class=
+          "internal" href="http://www.gnu.org/licenses/fdl.html">GNU Free
+          Documentation License</a></pic2>
+          <pic3><img src="./images/spice.jpg" alt=""></pic3>
+        </pframe>
+    </div>
+  </div>
+</body>
+</html>
