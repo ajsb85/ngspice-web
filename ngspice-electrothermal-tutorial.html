@@ -124,10 +124,12 @@
   <li> <a href="#intro">Introduction</a></li>
   <li> <a href="#thermo">Thermal modeling</a></li>
   <li> <a href="#rheat">A resistor is heated</a></li>
-  <li> <a href="#rheatsink">Resistor with heat sink</a></li>  
+  <li> <a href="#rheatsink">Resistor with heat sink</a></li>
   <li> <a href="#rheatmod">Resistor with thermal model</a></li>
   <li> <a href="#thrunaway">Thermal runaway</a></li>
   <li> <a href="#PowerMos">Power transistor with subcircuit model</a></li>
+  <li> <a href="#PowerAmp">Amplifier with Power MOS</a></li>
+  <li> <a href="#GaNBoost">Boost converter with GaN transistor</a></li>  
   <li> <a href="#VDMOS">Power transistor with ngspice VDMOS model</a></li>
   <li> <a href="#app">Appendix: Some equations</a></li>
 </ol>
@@ -210,25 +212,25 @@ following table lists the corresponding electrical and thermal terms. </p>
 </table>
 
 
-<p class="justified">For electro-thermal simulation we now will use two 
-circuit diagrams. The electronic circuit comprises of all the usual 
+<p class="justified">For electro-thermal simulation we now will use two
+circuit diagrams. The electronic circuit comprises of all the usual
 devices like ICs, transistors, passive components etc. Simulating this circuit
 yiels the node voltages and branch currents, as usual. Especially for
 power transistors it is of interest to learn about their thermal
 behavior. So each of these devices will get its additional thermal circuit,
 comprising of a controlled current source as the heat source,
-resistors and capacitors to create the heat flow path (e.g. the 
+resistors and capacitors to create the heat flow path (e.g. the
 heat sink, or air cooling), and voltage sources to set temperatures.
 The thermal circuit delivers as a simulation result the temperatures
-for example of the transistor junction or channel T<sub>j</sub> and its 
+for example of the transistor junction or channel T<sub>j</sub> and its
 case temperature T<sub>c</sub>,
 when a specific ambient temperature T<sub>a</sub> is given.</p>
-<p class="justified">The first link between the two circuits is 
+<p class="justified">The first link between the two circuits is
 that the electrical power dissipated by
 the electronic device sets the current (heat flow) in the thermal
 equivalent circuit. The second link is a feedback loop, in that the
 calculated junction temperature T<sub>j</sub> will influence the electrical behaviour
-of the device. This feedback however requires a device simulation model 
+of the device. This feedback however requires a device simulation model
 that allows to set its temperature on the fly during the simulation, not only
 at the beginning, while setting up the simulation.</p>
 
@@ -238,12 +240,12 @@ at the beginning, while setting up the simulation.</p>
 <p class="header">2) A resistor is heated</p>
 
 <p class="justified">The first example is a simple resistor R1, with applied
-voltage V1, resulting in a dissipated power I1 * V1, where I1 is the current 
+voltage V1, resulting in a dissipated power I1 * V1, where I1 is the current
 through R1. The 0 V voltage source Vmeas serves to measure this current.</p>
 <p class="justified">In this example the resistor is assumed to be a surface mounted
 1206 device with 100 &Omega;. This small 1206 package, soldered to a pcb, will yield
 a thermal resistance of about 200 K/W. The heat will be taken away by air (via
-natural convection) and through the device's pads.</p> 
+natural convection) and through the device's pads.</p>
 <p class="justified">Our thermal circuits thus comprises of
 a current source equivalent to the electrical power (the Bq... line). The
 current flows through the resistor Rja that equals the thermal resistance,
@@ -266,7 +268,7 @@ R1 11 0 100
 *power (heat flow) to current
 Bq tj 0 I = i(Vmeas) * v(11)
 
-*thermal resistance from 1206 resistor to ambient 
+*thermal resistance from 1206 resistor to ambient
 Rja tj tamb 200
 
 *ambient temperature
@@ -282,7 +284,7 @@ print tj
 
 </code>
 </pre>
-<p class="justified">The result of the electrical circuit is a power 
+<p class="justified">The result of the electrical circuit is a power
 of 250 mW dissipated in the resistor as heat. This heat flows
 through the thermal resistance of 200 K/W, yielding a temperature
 difference of 50 K. The ambient temp is 40 &ordm;C, the resistor
@@ -295,8 +297,8 @@ thus heats up to 90 &ordm;C.</p>
 <p class="header">3) Resistor with heat sink</p>
 
 <p class="justified">The next example is a power resistor R1 in a TO263 package,
-mounted on a heat sink. Again a voltage V1 is applied, resulting in a dissipated 
-power I1 * V1, where I1 is the current 
+mounted on a heat sink. Again a voltage V1 is applied, resulting in a dissipated
+power I1 * V1, where I1 is the current
 through R1. The 0 V voltage source Vmeas serves to measure this current.
 The thermal circuit is somewhat more complex now, so there is a circuit diagram
 shown below in Fig.1.</p>
@@ -305,14 +307,14 @@ shown below in Fig.1.</p>
           Fig. 1
 <p class="justified">The thermal circuit starts on the left with
 the behavioral source Bq, issuing a current proportional to the
-dissipated power I1 * V1. The example power resistor D2TO35 has a 
+dissipated power I1 * V1. The example power resistor D2TO35 has a
 thermal resistance from its resistance layer (traditionally called "junction")
-to the outside case of 4.28 K/W. The capacitor Cj mimics the thermal capacitance 
+to the outside case of 4.28 K/W. The capacitor Cj mimics the thermal capacitance
 of the resistor chip in its TO263 package. This package is mounted to
 a heat sink by clipping or screwing, using thermal grease, that leads to a low
 thermal resistance between package and heat sink Rch of only 0.1 K/W. The
-heat sink is estimated to have a thermal resistance Rha = 5 K/W and a thermal capacitance 
-Ch = 0.3 J/K. The ambient temp is 40 &ordm;C. Of interest is the junction 
+heat sink is estimated to have a thermal resistance Rha = 5 K/W and a thermal capacitance
+Ch = 0.3 J/K. The ambient temp is 40 &ordm;C. Of interest is the junction
 temperature Tj, that is limited according to the data sheet to 175 &ordm;C.
 Fig. 2 shows the result of a dc simulation, varying the voltage on the
 10&Omega; resistor from 0 to 10 V. The curve plots the final temperature Tj,
@@ -347,10 +349,10 @@ by
 .tran 0.02 2
 </code>
 </pre>
-then the temperature rise is simulated versus time. Fig. 3 
-is such a plot of T versus time. It takes 2 to 3 seconds 
+then the temperature rise is simulated versus time. Fig. 3
+is such a plot of T versus time. It takes 2 to 3 seconds
 before the final temperature has been reached.</p>
-<p class="justified">The files to create fig. 1 and a commented 
+<p class="justified">The files to create fig. 1 and a commented
 ngspice netlist are available <a href="./el-th-images/fig1.7z">here</a>.</p>
 <p class="justified">[2] Data sheet D2TO35: <a href="www.vishay.com/docs/51058/d2to35.pdf">www.vishay.com/docs/51058/d2to35.pdf</a></p>
 
@@ -358,20 +360,20 @@ ngspice netlist are available <a href="./el-th-images/fig1.7z">here</a>.</p>
 <br>
 <div id="rheatmod"></div>
 <p class="header">4) Resistor with thermal model</p>
-<p class="justified">What is still missing in the examples so far is the 
-feedback loop. The device temperature, its "junction" temperature rises, 
+<p class="justified">What is still missing in the examples so far is the
+feedback loop. The device temperature, its "junction" temperature rises,
 and this should have an influence on the device parameters. So for a metal
 thin film, if its temperatures rises, its resistance rises as well,
 again influencing the power dissipation, thus changing the temperature etc...,
 a classical feedback situation.</p>
 <p class="justified">Unfortunately the standard ngspice resistor (manual
-chapt. 3.2.1) model is not adequate, because the temperature dependencies 
+chapt. 3.2.1) model is not adequate, because the temperature dependencies
 listed there are all static, that is they are evaluated before the simulation starts.
-We need a behavioral model, an electrical model that reads and takes into account 
-the (varying) junction temperature Tj during the simulation. This may be served by a subcircuit model,
+We need a behavioral model, an electrical model that reads and takes into account
+the (varying) junction temperature T<sub>j</sub> during the simulation. This may be served by a subcircuit model,
 having 2 in/out nodes, a node tj for the junction temperature, and a
 node tcase for the case temperature. The junction temperature is what we are interested in,
-so we use this node tj to measure Tj. The case is the device's thermal
+so we use this node tj to measure T<sub>j</sub>. The case is the device's thermal
 connection, where to add the
 heat sink. If no heat sink is used, a (typically large) thermal resistance
 applies, given by natural convection around the device package.
@@ -396,13 +398,13 @@ Rca tcase tamb 100 $ just an estimate, as if no heat sink is applied
 .ends
 </code>
 </pre>
-The main equation 
+The main equation
 <pre>
 <code>
 R1 n1 n22  R = {rr * (1 + tcr1 * V(tj, tref) + tcr2 * V(tj, tref) * V(tj, tref))}
 </code>
 </pre>
-calculates the resistance as function of the resistor layer temperature Tj
+calculates the resistance as function of the resistor layer temperature T<sub>j</sub>
 (the junction), compared to the reference temperature Tref, where
 only the zero resistance rr applies. Linear (tcr1) and quadratic (tcr2) temperature
 coefficients determine the temperature behavior. The resistor may now be instantiated
@@ -412,7 +414,7 @@ in the circuit by
 XR1 1 0 tj tdev resmod rr=1 tcr1=0.05 tcr2=1e-4
 </code>
 </pre>
-Thus the feedbackloop is closed: Bq provides the power information, Tj rises do to the
+Thus the feedbackloop is closed: Bq provides the power information, T<sub>j</sub> rises do to the
 heat flow through the series of thermal resistances and finally feeds back the temperature
 to the device.
 The complete, commented ngspice netlist is available <a href="./el-th-images/el-th-chapt4.cir">here</a>.</p>
@@ -421,7 +423,7 @@ The complete, commented ngspice netlist is available <a href="./el-th-images/el-
 <div id="thrunaway"></div>
 <p class="header">5) Thermal runaway</p>
 <p class="justified">The above example uses a resistor with a positive temperature
-coefficient, as it is typical in metals (well, somewhat exaggerated to show the effect, 
+coefficient, as it is typical in metals (well, somewhat exaggerated to show the effect,
 tcr1=0.005 is closer to reality than 0.05). What will happen if we have a
 semiconductor resistor with negative coefficient, that is a rising temperature
 decreases the resistance, e.g. with linear coefficient -0.03/K?
@@ -447,7 +449,7 @@ The result is shown in figs. 4 and 5:
   </tbody>
 </table>
 <p class="justified">As a function of the voltage applied to the resistor,
-the final junction temperature Tj rises faster and faster in Fig. 4, 
+the final junction temperature T<sub>j</sub> rises faster and faster in Fig. 4,
 above 0.75 V ngspice does not converge any more, the temperature rises beyond bounds.
 In Fig. 5 we have applied 1 V to the resistor and start the device simulation
 at an ambient temperature of 42 &ordm;C.
@@ -461,7 +463,7 @@ externally.
 <p class="header">6) Power transistor with subcircuit model</p>
 <p class="justified">To optimize power electronic circuits, we want to use
 smaller transistors and less bulky heat sinks. On the other hand there is
-always heat generated in the transistor channels and junctions. Therefore 
+always heat generated in the transistor channels and junctions. Therefore
 we need power transistor models with access to "heat" nodes and an internal
 feedback, as we have already seen in <a href="#rheatmod">chapt 4</a> for
 our temperature dependent resistor.</p>
@@ -470,8 +472,8 @@ Infineon with its Level3 subcircuit models for MOS power devices [3],
 [4]. The
 transistor now has 5 nodes. Besides D, G, and S we have tj and tcase.
 Heat is generated in the MOS channel (or junction in bipolar devices),
-its temperature is available and may be measured at node tj, 
-and is fed back internally 
+its temperature is available and may be measured at node tj,
+and is fed back internally
 into the device equations. Within the transistor package the heat is
 flowing from the channel to the metal surface of the case, at node tcase.
 Here you may connect a heat sink, to offer a flow path for the heat
@@ -505,46 +507,139 @@ set to 42 &ordm;C by the voltage source Vamb.</p>
 </table>
 
 <p class="justified">And we may check the simulation results: At gate voltage
-4.31 V we have a drain current Id = 15.2 A. Multiplied by the 2 V drain voltage, 
+4.31 V we have a drain current Id = 15.2 A. Multiplied by the 2 V drain voltage,
 we get a power dissipation of 30.4 W. The internal Rjc is 1.1 K/W,
 the heat sink thermal resistance Rca is 1 K/W, the ambient temperature
 is 42 &ordm;C. The resulting junction temperature is calculated to
-Tj = P * (Rjc + Rca) + 42 &ordm;C = 105.8 &ordm;C, as we also roughly
-read from the graph of Tj. The case temperature follows as Tcase = P * Rca + 42 &ordm;C
+T<sub>j</sub> = P * (Rjc + Rca) + 42 &ordm;C = 105.8 &ordm;C, as we also roughly
+read from the graph of T<sub>j</sub>. The case temperature follows as T<sub>case</sub> = P * Rca + 42 &ordm;C
  = 72.1 &ordm;C. Besides other MOS devices [5] also GaN FETs [6] use such
 five-terminal models.</p>
 <p class="justified">[3] <a href="https://www.infineon.com/dgdl/Infineon-ApplicationNote_PowerMOSFET_SimulationModels-AN-v01_00-EN.pdf?fileId=5546d46250cc1fdf0151588db5ef1b18">https://www.infineon.com/dgdl/Infineon-ApplicationNote_PowerMOSFET_SimulationModels-AN-v01_00-EN.pdf</a></p>
 <p class="justified">[4] <a href="https://www.infineon.com/dgdl/Thermal+Modeling.pdf?fileId=db3a30431441fb5d011472fd33c70aa3">https://www.infineon.com/dgdl/Thermal+Modeling.pdf</a></p>
 <p class="justified">[5] <a href="https://www.onsemi.com/pub/Collateral/AN-7532.pdf.pdf">https://www.onsemi.com/pub/Collateral/AN-7532.pdf.pdf</a></p>
 <p class="justified">[6] <a href="https://gansystems.com/wp-content/uploads/2018/02/GN007-%E2%80%93-Modelling-Thermal-Behavior-of-GaNPX-packages-Using-RC-Thermal-SPICE-Models-Rev-180216.pdf">https://gansystems.com/wp-content/uploads/2018/02/GN007-%E2%80%93-Modelling-Thermal-Behavior-of-GaNPX-packages-Using-RC-Thermal-SPICE-Models-Rev-180216.pdf</a></p>
-<p class="justified">A small analog circuit, a 10 W power amplifier with 2 NMOS power 
-transistors in the output stage [7] serves as an example for the electro-thermal simulation.</p>
-<table style="text-align: center; width: auto; height: auto;" border="0" cellpadding="2" cellspacing="2">
+<br>
+<br>
+<div id="PowerAmp"></div>
+<p class="header">7) Amplifier with Power MOS</p>
+<p class="justified">A small analog circuit, a 10 W power amplifier with 2 NMOS power
+transistors in the output stage [7] serves as an example for the electro-thermal simulation.
+Again we are using the NMOS symbol with two extra thermal nodes. The nodes tj are
+tied to dummy load resistors, one can read the junction temperature here. Nodes tcase
+are connected to heat sinks, which have a thermal resistance and a thermal capacitance.
+The resulting KiCad/Eeschema and ngspice circuit files are available <a href="./el-th-images/Dual-NMOS-Amp.7z">here</a>.</p>
+<picture><img src="./el-th-images/Dual-NMOS-amp-2.png" alt=
+          "Dual NMOS amplifier" width="100%" height=auto></picture>
+<p class="justified">Fig. 8 Dual NMOS Amplifier</p>
+<br>
+The Eeschema circuit schematic is accompanied by a ngspice script (see fig. 9).
+This script allows simulating the circuit from within Eeschema as well as
+simulating it off-line by standard ngspice, starting with Eeschema by Tools-->
+Generate Netlist File...-->Spice-->Run Simulator, as has been described
+<a href="http://ngspice.sourceforge.net/ngspice-eeschema.html#external">here</a>.</p>
+<br>
+<table style=" width: auto; height: auto;" border="0" cellpadding="2" cellspacing="2">
   <tbody>
     <tr>
-          <td style="vertical-align: center;"><img src="./el-th-images/Dual-NMOS-amp.png" alt=
-          "Dual NMOS amplifier" width="100%" height=auto></td>
-          <td style="vertical-align: center;"><img src="./el-th-images/Dual_NMOS_Temp.png" alt=
-          "Temperature in Dual NMS amplifier" width="100%" height=auto></td>
+          <td style="vertical-align: center; text-align: left;">
+<pre>
+<code>
+.ic v(Tj1)=42 v(Tj2)=42
+.tran 200u 5
+.option RELTOL=.01 ABSTOL=1N VNTOL=1M
+.control
+set controlswait
+if $?sharedmode
+rusage
+else
+run
+rusage
+plot tj1 tj2 tcase1 tcase2
+plot in out
+end
+.endc
+</code>
+</pre>
+          </td>
+          <td style="vertical-align: center; text-align: right"><img src="./el-th-images/Dual_NMOS_Temp.png" alt=
+          "Temperature in Dual NMOS amplifier" width="90%" height=auto></td>
     </tr>
     <tr>
-          <td style="vertical-align: center;">Fig. 8</td>
-          <td style="vertical-align: center;">Fig. 9</td>
+          <td style="vertical-align: center; text-align: center">Fig. 9</td>
+          <td style="vertical-align: center; text-align: center">Fig. 10</td>
     </tr>
   </tbody>
 </table>
+<br>
+<br>
+<p class="justified"> A simulation showing the junction and case temperatures
+of both power MOS devices versus time is shown in fig. 10. Only after about 10 s the
+temperature has settled to a final value. Thermal time constants are in the seconds
+range, whereas the amplifier is driven by a 100 Hz signal. To achieve sufficient
+precision and allow a successful feedback loop, we have to simulate with high
+time resolution, e.g. 200 &micro;s. To cover 20 s of simulated time, a relatively
+large CPU time may be required.
+</p>
 <p class="justified">[7] <a href="http://www.tubecad.com/2009/08/blog0168.htm">http://www.tubecad.com/2009/08/blog0168.htm</a></p>
 
 <br>
 <br>
+<div id="GaNBoost"></div>
+<p class="header">8) Boost converter with GaN transistor</p>
+<p class="justified">Thermal models with nodes t<sub>j</sub> and t<sub>case</sub> are
+also availanble for the modern GaN power transistors. In Fig. 11 you find the circuit of
+a boost converter as published in 
+<a href="https://gansystems.com/wp-content/uploads/2018/02/GN007-%E2%80%93-Modelling-Thermal-Behavior-of-GaNPX-packages-Using-RC-Thermal-SPICE-Models-Rev-180216.pdf">[6]</a>.
+Input files are available <a href="./el-th-images/GaN-test.7z">here</a>.</p>
+<br>
+<table style=" width: auto; height: auto;" border="0" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+          <td style="vertical-align: center; text-align: right"><img src="./el-th-images//GaN-Boost.png" alt=
+          "Temperature in Dual NMOS amplifier" width="90%" height=auto></td>
+          <td style="vertical-align: center; text-align: right"><img src="./el-th-images/GaN-Boost-out.png" alt=
+          "Temperature in Dual NMOS amplifier" width="90%" height=auto></td>
+    </tr>
+    <tr>
+          <td style="vertical-align: center; text-align: center">Fig. 11</td>
+          <td style="vertical-align: center; text-align: center">Fig. 12</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+<p class="justified">Again we are using a special symbol, a FET with the 2 extra thermal nodes. The first
+10 ms after switching on lead to a temperature rising by 3.5 &ordm;C, not too bad with a heat
+sink having only 10 K/W. This is not the temperature end point, the curve in Fig. 12 is still rising. But
+since this simulation took already about half an hour, catching the full heating up will
+require more than 5 hours of real time. Well, this needs to be done once to get an idea
+of the thermal behaviour. The input file allows using internal as well as 
+<a href="http://ngspice.sourceforge.net/ngspice-eeschema.html#external">external ngspice</a>.</p>
+<p class="justified">The large amount of data requires some special handling. So here we do not store
+the whole amount of data (10m/2n = 5 Mio. time points), but interpolate and save only 5000 time
+points. This is achieved by the two input lines
+<pre>
+<code>
+.tran 2u 10m 0 2n
+* tstep tstop tstart tmax
+.option interp
+</code>
+</pre>
+(tstop-tstart)/tstep = 5000 sets the number of time steps after interpolation. Interpolation
+is iniated by the interp option. tmax = 2n sets the
+maximum time step during simulation. The small value is necessary to catch the fast voltage
+excursions during simulation.</p>
+<br>
+<br>
 <div id="VDMOS"></div>
-<p class="header">7) Power transistor with ngspice VDMOS model</p>
+<p class="header">9) Power transistor with ngspice VDMOS model</p>
 <p class="justified">t.b.d.</p>
 
 <br>
 <br>
 <div id="app"></div>
-<p class="header">8) Appendix: Some equations</p>
+<p class="header">10) Appendix: Some equations</p>
 <p class="justified">t.b.d.</p>
 
         </div>
