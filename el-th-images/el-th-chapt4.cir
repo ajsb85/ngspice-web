@@ -1,0 +1,57 @@
+electro-thermal simulation
+*subcircuit model
+*resistor with temperature dependent resistance
+
+* the ambient temperature
+.global tamb
+.param vtamb =  42
+Vamb tamb 0 {vtamb}
+
+*The reference temperature for our model
+.global tref
+.param vref = 27
+Vref tref 0 {vref}
+
+***electrical circuit
+*voltage V1 across resistor R1
+V1 1 0 5
+
+* the resistor (instance of subcircuit model)
+* nodes: node1, node2, tjunction, tcase
+* params: zero-resistance, tempco-linear, tempco-quadratic
+XR1 1 0 tj tdev resmod rr=1 tcr1=0.05 tcr2=1e-4
+
+.ic v(tj) = {vtamb}
+
+* subcircuit resistor model
+.subckt resmod n1 n2 tj tcase rr=1 tcr1=0 tcr2=0
+***electrical circuit
+R1 n1 n22  R = {rr * (1 + tcr1 * V(tj, tref) + tcr2 * V(tj, tref) * V(tj, tref))}
+* measure the resistor current
+Vmeas n22 n2 0
+***thermal circuit
+*power to heat flow
+Bq tj tamb I = i(Vmeas) * v(n1, n2) *(-1)
+*thermal resistance from resistor (aka junction) to case
+Rjc tj tcase 0.72
+*thermal capacity of resistor
+Cth tj 0 3m   $ the die
+*internal minimum R case to ambient
+Rca tcase tamb 100 $ just an estimate, as if no heat sink is applied
+.ends
+
+*heat sink from device case to ambient
+*some heatsink data http://www.giangrandi.ch/electronics/thcalc/thcalc.shtml
+Rhs tdev tamb 5
+Chs tdev 0 300m
+
+.control
+dc V1 0 10 0.1
+settype temperature tj
+plot tj
+tran 10m 5
+settype temperature tj
+plot tj
+.endc
+
+.end
