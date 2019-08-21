@@ -587,6 +587,8 @@ large CPU time may be required.
 <br>
 <div id="GaNBoost"></div>
 <p class="header">8) Boost converter with GaN transistor</p>
+<p class="justified">A warning: simulation in this chapter requires the experimental ngspice
+as is offered in the <a href="https://sourceforge.net/p/ngspice/ngspice/ci/pre-master/tree/">pre-master branch</a>.</p>
 <p class="justified">Thermal models with nodes t<sub>j</sub> and t<sub>case</sub> are
 also availanble for the modern GaN power transistors. In Fig. 11 you find the circuit of
 a boost converter as published in 
@@ -640,7 +642,34 @@ excursions during simulation.</p>
 <br>
 <div id="app"></div>
 <p class="header">10) Appendix: Some equations</p>
-<p class="justified">t.b.d.</p>
+<p class="header">10.1 Thermal resistance</p>
+<p><em>R<sub>th</sub> = d/(k&middot;A)</em></p>
+<blockquote>
+<p><em>d</em> path length</p>
+<p><em>A</em> area</p>
+<p><em>k </em>thermal conductivity</p>
+</blockquote>
+<br>
+<p class="header">10.2 Thermal capacitance</p>
+<p><em>C<sub>th</sub> = A &middot; d&middot; c &middot; &rho;</em></p>
+<blockquote>
+<p><em>d </em>thickness</p>
+<p><em>A</em> area</p>
+<p><em>c</em> specific heat capacity</p>
+<p><em>&rho; </em>density</p>
+</blockquote>
+<br>
+<p class="header">10.3 Temperature increase of junction and case against ambient temperature</p>
+<p><em>T<sub>j</sub> = P&middot;(R<sub>jc</sub> + R<sub>ch</sub> + R<sub>ha</sub>) + T<sub>amb</sub></em></p>
+<p><em>T<sub>case</sub> = P&middot;(R<sub>ch</sub> + R<sub>ha</sub>) + T<sub>amb</sub></em></p>
+<blockquote>
+<p><em>T<sub>j</sub></em> Junction temperature</p>
+<p><em>P</em> Electrical power dissipated</p>
+<p><em>R<sub>jc</sub></em> Thermal resistance juntion-to-case</p>
+<p><em>R<sub>ch</sub></em> Thermal resistance case-to-heatsink</p>
+<p><em>R<sub>ha</sub></em> Thermal resistance heatsink to ambient</p>
+<p><em>T<sub>amb</sub></em> Ambient temperature </p>
+</blockquote>
 
         </div>
       </div>
