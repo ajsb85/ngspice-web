@@ -515,10 +515,10 @@ T<sub>j</sub> = P * (Rjc + Rca) + 42 &ordm;C = 105.8 &ordm;C, as we also roughly
 read from the graph of T<sub>j</sub>. The case temperature follows as T<sub>case</sub> = P * Rca + 42 &ordm;C
  = 72.1 &ordm;C. Besides other MOS devices [5] also GaN FETs [6] use such
 five-terminal models.</p>
-<p class="justified">[3] <a href="https://www.infineon.com/dgdl/Infineon-ApplicationNote_PowerMOSFET_SimulationModels-AN-v01_00-EN.pdf?fileId=5546d46250cc1fdf0151588db5ef1b18">https://www.infineon.com/dgdl/Infineon-ApplicationNote_PowerMOSFET_SimulationModels-AN-v01_00-EN.pdf</a></p>
-<p class="justified">[4] <a href="https://www.infineon.com/dgdl/Thermal+Modeling.pdf?fileId=db3a30431441fb5d011472fd33c70aa3">https://www.infineon.com/dgdl/Thermal+Modeling.pdf</a></p>
-<p class="justified">[5] <a href="https://www.onsemi.com/pub/Collateral/AN-7532.pdf.pdf">https://www.onsemi.com/pub/Collateral/AN-7532.pdf.pdf</a></p>
-<p class="justified">[6] <a href="https://gansystems.com/wp-content/uploads/2018/02/GN007-%E2%80%93-Modelling-Thermal-Behavior-of-GaNPX-packages-Using-RC-Thermal-SPICE-Models-Rev-180216.pdf">https://gansystems.com/wp-content/uploads/2018/02/GN007-%E2%80%93-Modelling-Thermal-Behavior-of-GaNPX-packages-Using-RC-Thermal-SPICE-Models-Rev-180216.pdf</a></p>
+<p>[3] <a href="https://www.infineon.com/dgdl/Infineon-ApplicationNote_PowerMOSFET_SimulationModels-AN-v01_00-EN.pdf?fileId=5546d46250cc1fdf0151588db5ef1b18">https://www.infineon.com/dgdl/Infineon-ApplicationNote_PowerMOSFET_SimulationModels-AN-v01_00-EN.pdf</a></p>
+<p>[4] <a href="https://www.infineon.com/dgdl/Thermal+Modeling.pdf?fileId=db3a30431441fb5d011472fd33c70aa3">https://www.infineon.com/dgdl/Thermal+Modeling.pdf</a></p>
+<p>[5] <a href="https://www.onsemi.com/pub/Collateral/AN-7532.pdf.pdf">https://www.onsemi.com/pub/Collateral/AN-7532.pdf.pdf</a></p>
+<p>[6] <a href="https://gansystems.com/wp-content/uploads/2018/02/GN007-%E2%80%93-Modelling-Thermal-Behavior-of-GaNPX-packages-Using-RC-Thermal-SPICE-Models-Rev-180216.pdf">https://gansystems.com/wp-content/uploads/2018/02/GN007-%E2%80%93-Modelling-Thermal-Behavior-of-GaNPX-packages-Using-RC-Thermal-SPICE-Models-Rev-180216.pdf</a></p>
 <br>
 <br>
 <div id="PowerAmp"></div>
@@ -588,7 +588,7 @@ large CPU time may be required.
 <div id="GaNBoost"></div>
 <p class="header">8) Boost converter with GaN transistor</p>
 <p class="justified">A warning: simulation in this chapter requires the experimental ngspice
-as is offered in the <a href="https://sourceforge.net/p/ngspice/ngspice/ci/pre-master/tree/">pre-master branch</a>.</p>
+as is offered in the <a href="https://sourceforge.net/p/ngspice/ngspice/ci/master/tree/">master branch</a>.</p>
 <p class="justified">Thermal models with nodes t<sub>j</sub> and t<sub>case</sub> are
 also availanble for the modern GaN power transistors. In Fig. 11 you find the circuit of
 a boost converter as published in 
@@ -631,7 +631,15 @@ points. This is achieved by the two input lines
 (tstop-tstart)/tstep = 5000 sets the number of time steps after interpolation. Interpolation
 is iniated by the interp option. tmax = 2n sets the
 maximum time step during simulation. The small value is necessary to catch the fast voltage
-excursions during simulation.</p>
+excursions during simulation for this example. After 0.5 s (approx. 5 hours of ngspice CPU time) the temperature 
+has settled to 71 &ordm;C (T<sub>j</sub>) and 69 &ordm;C (T<sub>case</sub>). This may be
+achieved by a simulation command
+<pre>
+<code>
+.tran 100u 500m 0 2n
+</code>
+</pre>
+</p>
 <br>
 <br>
 <div id="VDMOS"></div>
@@ -670,7 +678,8 @@ excursions during simulation.</p>
 <p><em>R<sub>ha</sub></em> Thermal resistance heatsink to ambient</p>
 <p><em>T<sub>amb</sub></em> Ambient temperature </p>
 </blockquote>
-
+<p class="justified">More details are available for example in [8].</p>
+<p>[8] <a href="https://www.fischerelektronik.de/fileadmin/fischertemplates/download/Katalog/technischeerlaeuterungen_e.pdf">https://www.fischerelektronik.de/fileadmin/fischertemplates/download/Katalog/technischeerlaeuterungen_e.pdf</a></p>
         </div>
       </div>
     </div>
