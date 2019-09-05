@@ -128,6 +128,7 @@
   <li> <a href="#OpAmp">Inverting Amplifier with OpAmp</a></li>
   <li> <a href="#digi">Digital Simulation</a></li>
   <li> <a href="#external">Using external ngspice</a></li>
+  <li> <a href="#external2">Enhancing the script for use with both internal or external ngspice</a></li>
   <li> <a href="#multi">Using a dual OpAmp</a></li>
 </ol> 
 <div id="intro"></div>
@@ -158,10 +159,12 @@ OpAmp amplifier that relies on an external OpAmp model for simulation.</p>
 <div id="setting"></div>
 <p class="header">1) Setting up Eeschema and ngspice</p>
 
-<p class="justified">Highly recommended: Install the KiCad 5.1.2 release version from 
+<p class="justified">Highly recommended: Install the KiCad 5.1.4 release version from 
 <a href="http://kicad-pcb.org/download/">http://kicad-pcb.org/download/</a>.
-Since May 6th, 2019, ngspice-30 is delivered with this distribution. It is also
-available in all (Windows) nightlies.</p>
+Ngspice-30 is delivered with this distribution. It is also
+available in all (Windows) nightlies. Some Linux distributions, e.g. 
+<a href="https://software.opensuse.org/distributions/tumbleweed">OpenSUSE Tumbleweed</a>, offer KiCad
+5.1.4 with ngpice-30 as well.</p>
 <p class="justified">If you want to make use of PSPICE device models (often provided
 by the semicondctor companies), put a text file named .spiceinit into your user 
 directory (For Windows: C:\users\'your name', found also in
@@ -491,8 +494,38 @@ plot "/in" "/out"
 <p class="justified">Voila: ngspice.exe simulates the file laser_driver.cir and plots the resulting output. </p>
 <br>
 <br>
+<div id="external2"></div>
+<p class="header">7) Enhancing the script for use with both internal or external ngspice</p>
+<p class="justified">If you replace the text box in the example from above by the following script</p>
+<pre>
+<code>
+.tran 10p 150n
+.control
+pre_set noinit
+set controlswait
+if $?sharedmode
+  version
+  rusage time
+else
+  run
+  rusage
+  set filetype=ascii
+  write c:\Kicad\laser.out "/in" "/out"
+  plot "/in" "/out"
+end
+.endc 
+</code>
+</pre>
+<p class="justified">you may either select the internal ngspice simulator
+(Eeschema-->Tools-->Simulator-->Run Simulation) or the <a href="#external">external ngspice simulator</a>
+(Eeschema-->Tools-->Generate Netlist File...-->Spice-->Run Simulator.
+For information on the commands used in the script, please have a look
+at chapter 17.5 of the
+<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/30/ngspice-30-manual.pdf/download">ngspice manual</a>.</p>
+<br>
+<br>
 <div id="multi"></div>
-<p class="header">7) Using a Dual OpAmp</p>
+<p class="header">8) Using a Dual OpAmp</p>
 <p class="justified">As already seen in chapt.5, KiCad symbols and Spice model files 
 do not fit, if multi-part devices are designed in. Here as an example we want to set up a
 bandpass filter that adds two Sallen-Key filters. Such a low pass filter is distributed
