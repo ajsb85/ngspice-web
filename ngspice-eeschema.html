@@ -184,11 +184,11 @@ Then start or restart KiCad. And that's it!</p>
 <p class="justified">If you happen to use an older version of KiCad and want to make use of ngspice-30,
 please read on. Otherwise skip downloading, and move on to chapt. 2.</p>
 <p class="justified">If you are on MS Windows, have installed 64 bit KiCad and want to upgrade from 
-ngspice-27 to 30, you just have to replace libngspice-0.dll in KiCad/bin folder by the new ngspice dll.
+ngspice-27 to 31, you just have to replace libngspice-0.dll in KiCad/bin folder by the new ngspice dll.
 This procedure will not work for 32 bit KiCad, there is no 32 bit dll replacement available.
 To upgrade do the following:</p>
 <p class="justified">Download the ngspice dll available in 
-<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/30/ngspice-30_dll_64.zip/download">
+<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/31/ngspice-30_dll_64.zip/download">
 ngspice-30_dll_64.zip</a>.</p>
 <p class="justified">Copy msys-ngspice-0.dll from folder Spice64_dll\dll-mingw\ of the zip file into 
 the folder Programs\KiCad\bin. Within the KiCad\bin folder rename the existing old libngspice-0.dll
@@ -196,7 +196,7 @@ to libngspice-0-orig.dll. Now rename msys-ngspice-0.dll to libngspice-0.dll and 
 
 <p class="justified">If you are using LINUX, please check if your distribution already
 offers the ngspice-30 shared library. If not, you may need to download 
-<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/30/ngspice-30.tar.gz/download">ngspice-30.tar.gz</a>
+<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/31/ngspice-31.tar.gz/download">ngspice-31.tar.gz</a>
 and compile the shared library with
 <pre>
 <code>
@@ -211,8 +211,7 @@ sudo make install
 also chapt. 32.1 of the
 <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/30/ngspice-30-manual.pdf/download">ngspice manual</a>
 for prerequisites and procedures for compiling ngspice.</p>
-<p class="justified">MacOS users may need to do the same. We will check 
-if a compiled shared library can be made available with ngspice-31.</p>
+<p class="justified">MacOS users may need to do the same.</p>
 <br>
 <br>
 <div id="rc"></div>
