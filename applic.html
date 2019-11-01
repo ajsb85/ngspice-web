@@ -6,7 +6,7 @@
   <meta name="generator" content=
   "HTML Tidy for Windows (vers 25 March 2009), see www.w3.org">
 
-  <title>Ngspice, the open source Spice circuit simulator - Some applications</title>
+  <title>Ngspice, the open source Spice circuit simulator - Some applications and tests</title>
   <link rel="stylesheet" type="text/css" href="ngstyle2.css">
   <meta name="generator" content="screem 0.12.2">
   <meta name="author" content="Paolo Nenzi">
@@ -18,7 +18,7 @@
   <meta name="description" content=
   "Contributions to ngspice circuit simulator">
   <meta name="keywords" content=
-  "spice, spice3,spice3f,spice3f5, circuit, EDA, simulator, electronics, semiconductor">
+  "spice, spice3,spice3f5, circuit, EDA, simulator, electronics, semiconductor">
   </head>
 
 <body>
@@ -66,7 +66,6 @@
 
           <div id="menucontainer">
             <ul id="menulist">
-              <li><a href="applic.html#intro">Introduction</a></li>
 
               <li><a href="applic.html#smp">Switch-Mode
               Converters</a></li>
@@ -80,15 +79,28 @@
               <li><a href="applic.html#memr">Memristor</a></li>
             </ul>
           </div>
+          <p class="contextual title">Ngspice Tests</p>
+
+          <div id="menucontainer">
+            <ul id="menulist">
+
+              <li><a href="applic.html#KiCad">Test circuits for
+              KiCad Eeschema/ngspice</a></li>
+
+              <li><a href="applic.html#para">Valgrind test
+              with various netlists (Linux)</a></li>
+
+            </ul>
+          </div>
         </div>
       </div>
 
       <div id="main">
         <div id="maincontent">
           <p class="header"><a name="intro" id=
-          "intro"></a>Introduction</p>
+          "appl"></a>_____ Applications _____</p>
 
-          <p class="justified">This page contains links to ngspice
+          <p class="justified">This section contains links to ngspice
           applications or short paragraphs describing the usage of
           ngspice. Its content will grow over time. You are welcome
           to contribute!</p>
@@ -123,7 +135,32 @@
           <p class="header"><a name="memr" id=
           "memr"></a>Memristor</p>
           <p class="justified"><a href=
-          "./xspicehowto.html#memr">Memristor</a></p>		  
+          "./xspicehowto.html#memr">Memristor</a></p>
+          <br>
+          <p class="header"><a name="intro" id=
+          "test"></a>_____ Tests _____</p>
+
+          <p class="justified">In this section you will find some
+          test circuits as netlists or Eeschema input files. Again 
+          you are welcome to contribute!</p>
+          
+          <p class="header"><a name="para" id="para"></a>Paranoia</p>
+          <p class="justified"> <a href="./tests/paranoia.7z">Paranoia tests</a>
+          were suggested by Dietmar
+          Warning. A large number of ngspice netlists has been assembled,
+          a script ./paranoia_tests.sh will run these examples under Valgrind
+          and summarize the results. Valgrind will detect memory leaks
+          (a few are still there, new ones may be introduced during code 
+          development). Unfortunately Valgrind is not available for MS Windows.
+          Thus Linux is required to run the script. Running the tests, being paranoid,
+          is a good attitude if large code changes are to be released.</p>
+
+          <p class="header"><a name="KiCad" id="KiCad"></a>Test circuits for simulation in KiCad</p>
+          <p class="justified">KiCad/Eeschema uses the ngspice shared library to
+          allow simulating electronic circuits directly from the circuit diagram.
+          <a href="./tests/kicad-test-circuits.7z">kicad-test-circuits.7z</a>
+          contains several circuits, simple and more sophisticated ones
+          to test the eeschema-ngspice couple, including expected results.</p>
         </div>
       </div>
     </div>
