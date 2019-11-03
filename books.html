@@ -7,13 +7,14 @@
   "HTML Tidy for Windows (vers 25 March 2009), see www.w3.org">
 
   <title>Ngspice circuit simulator - Books on spice</title>
-  <link rel="stylesheet" type="text/css" href="ngstyle.css">
+  <link rel="stylesheet" type="text/css" href="ngstyle2.css">
   <meta name="generator" content="screem 0.12.2">
   <meta name="author" content="Paolo Nenzi">
   <meta http-equiv="Content-Type" content=
   "text/html; charset=us-ascii">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
   <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content=
   "Books on spice circuit simulator">
   <meta name="keywords" content=
@@ -23,27 +24,19 @@
 <body>
   <div id="paper">
     <div id="header">
-      <table border="0" align="center" cellspacing="1" cellpadding=
-      "1" width="100%">
-        <tr>
-          <td><img src="./images/nglogo.jpg" alt="NGSPICE"></td>
 
-          <td><img src="./images/ngtext.jpg" alt=
-          "Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5"></td>
+  <pframe>
+    <pic1>
+      <img src="./images/nglogo.jpg" alt="NGSPICE">
+    </pic1>
+    <pic2>
+      <img src="./images/ngtext2.jpg" alt="Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5">
+    </pic2>
+    <pic3>
+     <a href="http://sourceforge.net/projects/ngspice"><img src="./images/ngsumD.jpg" alt="Developer Pages" border="0"></a>
+    </pic3>
+  </pframe>
 
-          <td>
-            <table border="0">
-
-              <tr>
-                <td><a href=
-                "http://sourceforge.net/projects/ngspice"><img src=
-                "./images/ngsumD.jpg" alt="Summary" border=
-                "0"></a></td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
     </div>
 
     <div id="navcontainer">
@@ -66,8 +59,8 @@
         <li><a href="./resources.html">Simulation Environments</a></li>
 
         <li><a href="./recipes.html">Recipes</a></li>
-		
-        <li><a href="./contrib.html">Contributions</a></li>		
+
+        <li><a href="./contrib.html">Contributions</a></li>
       </ul>
     </div>
 
@@ -95,6 +88,69 @@
           with Spice (and thus ngspice) and circuit simulation. The
           following list is neither complete nor representative of
           the available literature. Suggestions are welcome!</p>
+
+          <div id="book">
+            <div id="btitle">
+              <a name="8" id="8"></a>
+			  Analog Integrated Circuit Design by Simulation: Techniques, Tools, and Methods
+            </div>
+
+            <div id="bitem">
+              Author:
+            </div>
+
+            <div id="bauthor">
+               Ugur Cilingiroglu
+            </div>
+
+            <div id="bitem">
+              Publisher:
+            </div>
+
+            <div id="bpublisher">
+              McGraw-Hill Education
+            </div>
+
+            <div id="bitem">
+              Date:
+            </div>
+
+            <div id="bpubdate">
+              2019
+            </div>
+
+            <div id="bitem">
+              ISBN:
+            </div>978-1260441451
+
+            <div id="ISBN"></div>
+
+            <div id="breview">
+              <p>This comprehensive textbook and on-the-job
+              reference offers clear instruction on analog
+              integrated circuit design using the latest
+              simulation techniques. Ideal for graduate
+              students and professionals alike, the book shows,
+              step by step, how to develop and deploy integrated
+              circuits for cutting-edge Internet of Things (IoT)
+              and other applications. Analog Integrated Circuit
+              Design by Simulation: Techniques, Tools, and
+              Methods lays out practical, ready-to-apply
+              engineering strategies. Application layer, device
+              layer, and circuit layer IC design are covered in
+              complete detail. You will learn how to tackle
+              real-world design problems and avoid long cycles
+              of trial and error. </p>
+
+              <p>From the cover text.</p>
+
+              <p>Comments by HV: Makes detailed use of ngspice
+              and its control language. There is a hint that this
+              book has not been proofread by the publisher: but I
+              think that Ugur did a good job.</p>
+
+            </div>
+          </div>
 
           <div id="book">
             <div id="btitle">
@@ -133,29 +189,29 @@
             <div id="ISBN"></div>
 
             <div id="breview">
-              <p>This book gives a clear description of 
-			  the numerical techniques and algorithms that are 
-			  part of modern circuit simulators, with a focus on 
-			  the most commonly used simulation modes: DC analysis 
+              <p>This book gives a clear description of
+			  the numerical techniques and algorithms that are
+			  part of modern circuit simulators, with a focus on
+			  the most commonly used simulation modes: DC analysis
 			  and transient analysis. Tested in a graduate course
-			  on circuit simulation at the University of Toronto, 
-			  this unique text provides the reader with sufficient 
+			  on circuit simulation at the University of Toronto,
+			  this unique text provides the reader with sufficient
 			  detail and mathematical rigor to write his/her own
 			  basic circuit simulator. There is detailed coverage
-			  throughout of the mathematical and numerical 
+			  throughout of the mathematical and numerical
 			  techniques that are the basis for the various
-			  simulation topics, which facilitates a complete 
+			  simulation topics, which facilitates a complete
 			  understanding of practical simulation techniques.</p>
 
               <p>From the cover text.</p>
-			  
+
               <p>Comments by HV: So go for it: write your own circuit
-			  simulator! Or better use ngspice, but learn a lot 
+			  simulator! Or better use ngspice, but learn a lot
 			  about it with this book.</p>
             </div>
           </div>
 
-		  
+
          <div id="book">
             <div id="btitle">
               <a name="7" id="7"></a>
@@ -598,23 +654,18 @@
     </div>
 
     <div id="footer">
-      <table align="center" width="100%">
-        <tr>
-          <td align="left" width="25%"><a href=
-          "http://sourceforge.net"><img src=
-          "http://sourceforge.net/sflogo.php?group_id=38962&amp;type=1"
-          width="88" height="31" border="0" alt=
-          "SourceForge.net Logo"></a></td>
-
-          <td align="center">All text is available under the terms
-          of the <a class="internal" href=
-          "http://www.gnu.org/licenses/fdl.html">GNU Free
-          Documentation License</a></td>
-
-          <td align="right" width="25%"><img src=
-          "./images/spice.jpg" alt=""></td>
-        </tr>
-      </table>
+  <pframe>
+    <pic1>
+      <a href="http://sourceforge.net"><img src="http://sourceforge.net/sflogo.php?group_id=38962&amp;type=1" alt="SourceForge.net Logo" border="0" height="31" width="88"></a>
+    </pic1>
+    <pic2>
+      All text is available under the terms of the <a class="internal" href="http://www.gnu.org/licenses/fdl.html">GNU Free
+Documentation License</a>
+    </pic2>
+    <pic3>
+     <img src="./images/spice.jpg" alt="">
+    </pic3>
+  </pframe>
     </div>
   </div>
 </body>
