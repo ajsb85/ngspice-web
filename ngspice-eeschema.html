@@ -490,7 +490,16 @@ plot "/in" "/out"
           Fig. 15   Laser driver circuit, Netlist Generator Window, plot after simulation
 <br>
 <br>
-<p class="justified">Voila: ngspice.exe simulates the file laser_driver.cir and plots the resulting output. </p>
+<p class="justified">Voila: ngspice.exe simulates the file laser_driver.cir 
+and plots the resulting output. </p>
+<p class="justified">If you are with Linux, a somewhat different 
+approach is necessary. ngspice expects a terminal for its own input/output.
+Thus it is not sufficient to just add 'ngspice' to the Netlist Generator Window,
+but the simulator command as a call via the terminal, e.g.</p>
+<li>Simulator command: xterm -e ngspice</li>
+<p class="justified">if xterm is available. xterm may be replaced by 
+the standard Linux terminal app. Unfortunately there is 
+not (yet) a good solution for macOS.</p>
 <br>
 <br>
 <div id="external2"></div>
