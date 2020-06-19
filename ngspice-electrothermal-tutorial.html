@@ -131,7 +131,9 @@
   <li> <a href="#PowerAmp">Amplifier with Power MOS</a></li>
   <li> <a href="#GaNBoost">Boost converter with GaN transistor</a></li>  
   <li> <a href="#VDMOS">Power transistor with ngspice VDMOS model</a></li>
-  <li> <a href="#app">Appendix: Some equations</a></li>
+  <li> <a href="#heatsink">More on heat sinks</a></li>
+  <li> <a href="#app">Appendix 1: Some equations</a></li>
+  <li> <a href="#app2">Appendix 2: Upgrade ngspice to version 32</a></li>
 </ol>
 <div id="intro"></div>
 <p class="header">Introduction</p>
@@ -304,7 +306,7 @@ The thermal circuit is somewhat more complex now, so there is a circuit diagram
 shown below in Fig.1.</p>
           <div id="topimage"><img src="./el-th-images/Fig1.png" alt=
           "Resistor wit heat sink" width="100%" height="100%"></div>
-          Fig. 1
+          <i>Fig. 1 Electrical and thermal circuit of a resistor with heatsink</i>
 <p class="justified">The thermal circuit starts on the left with
 the behavioral source Bq, issuing a current proportional to the
 dissipated power I1 * V1. The example power resistor D2TO35 has a
@@ -331,8 +333,8 @@ still below the specified maximum of 175 &ordm;C.</p>
           "OpAmp circuit" width="95%" height=auto></td>
     </tr>
     <tr>
-          <td style="vertical-align: center;">Fig. 2</td>
-          <td style="vertical-align: center;">Fig. 3</td>
+          <td style="vertical-align: center;"><i>Fig. 2 Temperature versus voltage of the resistor</i></td>
+          <td style="vertical-align: center;"><i>Fig. 3 Temperature as function of time at constant bias</i></td>
     </tr>
   </tbody>
 </table>
@@ -443,15 +445,16 @@ The result is shown in figs. 4 and 5:
           "OpAmp circuit" width="95%" height=auto></td>
     </tr>
     <tr>
-          <td style="vertical-align: center;">Fig. 4</td>
-          <td style="vertical-align: center;">Fig. 5</td>
+          <td style="vertical-align: center;"><i>Fig. 4 Temperature versus voltage of the resistor</i></td>
+          <td style="vertical-align: center;"><i>Fig. 5 Temperature at constant bias, thermal runaway</i></td>
     </tr>
   </tbody>
 </table>
 <p class="justified">As a function of the voltage applied to the resistor,
-the final junction temperature T<sub>j</sub> rises faster and faster in Fig. 4,
-above 0.75 V ngspice does not converge any more, the temperature rises beyond bounds.
-In Fig. 5 we have applied 1 V to the resistor and start the device simulation
+the final junction temperature T<sub>j</sub> rises faster and faster in 
+Fig. 4, above 0.75 V ngspice does not converge any more, the temperature 
+rises beyond bounds. In Fig. 5 we have applied 1 V to the resistor and 
+start the transient device simulation (voltages and currents versus time)
 at an ambient temperature of 42 &ordm;C.
 The temperature rises versus time, finally beyond bounds. This is a typical
 thermal runaway that would lead to device destruction, if not limited
@@ -486,7 +489,7 @@ device is shown in fig. 6, together with its current and temperature
 simulations in fig. 7. The standard MOS symbol has been modified in
 fig. 6 (Drawing done with KiCad/Eeschema):
 Two extra nodes provide the connections to the thermal circuit. tj
-may be used to read the junction temperature. Reistor Rj is just
+may be used to read the junction temperature. Resistor Rj is just
 a dummy load so Eeschema will not complain about not connected nodes.
 Rca is our heat sink with 1 K/W, connected between the transistor
 package metal back plate (the case) and the ambient temperature
@@ -500,8 +503,8 @@ set to 42 &ordm;C by the voltage source Vamb.</p>
           "Transistor test circuit results" width="95%" height=auto></td>
     </tr>
     <tr>
-          <td style="vertical-align: center;">Fig. 6</td>
-          <td style="vertical-align: center;">Fig. 7</td>
+          <td style="vertical-align: center;"><i>Fig. 6 Circuit with Vg sweep, 5-terminal MOS</i></td>
+          <td style="vertical-align: center;"><i>Fig. 7 Vg swept, temperature rising, current decreasing</i></td>
     </tr>
   </tbody>
 </table>
@@ -531,7 +534,7 @@ are connected to heat sinks, which have a thermal resistance and a thermal capac
 The resulting KiCad/Eeschema and ngspice circuit files are available <a href="./el-th-images/Dual-NMOS-Amp.7z">here</a>.</p>
 <picture><img src="./el-th-images/Dual-NMOS-amp-2.png" alt=
           "Dual NMOS amplifier" width="100%" height=auto></picture>
-<p class="justified">Fig. 8 Dual NMOS Amplifier</p>
+<p class="justified"><i>Fig. 8 Dual NMOS Amplifier</i></p>
 <br>
 The Eeschema circuit schematic is accompanied by a ngspice script (see fig. 9).
 This script allows simulating the circuit from within Eeschema as well as
@@ -566,8 +569,8 @@ end
           "Temperature in Dual NMOS amplifier" width="90%" height=auto></td>
     </tr>
     <tr>
-          <td style="vertical-align: center; text-align: center">Fig. 9</td>
-          <td style="vertical-align: center; text-align: center">Fig. 10</td>
+          <td style="vertical-align: center; text-align: center"><i>Fig. 9 Script for Eeschema/ngspice</i></td>
+          <td style="vertical-align: center; text-align: center"><i>Fig. 10 Rising junction and case temperatures</i></td>
     </tr>
   </tbody>
 </table>
@@ -587,8 +590,7 @@ large CPU time may be required.
 <br>
 <div id="GaNBoost"></div>
 <p class="header">8) Boost converter with GaN transistor</p>
-<p class="justified">A warning: simulation in this chapter requires the experimental ngspice
-as is offered in the <a href="https://sourceforge.net/p/ngspice/ngspice/ci/master/tree/">master branch</a>.</p>
+<p class="justified">A warning: simulation in this chapter requires at least ngspice-31.</p>
 <p class="justified">Thermal models with nodes t<sub>j</sub> and t<sub>case</sub> are
 also availanble for the modern GaN power transistors. In Fig. 11 you find the circuit of
 a boost converter as published in 
@@ -604,8 +606,8 @@ Input files are available <a href="./el-th-images/GaN-test.7z">here</a>.</p>
           "Temperature in Dual NMOS amplifier" width="90%" height=auto></td>
     </tr>
     <tr>
-          <td style="vertical-align: center; text-align: center">Fig. 11</td>
-          <td style="vertical-align: center; text-align: center">Fig. 12</td>
+          <td style="vertical-align: center; text-align: center"><i>Fig. 11 Boost converter with GaN FET</i></td>
+          <td style="vertical-align: center; text-align: center"><i>Fig. 12 FET junction and case temperatures</i></td>
     </tr>
   </tbody>
 </table>
@@ -616,7 +618,7 @@ Input files are available <a href="./el-th-images/GaN-test.7z">here</a>.</p>
 sink having only 10 K/W. This is not the temperature end point, the curve in Fig. 12 is still rising. But
 since this simulation took already about half an hour, catching the full heating up will
 require more than 5 hours of real time. Well, this needs to be done once to get an idea
-of the thermal behaviour. The input file allows using internal as well as 
+of the thermal behavior. The input file allows using internal as well as 
 <a href="http://ngspice.sourceforge.net/ngspice-eeschema.html#external">external ngspice</a>.</p>
 <p class="justified">The large amount of data requires some special handling. So here we do not store
 the whole amount of data (10m/2n = 5 Mio. time points), but interpolate and save only 5000 time
@@ -629,7 +631,7 @@ points. This is achieved by the two input lines
 </code>
 </pre>
 (tstop-tstart)/tstep = 5000 sets the number of time steps after interpolation. Interpolation
-is iniated by the interp option. tmax = 2n sets the
+is initiated by the interp option. tmax = 2n sets the
 maximum time step during simulation. The small value is necessary to catch the fast voltage
 excursions during simulation for this example. After 0.5 s (approx. 5 hours of ngspice CPU time) the temperature 
 has settled to 71 &ordm;C (T<sub>j</sub>) and 69 &ordm;C (T<sub>case</sub>). This may be
@@ -644,13 +646,151 @@ achieved by a simulation command
 <br>
 <div id="VDMOS"></div>
 <p class="header">9) Power transistor with ngspice VDMOS model</p>
-<p class="justified">t.b.d.</p>
+<p class="justified">Since version 32 ngspice contains a VDMOS power MOS model with comprehensive
+electro-thermal modeling capability. VDMOS comprises many features that allow describing the 
+temperature depending current versus voltage characteristics. Among others ngspice VDMOS supports
+weak inversion, quasi-saturation, reverse diode, breakdown, bias dependent capacitances,
+and as a new feature and of importance for this tutorial: self-heating. 
+In contrast to the subcircuit model used in section 7), the VDMOS model has an
+integrated self-heating calculation capability, using and influencing the internal device nodes
+directly. Details of the model are explained in chapter 11.3 of the 
+<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/32/ngspice-32-manual.pdf/download">
+ngspice manual</a>.</p>
+<p class="justified">A first advantage is that the simulation may run much faster. The amp of 
+chapter 7 will simulate by a factor of 10 faster when using the new VDMOS model, compared
+to using a subcircuit model!</p>
+<p class="justified">Self heating is enabled by setting the instance parameter 'thermal' to the
+devices instance</p>
+<pre>
+<code>
+M1 d g s tj tc PowerM thermal
+.model PowerM VDMOS (model parameters ...)
+</code>
+</pre>
 
+<p class="justified">The model introduces 2 additional nodes: tj is the temperature node showing the junction
+temperature, and tc is the node containing the case temperature. It also introduces 3 additional
+model parameters: RTHJC (Thermal resistance junction-case), CTHJ (Thermal capacitance),
+and RTHCA (Thermal resistance case-ambient (w/o heatsink)). RTHJC is given in the device data
+sheet. RTHCA is the thermal resistance if the device is just contacted, but otherwise without
+any heat sink attached. Typical values are 40 - 120 K/W, or it is given in the data sheet as well.
+The thermal capacitance CTHJ may be
+estimated by the weight of the device. A device in an old fashioned TO-247 package may weight 5 - 6 g,
+of which 3 - 4 g may be copper (Cu). Cu has a specific heat capacity of 0.38 J/gK, times 3.5 g 
+yields a CTHJ of 1.3. The metal content may be less, and distributed, so one may find values like 0.3. 
+RTHJC may be 0.8 K/W. And then you have to mount this device onto the heatsink. Without isolation
+sheet this will add another 0.2 K/W, but when you need to electrically isolate the device from the 
+heat sink (by a thin MICA sheet), this will add an additional 1 K/W or so. Better thermal transistor 
+packages are available today, yielding a junction to heat sink thermal resistance close to 1 K/W,
+including the isolation, but are available only for specific industrial devices.</p>
+
+<p class="justified">Again in this chapter there will be a circuit example. Nelson Pass has developed
+several high end class A audio amplifiers. A typical and famous example is the 
+<a href="http://www.firstwatt.com/pdf/art_f5_turbo.pdf"> F5</a>. Class A amps continuously draw a
+high current through the power transistors. So thermal management is a must. </p>
+<p class="justified">Shown here in 
+Fig. 13 is the schematic of the F5 Turbo V2. The simulation setup for Eeschema and/or ngspice is 
+available <a href="./el-th-images/PassLabF5-web.7z">here</a>. </p>
+<picture><img src="./el-th-images/F5-Turbo-V2.png" alt=
+          "Pass Labs F5 Turbo V2" align=left width="100%" height=auto></picture>
+<p class="justified"><i>Fig. 13 Pass Labs F5 Turbo V2 Amplifier</i></p>
+<p class="justified">The simulation of this amplifier yields excellent results: 50 W into 8 Ohm,
+98 W into 4 Ohm, damping factor 58, voltage gain 22 dB (a factor of 12), all simulated at 2 V 
+peak (1.41 V rms) and 1 kHz input. The frequency response is flat from 10 Hz to 500 kHz and
+shows a moderate neg. phase shift, etc.. </p>
+<p class="justified">However this tutorial is about electro-thermal simulation, so we have to
+focus on it. Fig. 13 is the electrical schematic. There are already some labels like Q3tj,
+Q4tc, Q6hs, that are to be connected. These are thermal nodes, used in modeling the 
+thermal behavior of the power transistors, heat sinks and thermistors. 
+Fig. 14 denotes the ngspice thermal circuit of the heat sink.</p>
+<br>
+<table style=" width: auto; height: auto;" border="0" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+          <td style="vertical-align: center; text-align: center"><img src="./el-th-images/heat-sink.png" alt=
+          "Heat sink for F5 Turbo V2" width="90%" height=auto></td>
+          <td style="vertical-align: center; text-align: center"><img src="./el-th-images/temp-rise-new.png" alt=
+          "Temperature of the 4 PowerMOS" width="90%" height=auto></td>
+    </tr>
+    <tr>
+          <td style="vertical-align: center; text-align: center"><i>Fig. 14 Heat sink for the F5 Turbo V2</i></td>
+          <td style="vertical-align: center; text-align: center"><i>Fig. 15 Junction temperature rise at full output power</i></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+<p class="justified">In fact we have here 4 heat sinks, one for each power transistor. The
+Q3tc node (case temperature of Q3) is connected to the heat sink via a thermal resistor Rc1. Rc1
+is the result of mounting the power device (via thermal paste, including a (MICA) isolation
+tab) onto the heat sink surface, whose thermal node is called Q3hs. Also connected to Q3hs
+is the thermistor TH1, a resistor with a temperature dependent resistance. Finally we have the
+thermal capacitance Cc1, that is determined by the material and mass of the heat sink. 
+The heat flows through the heat sink via thermal resistance Rc2 and then into the ambient, 
+that is at a temperature of 40 &ordm;C in the example. This is a very simple heat sink model,
+and we may elaborate on more sophisticated descriptions in the next chapter.</p>
+<p class="justified">Fig. 15 shows the resulting junction temperatures of the 4 power
+transistors. They are very similar because the amplifier is well balanced. Tmax is about
+135 &ordm;C. The data sheet allows operation up to 150 &ordm;C, so there is not much 
+headroom left.</p>
+<br>
+<br>
+<div id="heatsink"></div>
+<p class="header">10) More on heat sinks</p>
+<p class="justified"> Remember the old 100 W light bulb. Its diameter of approx. 5 cm leads 
+to a surface area (sphere assumed) of about 78 cm<SUP>2</SUP>. And now remember how
+hot this thing was. One would not even dare to touch it when hot. And now we pour 100 W
+into our microprocessor (where it is transformed to heat) or dissipate it in our power 
+transistor. And we now have a mere 2 cm<SUP>2</SUP> chip area to get rid of the heat.
+So we need a device which catches the heat on the small area, spreads it over a much 
+larger area and finally releases it to the ambient.</p>
+<p class="justified">This is exactly what heat sinks are
+doing.</p>
+<p class="justified">The static thermal circuit of a heat sink looks like</p>
+<picture><img src="./el-th-images/Fig16.png" alt=
+          "Static thermal circuit of a heatsink" width="80%" align=center height=auto></picture>
+<p class="justified"><i>Fig. 16 Static thermal circuit of a heatsink</i></p>
+<p class="justified">R<sub>jc</sub> (junction-to-case) is set by the transistor construction, 
+die size and package.</p>
+<p class="justified">R<sub>ch</sub> (case-to-heatsink) is created by mounting the transistor
+package onto the heatsink, by thermal grease and especially by any insulation pad.</p>
+<p class="justified">R<sub>h</sub> (heatsink) is the heatsink thermal resistance, set
+by its material (Al or Cu) and its shape.</p>
+<p class="justified">R<sub>ha</sub> (heatsink-to-ambient) is the resistance that has to
+be overcome by the heat when moving from the heatsink surface into the ambient air.
+It depends on the heatsink surface finish, on the surface area, and of course on the
+air movement (can the air move freely as in free convection, or is it impeded by
+obstacles, which should be avoided, or is it even moved by forced convection, e.g.
+an blower). Sometimes only the sum of R<sub>h</sub> and R<sub>ha</sub> is given, but then
+a dedicated specification of the ambient is included in the fine print.</p>
+<p class="justified">So we have three components, the heat source (e.g. a transistor), 
+the heatsink and the interface in between, all contributing resistance against the
+heat flow.</p>
+<p class="justified">We have also to consider some dynamic, i.e. time depending behavior
+of the heatsink, as its surface become warm (hot) only with a delay of at least several 
+seconds after the heat source has been switched on (after power-on). This is due to the 
+fact that all materials involved have a heat storage capacity, which may be filled
+during initial heat flow (temperature rising) until is has become stable with stable
+heat flows and temperatures. In addition also the electrical power dissipation may
+vary over time (not so much with the class A amp shown above, but common to other
+circuits). We emulate this heat storage by capacitors added to the above circuit 
+(see Fig. 17).</p>
+<p class="justified">The dynamic thermal circuit of a heat sink looks like</p>
+<picture><img src="./el-th-images/Fig17.png" alt=
+          "Thermal circuit of a heatsink with heat storage" align=center width="80%" height=auto></picture>
+<p class="justified"><i>Fig. 17 Thermal circuit of a heatsink with heat storage</i></p>
+<p class="justified">Two capacitors have been added to the thermal circuit. C<sub>j</sub> 
+denotes the heat storage capacity of the power MOS package. C<sub>h</sub> is the heat capacity 
+of the heatsink. There is also an additional resistor inside of the transistor package:</p>
+<p class="justified">R<sub>ca</sub> (case-to-ambient) describes the inevitable heat path
+from the transistor to the environment, when the transistor is simply soldered into a PCB
+without any heatsink.</p>
+<br>
 <br>
 <br>
 <div id="app"></div>
-<p class="header">10) Appendix: Some equations</p>
-<p class="header">10.1 Thermal resistance</p>
+<p class="header">11) Appendix 1: Some equations</p>
+<p class="header">11.1 Thermal resistance</p>
 <p><em>R<sub>th</sub> = d/(k&middot;A)</em></p>
 <blockquote>
 <p><em>d</em> path length</p>
@@ -658,7 +798,7 @@ achieved by a simulation command
 <p><em>k </em>thermal conductivity</p>
 </blockquote>
 <br>
-<p class="header">10.2 Thermal capacitance</p>
+<p class="header">11.2 Thermal capacitance</p>
 <p><em>C<sub>th</sub> = A &middot; d&middot; c &middot; &rho;</em></p>
 <blockquote>
 <p><em>d </em>thickness</p>
@@ -667,19 +807,36 @@ achieved by a simulation command
 <p><em>&rho; </em>density</p>
 </blockquote>
 <br>
-<p class="header">10.3 Temperature increase of junction and case against ambient temperature</p>
+<p class="header">11.3 Temperature increase of junction and case against ambient temperature</p>
 <p><em>T<sub>j</sub> = P&middot;(R<sub>jc</sub> + R<sub>ch</sub> + R<sub>ha</sub>) + T<sub>amb</sub></em></p>
 <p><em>T<sub>case</sub> = P&middot;(R<sub>ch</sub> + R<sub>ha</sub>) + T<sub>amb</sub></em></p>
 <blockquote>
 <p><em>T<sub>j</sub></em> Junction temperature</p>
 <p><em>P</em> Electrical power dissipated</p>
-<p><em>R<sub>jc</sub></em> Thermal resistance juntion-to-case</p>
+<p><em>R<sub>jc</sub></em> Thermal resistance junction-to-case</p>
 <p><em>R<sub>ch</sub></em> Thermal resistance case-to-heatsink</p>
 <p><em>R<sub>ha</sub></em> Thermal resistance heatsink to ambient</p>
 <p><em>T<sub>amb</sub></em> Ambient temperature </p>
 </blockquote>
 <p class="justified">More details are available for example in [8].</p>
 <p>[8] <a href="https://www.fischerelektronik.de/fileadmin/fischertemplates/download/Katalog/technischeerlaeuterungen_e.pdf">https://www.fischerelektronik.de/fileadmin/fischertemplates/download/Katalog/technischeerlaeuterungen_e.pdf</a></p>
+<br>
+<br>
+<br>
+<div id="app2"></div>
+<p class="header">12) Appendix 2: ngspice upgrade to version 32</p>
+<p class="justified">For running the advanced example in chapt. 9, ngspice-32 is required. 
+Recent KiCAD 5.1.6 is distributed with ngspice-31.
+Upgrade ngspice within KiCAD/Eeschema (Windows 10) by downloading ngspice-32_dll_64.zip from the <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/32/">ngspice download page</a> at SourceForge.net. Open the zip file, go to ngspice-32_dll_64.zip\Spice64_dll\dll-mingw\ and extract msys-ngspice-0.dll into your KiCAD installation directory (I use C:\Program Files\KiCad\bin\, which requires admin rights for extracting). Then go into C:\Program Files\KiCad\bin\, rename libngspice-0.dll (the ngspice-31 dll) to libngspice-0-orig.dll, then rename msys-ngspice-0.dll (the ngspice-32 dll) to libngspice-0.dll. Put the file spice.rc into your HOME directory (mine is C:\Users\holger). Re-start KiCAD/Eeschema.</p>
+
+<p class="justified">Then you may run the simulator from Eeschema in the usual way: File->Open->my.sch->Tools->Simulator->Run</p>
+
+<p class="justified">Standard ngspice offers many more simulation types. To install it, download ngspice-32_64.zip from the <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/32/">ngspice download page</a> and extract it to C:\ on your computer. You then will have ngspice.exe in C:\Spice64\bin.</p>
+
+<p class="justified">From within Eeschema plain ngspice may be started by: File->Open->my.sch->Tools->Generate Netlist File...->Spice->Check 'Default format'->Enter C:\Spice64\bin\ngspice.exe into 'Simulator command:' text box->Run Simulator. Ngspice will now execute the simulations as prescribed in the script file script1.txt.</p>
+
+
+
         </div>
       </div>
     </div>
