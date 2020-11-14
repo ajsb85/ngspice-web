@@ -92,7 +92,7 @@
 
           <p class="header">Ngspice download (stable release)</p>
 
-          <p class="justified">All ngspice stable releases, 
+          <p class="justified">All ngspice stable releases,
           including the most recent one, can be downloaded from <a href=
           "http://sourceforge.net/projects/ngspice/files/ng-spice-rework/">
           Sourceforge.net File Release System</a>. Ngspice is
@@ -109,14 +109,14 @@
             the latest stable release. It does not contain last minute
             code and experimental features. This is the release
             intended for end-users. All sources are assembled into
-            a tarball for download. Binary packages for MS 
+            a tarball for download. Binary packages for MS
 			Windows and MAC OS X are to be found here as well.</li>
           </ul>
 
           <p class="header">Ngspice installation (quick intro)</p>
 
           <p class="justified">If you are on MS Windows (64 bit, Windows
-          7 and up), download <a href=
+          10), download <a href=
           "http://sourceforge.net/projects/ngspice/files/ng-spice-rework/32/ngspice-33_64.zip">
           ngspice-33_64.zip</a> from the web site given
           above. Expand the contents of the zip file to an arbitrary
@@ -148,7 +148,8 @@
           <p>If you are interested in the
           <a href="./download.html#nightly"> ngspice nightly</a>
           for MS Windows or other development
-          or ngspice experimental versions, please read on!</p>
+          or ngspice experimental versions, please read on! Legacy
+          Windows OSs are supported as well.</p>
 
           <p class="header">Ngspice download via browser or snapshot
           (code under development)</p>
@@ -170,17 +171,17 @@
           <ul>
             <li><a href=
             "https://sourceforge.net/p/ngspice/ngspice/ci/pre-master/tree/">
-            <strong>ngspice tree view of branch pre-master</strong></a>: This is 
-            the current development branch with very recent source code additions. 
-            After testing they may make it into the master branch and the next stable release. 
+            <strong>ngspice tree view of branch pre-master</strong></a>: This is
+            the current development branch with very recent source code additions.
+            After testing they may make it into the master branch and the next stable release.
             Use this link to access the source code files via your browser or
             download the complete snapshot by 'Download snapshot'.</li>
-          </ul> 
-          
+          </ul>
+
           <div id="git1"></div>
           <p class="header">Ngspice download using git (code under development)</p>
-          
-          <p>Using 'git' offers you a way to get access to all branches 
+
+          <p>Using 'git' offers you a way to get access to all branches
           and to manage them.
           The following command will download the complete
           sources from the ngspice git repository via anonymous access. You
@@ -204,11 +205,11 @@
           can run</p>
           <p id="code">git reset --hard</p>
           Be careful because this command may delete your local changes!
-          
+
           <p>To switch to another branch, you may issue
           <p id="code">git fetch</p>
           and then
-          <p id="code">git checkout new-branch-name</p>          
+          <p id="code">git checkout new-branch-name</p>
 
           <p>To learn more about git, which can be both powerful
           and difficult to master, please consult <a href=
@@ -216,7 +217,7 @@
           especially: <a href=
           "http://git-scm.com/documentation"><strong>http://git-scm.com/documentation</strong></a>
           which has pointers to documentation and tutorials.</p>
-          
+
           <div id="bin1"></div>
           <p class="header">Ngspice GUI</p>
 
@@ -231,7 +232,7 @@
               <img src="./images/GUI.png"
                width=90% height=auto alt="Simple ngspice GUI">
           </picture>
-          
+
           <div id="nightly"></div>
           <p class="header">Ngspice for MS Windows (master branch, 64 bit)</p>
           <p class="justified"><a href=
@@ -241,6 +242,18 @@
           binaries with GUI, console and the shared ngspice dll. Sources are drawn
           from the master branch at git. The last update has been made on Oct. 10th, 2020.</p>
 
+          <div id="kicad"></div>
+          <p class="header">Ngspice-33+ update for KiCad (pre-master branch, 64 bit)</p>
+          <p class="justified"><a href=
+          "http://ngspice.sourceforge.net/experimental/ngspice_for_KiCad_201113.zip">
+          <strong>ngspice-33plus 64 bit upgrade</strong></a> is an offer to the KiCad
+          community to upgrade their ngspice-32 installation to the current ngspice 
+          under development (still experimental code with recent bug fixes, MS
+          Windows only, sorry). The
+          libngspice-0.dll was made from pre-master branch on Nov. 13th, 2020 for
+          MS Windows. An installation how-to is found in file ngspice-howto.txt.</p>
+
+          <div id="eagle"></div>
           <p class="header">Ngspice-33+ update for EAGLE (pre-master branch, 64 bit)</p>
           <p class="justified"><a href=
           "http://ngspice.sourceforge.net/experimental/ngspice_for_EAGLE_201102.zip">
@@ -249,6 +262,7 @@
           ngspice.exe was made from pre-master branch on Nov. 2nd, 2020 for
           MS Windows. An installation how-to is found in file ngspice-howto.txt.</p>
 
+          <div id="legacy"></div>
           <p class="header">Ngspice for legacy Windows OSs</p>
 
           <p class="justified">Here you will find ngspice-32 made with MINGW
@@ -260,9 +274,9 @@
           <p class="justified">
           <a href="http://ngspice.sourceforge.net/experimental/ngspice-27_xp.7z">
           <strong>ngspice-27 for xp</strong></a> contains 32 bit ngspice-27
-          for Windows XP. Right click on the link and store 
-          the 7z file to your harddisk. Enclosed are ngspice.exe with GUI 
-          and the shared ngspice dll plus some other dlls needed.          
+          for Windows XP. Right click on the link and store
+          the 7z file to your harddisk. Enclosed are ngspice.exe with GUI
+          and the shared ngspice dll plus some other dlls needed.
 
           <div id="wav"></div>
           <p class="header">Ngspice for MS Windows, reading, simulating and writing wav audio files</p>
@@ -272,60 +286,60 @@
           (based on branch wav-audio). It contains 64 bit ngspice with all required
           dlls and a section with some examples. Much more testing is required, and some
           know how in wav files and audio sampling may help. See file README.wavsim for some more
-          details and acknowledgments and file README.examples for a list of the experimental 
+          details and acknowledgments and file README.examples for a list of the experimental
           files. Many thanks to Robin Gareus and Hannu Vuolasaho. Robin Gareus has provided
           in introduction and manual on his <a href="http://gareus.org/oss/spicesound/start">
           web pages</a>.</p>
           <p class="justified"> To fulfill the LGPL requirements, the
           sources for library libsamplerate-0.1.9 are available <a href=
           "http://ngspice.sourceforge.net/experimental/libsamplerate-0.1.9.7z">here</a>.</p>
-         
+
           <div id="exp1"></div>
           <p class="header">Ngspice experimental (not all updated for release version 32!)</p>
 
           <p class="justified">Here you will find some ngspice binaries
-		  (for MS Windows) which are provided for those interested in 
+		  (for MS Windows) which are provided for those interested in
 		  experimental code. Right click on a link and store the 7z file
 		  to your harddisk.</p>
-          
+
           <p class="justified">
           <a href=          "http://ngspice.sourceforge.net/experimental/ngspice-30+adms.7z">
           <strong>ngspice-30-adms</strong></a> is a ngspice-30+,
           64 bit binary for MS Windows with ADMS enabled. It contains the ngspice-30+ binaries
 		  (GUI and console) supporting BSIMBULK, EKV, HICUM, MEXTRAM and PSP models.
           Sources are drawn from the branch adms-new, thst is adms-experiment-3, rebased onto ngspice-30+ pre-master.
-          BSIMCMG is included, yielding errors, and thus is not yet ready for distribution.</p> 
+          BSIMCMG is included, yielding errors, and thus is not yet ready for distribution.</p>
           <p class="justified"><a href=
           "http://ngspice.sourceforge.net/experimental/ngspice-klu.7z">
           <strong>ngspice-27 64 bit klu devel</strong></a> contains a 64 bit ngspice binary
-		  for MS Windows, with GUI, using the KLU matrix solver. Sources are drawn from 
-          the KLU-6+11 branch at git.</p>  
+		  for MS Windows, with GUI, using the KLU matrix solver. Sources are drawn from
+          the KLU-6+11 branch at git.</p>
           <p class="justified"><a href=
           "http://ngspice.sourceforge.net/experimental/ngspice-27-CUSPICE-64.7z">
           <strong>cuspice</strong></a> (ngspice-27 64 bit using CUDA, incl. CUDA
           redistributables, 24 MBit download size) contains a 64 bit ngspice binary
 		  with GUI, using the KLU matrix solver and CUDA (uses nvidia graphics card
-          for acceleration). Sources are drawn from the CUSPICE+5 branch at git.</p>           
+          for acceleration). Sources are drawn from the CUSPICE+5 branch at git.</p>
           <p class="justified">The ngspice <a href=
 		  "http://ngspice.sourceforge.net/experimental/tclspice-25.7z">
           <strong>tclspice package</strong></a> includes all libraries and
 		  files necessary to run some tcl scripts with the ngspice tclspice dll.
 		  The package has been created with a modified <a href=
 		  "http://ngspice.sourceforge.net/experimental/blt2.5.3.7z">
-          <strong>BLT library</strong></a>, which serves for plotting. 
-		  If you install the tcl/tk libraries version 8.6 from 
+          <strong>BLT library</strong></a>, which serves for plotting.
+		  If you install the tcl/tk libraries version 8.6 from
 		  <a href=
           "http://www.activestate.com/activetcl/downloads">ActiveState</a>, add the <a href=
-		  "http://ngspice.sourceforge.net/experimental/visualc-tcl.7z"> <strong>VS 2008 
+		  "http://ngspice.sourceforge.net/experimental/visualc-tcl.7z"> <strong>VS 2008
 		  project file</strong></a> to the ngspice main directory, and set the
 		  appropriate links in the project file to the tcl/tk library and headers,
 		  you may compile ngspice tclspice for MS Windows yourself.</p>
           A more recent tclspice version, very experimental, is here as <a href=
 		  "http://ngspice.sourceforge.net/experimental/blt2.5.3-compact.7z">
           <strong>BLT library for VS2017</strong></a>, and <a href=
-		  "http://ngspice.sourceforge.net/experimental/visualc-tclspice-26plus.7z"> <strong>VS 2017 
+		  "http://ngspice.sourceforge.net/experimental/visualc-tclspice-26plus.7z"> <strong>VS 2017
 		  project file</strong></a>, based on the master branch as of June 2017. Again: very experimental, not yet tested!
-		  
+
 		  <p class="header">Ngspice download (old, obsolete
           stuff)</p>
 
