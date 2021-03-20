@@ -67,6 +67,9 @@
           <div id="menucontainer">
             <ul id="menulist">
 
+              <li><a href="applic.html#sky">Google/SkyWater
+              Open Source PDK</a></li
+
               <li><a href="applic.html#smp">Switch-Mode
               Converters</a></li>
 
@@ -114,6 +117,33 @@
           applications or short paragraphs describing the usage of
           ngspice. Its content will grow over time. You are welcome
           to contribute!</p>
+
+          <p class="header"><a name="sky" id="sky"></a>Google/SkyWater </p>
+
+          <p class="justified">ngspice supports the Open Source
+          <a href="https://github.com/google/skywater-pdk">Google/Skywater PDK</a>
+          (process design kit) for the 130 nm CMOS process from
+          <a href="https://www.skywatertechnology.com/">Skywater</a>.
+          To install the PDK, a good choice is to follow the
+          <a href="http://opencircuitdesign.com/open_pdks/install.html"> installation instructions</a>
+          offered by Tim Edwards (Chapter "Prerequisites", steps 1 to 12).
+          Desgin support is also available by Stefan Schippers'
+          <a href="http://repo.hu/projects/xschem/index.html"> XSCHEM</a>.</p>
+          <p class="justified">To successfully simulate with ngspice
+          and the SkyWater PDK, you have create an initialization file
+          .spiceinit (or alternatively called spice.rc) in your HOME directory.
+          It has to contain the following lines:
+          <pre>
+          <code>
+          set num_threads=8
+          set ngbehavior=hsa
+          set ng_nomodcheck
+          </code>
+          </pre>
+          num_threads should be set to the number of physical cores of
+          the computer in use, ngbehavior will set HSPICE compatibility
+          with some important and essential tweaks for the PDK,
+          ng_nomodcheck will suppress some unwanted warnings.</p>
 
           <p class="header"><a name="smp" id="smp"></a>Switch-Mode
           Converter Development</p>
