@@ -130,7 +130,9 @@
           Desgin support is also available by Stefan Schippers'
           <a href="http://repo.hu/projects/xschem/index.html"> XSCHEM</a>.</p>
           <p class="justified">To successfully simulate with ngspice
-          and the SkyWater PDK, you have create an initialization file
+          and the SkyWater PDK, at least
+          <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/34/"> ngspice-34</a> 
+          is required. In addition you have to create an initialization file
           .spiceinit (or alternatively called spice.rc) in your HOME directory.
           It has to contain the following lines:
           <pre>
@@ -141,7 +143,7 @@
           </code>
           </pre>
           num_threads should be set to the number of physical cores of
-          the computer in use, ngbehavior will set HSPICE compatibility
+          the computer in use, ngbehavior will ensure HSPICE compatibility
           with some important and essential tweaks for the PDK,
           ng_nomodcheck will suppress some unwanted warnings.</p>
 
