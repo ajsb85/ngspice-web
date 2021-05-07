@@ -262,9 +262,8 @@ Fig. 2
 <p class="justified">The simulator window pops up. Because everything
 is prepared, you just hit the 'Run Simulation' button. An empty plot
 window pops up. Go for 'Add Signals' -> V(out), and you see gain and
-phase of the output, if the input was 1 (Fig.3). The scaling of the
-plot window is not yet ideal, the x-axis lable frequency is partially hidden.</p>
-          <div id="topimage"><img src="./kicad-images/Fig3.jpg" alt=
+phase of the output, if the input was 1 (Fig.3).</p>
+          <div id="topimage"><img src="./kicad-images/Fig3.png" alt=
           "RC gain/phase of ac simulation" width="100%" height="100%"></div>
 Fig. 3         
 <p class="justified">As a next test we are interested in a transient simulation. All signals
@@ -277,7 +276,7 @@ delay of 1 us. Pulse width and repetition time are 1s and thus far beyond the si
 of 100 ms. So within our simulation time we will see only the rising edge of the input signal.
 The simulation command now is set to '.tran 1u 100m'. The output (V(out) plotted
 versus time) does show the expected behavior, rising from 0 to 5 V, and is shown in Fig.4.</p>
-          <div id="topimage"><img src="./kicad-images/Fig4.jpg" alt=
+          <div id="topimage"><img src="./kicad-images/Fig4.png" alt=
           "RC transient output" width="100%" height="100%"></div>
 Fig. 4
 <br>
@@ -314,7 +313,7 @@ and search for  BC546.lib. Its contents (the .model line) will show up in the wi
 <p class="justified">Here a
 sinusoidal voltage source is used (see ngspice manual chapt. 4.1.2).
 The output plotted is V(out) and V(in) versus time (see Fig. 8). </p>
-          <div id="topimage"><img src="./kicad-images/Fig8.jpg" alt=
+          <div id="topimage"><img src="./kicad-images/Fig8.png" alt=
           "Amplifier outout versus input" width="100%" height="100%"></div>
           Fig. 8
 <br>
