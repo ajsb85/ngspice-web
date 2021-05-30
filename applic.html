@@ -148,6 +148,13 @@
           the computer in use, ngbehavior will ensure HSPICE compatibility
           with some important and essential tweaks for the PDK,
           ng_nomodcheck will suppress some unwanted warnings.</p>
+          <p class="justified"> After having installed the PDK, you may run the
+          <a href="./tests/skywater-examples.7z"> ISCAS85 SkyWater example</a>. 
+          Please edit the ngspice input files for a simple inverter
+          and the ISCAS85 C7552_ann and add the correct path to
+          your PDK installation. Simulating the C7552_ann will take a
+          few minutes because it contains 15000 MOS transistors 
+          (BSIM4v5 model) and 82000 passives (R and C).</p>
 
           <p class="header"><a name="smp" id="smp"></a>Switch-Mode
           Converter Development</p>
