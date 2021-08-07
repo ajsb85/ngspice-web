@@ -46,6 +46,8 @@
 
         <li><a href="./docs.html">Documentation</a></li>
 
+        <li><a href="./tutorials.html">Tutorials</a></li>
+
         <li><a href="./extras.html">Extras/Options</a></li>
 
         <li id="active"><a href="#" id="current" name=
@@ -82,6 +84,8 @@
               <li><a href="applic.html#memr">Memristor</a></li>
 
               <li><a href="applic.html#exam">Example Circuits</a></li>
+
+              <li><a href="applic.html#mparam">Device model parameters for simulation</a></li>
 
             </ul>
           </div>
@@ -128,12 +132,12 @@
           <a href="http://opencircuitdesign.com/open_pdks/install.html"> installation procedure</a>
           offered by Tim Edwards (Chapter "Prerequisites", steps 1 to 12).
           Design support is also available by Stefan Schippers'
-          <a href="http://repo.hu/projects/xschem/index.html"> XSCHEM</a>. See his 
+          <a href="http://repo.hu/projects/xschem/index.html"> XSCHEM</a>. See his
           <a href="https://www.youtube.com/watch?v=jXmmxO8WG8s"> video</a>
           for further installation instructions.</p>
           <p class="justified">To successfully simulate with ngspice
           and the SkyWater PDK, at least
-          <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/34/"> ngspice-34</a> 
+          <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/34/"> ngspice-34</a>
           is required. In addition you have to create an initialization file
           .spiceinit (or alternatively called spice.rc) in your HOME directory.
           It has to contain the following lines:
@@ -149,11 +153,11 @@
           with some important and essential tweaks for the PDK,
           ng_nomodcheck will suppress some unwanted warnings.</p>
           <p class="justified"> After having installed the PDK, you may run the
-          <a href="./tests/skywater-examples.7z"> ISCAS85 SkyWater example</a>. 
+          <a href="./tests/skywater-examples.7z"> ISCAS85 SkyWater example</a>.
           Please edit the ngspice input files for a simple inverter
           and the ISCAS85 C7552_ann and add the correct path to
           your PDK installation. Simulating the C7552_ann will take a
-          few minutes because it contains 15000 MOS transistors 
+          few minutes because it contains 15000 MOS transistors
           (BSIM4v5 model) and 82000 passives (R and C).</p>
 
           <p class="header"><a name="smp" id="smp"></a>Switch-Mode
@@ -190,12 +194,19 @@
 
           <p class="header"><a name="Example Circuit" id="exam"></a>Example circuits</p>
           <p class="justified">The ngspice distribution provides a lot of
-          <a href="https://sourceforge.net/p/ngspice/ngspice/ci/master/tree/examples">example circuits</a>
-          . These consist of netlists and models and cover various aspects of ngspice analog,
+          <a href="https://sourceforge.net/p/ngspice/ngspice/ci/master/tree/examples">example circuits</a>.
+          These consist of netlists and models and cover various aspects of ngspice analog,
           digital and mixed signal simulation. They
           are also a very good study source if you are interested in the ngspice control
           language.</p>
+          <p class="header"><a name="Model params" id="mparam"></a>Device model parameters for simulation</p>
+          <p class="justified">For simulation you need as input the netlist, device model parameters,
+          simulation commands, and out commands. The ngspice distribution does not provide
+          such model parameters, but you may find many of them either in the web or on this web site.
+          The <a href="./modelparams.html">Model Parameter Page</a> does offer some further info
+          and links.</p>
           <br>
+
           <p class="header"><a name="intro" id=
           "test"></a>_____ Tests and Quality Assurance _____</p>
 
