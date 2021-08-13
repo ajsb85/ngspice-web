@@ -471,7 +471,9 @@ transistor model (equations to calculate currents as function of terminal voltag
 hard-coded in ngspice. This model however requires model parameters to make these calculations
 specific for the transistor that was selected (BC546). These data are not delivered with ngspice.
 They are device manufacturer specific and may be obtained from their web sites or from other sites
-(here e.g. from <a href="https://www.electronicspoint.com/threads/bc549c-spice-model.37724/">BC546 model parameters</a>, see also the <a href="http://espice.ugr.es/espice/src/modelos_subckt/">espice spice model pages</a> for many more). What do we get from there?
+(here e.g. from <a href="https://www.electronicspoint.com/threads/bc549c-spice-model.37724/">BC546 model parameters</a>,
+see also the <a href="./model-parameters/models_ugr.7z">spice model collection</a> from our 
+<a href="./modelparams.html">model parameters page</a> for many more). What do we get from there?
 <pre>
 <code>
 .model BC546B npn ( IS=7.59E-15 VAF=73.4 BF=480 IKF=0.0962 NE=1.2665
@@ -535,7 +537,7 @@ V(out) = -R2/R1*V(in) = -100*V(in).</p>
           "OpAmp amplifier" width="100%" height="auto"></picture>
 <p class="justified">           Fig. 10 Inverting amplifier with OpAmp</p>
 <p class="justified"> There is no model for OpAmps delivered with ngspice. So you have to search in the web for a device manufacturer's model, e.g. from the
-<a href="http://www.ti.com/lit/zip/snom255">TI web pages</a> as LF356.mod. A wealth of models for discretes and ICs from the early 2000s is available at the <a href="http://espice.ugr.es/espice/src/modelos_subckt/">espice spice model pages</a> and its sub-folders.</p>
+<a href="http://www.ti.com/lit/zip/snom255">TI web pages</a> as LF356.mod. A wealth of models for discretes and ICs from the early 2000s is available at the <a href="./model-parameters/models_ugr.7z">ngspice model collection</a> and its sub-folders.</p>
 <p class="justified">If you have a look at LF356.mod, there you find the circuit assembled in a subcircuit (between the .subckt and the .ends lines) with name LF356/NS and 5 connecting nodes. </p>
 <p class="justified">How to add the LF356 model to the ngspice netlist? Copy the file LF356.mod into
 the folder that will also contain the netlist OpAmp.cir. Add the line <code>.include LF356.mod</code>

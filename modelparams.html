@@ -93,13 +93,33 @@
           <p class="header">Model parameters for ngspice</p>
           <p class="justified">
           For simulation you need as input the netlist, device model parameters,
-          simulation commands, and out commands. The ngspice distribution does 
-          not provide such model parameters, but you may find many of them 
-          either in the web or on this web site. Generally PSPICE, HSPICE 
-          and (many) LTSPICE models are compatible to ngspice. Sometimes 
-          models by commercial vendors are encrypted. These cannot be used 
+          simulation commands, and out commands. The ngspice distribution does
+          not provide such model parameters, but you may find many of them
+          either in the web or on this web site. Generally PSPICE, HSPICE
+          and (many) LTSPICE models are compatible to ngspice. Sometimes
+          models by commercial vendors are encrypted. These cannot be used
           by open source ngspice. </p>
 
+          <p class="header">Model parameter collections:</p>
+
+          <p class="justified"> A broad selection of model parameters for devices dated
+          before 2000 has been collected by A. Roldan from University of Granada.
+          While no longer available from the original web pages, it will be offered
+          below.</p>
+          <p class="justified"> Another very comprehensive selection of model parameters
+          for devices, covering active and passive devices from many device vendors
+          has been derived from the simulator package 
+          <a href="http://www.spectrum-soft.com/download/download.shtm">Micro-Cap 12</a>,
+          a formerly (up to 2019) professionally maintained commercial spice simulator,
+          now free and publicly available.</p>
+          <ul>
+              <li><p><a href="./model-parameters/models_ugr.7z">
+              models_ugr.7z</a>
+             (maintained up to ca. 2010)</p></li>
+              <li><p><a href="./model-parameters/MicroCap-LIBRARY.7z">
+              MicroCap-LIBRARY.7z</a>
+             (maintained up to 2019)</p></li>             
+          </ul>
           <p class="header">Various sources from the web:</p>
           <ul>
               <li><p><a href="https://www.youspice.com/links-to-spice-libraries/">
@@ -122,7 +142,7 @@
               https://github.com/kicad-spice-library/KiCad-Spice-Library</a></p></li>
             </ul>
           <p class="header">Device vendor web pages:</p>
-          <ul>          
+          <ul>
               <li><p><a href="https://www.diodes.com/design/tools/spice-models/">
               https://www.diodes.com/design/tools/spice-models/</a></p></li>
               <li><p><a href="https://www.infineon.com/cms/en/tools/solution-finder/product-finder/simulation-model/">
@@ -140,7 +160,7 @@
               https://www.littelfuse.com/technical-resources/spice-models.aspx</a></p></li>
               <li><p><a href="https://www.avx.com/design-tools/spice-models/">
               https://www.avx.com/design-tools/spice-models/</a></p></li>
-            </ul>              
+            </ul>
           <p class="justified">For TI models, check for the product on the TI web pages. PSPICE models (use their *.lib file in ngspice) may often be found in the 'Design & Development' section of the product page.</p>
 
           <p class="header">How to add model parameters to the ngspice netlist</p>
