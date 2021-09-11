@@ -130,6 +130,7 @@
   <li> <a href="#external">Using external ngspice</a></li>
   <li> <a href="#external2">Enhancing the script for use with both internal or external ngspice</a></li>
   <li> <a href="#multi">Using a dual OpAmp</a></li>
+  <li> <a href="#links">Links to models, videos etc.</a></li>
 </ol> 
 <div id="intro"></div>
 <p class="header">Introduction</p>
@@ -450,10 +451,11 @@ multi unit ICs, see chapter <a href="#multi">Using a dual OpAmp</a>.</p>
 <p class="header">6) Using external ngspice</p>
 <p class="justified">The Eeschema interface to ngspice is currently still rather limited. Therefore it might be a good idea to use Eeschema for schematic capture (do the circuit design) and have it create the ngspice netlist, but then use the current (or the nightly) standard ngspice executable for simulation.</p>
 
-<p class="justified">A step by step approach for Windows 7 / 10 reads:</p>
-<li>Expand recent <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/31/ngspice-31_64.zip/download">ngspice</a> into directory C:\, so you have ngspice in C:\Spice64\bin.</li>
+<p class="justified">A step by step approach for Windows 10 reads:</p>
+<ul>
+<li>Expand recent <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/35/ngspice-35_64.zip/download">ngspice</a> into directory C:\, so you have ngspice in C:\Spice64\bin.</li>
 
-<li>Install recent <a href="http://kicad-pcb.org/download/windows/">KiCad 5.1.9</a>.</li>
+<li>Install recent <a href="http://kicad-pcb.org/download/windows/">KiCad 5.1.10</a>.</li>
 
 <li>Copy C:\Program Files\KiCad\share\kicad\demos\simulation\laser_driver into C:\KiCad, to get C:\KiCad\laser_driver\. This just serves as an example for an arbitrary eeschema project placed into an arbitrary folder.</li>
 
@@ -469,6 +471,7 @@ multi unit ICs, see chapter <a href="#multi">Using a dual OpAmp</a>.</p>
 .tran 10p 150n
 </code>
 </pre>
+
 by a control language snippet that sets the simulation type, starts the simulation, prints some simulation info, writes the results into a Spice raw file and plots the data. It has been necessary to place "" around the nodes /in and /out to comply with the ngspice control language parser. This should be improved in a future KiCad version.
 <pre>
 <code>
@@ -491,6 +494,7 @@ plot "/in" "/out"
 <li>Button: Save   (Store laser_driver.cir to C:\KiCad\laser_driver\)</li>
 <li>Again Button: Generate Netlist File...</li>
 <li>Button: Run Simulator</li>
+</ul>
 
           <div id="topimage"><img src="./kicad-images/net-gen-15-3.png" alt=
           "Netlist generation" width="100%" height="100%"></div>
@@ -536,7 +540,7 @@ end
 (Eeschema-->Tools-->Generate Netlist File...-->Spice-->Run Simulator).
 For information on the commands used in the script, please have a look
 at chapter 17.5 of the
-<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/34/ngspice-34-manual.pdf/download">ngspice manual</a>.</p>
+<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/35/ngspice-35-manual.pdf/download">ngspice manual</a>.</p>
 <br>
 <br>
 <div id="multi"></div>
@@ -605,6 +609,23 @@ care, ngspice for Linux will stumble over it. Just remove this character. A fix
 to do this automatically has been committed.</p>
 <br>
 <br>
+<div id="links"></div>
+<p class="header">9) Links to models, videos etc.</p>
+<p class="justified">Here you will find some links: our <a href="./modelparams.html">model parameters page</a> 
+contains a large amount of models and model parameters. The two collections are early complete and will serve
+many of your needs, and if you have a special request, there are links to semiconductor vendors' model pages as well.
+</p>
+<p class="justified">Below there are some recent introductory videos for KiCad/ngspice:
+<ul>
+<li><a href="https://www.youtube.com/watch?v=3OTDnxtv-vc">Introductory video for chapter 2 (in German)</a>.</li>
+<li><a href="https://www.youtube.com/watch?v=HAzcSgKi0Kk">Introductory video for chapter 3 (in German)</a>.</li>
+<li><a href="https://www.woolseyworkshop.com/2019/07/01/performing-a-circuit-simulation-in-kicad/">Woolsey's Workshop</a>.</li>
+<li><a href="https://www.youtube.com/watch?v=VFaI6ZzFMfM">Eric Bredder's video on chapter 2</a>.</li>
+<li><a href="https://www.youtube.com/watch?v=yyx0MoS4QWM">Eric Bredder's video on simulating a diode</a>.</li>
+<li><a href="https://www.youtube.com/watch?v=PKJIvCq0Oy8">Simulating a buck converter</a>.</li>
+</p>
+</ul>
+</p>
         </div>
       </div>
     </div>
