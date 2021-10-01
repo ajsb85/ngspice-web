@@ -131,32 +131,65 @@
 
           <p class="justified">Ngspice source code is stored in a
           public (anonymous) accessible Git Source Code Management
-          (SCM) tool maintained by Sourceforge.net. For those who
-          are familiar with the Git issues, the following lines are
-          self explanatory, for those who are not, they will be
-          rather obscure. The latter should install Git on their
-          systems (using RPMs, DEBs or any other form of packaging
-          standard) and then read the included documentation before
-          attempting to retrieve the code stored in the Git
-          repository.</p>
+          (SCM) tool maintained by  
+          <a href="https://sourceforge.net/p/ngspice/_list/git">Sourceforge</a>.
+          </p>
 
           <p class="header">Setting up the environment for Git on
           your computer:</p>
 
-          <p class="justified">To be written!!</p>
+          <p class="justified">On Linux you may install Git using
+          the distribution's repository manager (rpm, apt, etc.). On macOS
+          Git is available via Homebrew or Apple Xcode. For MS Windows
+          there you will find this <a href=
+          "https://git-scm.com/download/win">Git download page</a>.</p>
+
+          <p class="justified">After Git installation you may use Git 
+          with the commands given below in the usual terminal window. On
+          MS Windows you may open a Git Bash window by right-clicking
+          in the Explorer window onto any directory of your choice
+          and choosing 'Git Bash here'.</p>
+
+          <p>To learn more about Git, which is both powerful
+          and difficult to master, please consult <a href=
+          "http://git-scm.com/"><strong>http://git-scm.com/</strong></a>,
+          especially: <a href=
+          "http://git-scm.com/documentation"><strong>http://git-scm.com/documentation</strong></a>
+          which has pointers to documentation and tutorials.</p>
 
           <p class="header">Retrieving ngspice code:</p>
 
-          <p class="justified">To retrieve ngspice code you have to
-          issue the command:</p>
-
+          <p class="justified">Create or select a directory of your
+          choice, e.g. 'Software'. Cd into this directory. To retrieve
+          ngspice code you have to issue the command:</p>
           <div id="code">
-git clone git://git.code.sf.net/p/ngspice/ngspice
+git clone git://git.code.sf.net/p/ngspice/ngspice ngspice_test
           </div>
-
-          <p class="justified">The command above is used to
-          retrieve the actual development tree, and installs a
+          <p>The code will be downloaded and made available in the
+          directory Software/ngspice_test. The command above is used to
+          retrieve the current master branch tree, and installs a
           complete local repository onto your system.</p>
+          <p class="justified">To fetch and incorporate
+          new commits from Sourceforge into your local git 
+          repository, please cd to directory ngspice_test and run</p>
+
+          <p id="code">git pull</p>
+
+          <p>git pull will deny to overwrite modified files in your
+          working directory. To drop your local changes first, you
+          can run</p>
+          <p id="code">git reset --hard</p>
+          Be careful because this command may delete your local changes!
+
+          <p>To switch to another branch, you may issue
+          <p id="code">git fetch</p>
+          and then
+          <p id="code">git checkout pre-master</p>
+          <p>Pre-master is the current development branch. Other ngspice
+          Git branches are available as well, see this 
+          <a href="https://sourceforge.net/p/ngspice/ngspice/ref/master/branches/">
+          list of ngspice Git branches</a>.</p>
+
 
           <p class="header">Accessing Git via web</p>
 
