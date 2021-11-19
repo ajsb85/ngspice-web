@@ -147,6 +147,7 @@
 
               <li><p><a href="https://github.com/kicad-spice-library/KiCad-Spice-Library">
               https://github.com/kicad-spice-library/KiCad-Spice-Library</a></p></li>
+              
             </ul>
           <div id="vendors"></div>
           <p class="header">Device vendor web pages:</p>
@@ -174,6 +175,10 @@
               https://www.maximintegrated.com/en/design/design-tools/modeling-simulation/spice.html</a></p></li>
               <li><p><a href="https://www.taiwansemi.com/en/design/simulation-models">
               https://www.taiwansemi.com/en/design/simulation-models</a></p></li>
+              <li><p><a href="http://s-audio.systems/blog/spicemodels/?lang=en">
+              http://s-audio.systems/blog/spicemodels/?lang=en</a></p></li>
+              <li><p><a href="https://www.interfet.com/jfet-datasheets/standard.jft">
+              https://www.interfet.com/jfet-datasheets/standard.jft</a></p></li>
             </ul>
           <p class="justified">For TI models, check for the product on the TI web pages.
           PSPICE models (use their *.lib file in ngspice) may often be found in the
@@ -189,7 +194,16 @@
           by the foundry to the customer against an NDA (non-disclosure agreement).
           There is one famous exception. Google/Skywater have made a PDK for a 130nm process
           Open Source.  Please see <a href="./applic.html#sky">here</a> for more information.</p>
-
+          <p class="justified">Other sources of models for advanced MOS (IC related, but not 
+          necessarily linked to any foundry) are found here:
+          <ul>
+              <li><p><a href="https://github.com/DDD-FIT-CTU/CMOS-SPICE-Model-Collections">
+              https://github.com/DDD-FIT-CTU/CMOS-SPICE-Model-Collections</a></p></li>
+              
+              <li><p><a href="http://ptm.asu.edu/">
+              http://ptm.asu.edu/</a></p></li>
+          </ul>
+          </p>
           <div id="howto"></div>
           <p class="header">How to add models and model parameters to the ngspice netlist</p>
           <p class="justified"> Basically ngspice may use three types of model data: the PDKs
@@ -351,6 +365,15 @@ XPowerMOS d1 g1 s1 FDS86252
 Xopamp inp inm vc ve opout OPA1641
           </code>
           </pre>
+          </p>
+          <p class="justified"> And because this OpAmp model is a PSPICE model,
+          don't forget to set
+          <pre>
+          <code>
+set ngbehavior=ltpsa
+          </code>
+          </pre>
+          in file .spiceinit.
           </p>
           <div class="justified justified">
         </div>
