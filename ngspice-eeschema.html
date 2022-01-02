@@ -142,6 +142,7 @@ electronic circuits, simulation, and plotting of the results.</p>
 <p class="justified">All experiments described here require using at
 least KiCad Version 5, and have been done with a MS Windows nightly.
 Most items covered should be similar with KiCad/ngspice under LINUX.
+Images are generated with KiCad 5.1.2, but look very similar with the new 6.0.0.
 For more detailed information on the Eeschema-ngspice interface and its usage,
 please check out the 
 <a href="http://docs.kicad.org/5.1.9/en/eeschema/eeschema.html#simulator">KiCad/Eeschema manual</a>.</p>
@@ -153,50 +154,44 @@ The second circuit is an amplifier with a bipolar npn transistor that
 requires specific model parameters from an external source for the
 built-in transistor model. The third circuit is an
 OpAmp amplifier that relies on an external OpAmp model for simulation.</p>
-<p class="justified">Ngspice-34 reads PSPICE device libs. These are often provided by the semiconductor device manufacturers for design support. Internally ngspice translates the PSPICE syntax to ngspice before simulating. No more manual tweaking of the library description is required.
+<p class="justified">Ngspice reads PSPICE device libs. These are often provided by the semiconductor device manufacturers for design support. Internally ngspice translates the PSPICE syntax to ngspice before simulating. No more manual tweaking of the library description is required.
 
 <br>
 <br>
 <div id="setting"></div>
 <p class="header">1) Setting up Eeschema and ngspice</p>
 
-<p class="justified">Highly recommended: Install the KiCad 5.1.10 release version from 
+<p class="justified">Highly recommended: Install the KiCad 6 release version from 
 <a href="http://kicad.org/download/">http://kicad.org/download/</a>.
-Ngspice-34 is delivered with this distribution. Some Linux distributions, e.g. 
+Ngspice-35 is delivered with this distribution. Some Linux distributions, e.g. 
 <a href="https://software.opensuse.org/distributions/tumbleweed">OpenSUSE Tumbleweed</a>, offer KiCad
-5.1.10 with ngspice-34 as well.</p>
+6.0.0 with ngspice-35 as well.</p>
 <p class="justified">If you want to make use of PSPICE device models (often provided
-by the semicondctor companies), put a text file named .spiceinit into your user or
-home directory (For Windows: C:\users\'your name', found also in
-environmental variable USERPROFILE, for Linux: home/username directory, found also in
-environmental variable HOME, for macOS it is users/'your name'). 
-Add the two lines
-<pre>
-<code>
-* user provided init file
-set ngbehavior=ps
-</code>
-</pre>
-to .spiceinit. If the file name .spiceinit does not work for you, use the alternative file name spice.rc . 
-Then start or restart KiCad. And that's it!</p>
+by the semiconductor companies), you have to set an appropriate compatibility mode:</p>
+Inspect --> Simulator --> Sim Parameters --> Compatibility Mode: PSpice and LTSpice --> ok.
+<p>And that's it!</p>
 <br>
 
-<p class="justified">If you happen to use an older version of KiCad and want to make use of ngspice-34,
+<p class="justified">If you want to make use of ngspice-36,
 please read on. Otherwise skip downloading, and move on to chapt. 2.</p>
 <p class="justified">If you are on MS Windows, have installed 64 bit KiCad and want to upgrade from 
-ngspice-31 to 34, you just have to replace libngspice-0.dll in KiCad/bin folder by the new ngspice dll.
-This procedure will not work for 32 bit KiCad, there is no 32 bit dll replacement available.
-To upgrade do the following:</p>
-<p class="justified">Download the ngspice dll available in 
-<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/34/ngspice-34_dll_64.zip/download">
-ngspice-34_dll_64.zip</a>.</p>
-<p class="justified">Copy msys-ngspice-0.dll from folder Spice64_dll\dll-mingw\ of the zip file into 
-the folder Programs\KiCad\bin. Within the KiCad\bin folder rename the existing old libngspice-0.dll
-to libngspice-0-orig.dll. Now rename msys-ngspice-0.dll to libngspice-0.dll and restart KiCad.</p>
+ngspice-35 to 36, you have to replace the simulator residing in ngspice.dll in KiCad/bin folder by
+ the new ngspice dll. To upgrade do the following:</p>
 
+<p class="justified">Download the ngspice dll available in 
+<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/36/ngspice-36_dll_64.zip/download">
+ngspice-36_dll_64.zip</a>.</p>
+<p class="justified">Rename ngspice.dll in C:\Program Files\KiCad\6.0\bin to ngspice_orig.dll. 
+You will need administrator access
+rights to do so. Copy ngspice.dll from folder ngspice-36_dll_64.zip\Spice64_dll\dll-vs\ of the zip file into 
+the folder C:\Program Files\KiCad\6.0\bin. Then rename folder C:\Program Files\KiCad\6.0\lib\ngspice
+to C:\Program Files\KiCad\6.0\lib\ngspice_orig and expand folder 
+ngspice-36_dll_64.zip\Spice64_dll\lib\ngspice\ from the zip file to C:\Program Files\KiCad\6.0\lib\ 
+to create the updated C:\Program Files\KiCad\6.0\lib\ngspice. Now restart KiCad.
+This procedure will not work for 32 bit KiCad, there is no 32 bit dll replacement available.</p>
 <p class="justified">If you are using LINUX, please check if your distribution already
-offers the ngspice-34 shared library. If not, you may need to download 
-<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/34/ngspice-34.tar.gz/download">ngspice-34.tar.gz</a>
+offers the ngspice-36 shared library. If not, you may need to download 
+<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/34/ngspice-36.tar.gz/download">ngspice-36.tar.gz</a>
 and compile the shared library with
 <pre>
 <code>
@@ -214,9 +209,10 @@ by KiCad with the newly generated version.</p>
 <p class="justified">As an example, some details for Ubuntu are reported by
 <a href="https://forum.kicad.info/t/ngspice-28-for-kicad/10968/19">mifi</a>. Please check
 also chapt. 32.1 of the
-<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/34/ngspice-34-manual.pdf/download">ngspice manual</a>
+<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/36/ngspice-36-manual.pdf/download">ngspice manual</a>
 for prerequisites and procedures for compiling ngspice.</p>
-<p class="justified">MacOS users may need to do the same.</p>
+<p class="justified">MacOS users may suffer from the fact that a simple replacement may not be possible
+due to the very strict security policy of macOS. Currently there is no upgrade solution available.</p>
 <br>
 <br>
 <div id="rc"></div>
@@ -226,14 +222,14 @@ for prerequisites and procedures for compiling ngspice.</p>
 do an ac simulation.</p>
 
 <p class="justified">eeschema -> File -> new</p>
-<p class="justified">Save as rcrc.sch.</p>
+<p class="justified">Save as rcrc.kicad_sch.</p>
 <p class="justified">As a non-admin user you may not be allowed to store the
-file rcrc.sch in the Program Files/Kicad directory, but you may choose any
+file rcrc.kicad_sch in the Program Files/Kicad directory, but you may choose any
 other place accessible to you, e.g. the recommended personal folder.</p>
 
 <p class="justified">Select and interconnect the components.</p>
 
-<p class="justified">The 'place symbol' pointer is already open.
+<p class="justified">The 'Add a symbol' pointer is already open.
 If not, select the appropriate button from the right column.</p>
 
 <p class="justified">Clicking the button on the empty drawing field will
@@ -262,7 +258,7 @@ Fig.2 now shows the complete input.</p>
           <div id="topimage"><img src="./kicad-images/Fig2.jpg" alt=
           "RC circuit with data" width="100%" height="100%"></div>
 Fig. 2        
-<p class="justified">And off you go with Eeschema -> Tools -> Simulator</p>
+<p class="justified">And off you go with Eeschema -> Inspect -> Simulator</p>
 <p class="justified">The simulator window pops up. Because everything
 is prepared, you just hit the 'Run Simulation' button. An empty plot
 window pops up. Go for 'Add Signals' -> V(out), and you see gain and
@@ -276,7 +272,8 @@ shall now be computed versus time.</p>
 <p class="justified">First we have to change the input voltage signal. A step voltage from 0 to 5 V is intended.
 This will be available (see ngspice manual chapt. 4.1.1) with the PULSE source. 'dc 0 ac 1' is to be
 replaced by 'PULSE (0 5 1u 1u 1u 1 1)'. The input voltage rises from 0 to 5 V after a
-delay of 1 us. Pulse width and repetition time are 1s and thus far beyond the simulation time
+delay of 1 us. Rise and fall times are set to 1 us as well.
+Pulse width and repetition time are 1s and thus far beyond the simulation time
 of 100 ms. So within our simulation time we will see only the rising edge of the input signal.
 The simulation command now is set to '.tran 1u 100m'. The output (V(out) plotted
 versus time) does show the expected behavior, rising from 0 to 5 V, and is shown in Fig.4.</p>
@@ -431,7 +428,7 @@ the 'pspice' and '74xx' libraries. Draw the wiring. Add a suitable pulse form to
 You may consult the ngspice manual, chapter 4.1.1 for an explanation. Double click on each
 symbol to open the 'symbol Properties' window, select 'Edit Spice Model', enter the
 simulation library name and path, the gate's model (e.g. 74HC00), and the 'Type Subcircuit'.
-Don't forget setting the proper pin sequence, e.g. 1 2 3 14 7.
+Don't forget setting the proper pin sequence, e.g. 1 2 3 14 7 for U2 and U4 or  4 5 6 14 7 for U3.
 Add the simulation command. We want a transient simulation, so we enter '.tran 1n 4u'
 into a text box.</p>
 <p class="justified">Some peculiarities become immediately obvious. The two load ballast
@@ -453,11 +450,11 @@ multi unit ICs, see chapter <a href="#multi">Using a dual OpAmp</a>.</p>
 
 <p class="justified">A step by step approach for Windows 10 reads:</p>
 <ul>
-<li>Expand recent <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/35/ngspice-35_64.zip/download">ngspice</a> into directory C:\, so you have ngspice in C:\Spice64\bin.</li>
+<li>Expand recent <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/36/ngspice-36_64.zip/download">ngspice</a> into directory C:\, so you have ngspice in C:\Spice64\bin.</li>
 
-<li>Install recent <a href="http://kicad.org/download/windows/">KiCad 5.1.10</a>.</li>
+<li>Install recent <a href="http://kicad.org/download/windows/">KiCad 6.0.0</a>.</li>
 
-<li>Copy C:\Program Files\KiCad\share\kicad\demos\simulation\laser_driver into C:\KiCad, to get C:\KiCad\laser_driver\. This just serves as an example for an arbitrary eeschema project placed into an arbitrary folder.</li>
+<li>Copy C:\Program Files\KiCad\6.0\share\kicad\demos\simulation\laser_driver into C:\KiCad, to get C:\KiCad\laser_driver\. This just serves as an example for an arbitrary Eeschema project placed into an arbitrary folder.</li>
 
 <li>Set the access for the whole directory trees C:\KiCad and C:\Spice64 to full access for all users. This allows KiCad and ngspice to read and write to these directories without the need for having admin rights.</li>
 
