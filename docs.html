@@ -6,7 +6,7 @@
   <meta name="generator" content=
   "HTML Tidy for Windows (vers 25 March 2009), see www.w3.org">
 
-  <title>Ngspice, the open source Spice circuit simulator - Documentation</title>
+  <title>Ngspice, the open source Spice circuit simulator - Documentation: manual and control flow</title>
   <link rel="stylesheet" type="text/css" href="ngstyle2.css">
   <meta name="generator" content="screem 0.12.2">
   <meta name="author" content="Paolo Nenzi">
@@ -16,9 +16,9 @@
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content=
-  "Documentation for ngspice circuit simulator">
+  "Documentation for ngspice circuit simulator: manual and control flow">
   <meta name="keywords" content=
-  "spice, spice3,spice3f,spice3f5, circuit, EDA, simulator, electronics, semiconductor">
+  "ngspice, spice3f5, circuit, EDA, simulator, electronics, semiconductor, manual , control flow">
   </head>
 
 <body>
@@ -166,6 +166,27 @@
           corrections on the ngspice manual to the <a href=
           "http://sourceforge.net/mailarchive/forum.php?forum_name=ngspice-devel">
           ngspice developers' list.</a></p>
+          <div id="cf">
+          <p class="header">Ngspice Control Flow</p>
+
+          <p class="justified">Meanwhile ngspice has become a complex piece of software. 
+          A typical simulation run may contain the following steps: Read the netlist, 
+          pre-process the netlist (e.g. compatibility, sub-circuits, parameters etc),
+          create the circuit structure, create and fill in the matrix, run the simulation,
+          process the resulting data.</p> 
+          <p class="justified">Below you will find a list of available
+          documents. They are formatted as Libre Office Calc files.</p>
+          <ul>
+            <li><a href="./docs/cf/ngspice_top-level_control-flow.ods">
+            Ngspice top level control flow</a></li>
+
+            <li><a href="./docs/cf/op_operating_point.ods">
+            Ngspice command op (operating point)</a></li>
+          </ul>
+          <p class="justified">These files are just a first step to document the control
+          flow in ngspice. More will be made available as time allows.</p>
+
+          </div>
         </div>
       </div>
     </div>
