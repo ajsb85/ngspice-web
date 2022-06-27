@@ -6,7 +6,7 @@
   <meta name="generator" content=
   "HTML Tidy for Windows (vers 25 March 2009), see www.w3.org">
 
-  <title>Ngspice, the open source Spice circuit simulator - Applications</title>
+  <title>Ngspice, the open source Spice circuit simulator - Google/Skywater and other Applications</title>
   <link rel="stylesheet" type="text/css" href="ngstyle2.css">
   <meta name="generator" content="screem 0.12.2">
   <meta name="author" content="Paolo Nenzi">
@@ -18,7 +18,7 @@
   <meta name="description" content=
   "ngspice applications, tests and quality assurance">
   <meta name="keywords" content=
-  "spice, spice3,spice3f5, circuit, EDA, simulator, electronics, semiconductor">
+  "spice, spice3, electronic circuits, EDA, simulator, semiconductor, Skywater">
   </head>
 
 <body>
@@ -116,22 +116,53 @@
           <a href="https://www.youtube.com/watch?v=jXmmxO8WG8s"> video</a>
           for further installation instructions.</p>
           <p class="justified">To successfully simulate with ngspice
-          and the SkyWater PDK, at least
-          <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/34/"> ngspice-34</a>
-          is required. In addition you have to create an initialization file
+          and the SkyWater PDK, at least ngspice-34 is required, however much better results
+          (speed-up of at least a factor of 3, large circuits with 200k transistors have been
+          tested) are available with the KLU solver in 
+          <a href="https://sourceforge.net/p/ngspice/ngspice/ci/KLU-6+11-rebase-master-3_Feb_2022/tree/">
+          ngspice-36-klu</a>. This option of replacing the venerable Sparse1.3 matrix solver
+          by the KLU method is still experimental, but so far has yielded good results. More testing and
+          user feedback is enevitable to make this become a standard method.</p>
+          
+          <p class="justified">You will have to create an initialization file
           .spiceinit (or alternatively called spice.rc) in your HOME directory.
-          It has to contain the following lines:
+          It should contain the following lines:
           <pre>
           <code>
-          set num_threads=8
-          set ngbehavior=hsa
-          set ng_nomodcheck
+          * .spiceinit for use with Skywater PDK and ngspice KLU
+          set ngbehavior=hsa     ; set compatibility for reading PDK libs
+          set ng_nomodcheck      ; don't check the model parameters 
+          set num_threads=8      ; CPU hardware threads available
+          option noinit          ; don't print operating point data
+          optran 0 0 0 100p 2n 0 ; don't use dc operating point, but transient op
           </code>
           </pre>
-          num_threads should be set to the number of physical cores of
-          the computer in use, ngbehavior will ensure HSPICE compatibility
+          <code>set num_threads=8</code> should be set to the number of physical cores of
+          the computer in use (here for example 8 cores), <code>set ngbehavior=hsa</code> 
+          will ensure HSPICE compatibility
           with some important and essential tweaks for the PDK,
-          ng_nomodcheck will suppress some unwanted warnings.</p>
+          <code>set ng_nomodcheck</code> will suppress some unwanted warnings, 
+          <code>option noinit</code> will suppress the printing of all operating point results.</p>
+          <p class="justified">The calculation of the dc operating point,
+          delivering the node voltage for starting the transient simulation,
+          often has caused trouble (long duration, sometimes no convergence etc.).
+          A new feature in ngspice is the <b>optran</b> method, calculating the
+          operating point by a distinct transient simulation. The command
+          <code>optran 0 0 0 100p 2n 0</code>, to be given in .spiceinit, does take care
+          of this method. <code>0 0 0</code> denotes: no initial iteration, no gmin
+          stepping, no source stepping, <code>100p 2n 0</code> then denotes: 
+          use an extra transient simulation with
+          step size 100 ps and about 20 steps until 2 ns to set up all dc voltages,
+          without explicitedly setting a voltage ramp. Only after a successful
+          operating point calculation by optran the normal transient sim is started.</p>
+          <p class="justified">For MS Windows users, a pre-compiled executable
+          of ngspice-36-klu is available at our <a href="./download.html#klu">Download page</a>. Linux
+          users might apply the compile script ./compile_linux_klu.sh from the
+          ngspice directory of the tarball in
+          <a href="https://sourceforge.net/p/ngspice/ngspice/ci/KLU-6+11-rebase-master-3_Feb_2022/tree/">
+          ngspice-36-klu</a>
+          to obtain
+          an OS specific executable.</p>
           <p class="justified"> After having installed the PDK, you may run the
           <a href="./tests/skywater-examples.7z"> ISCAS85 SkyWater example</a>.
           Please edit the ngspice input files for a simple inverter
