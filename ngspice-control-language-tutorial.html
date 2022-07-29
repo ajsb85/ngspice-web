@@ -128,8 +128,9 @@
   <li> <a href="#plots">About plots, variables and vectors</a></li>
   <li> <a href="#loop2">Looping a simulation, plot the maximum gain versus supply voltage</a></li>
   <li> <a href="#loop3">Looping the simulation as in 5., no plot, write data to file only</a></li>
-  <li> <a href="#loops">Loops</a></li>
+  <li> <a href="#loops">About loops in general</a></li>
   <li> <a href="#strsub">String substitution</a></li>
+  <li> <a href="#nloops">Nested loops</a></li>
   <li> <a href="#step">Emulate nested .step commands</a></li>
   <li> <a href="#modify">Modify a circuit on the fly</a></li>
   <li> <a href="#moreexamples">More examples</a></li>
@@ -482,7 +483,7 @@ file with the current data. Here we use a trick: When entering the loop for the 
 existing file. Calling <code>set appendwrite</code> several times does not hurt.</p>
 
 <div id="loops"></div>
-<p class="header">7. Loops</p>
+<p class="header">7. About loops in general</p>
 <p class="justified">Several control structures are available for creating loops. 
 Each loop starts with a keyword and ends with <b>end</b>. Nesting is supported.
 We use vectors (instatiated by <b>let</b>, de-referenced by <em>$&</em>, like <em>$&loopindex)</em> 
@@ -581,8 +582,68 @@ elements of a string list in a variable are numbered 1 to number-of-elements. El
 for substituting only after an intermediate step of converting them to a vector of length 1. When
 defining a list variable, take care for spaces between ( or ) and the elements.
 </p>
+<div id="nloops"></div>
+<p class="header">9. Nested loops</p>
+<p class="justified">In the following netlist there is a very simple circuit: 3 resistors in series, powered
+by a voltage source. We want to change each resistor using the <b>alter</b> command. We use
+3 interlaced <b>while</b> loops.
+<pre>
+<code>
+3 interlaced while loops, simple circuit
+
+R1 1 11 1 
+R2 11 12 1
+R3 12 0 1
+
+V1 1 0 1
+
+.control
+* initialization (vectors in plot const)
+let rsta1 = 1k
+let rsto1 = 5k
+let rste1 = 1k
+let rsta2 = 200  ; start value for R2
+let rsto2 = 1000 ; stop value
+let rste2 = 200  ; step value
+let rsta3 = 20
+let rsto3 = 200
+let rste3 = 20
+let rloop1 = rsta1
+let rloop2 = rsta2 ; loop value for R2
+let rloop3 = rsta3
+* three nested while loops
+while rloop1 < rsto1
+  alter R1 rloop1
+  while rloop2 < rsto2
+    alter R2 rloop2 ; modify R2 by current rloop2 value
+    while rloop3 <= rsto3
+      alter R3 rloop3
+      op
+      let rtotal = rloop1 + rloop2 + rloop3
+      echo $&rloop1 $&rloop2 $&rloop3 $&rtotal $&V1#branch
+      let rloop3 = rloop3 + rste3
+    end
+    let rloop3 = rsta3
+    let rloop2 = rloop2 + rste2 ; calculate new rloop2 value
+  end
+  let rloop2 = rsta2            ; reset rloop2 to its start value
+  let rloop1 = rloop1 + rste1
+end
+rusage
+.endc
+
+.end
+</code>
+</pre>
+For varying each resistor, each resistor gets its vectors for the start, stop and step values.
+The three rloop vectors will be varied during looping. One has to be careful where to place the
+command lines <code>alter R2 rloop2</code>, and <code>let rloop2 = rloop2 + rste2</code>. Right
+after a loop has finished, its corresponding rloop vector has to be reset to its start value,
+e.g. by <code>let rloop2 = rsta2</code> again.
+
+</p>
 <div id="step"></div>
-<p class="header">9. Emulate nested .step commands</p>
+<p class="header">10. Emulate nested .step commands</p>
 <p class="justified">Creating nested loops and running several simulations in series
 without external intervention are a powerful tool to characterize circuits. Currently
 unfortunately ngspice does not offer the <b>.step</b> command, which may simplify setting
@@ -776,11 +837,84 @@ Changing the model parameter VAF (forward Early voltage) is done by <b>altermod<
 the parameters by <b>alterparam</b> and after <b>reset</b>. Data output is provided here by the simple
 <b>print</b> command.
 </p>
-<p class="justified"> The above netlist implicitely provides a linear increase of parameters.
-So still missing are options like dec or oct for non-linear parameter distributions.
+<p class="justified"> The above netlist implicitely provides a linear increase of parameters. A .step command like
+<code>
+<pre>
+* .step oct v1 1 100 5
+</code>
+</pre>
+with its option oct inplies a non-linear dstribution of input parameters (here 5 values per octave,
+that is within a factor of 2). A netlist with a single loop demonstrates this command:
+<code>
+<pre>
+*** Emulate the .step command
+* .step oct v1 1 100 5
+
+V1 vcc 0 1                          ; the circuit
+R1 vcc 0 1
+
+.op                                 ; simulation type required
+
+.control
+let vstart = 1                      ; start voltage vector (in plot 'const')
+let vend = 100                      ; end voltage vector (in plot 'const')
+let numb = 5                        ; number of points per octave (in plot 'const')
+
+let index = 1                       ; new loop index vector (in plot 'const')
+let vmult = 2^(1/numb)              ; multiplicator
+
+let xx = vend/vstart                ; find the total number of steps
+let ind1 = 0
+while xx > 1
+  let xx = xx / vmult
+  let ind1 = ind1 + 1
+end
+echo number of steps $&ind1
+
+if ind1 < 1                          ; move on when number of steps is positive
+  echo error with number of steps $&ind1 --'>'  stop!
+else
+  let vecx = vector(ind1)            ; create vectors for x and y
+  let vecy = vector(ind1)
+  settype voltage vecx               ; set the correct vector type
+  settype current vecy
+
+  let vcur = vstart                   ; current voltage value in the loop
+  while vcur <= vend                  ; the voltage loop
+    alter V1 vcur                     ; a new voltage value for V1
+    echo run no. $&index
+    run                               ; simulate
+    let indloc = index - 1            ; indexes for vectors start with 0
+    let vecx[indloc] = vcur           ; x value into vector
+    let vecy[indloc] = v1#branch      ; y value into vector
+*    print vcur v1#branch
+    unlet indloc                      ; remove vector no longer used
+    echo
+    let vcur = vcur * vmult           ; calculate new voltage value
+    let index = index + 1
+  end
+  plot vecy vs vecx pointplot xlog    ; plot y versus x
+end
+rusage                                ; memory and time used
+.endc
+
+.end
+</code>
+</pre>
+Here we use a multiplicator to alter the voltage value, derived from the information "5 values
+per octave". After calculating the total number of steps, we create and use 2 vectors vecx, vecy
+to store the result of the op simulation versus the V1 value. Some checking against
+wrong point numbers is done. A pointplot in Fig. 5 demonstrates the uniform x value distribution, 
+when plotted logarithmically.
+</p>
+<pframe> <pic1>
+          <div id="topimage"><img src="./control-language/logpoints.png" alt=
+          "logarithmic distribution of x values" width="180%" height="180%"></div>
+</pframe> </pic1>
+<p class="justified"><em>Fig. 5 Output current versus logarithmic voltage value distribution</em></p>
 </p>
 <div id="modify"></div>
-<p class="header">10. Modify a circuit on the fly</p>
+<p class="header">11. Modify a circuit on the fly</p>
 <p class="justified">By using the <code>.if ... .elseif ... .endif</code> construct, you may choose from 
 different circuit blocks which are enclosed within the conditional statements. Selection
 is done by altering a parameter as selector with the <b>alterparam</b> command.</p>
@@ -869,14 +1003,14 @@ Finally we use two <b>meas(ure)</b> commands to find the frequency where
 the opamp gain has rolled off by -3 dB.
 </p>
 
-<p class="justified">The results of both simulations are presented in Fig. 5:
+<p class="justified">The results of both simulations are presented in Fig. 6:
 
           <div id="topimage"><img src="./control-language/HighLow.png" alt=
           "gain and phase of RC circuit" width="100%" height="100%"></div>
 </p>
-<p class="justified"><em>Fig. 5 Gain  of RC circuit and two operational amplifiers versus frequency</em></p>
+<p class="justified"><em>Fig. 6 Gain  of RC circuit and two operational amplifiers versus frequency</em></p>
 <div id="moreexamples"></div>
-<p class="header">11. More examples</p>
+<p class="header">12. More examples</p>
 <p class="justified">A lot of example netlist are provided with the ngspice distribution.  You may
 also find them in our <a href="https://sourceforge.net/p/ngspice/ngspice/ci/master/tree/examples/">
 Sourceforge git</a> pages. Especially the Monte Carlo simulations make heavy use of more or
