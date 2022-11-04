@@ -28,7 +28,7 @@
         <pic1><img src="./images/nglogo.jpg" alt="NGSPICE"></pic1>
         <pic2><img src="./images/ngtext2.jpg" alt=
         "Mixed mode - mixed level circuit simulator - based on Berkeley&#39;s Spice3f5"></pic2>
-        <pic3><a href="http://sourceforge.net/projects/ngspice"><img src=
+        <pic3><a href="https://sourceforge.net/projects/ngspice"><img src=
         "./images/ngsumD.jpg" alt="Developer Pages" border="0"></a></pic3>
       </pframe>
     </div>
@@ -354,7 +354,7 @@ input voltage source.</p>
 <p class="justified"> There is no model for OpAmps delivered with ngspice. Nor does KiCad
 deliver such a model. So you have to search in the web for a device maker's model, e.g. from the
 <a href="http://www.ti.com/lit/zip/snom255">TI web pages</a> as LF356.mod. Sources for models
-are assembled at our <a href="http://ngspice.sourceforge.net/modelparams.html">
+are assembled at our <a href="https://ngspice.sourceforge.io/modelparams.html">
 ngspice model page</a>. Save the model file LF356.mod to a directory of your choice, e.g. /sim/mymodels/LF356.mod.</p>
 <p class="justified">If you have a look at LF356.mod, there you find the circuit assembled in a subcircuit (.subckt
 line) with name LF356 and 5 connecting nodes. Obviously the two offset cancellation nodes
@@ -413,7 +413,7 @@ fastest method among the three, again by applying XSPICE. This is not yet suppor
 behavioral modeling. The symbol
 library (see Tools->Symbol Library Editor) is 74xx, and we choose the 74HC variant. Now we need
 a corresponding ngspice library. There is none available, so I started a behavioral lib
-<a href="http://ngspice.sourceforge.net/experimental/74HCng.lib"><strong>74HCng.lib</strong></a>,
+<a href="https://ngspice.sourceforge.io/experimental/74HCng.lib"><strong>74HCng.lib</strong></a>,
 derived from a LTSPICE lib, by replacing their A devices by XSPICE logic. Each 74xx gate has an analog 
 input/output interface, surrounding the internal event-based logic. Only very few gates are there
 right now, just for testing the basics. </p>
@@ -640,7 +640,7 @@ many of your needs, and if you have a special request, there are links to semico
         <pframe>
           <pic2>Author and Copyright: Holger Vogt, 2022. </pic2>
           <pic1><a href="http://sourceforge.net"><img src=
-          "http://sourceforge.net/sflogo.php?group_id=38962&amp;type=1" alt=
+          "https://sourceforge.net/sflogo.php?group_id=38962&amp;type=1" alt=
           "SourceForge.net Logo" border="0" height="31" width="88"></a></pic1>
           <pic2>All text is available under the terms of the <a class=
           "internal" href="https://creativecommons.org/licenses/by-sa/4.0/">
