@@ -141,15 +141,15 @@
 It allows to create scripts which automate the simulation flow and provide support for simulation data analysis.</p>
 <p class="justified">There are three basic methods to start a simulation with ngspice. The traditional method is
 the <b>batch mode</b>. With an input netlist given (see <a href="#examplecircuit">below</a>), the command 
-<code>ngspice -b -r inv-example.raw inv-eample.cir</code> will start the simulation, executing the dot commands from the netlist,
+<code>ngspice -b -r inv-example.raw inv-example.cir</code> will start the simulation, executing the dot commands from the netlist,
 saving the simulation data in the 'raw' file, without any further user interaction. On the other hand we have
-the <b>interactive mode</b>. You start ngspice by <code>ngspice inv-eample.cir</code>. ngspice sources the netlist and then waits 
+the <b>interactive mode</b>. You start ngspice by <code>ngspice inv-example.cir</code>. ngspice sources the netlist and then waits 
 for user input. You may type any of the commands found in chapter 17.5 of the 
 <a href="https://ngspice.sourceforge.io/docs/ngspice-manual.pdf">ngspice manual</a> or the <a href="https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml">ngspice xhtml manual</a>
 to initiate some action (e.g. running the simulation, plotting or saving the data etc.). The real power
 of using these commands however is unfolded in the third mode of running ngspice, the <b>control mode</b>.
 You assemble a sequence of commands into a script, add this script to the netlist, and then start ngspice as usual by
-<code>ngspice inv-eample.cir</code>. ngspice will execute the commands from the script, enabling multiple
+<code>ngspice inv-example.cir</code>. ngspice will execute the commands from the script, enabling multiple
 simulations, loops, data processing, plotting and saving data. About 100 commands are available, scripts may range
 from simple ones with few lines up to complex ones with several hundred commands.</p>
 <p class="justified">And this is what the tutorial is about: How to use the control language for efficient simulations by
