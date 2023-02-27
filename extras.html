@@ -58,6 +58,10 @@
               <li><a href="./ngspice-eeschema.html">Tutorial for Eeschema with
               ngspice</a></li>
             </ul>
+            <p class="contextual title">OSDI/OpenVAF for ngspice</p>
+            <ul id="menulist">
+              <li><a href="./osdi.html">What is OSDI/OpenVAF ?</a></li>
+            </ul>
             <p class="contextual title">ngspice as shared library</p>
             <ul id="menulist">
               <li><a href="./shared.html">Short Intro</a></li>
@@ -66,10 +70,6 @@
             <p class="contextual title">CUSPICE</p>
             <ul id="menulist">
               <li><a href="./cuspice.html">CUSPICE Intro</a></li>
-            </ul>
-            <p class="contextual title">OSDI/OpenVAF for ngspice</p>
-            <ul id="menulist">
-              <li><a href="./osdi.html">What is OSDI/OpenVAF ?</a></li>
             </ul>
             <p class="contextual title">GSS-TCAD</p>
             <ul id="menulist">
@@ -93,7 +93,30 @@
           Typically details are not provided here, but are offered by the
           various links shown on the left or throughout the text. We also
           recommend to have a look at the <a href=
-          "./docs/ngspice-manual.pdf">actual ngspice manual</a>.</p>
+          "./docs/ngspice-manual.pdf">current ngspice manual</a>.</p>
+
+          <p class="header">User defined device models</p>
+          <ul>
+            <li>The B-, E-, and G-sources (see <a href=
+            "./docs/ngspice-manual.pdf">manual</a> chapt. 5) allow to generate
+            voltages or currents which result from evaluating a mathematical
+            expression, derived from node voltages, branch currents,
+            parameters, and constants. Behavioral R, L, or C devices may depend
+            on equations as well.</li>
+            <li>The <a href="./osdi.html">OSDI/OpenVAF interface</a> integrates
+            Verilog-A compact device models into ngspice. No programming on
+            the ngspice side is required, only your Verilog-A coded model!</li>
+            <li>The <a href="./xspice.html">XSPICE option</a> integrates C
+            language device models (code models) into ngspice. Behavioral
+            modeling is strongly supported by various devices like amplifiers,
+            filters, oscillators, integrators and others. Mixed signal analysis
+            is sped up by event driven simulation of the digital sections.
+            Various models already come along with ngspice to facilitating
+            analog-digital co-simulation (see <a href=
+            "./docs/ngspice-manual.pdf">manual</a> chapt. 12). The user may
+            define his/her own analog, mixed, or digital devices and models
+            (see chapt. 25-29, especially 28).</li>
+          </ul>
           <p class="header">Programming ngspice</p>
           <p class="justified">Various programming interface are available to
           add control flows to ngspice simulation or control ngspice from
@@ -102,7 +125,9 @@
             <li>The ngspice scripting language (see manual chapter 17) allows
             to add control flows to a single simulation. You may run
             mathematical operations on simulation results, and start new
-            simulations based on these data. Please have a look at scripts
+            simulations based on these data. Please have a look at the
+            <a href="./ngspice-control-language-tutorial.html">control
+            language tutorial</a>, at various scripts
             provided with the distribution, or at the examples from the manual.
             A <a href="#scripts">complete optimizer</a> may be written in this
             language.</li>
@@ -119,27 +144,7 @@
             to control ngspice from another program and how to run several
             ngspice instances in parallel on a multicore computer.</li>
           </ul>
-          <p class="header">User defined device models</p>
-          <ul>
-            <li>The B-, E-, and G-sources (see <a href=
-            "./docs/ngspice-manual.pdf">manual</a> chapt. 5) allow to generate
-            voltages or currents which result from evaluating a mathematical
-            expression, derived from node voltages, branch currents,
-            parameters, and constants. Behavioral R, L, or C devices may depend
-            on exquations as well.</li>
-            <li>The <a href="./xspice.html">XSPICE option</a> integrates C
-            language device models (code models) into ngspice. Behavioral
-            modeling is strongly supported by various devices like amplifiers,
-            filters, oscillators, integrators and others. Mixed signal analysis
-            is sped up by event driven simulation of the digital sections.
-            Various models already come along with ngspice to facilitating
-            analog-digital co-simulation (see <a href=
-            "./docs/ngspice-manual.pdf">manual</a> chapt. 12). The user may
-            define his/her own analog, mixed, or digital devices and models
-            (see chapt. 25-29, especially 28).</li>
-            <li>The <a href="./osdi.html">ADMS interface</a> integrates verilog
-            device models into ngspice.</li>
-          </ul>
+
           <p class="header">Ngspice as a shared library</p>
           <p class="justified">Ngspice may be compiled as a shared library
           (*.so or *.dll). This will offer full control over the simulator from
