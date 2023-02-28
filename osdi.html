@@ -76,33 +76,29 @@
               <li><A href="./tclnotes.html">Designer's note</A></li>
             </ul>
           </div>
-
-
         </div>
       </div>
 
       <div id="main">
         <div id="maincontent">
           <div id="current"></div>
-          <p class="header">Ngspice uses OpenVAF/OSDI for including Verilog-A compact device models</p>
+          <p class="header">Ngspice uses OSDI/OpenVAF for including Verilog-A compact device models</p>
           <p class="justified">Since version 39 ngspice contains the
             <a href="https://semimod.de/projects/">OSDI</a> interface. OSDI allows the
             dynamically loading of compiled Verilog-A compact device models. Advantages of this new
             approach are:
           </p>
           <ul>
-            <li>All Verilog-A compact device models (from <a href="https://si2.org/standard-models/">CMC</a>,
-              from a <a href="https://github.com/dwarning/VA-Models">collection of models</a>, or from
-              other sources) are now available for ngspice</li>
-            <li>There is a github repository <a href="https://github.com/dwarning/VA-Models">VA-Models</a> with most
-              of the public available Verilog-A compact models. The models are checked against the LRM 2.4.0 and prepared
-              for ngspice simulation. A script for generation of the osdi files is provided.</li>
+            <li>All Verilog-A compact device models (from 
+              <a href="https://github.com/dwarning/VA-Models">VA-Models</a>, a collection of Verilog-A
+              models preared for ngspice, from <a href="https://si2.org/standard-models/">CMC</a>,
+              or from other sources) are now accessible by ngspice.</li>
             <li>User-provided Verilog-A compact device models may be compiled, loaded and simulated as well.</li>
             <li>Very fast model compilation with <a href="https://openvaf.semimod.de/">OpenVAF</a>
-              (around 2s, needed once per model, which then is usable for all subsequent simulations)</li>
-            <li>Very efficient model execution in ngspice, including parallel evaluation</li>
-            <li>No code changes and re-compilation of ngspice required</li>
-            <li>Multiple models within a single simulation run are loaded on the fly</li>
+              (around 2s, needed once per model, which then is usable for all subsequent simulations).</li>
+            <li>Very efficient model execution in ngspice, including parallel evaluation.</li>
+            <li>No code changes and re-compilation of ngspice required.</li>
+            <li>Multiple models within a single simulation run are loaded on the fly.</li>
           </ul>
           <div id="start"></div>
           <p class="header">Getting started with OSDI/OpenVAF</p>
@@ -111,8 +107,11 @@
             manual, chapter 13 (available as <a href="./docs/ngspice-manual.pdf">pdf</a> or
             <a href="./docs/ngspice-html-manual/manual.xhtml">html</a>).
           <ul>
-            <li>Get a Verilog-A (compliant to LRM2.4) compact model from CMC, the model collection,
-            or make your own models.</li>
+            <li>Get a Verilog-A compact model: There is a github repository
+              <a href="https://github.com/dwarning/VA-Models">VA-Models</a> providing nearly all
+              of the publicly available Verilog-A compact models. The models are checked against the LRM 2.4.0
+              Verilog AMS standard. <a href="https://si2.org/standard-models/">CMC</a> is another
+              source. Or you may develop your own models!</li>
             <li>Obtain suitable model parameters.</li>
             <li>Obtain and install the OpenVAF compiler (Linux or MS Windows, no macOS for now).</li>
             <li>Compile the model with OpenVAF, obtaining a shared model library *.osdi.</li>
