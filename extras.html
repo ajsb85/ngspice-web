@@ -58,7 +58,7 @@
               <li><a href="./ngspice-eeschema.html">Tutorial for Eeschema with
               ngspice</a></li>
             </ul>
-            <p class="contextual title">OSDI/OpenVAF for ngspice</p>
+            <p class="contextual title">Verilog-A compact device models with OSDI/OpenVAF</p>
             <ul id="menulist">
               <li><a href="./osdi.html">What is OSDI/OpenVAF ?</a></li>
             </ul>
@@ -95,6 +95,17 @@
           recommend to have a look at the <a href=
           "./docs/ngspice-manual.pdf">current ngspice manual</a>.</p>
 
+          <p class="header">Advanced Verilog-A compact device models</p>
+          <ul>
+            <li>The <a href="./osdi.html">OSDI/OpenVAF interface</a> integrates
+            Verilog-A compact device models into ngspice. No programming on
+            the ngspice side is required, only your Verilog-A coded model!
+            This interface enables modern models like PSP or FinFET model
+            BSIM-CMG. A collection of such Verilog-A models is available
+            at Dietmar Warning's <a href="https://github.com/dwarning/VA-Models">
+            VA-Models</a> page.</li>
+          </ul>
+
           <p class="header">User defined device models</p>
           <ul>
             <li>The B-, E-, and G-sources (see <a href=
@@ -103,9 +114,6 @@
             expression, derived from node voltages, branch currents,
             parameters, and constants. Behavioral R, L, or C devices may depend
             on equations as well.</li>
-            <li>The <a href="./osdi.html">OSDI/OpenVAF interface</a> integrates
-            Verilog-A compact device models into ngspice. No programming on
-            the ngspice side is required, only your Verilog-A coded model!</li>
             <li>The <a href="./xspice.html">XSPICE option</a> integrates C
             language device models (code models) into ngspice. Behavioral
             modeling is strongly supported by various devices like amplifiers,
