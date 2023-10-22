@@ -118,11 +118,12 @@
           <p class="justified">To successfully simulate with ngspice
           and the SkyWater PDK, at least ngspice-34 is required, however much better results
           (speed-up of at least a factor of 3, large circuits with 200k transistors have been
-          tested) are available with the KLU solver in
-          <a href="https://sourceforge.net/p/ngspice/ngspice/ci/KLU-6+11-rebase-master-3_Feb_2022/tree/">
-          ngspice-36-klu</a>. This option of replacing the venerable Sparse1.3 matrix solver
-          by the KLU method is still experimental, but so far has yielded good results. More testing and
-          user feedback is enevitable to make this become a standard method.</p>
+          tested) are available with the KLU solver in ngspice-41+, available in our
+          development branch 
+          <a href="https://sourceforge.net/p/ngspice/ngspice/ci/pre-master-42/tree/">
+          pre-master-42</a> towards ngspice-42. KLU is optionally selectable, then replacing 
+          the venerable Sparse 1.3 matrix solver by the KLU method. It is still
+          under test, but so far has yielded good results. Your user feedback is welcome!</p>
 
           <p class="justified">You will have to create an initialization file
           .spiceinit (or alternatively called spice.rc) in your HOME directory.
@@ -132,8 +133,9 @@
           * .spiceinit for use with Skywater PDK and ngspice KLU
           set ngbehavior=hsa     ; set compatibility for reading PDK libs
           set ng_nomodcheck      ; don't check the model parameters
-          set num_threads=8      ; CPU hardware threads available
+          set num_threads=8      ; CPU processor cores available
           option noinit          ; don't print operating point data
+          option klu             ; select KLU as matrix solver
           optran 0 0 0 100p 2n 0 ; don't use dc operating point, but transient op
           </code>
           </pre>
@@ -142,7 +144,7 @@
           will ensure HSPICE compatibility
           with some important and essential tweaks for the PDK,
           <code>set ng_nomodcheck</code> will suppress some unwanted warnings,
-          <code>option noinit</code> will suppress the printing of all operating point results.</p>
+          <code>option noinit</code> will suppress the printing of the operating point results.</p>
           <p class="justified">The calculation of the dc operating point,
           delivering the node voltage for starting the transient simulation,
           often has caused trouble (long duration, sometimes no convergence etc.).
@@ -156,13 +158,12 @@
           without explicitedly setting a voltage ramp. Only after a successful
           operating point calculation by optran the normal transient sim is started.</p>
           <p class="justified">For MS Windows users, a pre-compiled executable
-          of ngspice-36-klu is available at our <a href="./download.html#klu">Download page</a>. Linux
-          users might apply the compile script ./compile_linux_klu.sh from the
-          ngspice directory of the tarball in
-          <a href="https://sourceforge.net/p/ngspice/ngspice/ci/KLU-6+11-rebase-master-3_Feb_2022/tree/">
-          ngspice-36-klu</a>
-          to obtain
-          an OS specific executable.</p>
+          of ngspice-41+ (including KLU option) is available at our 
+          <a href="./download.html#nightly">Download page</a>. Linux or macOS
+          users might apply the compile scripts ./compile_linux_klu.sh or 
+          ./compile_macos_gcc.sh from the ngspice directory of the tarball in
+          <a href="https://sourceforge.net/p/ngspice/ngspice/ci/pre-master-42/tree/">
+          ngspice-41+</a> to compile an OS specific executable.</p>
           <p class="justified"> After having installed the PDK, you may run the
           <a href="./tests/skywater-examples.7z"> ISCAS85 SkyWater example</a>.
           Please edit the ngspice input files for a simple inverter
