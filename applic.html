@@ -170,7 +170,12 @@
           and the ISCAS85 C7552_ann and add the correct path to
           your PDK installation. Simulating the C7552_ann will take a
           few minutes because it contains 15000 MOS transistors
-          (BSIM4v5 model) and 82000 passives (R and C).</p>
+          (BSIM4v5 model) and 82000 passives (R and C). Overall speedup of the c7552 
+          simulation is a factor of two, the plain transient simulation time is reduced by
+          a factor of three, when using KLU. And it is now possible to run simulations
+          with 200k transistors. Setup time may be reduced (for experimental purposes)
+          by directly including the model file with .inc, instead of using .lib (see
+          the netlist file).</p>
           <p class="justified">Please see also
           <a href="https://classes.up-microlab.org/index.php?title=SKY130_Models"> SKY130 installation</a>
           for a detailed description.</p>
@@ -179,9 +184,13 @@
 
           <p class="justified">In an ongoing development <a href="https://www.ihp-microelectronics.com/">IHP</a>
           is working towards an Open Source PDK for its 130 nm SG13G2 BiCMOS process.
-          Early data are available as <a href="https://github.com/IHP-GmbH/IHP-Open-PDK">IHP Open Source PDK</a>.
+          Data are available as <a href="https://github.com/IHP-GmbH/IHP-Open-PDK">IHP Open Source PDK</a>.
           The process offers bipolar devices with exceptional performance with fT/fmax = 350/450 GHz.
           ngspice has been selected as the preferred analog simulator.
+          Again here is the <a href="./tests/IHP-c7552_ann.7z"> ISCAS85 c7552_ann circuit</a>
+          for running a simulation comparison using the IHP PDK. You will need to compile
+          the PSP103.6 model with <a href="https://ngspice.sourceforge.io/osdi.html">
+          OpenVAF</a> and load it into ngspice.
           </p>
 
           <p class="header"><a name="gf" id="gf"></a>Google/GlobalFoundries GF180MCU Open Source PDK</p>
