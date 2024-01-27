@@ -105,7 +105,41 @@
             at Dietmar Warning's <a href="https://github.com/dwarning/VA-Models">
             VA-Models</a> page.</li>
           </ul>
-
+          
+          <p class="header">Mixed-signal co-simulation with digital Verilog circuit blocks</p>
+          <ul>
+            <li> Since version 42 ngspice offers the capability to integrate
+            digital circuit blocks described with Verilog into its mixed-signal
+            netlist for efficient co-simulation. The Verilog code is compiled with
+            <a href="https://www.veripool.org/verilator/">Verilator</a> into a
+            shared library, which is then loaded by the new 
+            <a href="./xspice.html">code model</a> d_cosim. The I/O ports of the
+            Verilog module are then directly accessible to the event based fast
+            digital ngspice/XSPICE simulator, or may directly connect to analog
+            parts of the ngspice netlist. A short 
+            <a href=
+            "./docs/others/Verilog-CoSim.pdf">intro</a> is available as a pdf.
+            </li>
+          </ul>
+          
+          <p class="header">Mixed-signal co-simulation with digital C-coded circuit blocks</p>
+          <ul>
+            <li> Since version 42 ngspice offers the capability to integrate
+            digital circuit blocks contained in C-coded independent processes into its mixed-signal
+            netlist for efficient co-simulation. The C code is compiled with
+            gcc. The external processes are started via the new
+            <a href="./xspice.html">code model</a> d_process. The communication 
+            between ngspice/d_process and the processes running is handled by pipes. The digital
+            contents, interfaced to the event-based ngspice/XSPICE simulation, may also
+            become part of an analog or mixed-signal ngspice netlist. A short 
+            <a href=
+            "./docs/others/c-process-CoSim.pdf">intro</a> is available as a pdf. The d_process
+            code model originally has been developed by Uros Platise from Isotel, see his
+            web page with a 
+            <a href="http://www.isotel.eu/mixedsim/embedded/motorforce">motor controller example</a>.
+            </li>
+          </ul>
+          
           <p class="header">User defined device models</p>
           <ul>
             <li>The B-, E-, and G-sources (see <a href=

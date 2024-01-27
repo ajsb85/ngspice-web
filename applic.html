@@ -118,10 +118,13 @@
           <p class="justified">To successfully simulate with ngspice
           and the SkyWater PDK, at least ngspice-34 is required, however much better results
           (speed-up of at least a factor of 3, large circuits with 200k transistors have been
-          tested) are available with the KLU solver in ngspice-41+, available in our
-          development branch 
-          <a href="https://sourceforge.net/p/ngspice/ngspice/ci/pre-master-42/tree/">
-          pre-master-42</a> towards ngspice-42. KLU is optionally selectable, then replacing 
+          tested) are available with the KLU solver in ngspice-42, available in our
+          file download branch for
+          <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/42/">
+          ngspice-42</a> . To enable KLU, compile ngspice with the configure flag 
+          <code>--enable-klu</code> . The MS Windows build from the distribution has KLU
+          already enabled. 
+          KLU is now optionally selectable ('option klu' in .spiceinit), then replacing 
           the venerable Sparse 1.3 matrix solver by the KLU method. It is still
           under test, but so far has yielded good results. Your user feedback is welcome!</p>
 
@@ -132,6 +135,7 @@
           <code>
           * .spiceinit for use with Skywater PDK and ngspice KLU
           set ngbehavior=hsa     ; set compatibility for reading PDK libs
+          set skywaterpdk        ; skip some checks for faster lib loading
           set ng_nomodcheck      ; don't check the model parameters
           set num_threads=8      ; CPU processor cores available
           option noinit          ; don't print operating point data
@@ -157,13 +161,14 @@
           step size 100 ps and about 20 steps until 2 ns to set up all dc voltages,
           without explicitedly setting a voltage ramp. Only after a successful
           operating point calculation by optran the normal transient sim is started.</p>
-          <p class="justified">For MS Windows users, a pre-compiled executable
-          of ngspice-41+ (including KLU option) is available at our 
-          <a href="./download.html#nightly">Download page</a>. Linux or macOS
-          users might apply the compile scripts ./compile_linux_klu.sh or 
-          ./compile_macos_gcc.sh from the ngspice directory of the tarball in
-          <a href="https://sourceforge.net/p/ngspice/ngspice/ci/pre-master-42/tree/">
-          ngspice-41+</a> to compile an OS specific executable.</p>
+          
+          <p class="justified">For MS Windows users, a pre-compiled executable of 
+          <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/42/ngspice-42_64.7z/download">
+          ngspice-42</a> (including KLU option) is available. Linux or macOS
+          users might apply the compile scripts ./compile_linux.sh or 
+          ./compile_macos_gcc.sh from the ngspice top directory of the
+          <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/42/ngspice-42.tar.gz/download">
+          ngspice-42 tarball</a> to compile an OS specific executable.</p>
           <p class="justified"> After having installed the PDK, you may run the
           <a href="./tests/skywater-examples.7z"> ISCAS85 SkyWater example</a>.
           Please edit the ngspice input files for a simple inverter
@@ -189,8 +194,10 @@
           ngspice has been selected as the preferred analog simulator.
           Again here is the <a href="./tests/IHP-c7552_ann.7z"> ISCAS85 c7552_ann circuit</a>
           for running a simulation comparison using the IHP PDK. You will need to compile
-          the PSP103.6 model with <a href="https://ngspice.sourceforge.io/osdi.html">
-          OpenVAF</a> and load it into ngspice.
+          the PSP103.6 nqs model with <a href="https://ngspice.sourceforge.io/osdi.html">
+          OpenVAF</a> and load it into ngspice (see chapter 13 of the 
+          <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/42/ngspice-42-manual.pdf/download">
+          ngspice manual</a>). MOS transistors are modelled with the native ngspice VBIC model.
           </p>
 
           <p class="header"><a name="gf" id="gf"></a>Google/GlobalFoundries GF180MCU Open Source PDK</p>
