@@ -38,7 +38,7 @@
         <li><a href="./index.html">Home</a></li>
 
         <li><a href="./news.html">News</a></li>
-        
+
         <li><a href="./screens.html">Screenshots</a></li>
 
         <li><a href="./download.html">Download</a></li>
@@ -117,99 +117,59 @@
       <div id="main">
         <div id="maincontent">
 <p class="header">Tutorial: ngspice simulation in KiCad/Eeschema</p>
-<ol start="0"> 
+<ol start="0">
   <li> <a href="#intro">Introduction</a></li>
-  <li> <a href="#setting">Setting up eeschema - ngspice</a></li>  
-  <li> <a href="#rc">Circuit with Passive Elements</a></li> 
-  <li> <a href="#BipAmp">Bipolar Amplifier</a></li> 
-  <li> <a href="#OpAmp">Inverting Amplifier with OpAmp</a></li>
+  <li> <a href="#setting">Setting up eeschema - ngspice</a></li>
+  <li> <a href="#rc">Circuit with Passive Elements</a></li>
+  <li> <a href="#BipAmp">Bipolar Amplifier</a></li>
+  <li> <a href="#OpAmp">Inverting Amplifier with generic OpAmp</a></li>
+  <li> <a href="#OpAmp1641">Inverting Amplifier with OpAmp OPA1641</a></li>
+  <li> <a href="#multi">Using a dual OpAmp TL072</a></li>
   <li> <a href="#digi">Digital Simulation</a></li>
   <li> <a href="#external">Using external ngspice</a></li>
   <li> <a href="#external2">Enhancing the script for use with both internal or external ngspice</a></li>
-  <li> <a href="#multi">Using a dual OpAmp</a></li>
+
   <li> <a href="#links">Links to models, manuals, videos etc.</a></li>
-</ol> 
+</ol>
 <div id="intro"></div>
 <p class="header">Introduction</p>
-<p class="justified"><a href="http://kicad.org/">KiCad/Eeschema</a>
-is a very nice GUI that may
-ideally be used in cooperation with ngspice to allow schematic entry of
-electronic circuits, simulation, and plotting of the results.</p>
+<p class="justified"> <a href="http://kicad.org/">KiCad8</a>
+offers a vastly improved GUI for ngspice in its schematic editor Eeschema.
+It may ideally be used in cooperation with ngspice to allow schematic entry of
+electronic circuits, their simulation, and plotting of the results.</p>
 
-<p class="justified">All experiments described here require using at
-least KiCad Version 5, and have been done with a MS Windows nightly.
-Most items covered should be similar with KiCad/ngspice under LINUX.
-Images are generated with KiCad 5.1.2, but look very similar with the new 6.0.0.
-For more detailed information on the Eeschema-ngspice interface and its usage,
-please check out the 
-<a href="http://docs.kicad.org/5.1.9/en/eeschema/eeschema.html#simulator">KiCad/Eeschema manual</a>.</p>
+<p class="justified">All experiments described here require using KiCad 8 
+and ngspice-42, and have been developed with a MS Windows 10 install.
+All items covered should be similar with KiCad/ngspice under LINUX
+or macOS.</p>
 
-<p class="justified">Three example circuits are presented in the following.
+<p class="justified">Additional introductory videos are available in the
+youtube channel <a href="https://www.youtube.com/@holger8105">
+ngspice in KiCad 8 for circuit simulation</a>.
+</p>
+
+<p class="justified">Several example circuits are presented in the following.
 The first one relies exclusively on symbols from a KiCad library. This
 circuit comprises of only passive elements that may be simulated immediately.
 The second circuit is an amplifier with a bipolar npn transistor that
+either a generic symbol with uses internal default parameters or
 requires specific model parameters from an external source for the
 built-in transistor model. The third circuit is an
-OpAmp amplifier that relies on an external OpAmp model for simulation.</p>
-<p class="justified">Ngspice reads PSPICE device libs. These are often provided by the semiconductor device manufacturers for design support. Internally ngspice translates the PSPICE syntax to ngspice before simulating. No more manual tweaking of the library description is required.
-
+OpAmp amplifier that relies again on a generic symbol and model or
+on an external OpAmp model for simulation. Then the usage of a
+multipart device (dual opamp in a single package) is described. 
+Next an introduction to digital simulation is given.</p>
+<p class="justified">Ngspice reads PSPICE device libs. These are often
+provided by the semiconductor device manufacturers for design support.
+Internally ngspice translates the PSPICE syntax to ngspice before simulating.</p>
 <br>
 <br>
 <div id="setting"></div>
 <p class="header">1) Setting up Eeschema and ngspice</p>
 
-<p class="justified">Highly recommended: Install the KiCad 6 release version from 
-<a href="http://kicad.org/download/">http://kicad.org/download/</a>.
-Ngspice-35 is delivered with this distribution. Some Linux distributions, e.g. 
-<a href="https://software.opensuse.org/distributions/tumbleweed">OpenSUSE Tumbleweed</a>, offer KiCad
-6.0.0 with ngspice-35 as well.</p>
-<p class="justified">If you want to make use of PSPICE device models (often provided
-by the semiconductor companies), you have to set an appropriate compatibility mode:</p>
-Inspect --> Simulator --> Sim Parameters --> Compatibility Mode: PSpice and LTSpice --> ok.
-<p>And that's it!</p>
-<br>
-
-<p class="justified">If you want to make use of ngspice-36,
-please read on. Otherwise skip downloading, and move on to chapt. 2.</p>
-<p class="justified">If you are on MS Windows, have installed 64 bit KiCad and want to upgrade from 
-ngspice-35 to 36, you have to replace the simulator residing in ngspice.dll in KiCad/bin folder by
- the new ngspice dll. To upgrade do the following:</p>
-
-<p class="justified">Download the ngspice dll available in 
-<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/36/ngspice-36_dll_64.zip/download">
-ngspice-36_dll_64.zip</a>.</p>
-<p class="justified">Rename ngspice.dll in C:\Program Files\KiCad\6.0\bin to ngspice_orig.dll. 
-You will need administrator access
-rights to do so. Copy ngspice.dll from folder ngspice-36_dll_64.zip\Spice64_dll\dll-vs\ of the zip file into 
-the folder C:\Program Files\KiCad\6.0\bin. Then rename folder C:\Program Files\KiCad\6.0\lib\ngspice
-to C:\Program Files\KiCad\6.0\lib\ngspice_orig and expand folder 
-ngspice-36_dll_64.zip\Spice64_dll\lib\ngspice\ from the zip file to C:\Program Files\KiCad\6.0\lib\ 
-to create the updated C:\Program Files\KiCad\6.0\lib\ngspice. Now restart KiCad.
-This procedure will not work for 32 bit KiCad, there is no 32 bit dll replacement available.</p>
-<p class="justified">If you are using LINUX, please check if your distribution already
-offers the ngspice-36 shared library. If not, you may need to download 
-<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/34/ngspice-36.tar.gz/download">ngspice-36.tar.gz</a>
-and compile the shared library with
-<pre>
-<code>
-mkdir ngshared
-cd ngshared
-../configure --with-ngshared --enable-xspice --enable-cider --enable-openmp --disable-debug CFLAGS="-m64 -O2" LDFLAGS="-m64 -s"
-make clean
-make -j8
-sudo make install
-</code>
-</pre>
-</p>
-<p class="justified">Then it will be necessary to manually overwrite the old libngspice.so which had been supplied
-by KiCad with the newly generated version.</p>
-<p class="justified">As an example, some details for Ubuntu are reported by
-<a href="https://forum.kicad.info/t/ngspice-28-for-kicad/10968/19">mifi</a>. Please check
-also chapt. 32.1 of the
-<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/36/ngspice-36-manual.pdf/download">ngspice manual</a>
-for prerequisites and procedures for compiling ngspice.</p>
-<p class="justified">MacOS users may suffer from the fact that a simple replacement may not be possible
-due to the very strict security policy of macOS. Currently there is no upgrade solution available.</p>
+<p class="justified">The tutorial has been made with KiCad 8 from
+<a href="https://kicad.org/download/">https://kicad.org/download/</a>.
+Ngspice-42 is delivered with most of its distributions. </p>
 <br>
 <br>
 <div id="rc"></div>
@@ -224,347 +184,261 @@ do an ac simulation.</p>
 file rcrc.kicad_sch in the Program Files/Kicad directory, but you may choose any
 other place accessible to you, e.g. the recommended personal folder.</p>
 
-<p class="justified">Select and interconnect the components.</p>
-
-<p class="justified">The 'Add a symbol' pointer is already open.
-If not, select the appropriate button from the right column.</p>
-
-<p class="justified">Clicking the button on the empty drawing field will
-open the 'Choose Symbol' window. For this example we select the 'pspice'
-library, and select and interconnect the R, C, 0, and VSOURCE symbols (see Fig. 1).
+<p class="justified">Now we select and interconnect the components. Check the
+'Add symbols (A)' button from the right column. The 'Choose Symbol' window opens.
+For this example we select and place
+the '0' and 'VDC' symbols from the Simulation_SPICE library, as well as R and C
+and draw the appropriate connections between the devices (see Fig. 1).
 Ground (0) is required because ngspice references all voltages to a ground pin.
-VSOURCE is required to deliver the input signal, and we the may view the 'out'
+VDC is required to deliver the input signal, labbelled 'in', and we the may view the 'out'
 signal after simulation.</p>
-          <div id="topimage"><img src="./kicad-images/Fig1.jpg" alt=
-          "RC circuit w/o data" width="100%" height="100%"></div>
+          <div id="topimage"><img src="./ngspice-KiCad8-images/Fig1.png" alt=
+          "RC circuit w/o values" width="100%" height="100%"></div>
           Fig. 1
-<p class="justified">Next we have to add names and values to the symbols,
-by clicking onto each symbol. With R and C this is straightforward: R? is
-the name to become R1 etc, R is the value to become 1k etc.
-VSOURCE is special because it has to deliver the ngspice input. For an ac
-simulation we don't have dc, and ac is our reference set to 1, so we replace
-VSOURCE by 'dc 0 ac 1'.</p>
-
-<p class="justified">Finally we have to tell ngspice what to simulate.
-This might require having a look at the ngspice manual, chapt. 15.3.1.
-We want an ac ranging from 1 Hz to 100 kHz with 10 points
-per decade. A simple and comfortable way to tell this to the simulator
-is just placing
-a text line '.ac dec 10 1 100k' into our eeschema drawing window.
+<p class="justified">Next we have to add values to the symbols. Names with
+appropriate numbering (annotation) are already given to each device.
+Values to the resistors may be added by double click onto the 'R' and
+entering the value into the edit box, same with 'C'.
+VDC is special because it has to deliver the ngspice input. For an ac
+simulation we don't care for the dc value (set it to 0), but we have to enable the small
+signal ac input. This is achieved by double click onto the symbol, then button
+'Simulation Model...'. In the 'Parameter' table, set dc value to 0 and
+AC magnitude (AC) to 1. then hit o.k.</p>
 Fig.2 now shows the complete input.</p>
-          <div id="topimage"><img src="./kicad-images/Fig2.jpg" alt=
+          <div id="topimage"><img src="./ngspice-KiCad8-images/Fig2.png" alt=
           "RC circuit with data" width="100%" height="100%"></div>
-Fig. 2        
-<p class="justified">And off you go with Eeschema -> Inspect -> Simulator</p>
-<p class="justified">The simulator window pops up. Because everything
-is prepared, you just hit the 'Run Simulation' button. An empty plot
-window pops up. Go for 'Add Signals' -> V(out), and you see gain and
-phase of the output, if the input was 1 (Fig.3).</p>
-          <div id="topimage"><img src="./kicad-images/Fig3.png" alt=
+Fig. 2
+<p class="justified">Finally we have to tell ngspice what to simulate.
+We want an AC simulation, which is the small signal response of the circuit
+to a varying frequency. We want the frequency ranging from 1 Hz to 100 kHz with 10
+simulation points per decade. A simple way to tell this to the simulator
+is just placing a text line '.ac dec 10 1 100k' into our eeschema drawing
+window (see ngspice manual, chapt. 15.3.1).</p>
+<p class="justified">There is, however, a more comfortable way (without the
+need to having a look at the ngspice manual). Open the
+simulator window with Eeschema -> Inspect -> Simulator. The simulator window pops up.
+Choose button "New Analysis Tab" or Ctrl+N. Select "AC - Small Singnal Ananlysis" from the
+"Analysis type" drop dwon menue. Enter the values for Number, Start and Stop (10 1 100k
+from above). On the right, select V(0ut) (gain) and V(out) (phase) for plotting.
+Run the simulation by hitting the (R) button. Immediately you see the simulated gain and
+phase of the "out" node (Fig.3), reflecting the two RC poles we have in the circuit.</p>
+          <div id="topimage"><img src="./ngspice-KiCad8-images/Fig3.png" alt=
           "RC gain/phase of ac simulation" width="100%" height="100%"></div>
-Fig. 3         
+Fig. 3
 <p class="justified">As a next test we are interested in a transient simulation. All signals
 shall now be computed versus time.</p>
 
 <p class="justified">First we have to change the input voltage signal. A step voltage from 0 to 5 V is intended.
-This will be available (see ngspice manual chapt. 4.1.1) with the PULSE source. 'dc 0 ac 1' is to be
-replaced by 'PULSE (0 5 1u 1u 1u 1 1)'. The input voltage rises from 0 to 5 V after a
-delay of 1 us. Rise and fall times are set to 1 us as well.
-Pulse width and repetition time are 1s and thus far beyond the simulation time
-of 100 ms. So within our simulation time we will see only the rising edge of the input signal.
-The simulation command now is set to '.tran 1u 100m'. The output (V(out) plotted
-versus time) does show the expected behavior, rising from 0 to 5 V, and is shown in Fig.4.</p>
-          <div id="topimage"><img src="./kicad-images/Fig4.png" alt=
-          "RC transient output" width="100%" height="100%"></div>
+This will be available (see ngspice manual chapt. 4.1.1) with the PULSE voltage source. Open
+the "Choose symbol" window by the "Add symbols" button. Type VPULSE into the filter edit box,
+get the VSOURCE and use it to replace the VDC source in your circuit. We want the
+input voltage rising from 0 to 5 V after a
+delay of 2 us. Rise and fall times are set to 1 us as well.
+Pulse width and repetition time are 1s, and thus are far beyond the simulation time
+of 100 ms. So within our simulation time we will see only the rising edge of the input signal.</p>
+          <div id="topimage"><img src="./ngspice-KiCad8-images/Fig4.png" alt=
+          "RC transient circuit" width="100%" height="100%"></div>
 Fig. 4
+
+
+<p class="justified">The simulation command now shall contain 100 us step size and a final time of 100 ms.
+So open again the "New Analysis Tab" window, now select "tran" from the drop-down menue and enter step
+and final time. After running the simulation (button (R)), the output (V(out) plotted
+versus time) does show the expected behavior, rising from 0 to 5 V, and is shown in Fig.5.</p>
+          <div id="topimage"><img src="./ngspice-KiCad8-images/Fig5.png" alt=
+          "RC transient output" width="100%" height="100%"></div>
+Fig. 5
 <br>
 <br>
 <div id="BipAmp"></div>
 <p class="header">3) Bipolar amplifier</p>
-<p class="justified">The second example is a bipolar amplifier. Again we use the symbols from the pspice library,
-except for the transistor stemming from library Transistor_BJT. Two resistors R1, R2 determine
-the base current, R3 is the dc load resistor. RLoad is required because ngspice will not
-accept a capacitor that does not have a dc connection at each terminal.</p>
-<p class="justified">Even with all data assembled
-as shown, the circuit is not complete. The transistor Q1 will need more data for simulation. The bipolar
-transistor model (equations to calculate currents as function of terminal voltages) is
-hard-coded in ngspice. This model however requires model parameters to make these calculations
-specific for the transistor that was selected (BC546). These data are not delivered with KiCad.
-They are device manufacturer specific and may be obtained from their web sites or from other sites
-(here e.g. from <a href="https://www.electronicspoint.com/threads/bc549c-spice-model.37724/">BC546 model parameters</a>,
-see also the <a href="./model-parameters/models_ugr.7z">spice model collection</a> from our 
-<a href="./modelparams.html">model parameters page</a> for many more).
-The BC546 model parameters are
-organized in a single line starting with '.model BC546 npn (...)'. Put
-this line into a file BC546.lib. Double click onto the BC546 symbol. The 'Symbol Properties'
-window pops up. Select 'Edit Spice Model'. In the 'Spice Model Editor' select 'Select File'
-and search for  BC546.lib. Its contents (the .model line) will show up in the window (Fig.5). </p>
-          <div id="topimage"><img src="./kicad-images/Fig5.jpg" alt=
-          "Edit the ngspice model" width="100%" height="100%"></div>
-          Fig. 5
-<br>
-<p class="justified">Fig. 6 is the scheme ready for ac simulation, Fig. 7 for transient simulation. </p>
-          <div id="topimage"><img src="./kicad-images/Fig6.jpg" alt=
-          "Amplifier circuit diagram" width="100%" height="100%"></div>
-<p class="justified"> Fig. 6 </p>
-          <div id="topimage"><img src="./kicad-images/Fig7.jpg" alt=
-          "Amplifier circuit diagram" width="100%" height="100%"></div>
-          Fig. 7
-<p class="justified">Here a
-sinusoidal voltage source is used (see ngspice manual chapt. 4.1.2).
-The output plotted is V(out) and V(in) versus time (see Fig. 8). </p>
-          <div id="topimage"><img src="./kicad-images/Fig8.png" alt=
-          "Amplifier outout versus input" width="100%" height="100%"></div>
-          Fig. 8
-<br>
-<p class="justified">This amplifier strongly relies on the proper selection of the value of R1. The
-'Spice Simulator' window offers a button 'Tune'. Select 'Tune', click onto R1 in the circuit
-diagram and then go back to the 'Spice Simulator' window. A slider has opened to change R1. 
-After each change the simulation is proceeding immediately, current V(in) and V(out) are
-shown.</p>
-<table style="text-align: left; width: 787px; height: 90px;" border="0" cellpadding="2" cellspacing="2">
-  <tbody>
-    <tr> 
-          <td style="vertical-align: top;"><img src="./kicad-images/tune1.jpg" alt=
-          "OpAmp circuit" width="100%" height=auto></td>
-           <td style="vertical-align: top;"><img src="./kicad-images/tune2.jpg" alt=
-          "OpAmp circuit" width="100%" height=auto></td>
-           <td style="vertical-align: top;"><img src="./kicad-images/tune3.jpg" alt=
-          "OpAmp circuit" width="100%" height=auto></td>
-    </tr>
-  </tbody>
-</table>
-<p class="justified">On the left, that's the ideal situation with R1=68k. In the middle with R1=78k, the
-amplification has decreased considerably (watch the y scale and the ratio of V(out) versus V(in)). On the
-right with R1=63k, the signal is grossly distorted and the amplification is reduced again.</p>
+<p class="justified">The next example is a bipolar amplifier. Two resistors R2, R3 determine
+the base current, R1 is the dc load, R5 provides some negative feedback. R4 is required
+because ngspice will not accept a capacitor that does not have a dc connection at each terminal
+(node "in" uses V2 for this purpose).
+The transistor symbol NPN stems from the Simulation_Spice library. It already involves
+internally provided model parameters and has a ngspice compatible pin number sequence 1, 2, and 3
+for C, B, and E. The GND symbol is equivalent to the "0" symbol. The circuit is shown in Fig. 6.</p>
+          <div id="topimage"><img src="./ngspice-KiCad8-images/Fig6.png" alt=
+          "bipolar amp circuit" width="100%" height="100%"></div>
+Fig. 6
+
+<p class="justified"> The first simulation now will be the determination of an operating point,
+with all voltages applied and the resulting currents simulated. Thus open the "Spice Simulator"
+window, open the "New Analysis Tab (ctrl N), and acknowledge to run a DC operating point. The
+plot window now states that there will be no plot (because you will obtain only a single
+operating point). After running the op simulation, have a look at the circuit window (Fig. 7):</p>
+          <div id="topimage"><img src="./ngspice-KiCad8-images/Fig7.png" alt=
+          "bipolar amp circuit" width="100%" height="100%"></div>
+Fig. 7
+<p class="justified">Let's now do a transient simulation (TRAN) in addition to the OP. Check 
+the input voltage source VSIN: its amplitude is only 10 mV. Hit again
+the "New Analysis Tab (ctrl N), select transient (TRAN) from the dropdown menue, and add the
+required parameters: time step size 10u, final time 10m. The plot window will
+show up, you might add signals V(in) and V(out) for plotting. After running the simulation (button (R)),
+the plot is visible (see Fig. 8):
+          <div id="topimage"><img src="./ngspice-KiCad8-images/Fig8.png" alt=
+          "tran output bipolar amp circuit" width="100%" height="100%"></div>
+Fig. 8
+<p class="justified">As a next step we want to replace the generic bipolar model by a
+suitable real world small signal NPN transistor, say the BC546. So search for the symbol
+(button "Add symbol" (A)) and replace the generic symbol we had in the previous example.
+Fortunately the new symbol has the same pin sequence (1, 2, 3 is C, B, E), so this is o.k..
+The specific transistor requires a model parameter set for this device. KiCad ngspice
+does not provide these special device models with their distribution, you have to look
+for it elsewhere, e.g. at our <a href="https://ngspice.sourceforge.io/modelparams.html">
+Models for ngspice</a> page, or others sources from the web. The
+<a href="https://ngspice.sourceforge.io/model-parameters/basic_models.7z">
+basic model parameter set</a> contains the BC546 model. Copy the BC546.lib file into
+your project directory. Double click onto the transistor symbol. In the "Symbol Properties"
+window (Fig. 9) --> Simulation Model... --> Spice Model from File --> File BC546.lib --> Model
+BC546B --> o.k. --> o.k..</p>
+<p class="justified"></p>
+          <div id="topimage"><img src="./ngspice-KiCad8-images/Fig9.png" alt=
+          "tran output bipolar amp circuit" width="100%" height="100%"></div>
+Fig. 9
+<p class="justified"> When we now run the simulation, the output voltage of the
+amplifier V(out) seems to be grossly distorted, not longer a true sine wave. Well, the
+transistor parameters are different, and thus require a different circuit bias. To
+achieve better amplifier performance, the values of R2 and R3 need to be optimized.</p>
+<p class="justified"> An elegant method is offered by the tuning tool. Run the transient
+simulation, click the "Select a value to be tuned (T)" button, select R2 and R3
+on the circuit diagram and move back to the "Spice Simulator" window. Now two
+sliders for tuning R2 and R3 are visible (Fig. 10). As soon as we move one slider, a new
+simulation is started. With a little flair we may find the optimum value, and also
+get an idea of the sensitivity of this circuit against resistance variations.</p>
+          <div id="topimage"><img src="./ngspice-KiCad8-images/Fig10.png" alt=
+          "tran output bipolar amp circuit" width="100%" height="100%"></div>
+Fig. 10
+
+<p class="justified"></p>
 <br>
 <br>
 <div id="OpAmp"></div>
-<p class="header">4) Inverting amplifier with OpAmp</p>
-<p class="justified">The next example presents a simple inverting amplifier using an Operational Amplifier.
-The circuit is shown in Fig. 9. The LF356 has been chosen by chance. The resistor ratio
-R2/R1 = 100 sets the amplification. Symmetric power supplies are available as well as the
-input voltage source.</p>
-          <div id="topimage"><img src="./kicad-images/Fig9.jpg" alt=
+<p class="header">4) Inverting amplifier with generic OpAmp</p>
+<p class="justified">The next example presents a simple inverting amplifier using
+an Operational Amplifier.
+The circuit is shown in Fig. 11. To set it up, we have used the Opamp symbol from
+the Simulation_SPICE library (which includes the model), generic resistors R, two VDC voltage
+sources for power, and a VSIN source (all three from Simulation_SPICE symbol library).
+The resistance ratio R2/R1 = 10 sets the amplification. </p>
+          <div id="topimage"><img src="./ngspice-KiCad8-images/Fig11.png" alt=
           "OpAmp circuit" width="100%" height="100%"></div>
+          Fig. 11
+<p class="justified"> We may set up three different simulations in the Spice Simulator
+ window, using three times the "New Analysis" (crtl N) button: a DC simulation
+(varying V3 from -0.1 to 0.1 with step 0.01, a TRAN (transient) simulation with time step 10u
+and final time 10m, and an AC simulation with 10 points per decade, start 1 and stop 1 Meg.
+The resultas are shown in Figs. 12 to 14.</p>
+          <div id="topimage"><img src="./ngspice-KiCad8-images/Fig12.png" alt=
+          "dc sim result" width="100%" height="100%"></div>
           Fig. 12
-<p class="justified"> There is no model for OpAmps delivered with ngspice. Nor does KiCad
-deliver such a model. So you have to search in the web for a device maker's model, e.g. from the
-<a href="http://www.ti.com/lit/zip/snom255">TI web pages</a> as LF356.mod. Sources for models
-are assembled at our <a href="https://ngspice.sourceforge.io/modelparams.html">
-ngspice model page</a>. Save the model file LF356.mod to a directory of your choice, e.g. /sim/mymodels/LF356.mod.</p>
-<p class="justified">If you have a look at LF356.mod, there you find the circuit assembled in a subcircuit (.subckt
-line) with name LF356 and 5 connecting nodes. Obviously the two offset cancellation nodes
-1 and 5 of the KiCad symbol are not served by this model.</p>
-
-<p class="justified">How to add the ngspice model? Double click on the LF356 symbol in the circuit drawing.
-The 'Symbol Properties' window opens. Call 'Edit Spice Model'. Select 'Model' -> 'File Select'.
-Enter path/name of LF356.mod (for example /sim/mymodels/LF356.mod). Select 'Type' -> 'Subcircuit'. 
-The description of the subcircuit is shown in the window.</p>
-
-<p class="justified">Another issue has to be addressed: The pin numbering of the model description does not
-comply with the pin numbering of the KiCad LF356 symbol U1. The KiCad symbol/pin pairs are
-(in)-/2 (in)+/3 V+/7 V-/4 out/6. The model requires a sequence
-<ul>
-<li>non-inverting input</li>
-<li>inverting input</li>
-<li>positive power supply</li>
-<li>negative power supply</li>
-<li>output</li>
-</ul>
-<p class="justified">as described in the model file. The KiCad
-pins have to be ordered into this sequence, i.e. 3 2 7 4 6, and entered into the
-'Alternate node sequence' field. Don't forget to set the check box, otherwise the field
-entry is discarded. Fig. 13 shows the final settings.</p>
-          <div id="topimage"><img src="./kicad-images/Fig10.jpg" alt=
-          "OpAmp modl setting" width="100%" height="100%"></div>
+<p class="justified"></p>
+          <div id="topimage"><img src="./ngspice-KiCad8-images/Fig13.png" alt=
+          "tran sim result" width="100%" height="100%"></div>
           Fig. 13
-<p class="justified">The simulation setting
-'.dc Vin -0.5 0.5 0.1' results in a linear Vout with a negative slope of -100. The
-simulation setting '.ac dec 10 100 1000k' yields the amplification degrading with
-increasing frequency.</p>
-<br>
-<br>
-<div id="digi"></div>
-<p class="header">5) Digital Simulation</p>
-<p class="justified">Three levels of digital simulation are available in ngspice, only
-two of them are currently supported by the KiCAD-ngspice interface.</p>
-<p class="justified">You may pursue a simulation with digital gates described at 
-transistor level. In reality this is an analog simulation. Simulation speed is 
-somewhat low, so this is o.k. if you have only a few gates.
-Currently I am not aware of calibrated fully functional and open source gate models. 
-However, bobc has started generating a basic 
-<a href="https://github.com/bobc/kicad-simulation-examples">library</a>
-at transistor level. </p>
-
-<p class="justified">Using XSPICE event based digital models,
-embedded in analog i/o structures, yields digital gate models with analog interface,
-that mimic the gate behavior like delay time, input levels 
-and output drive capability. This behavioral simulation offers higher simulation speed
-compared to transistor level gates.</p>
-
-<p class="justified">ngspice also presents true digital event simulation capability, the
-fastest method among the three, again by applying XSPICE. This is not yet supported by KiCad.</p>
-
-<p class="justified">Even if not very advanced and complete, let's start something using
-behavioral modeling. The symbol
-library (see Tools->Symbol Library Editor) is 74xx, and we choose the 74HC variant. Now we need
-a corresponding ngspice library. There is none available, so I started a behavioral lib
-<a href="https://ngspice.sourceforge.io/experimental/74HCng.lib"><strong>74HCng.lib</strong></a>,
-derived from a LTSPICE lib, by replacing their A devices by XSPICE logic. Each 74xx gate has an analog 
-input/output interface, surrounding the internal event-based logic. Only very few gates are there
-right now, just for testing the basics. </p>
-          <div id="topimage"><img src="./kicad-images/Fig11.jpg" alt=
-          "Half Adder" width="100%" height="100%"></div>
+<p class="justified"></p>
+          <div id="topimage"><img src="./ngspice-KiCad8-images/Fig14.png" alt=
+          "ac sim result" width="100%" height="100%"></div>
           Fig. 14
-<p class="justified">There are two input sources (voltage sources emitting suitable pulses), 
-three gates U1A U2A U3B making the half adder, and two load ballast gates U4A, U5A. Then we
-have the five power lines (VCC and ground each) for each gate. Two obtain this schematic,
-the same procedure, as described in the previous chapter, applies: Get the symbols from
-the 'pspice' and '74xx' libraries. Draw the wiring. Add a suitable pulse form to the VSOURCEs.
-You may consult the ngspice manual, chapter 4.1.1 for an explanation. Double click on each
-symbol to open the 'symbol Properties' window, select 'Edit Spice Model', enter the
-simulation library name and path, the gate's model (e.g. 74HC00), and the 'Type Subcircuit'.
-Don't forget setting the proper pin sequence, e.g. 1 2 3 14 7 for U2 and U4 or  4 5 6 14 7 for U3.
-Add the simulation command. We want a transient simulation, so we enter '.tran 1n 4u'
-into a text box.</p>
-<p class="justified">Some peculiarities become immediately obvious. The two load ballast
-gates are required, otherwise the previous gate's output is named 'NC001', i.e. not connected
-and cannot be used (e.g. plotted), even if you have given a tag to them. 
-The 74HC00 is a two input NAND gate * 4, however
-we have defined U2 ... U5, that is 4 different units (ICs). Normally you would design with 
-a single IC offering U2A ... U2D and U2E (power). Eeschema then asks for a NAND gate model 
-with 4*3+2 pins. Our simulation model in the 74HCng.lib has only 3 + 2 pins (in1 in2 out vcc gnd). 
-This is a start, but some more action is required to obtain suitable device models. For analog
-multi unit ICs, see chapter <a href="#multi">Using a dual OpAmp</a>.</p>
-
-<p class="justified">So digital simulation still will need some effort to become really useful in KiCad/ngspice.</p>
+<p class="justified">The simulation setting
+'.dc Vin -0.1 0.1 0.01' results in a linear Vout with a negative slope of -10. You
+may also notice the relatively large dc offset voltage (which is a user definable
+parameter of the generic opamp). The simulation setting '.ac dec 10 100 !Meg' yields
+the amplification degrading with increasing frequency.</p>
+<p class="justified">How to change parameters of the generic opamp model?
+The model offers 4 parameters,
+accessible through double-click onto the symbol, click onto "Simulation Model...",
+POLE (single pole frequency response), GAIN (open loop gain), VOFF (offset
+voltage), and ROUT (output resistance). Change a value (Fig. 15) and re-run the simulation.</p>
+          <div id="topimage"><img src="./ngspice-KiCad8-images/Fig15.png" alt=
+          "opamp model parameter change" width="100%" height="100%"></div>
+          Fig. 15
 <br>
 <br>
-<div id="external"></div>
-<p class="header">6) Using external ngspice</p>
-<p class="justified">The Eeschema interface to ngspice is currently still rather limited. Therefore it might be a good idea to use Eeschema for schematic capture (do the circuit design) and have it create the ngspice netlist, but then use the current (or the nightly) standard ngspice executable for simulation.</p>
+<div id="OpAmp1641"></div>
+<p class="header">5) OpAmp OPA1641</p>
 
-<p class="justified">A step by step approach for Windows 10 reads:</p>
+<p class="justified"> Now we want to simulate a "real world" operational amplifier, like
+the low noise audio amp OPA1641. Unfortunately there is no model for OpAmps delivered with ngspice.
+Nor does KiCad deliver such a model. So you have to search in the web for a device maker's model, e.g. from the
+<a href="https://www.ti.com/product/de-de/OPA1642">TI web pages</a> as
+<a href="https://www.ti.com/lit/zip/sbom627">PSPICE model for OPA1641</a>, where you
+have to extract OPA164x.LIB and put it into directory of your choice. Common sources for models
+are assembled at our <a href="https://ngspice.sourceforge.io/modelparams.html">
+ngspice model page</a>.</p>
+<p class="justified">If you have a look at OPA164x.LIB, there you find the circuit assembled in a subcircuit (.subckt
+line) with name OPA164x and 5 connecting nodes. </p>
+
+<p class="justified">How to add the ngspice model? Double click on the OPA1641 symbol in the circuit drawing.
+The 'Symbol Properties' window opens. Call 'Simulation Model...'. Select 'Model' -> 'Spice Model from File'.
+Enter path/name of OPA164x.LIB (for example /sim/mymodels/OPA164x.LIB). Select 'Model' -> 'OPA164x'. </p>
+<p class="justified">Another issue has to be addressed: The pin numbering of the model description does not
+comply with the pin numbering of the KiCad OPA1641 symbol U1. The KiCad symbol/pin pairs are
+(in)-/2 (in)+/3 V+/7 V-/4 out/6. To start pin assignment, open the "Pin Assignment" window in the
+"Simulation Model Editor". The "Reference" window does show the model text. Scroll down
+until the line <code>.SUBCKT OPA164x IN+ IN- VCC VEE OUT</code> becomes visible.
+According to the .subckt line in OPA164x.LIB the model requires a pin sequence
 <ul>
-<li>Expand recent <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/36/ngspice-36_64.zip/download">ngspice</a> into directory C:\, so you have ngspice in C:\Spice64\bin.</li>
-
-<li>Install recent <a href="http://kicad.org/download/windows/">KiCad 6.0.0</a>.</li>
-
-<li>Copy C:\Program Files\KiCad\6.0\share\kicad\demos\simulation\laser_driver into C:\KiCad, to get C:\KiCad\laser_driver\. This just serves as an example for an arbitrary Eeschema project placed into an arbitrary folder.</li>
-
-<li>Set the access for the whole directory trees C:\KiCad and C:\Spice64 to full access for all users. This allows KiCad and ngspice to read and write to these directories without the need for having admin rights.</li>
-
-<li>Run eeschema.</li>
-
-<li>Open file C:\KiCad\laser_driver\laser_driver.sch.</li>
-
-<li>Complement the text box entry 
-<pre>
-<code>
-.tran 10p 150n
-</code>
-</pre>
-
-by a control language snippet that sets the simulation type, starts the simulation, prints some simulation info, writes the results into a Spice raw file and plots the data. It has been necessary to place "" around the nodes /in and /out to comply with the ngspice control language parser. This should be improved in a future KiCad version.
-<pre>
-<code>
-.tran 10p 150n
-.control
-run
-rusage
-set filetype=ascii
-write C:\KiCad\laser_driver\laser.out "/in" "/out"
-plot "/in" "/out"
-.endc
-</code>
-</pre>
-</li>
-<li>File-->Save current sheet </li>
-<li>Tools-->Generate netlist file...-->Spice</li>
-<li>Select 'Default format'</li>
-<li>Simulator command: C:\Spice64\bin\ngspice.exe</li>
-<li>Button: Generate netlist</li>
-<li>Button: Save   (Store laser_driver.cir to C:\KiCad\laser_driver\)</li>
-<li>Again Button: Generate Netlist File...</li>
-<li>Button: Run Simulator</li>
+<li>non-inverting input (IN+)</li>
+<li>inverting input (IN-)</li>
+<li>positive power supply (VCC)</li>
+<li>negative power supply (VEE)</li>
+<li>output (OUT)</li>
 </ul>
+<p class="justified">The symbol pins are given in the left column of Fig. 16a,
+the sequence of the model pins has to be transformed to match the symbol pins.
+Fig. 16a shows the starting sequence
+after loading the model, Fig. 16b the final solution, which is then used to create the proper
+ngspice netlist entry.</p>
 
-          <div id="topimage"><img src="./kicad-images/net-gen-15-3.png" alt=
-          "Netlist generation" width="100%" height="100%"></div>
-          Fig. 15   Laser driver circuit, Netlist Generator Window, plot after simulation
-<br>
-<br>
-<p class="justified">Voila: ngspice.exe simulates the file laser_driver.cir 
-and plots the resulting output. </p>
-<p class="justified">If you are with Linux, a somewhat different 
-approach is necessary. ngspice expects a terminal for its own input/output.
-Thus it is not sufficient to just add 'ngspice' to the Netlist Generator Window,
-but the simulator command as a call via the terminal, e.g.</p>
-<li>Simulator command: xterm -e ngspice</li>
-<p class="justified">if xterm is available. xterm may be replaced by 
-the standard Linux terminal app. Unfortunately there is 
-not (yet) a good solution for macOS.</p>
-<br>
-<br>
-<div id="external2"></div>
-<p class="header">7) Enhancing the script for use with both internal or external ngspice</p>
-<p class="justified">If you replace the text box in the example from above by the following script</p>
-<pre>
-<code>
-.tran 10p 150n
-.control
-pre_set noinit
-set controlswait
-if $?sharedmode
-  version
-  rusage time
-else
-  run
-  rusage
-  set filetype=ascii
-  write c:\Kicad\laser.out "/in" "/out"
-  plot "/in" "/out"
-end
-.endc 
-</code>
-</pre>
-<p class="justified">you may either select the internal ngspice simulator
-(Eeschema-->Tools-->Simulator-->Run Simulation) or the <a href="#external">external ngspice simulator</a>
-(Eeschema-->Tools-->Generate Netlist File...-->Spice-->Run Simulator).
-For information on the commands used in the script, please have a look
-at chapter 17.5 of the
-<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/35/ngspice-35-manual.pdf/download">ngspice manual</a>.</p>
+<table style="text-align: left; width: 787px; height: 90px;" border="0" cellpadding="1" cellspacing="1">
+  <tbody>
+    <tr>
+          <td style="vertical-align: top;"><img src="./ngspice-KiCad8-images/Fig16a.png" alt=
+          "OpAmp circuit" width="100%" height=auto></td>
+          <td style="vertical-align: top;"><img src="./ngspice-KiCad8-images/Fig16b.png" alt=
+          "OpAmp circuit" width="100%" height=auto></td>
+    </tr>
+    <tr>
+          <td style="vertical-align: top;">Fig. 16a</td>
+          <td style="vertical-align: top;">Fig. 16b</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="justified"></p>
+
 <br>
 <br>
 <div id="multi"></div>
-<p class="header">8) Using a Dual OpAmp</p>
-<p class="justified">As already seen in chapt.5, KiCad symbols and Spice model files 
-do not fit, if multi-part devices are designed in. Here as an example we want to set up a
+<p class="header">6) Using a Dual OpAmp TL072</p>
+<p class="justified">As already seen in chapt.5, KiCad symbols and Spice model files
+often do not fit. Especially if multi-part devices are designed in, there has to be some
+intermediate action. Here as an example we want to set up a
 bandpass filter that adds two Sallen-Key filters. Such a low pass filter is distributed
 with KiCad in the folder "KiCad\share\kicad\demos\simulation\sallen_key". The bandpass
 will need two Sallen-Keys in series, on high-pass and one low-pass filter with
 suitable cut-off frequencies.</p>
-<p class="justified">For designing the filter, we need two operational amplifiers. 
-It is reasonable to select a dual OpAmp, e.g. a TI TL072 that contains two amplifiers 
+<p class="justified">For designing the filter, we need two operational amplifiers.
+It is reasonable to select a dual OpAmp, e.g. a TI TL072 that contains two amplifiers
 in an 8 pin package. Start the design in Eeschema by selecting the TL072 from
 the Amplifier_Operational library. Place all three units (UnitA as ampflifier
 1, UnitB as amp 2, and UnitC as the power pins). Select the passives, connections,
-ground, input voltage and power supply, as shown in fig. 16.</p>
-          <div id="topimage"><img src="./kicad-images/fig16-filter-diag.png" alt=
+ground, input voltage and power supply, as shown in fig. 17.</p>
+          <div id="topimage"><img src="./ngspice-KiCad8-images/Fig17.png" alt=
           "Bandpass filter" width="100%" height="100%"></div>
-          Fig. 16   Bandpass filter with dual OpAmp
+          Fig. 17   Bandpass filter with dual OpAmp
 <p class="justified">You need to add the spice model for the opamp. Download
-the model TL072.301 from the TI web pages. Unfortunately the model has only  5 pins 
-(in+, in-, v+, v- and out). However according to the TL072 data sheet and your 
-circuit design you will need 8 pins (1in+,1in-, v+, v-,1out, 
+the model TL072.301 from the TI web pages. Unfortunately the model has only  5 pins
+(in+, in-, v+, v- and out). However according to the TL072 data sheet and your
+circuit design you will need 8 pins (1in+,1in-, v+, v-,1out,
 2in+, 2in-, and 2out) and need calling the opamp model twice, because we have two
-amplifiers in our circuit. So you cannot use 
-the TI model TL072.301 directly, but need to convert it into a 2-opamp model version, 
+amplifiers in our circuit. So you cannot use
+the TI model TL072.301 directly, but need to convert it into a 2-opamp model version,
 as the TL072 contains two opamps. The following code sequence demonstrates how this
 is done by a ngspice subcircuit.
-Put the code into a file TL072-dual.lib, store it in the same folder as the TL072.301.
-</p>
+Put the code into a file TL072-dual.lib, store it in the same folder as the TL072.301.</p>
 <pre>
 <code>
 * A dual opamp ngspice model
@@ -576,50 +450,270 @@ XU1B 2in+ 2in- vcc+ vcc- 2out TL072
 .ends
 </code>
 </pre>
-<p class="justified">The .subckt line contains 8 subcircuit nodes, following after 
-the ".subckt" token and the subcircuit name. The sequence of these nodes 
-(1out 1in- 1in+ vcc- 2in+ 2in- 2out vcc+) is chosen so that it fits the TL072 
+<p class="justified">The .subckt line contains 8 subcircuit nodes, following after
+the ".subckt" token and the subcircuit name. The sequence of these nodes
+(1out 1in- 1in+ vcc- 2in+ 2in- 2out vcc+) is chosen so that it fits the TL072
 pin number sequence (1 2 3 4 5 6 7 8) as given in the data sheet.
 The .include line includes the TI model. The XU1A and XU1B lines are the instantiations of
 the two amplifiers. Their node sequence is determined by the model (see file TL072.301).
 Amp 1 uses 1out 1in- 1in+, amp 2 uses 2in+ 2in- 2out, the power pins are common for
 both amps. In fact the subcircuit transfers the pin numbers 1 - 8 via the nodes on
-the .subckt line to the proper nodes in the model.</p> 
+the .subckt line to the proper nodes in the model.</p>
 <p class="justified">
-You will need to add TL072-dual.lib as a subcircuit model to each unit of the amplifier
+You will need to add TL072-dual.lib as a subcircuit model to one unit of the amplifier
 IC (now called U1A, U1B and U1C in the Eeschma circuit drawing). This is done by double
-clicking onto each unit, and then selecting the button "Edit Spice Model...". 
+clicking onto the unit, and then selecting the button "Simulation Model..." --> Model -->
+"Spice Model from File", adding TL072-dual.lib and choosing model TL072c.
 Eeschema automatically generates an instance of the complete TL072 with its nodes 1 - 8.
-Thus no "Alternative node squence" is required during editing the spice model in eeschema.
-If done, you are ready for simulating. The ac simulation result of the /bandpass node 
+Thus no alternative pin assignmant is required during editing the spice model in eeschema.
+If done, you are ready for simulating. The ac simulation result of the /bandpass node
 (magnitude in dB and phase in degrees versus frequency) is presented in Fig. 17.
-          <div id="topimage"><img src="./kicad-images/fig17-filter-out.png" alt=
-          "Bandpass filter simulation output" width="100%" height="100%"></div>
-          Fig. 17   Bandpass filter ac simulation output
+          <div id="topimage"><img src="./ngspice-KiCad8-images/Fig18.png" alt=
+          "Bandpass filter" width="100%" height="100%"></div>
+          Fig. 18   Bandpass filter ac simulation output
 </p>
 <p class="justified">B.t.w.: The original model file TL072.301 from TI contains a
 non-printable character in its last line. While ngspice for Windows does not
 care, ngspice for Linux will stumble over it. Just remove this character. A fix
 to do this automatically has been committed.</p>
+
+
+<br>
+<br>
+<div id="digi"></div>
+<p class="header">7) Digital Simulation</p>
+<p class="justified">ngspice offers true mixed-signal simulation capability,
+that is analog simulation, as we have seen above, plus digital simulation. Digital
+simulation is fast, as it involves handling of lists with events and their time. No
+matrix shuffling and solving is required. The disadvantage of this approach is that we get
+logic signals versus time, including their delays, but no detailed analog voltage and current
+waveforms. The interface between analog and digital is automatic, no extra handling
+is needed.</p>
+<p class="justified">For digital modeling of standard devices like the 74xx or 40xx  series
+ngspice uses the so-called U devices, which have been introduced by PSPICE or MicroCap.
+Model parameters are available at the <a href="https://ngspice.sourceforge.io/modelparams.html">
+Models for ngspice</a> page, especially in this
+<a href="https://ngspice.sourceforge.io/model-parameters/74xx-models.7z"> subset</a>.</p>
+<p class="header">7.1) Prepare the digital models</p>
+<p class="justified">There is a caveat, though. Whereas for example the ngspice model for the 7400
+NAND gate has only 3 pins (2 in, 1 out), the KiCad symbol for the 7400 has 14 pins (4
+times a NAND gate, plus power and ground). There is an action required as already shown in the
+previous chapter. We need a subcircuit for the pin assignment, for translating the model's
+pins to the symbol's pins. But we need to do this only once for each new device we want to use
+in our simulation, it afterwards may be re-used for all simulations following.</p>
+<p class="justified">Let's start with a subcircuit.
+<pre>
+<code>
+.subckt 74HCT00m 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+.ends
+</code>
+</pre>
+This is our frame, .subckt is the beginning of the model description, .ends is its end. The subcircuit
+name is 74HCT00m. And then we have the14 pins.
+Next we add the NAND model from 74xx-models.7z, choosing the HCT variant (which still seems to be
+available from TI).
+<pre>
+<code>
+.subckt 74HCT00m 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+*
+* ----------------------------------------------------------- 74HCT00 ------
+*  Quad 2-Input Nand Gates
+*
+*  The High-Speed CMOS Logic Data Book, 1989, TI Pages 2-7 to 2-8
+*  jat 12/28/95
+*
+.SUBCKT 74HCT00  1A 1B 1Y
++     optional: DPWR=$G_DPWR DGND=$G_DGND
++     params: MNTYMXDLY=0 IO_LEVEL=0
+
+U1 nand(2) DPWR DGND
++     1A 1B 1Y
++     DLY_HCT00 IO_HCT MNTYMXDLY={MNTYMXDLY} IO_LEVEL={IO_LEVEL}
+
+.model DLY_HCT00 ugate (tplhTY=11ns tplhMX=20ns tphlTY=11ns tphlMX=20ns)
+
+.ENDS  74HCT00
+*
+.ends
+</code>
+</pre>
+
+</p>
+<p class="justified">How get to know what the pins 1 to 14 are used for? Well, have a look
+at the data sheet, or better grab the symbol and place it with all component onto the Eeschema
+canvas and have a look:
+          <div id="topimage"><img src="./ngspice-KiCad8-images/Fig19.png" alt=
+          "7400 symbols" width="100%" height="100%"></div>
+          Fig. 19   7400 symbols
+</p>
+<p class="justified">Now we have to call 74HCT00 four times inside of 74HCT00m and
+check that each 1A 1B 1Y of 74HCT00 maps correctly onto 1 - 14 of 74HCT00m.
+<pre>
+<code>
+.subckt 74HCT00m 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+*
+* ----------------------------------------------------------- 74HCT00 ------
+*  Quad 2-Input Nand Gates
+*
+*  The High-Speed CMOS Logic Data Book, 1989, TI Pages 2-7 to 2-8
+*  jat 12/28/95
+*
+.SUBCKT 74HCT00  1A 1B 1Y
++     optional: DPWR=$G_DPWR DGND=$G_DGND
++     params: MNTYMXDLY=0 IO_LEVEL=0
+
+U1 nand(2) DPWR DGND
++     1A 1B 1Y
++     DLY_HCT00 IO_HCT MNTYMXDLY={MNTYMXDLY} IO_LEVEL={IO_LEVEL}
+
+.model DLY_HCT00 ugate (tplhTY=11ns tplhMX=20ns tphlTY=11ns tphlMX=20ns)
+
+.ENDS  74HCT00
+*
+Xnand1 1 2 3 74HCT00
+Xnand2 4 5 6 74HCT00
+Xnand3 9 10 8 74HCT00
+Xnand4 12 13 11 74HCT00
+.ends
+</code>
+</pre>
+For this event based digital simulation we don't need the power pins 7 and 14, so just ignore them.
+Finally put this subcircuit into a file 74HCT00.lib for using it in the following examples.
+</p>
+<p class="header">7.2) Simple NAND gate example</p>
+<p class="justified">Let us start with simulating a simple NAND gate. Grab the symbol, but place
+only its first part U1A and discard the rest. Attach our model from file 74HCT00.lib (Eeschema -->
+Double click onto U1A --> Simulation Model... --> Model SPICE from file --> select File: 74HCT00.lib -->
+Model: 74HCT00m --> ok --> ok.). For the input we use two VDC from library Simulation_SPICE. These
+are analog DC voltage sources, ngspice cares automatically for the interface to the digital event world.
+ngspice assumes a supply voltage of 3.3 V for the digital devices, so the analog input shall
+have the same value (3.3 V if you want to enter a "1" signal, 0 V if to enter "0"). If you want a different
+supply (within the limits of the data sheet), e.g. 5 V, put this statement ".param vcc=5" into a text
+box onto the Eeschema canvas. Analog input voltages have to be tailored accordingly.
+The resistor R1 is required to translate the output back from digital to analog.
+Unfortunately currently Eeschema cannot list or plot the digital data directly.</p>
+<p class="justified">For simulation we use a quick operating point (OP) sim (Eeschema --> Inspect
+--> Simulator --> New Ananlysis (ctrl N) --> OP --> unselect "Save all currents" and "Save all
+power dissipations" --> ok. --> Run simulation (R). On the canvas (Fig. 20) you see the resulting
+input and output voltages. If you change the input, the output will follow after a new simulation. </p>
+          <div id="topimage"><img src="./ngspice-KiCad8-images/Fig20.png" alt=
+          "7400 NAND gate simulation" width="100%" height="100%"></div>
+          Fig. 20   7400 NAND sim
+<p class="header">7.3) Full adder made with NAND gates</p>
+<p class="justified">The next circuit is a little bit more complex, a 2-bit 
+<a href="https://www.electronicshub.org/half-adder-and-full-adder-circuits/">full adder</a> made from
+NAND gates we have already used in the previous chapter. It has three inputs, the two values to
+be added and the carry-in bit (from a potential previous adder stage). Two outputs are the sum and carry-out.</p>
+<p class="justified">Generally, for a digital simulation, we need three items: A stimulus which 
+provides adequate signals to stimulate the second item, the device under test, and thirdly we need some
+means to read and review the resulting data. Even for such a small circuit as shown in Fig. 21 with
+only three inputs and 2 outputs we need 8 input combinations (or "words") to achieve a full logic test.
+In the example in Fig. 21 we use 3 pulsed voltage sources and a transient (voltage versus time)
+simulation. This is not meant to extract timing data, but just to cover all 8 input combinations.</p>
+          <div id="topimage"><img src="./ngspice-KiCad8-images/Fig21.png" alt=
+          "2 bit full adder" width="100%" height="100%"></div>
+          Fig. 21   2-bit full adder circuit
+<p class="justified">The input/output plot in Fig. 22 plots the three inputs and the two outputs
+on top of each other, like this was a digital plot. The lower three signals are the pulsed voltage
+sources, and their timing is chosen so that all input combinations are covered. You may check
+if the output reflects the truth table given in the
+<a href="https://www.electronicshub.org/half-adder-and-full-adder-circuits/">literature</a> (it does).</p>
+          <div id="topimage"><img src="./ngspice-KiCad8-images/Fig22.png" alt=
+          "2 bit full adder" width="100%" height="100%"></div>
+          Fig. 22   2 bit full adder simulation results
+<p class="justified">Fig. 21 reveals some "tricks" used. The parameter "vcc" has been set, not only
+for the digital circuitry, but also for the stimuli, as {vcc} is replaced by the .param value.
+R1 and R2 are used to translate the digital data to the analog world. The simulation time is
+measured with the text box insert (*get the sim...). On my machine it is a mere 4 ms. The plot
+in Fig. 22 has been achieved by not plotting the signals directly (they would obscure each other
+in a single row), but plotting user-defined signals ("Spice Simulator" window --> Simulation
+--> User-defined signals), adding n*4 (n is 0 to 4) to each signal.</p>
+<p class="header">7.4) Divide by 4 with D-FF</p>
+<p class="justified">The "Divide by 4" circuit uses 2 D flip-flops, which are available as 7474
+in a single
+14 pin package. So we again have to design a subcircuit to match the model 74HCT74 with 6 pins
+to the symbol with 14 pins. It is the same procedure as has been described above. In the
+.subckt line of the final model  74HCT74M we have not used just numbers, but the pin names, in
+their correct sequence, thus corresponding to the pin numbers 1 to 14.</p>
+<p class="justified">The procedure towards the simulation is now the same as described above:
+Draw the circuit (set, reset and power pins are not used), attached the subciruit
+model 74HCT74M to the symbol, define appropriate user-defined signal for plotting, set the
+transient plot data (time step 2n, final time 2u, not using "Save all currents" nor
+"Save all power dissipations") and run the simulation.</p>
+<pre>
+<code>
+.subckt 74HCT74M _R1 D1 C1 _S1 Q1 _Q1 VGND _Q2 Q2 _S2 C2 D2 _R2 VCC
+
+* ----------------------------------------------------------- 74HCT74 ------
+*  Dual D-Type Positive Edge Triggered Flip-Flops With  Preset And Clear
+*
+*  The High-Speed CMOS Logic Data Book, 1989, TI Pages 2-105 to 2-107
+*  bss    2/23/94
+*
+.SUBCKT 74HCT74 1PREBAR 1CLRBAR 1CLK 1D 1Q 1QBAR
++     optional:  DPWR=$G_DPWR DGND=$G_DGND
++     params:  MNTYMXDLY=0 IO_LEVEL=0
+
+U1 DFF(1) DPWR DGND
++     1PREBAR 1CLRBAR 1CLK 1D 1Q 1QBAR
++     DLY_HCT74 IO_HCT MNTYMXDLY={MNTYMXDLY} IO_LEVEL={IO_LEVEL}
+
+.model DLY_HCT74 ueff(tppcqlhTY=21ns tppcqlhMX=35ns tppcqhlTY=21ns
++                 tppcqhlMX=35ns twpclMN=20ns
++                 tpclkqlhTY=20ns tpclkqlhMX=28ns tpclkqhlTY=20ns
++                 tpclkqhlMX=28ns twclkhMN=23ns twclklMN=23ns
++                 tsudclkMN=15ns)
+
+.ENDS 74HCT74
+
+XUA  _S1 _R1 C1 D1 Q1 _Q1 74HCT74
+XUB  _S2 _R2 C2 D2 Q2 _Q2 74HCT74
+.ends
+</code>
+</pre>
+          <div id="topimage"><img src="./ngspice-KiCad8-images/Fig23.png" alt=
+          "2 bit full adder" width="100%" height="100%"></div>
+          Fig. 23   Divide by 4 circuit with two D flip-flops 7474
+<p class="justified">The simulation result (input and output signal) in Fig. 24 
+indeed does show the "divide by 4" action of this circuit.</p>
+          <div id="topimage"><img src="./ngspice-KiCad8-images/Fig24.png" alt=
+          "2 bit full adder" width="100%" height="100%"></div>
+          Fig. 24   Input and output of Divide by 4 circuit
+<p class="justified"></p>
+<br>
+<br>
+<div id="external"></div>
+<p class="header">8) Using external ngspice</p>
+<p class="justified">For MS Windows needs to be fixed in Eeschema</p>
+<br>
+<br>
+<div id="external2"></div>
+<p class="header">9) Enhancing the script for use with both internal or external ngspice</p>
+<p class="justified">For MS Windows needs to be fixed in Eeschema</p>
 <br>
 <br>
 <div id="links"></div>
-<p class="header">9) Links to models, videos etc.</p>
-<p class="justified">Here you will find some links: our <a href="./modelparams.html">model parameters page</a> 
+<p class="header">10) Links to models, videos etc.</p>
+<p class="justified">Here you will find some links: our <a href="./modelparams.html">model parameters page</a>
 contains a large amount of models and model parameters. The two collections are early complete and will serve
 many of your needs, and if you have a special request, there are links to semiconductor vendors' model pages as well.
 </p>
+<p class="justified">The project files for chapters 2 to 6 are found
+<a href="./experimental/ngspice-KiCad8-projects.7z">here</a>.</p>
 <p class="justified">Links to Eeschema/ngspice examples:</p>
-<p class="justified"> 17 example projects (KiCad 6.0.2, ngspice-36) are assembled 
-<a href="https://forum.kicad.info/t/simulation-examples-for-kicad-eeschema-ngspice/34443">here</a> (more to come).</p>
+<p class="justified"> 39 example projects (KiCad 6.0.2, ngspice-36) are assembled
+<a href="https://forum.kicad.info/t/simulation-examples-for-kicad-eeschema-ngspice/34443">here</a>.</p>
+<p class="justified"> 24 example projects (KiCad 8 RC2, ngspice-42) are presented
+<a href="https://forum.kicad.info/t/more-simulation-examples-for-kicad-eeschema-ngspice/45546">here</a> (more to come).</p>
 
 <p class="justified">Links to Eeschema/ngspice manuals:
 <ul>
-<li><a href="https://docs.kicad.org/5.1/en/eeschema/eeschema.html#simulator">Official Eeschema/ngspice manual for version 5.1</a>.</li>
+<li><a href="https://docs.kicad.org/7.0/en/eeschema/eeschema.html#simulator">Official Eeschema/ngspice manual for version 7.0.10</a>.</li>
+<li><a href="https://ngspice.sourceforge.io/docs/ngspice-manual.pdf">ngspice manual</a>.</li>
 <li><a href="https://blog.mbedded.ninja/electronics/general/kicad/kicad-tips-and-tricks/#_simulation">KiCad Tips And Tricks / Simulation</a>.</li>
 </ul>
 </p>
-<p class="justified">Below there are some recent introductory videos for KiCad/ngspice:
+<p class="justified">Below there are some introductory videos for KiCad/ngspice (update to KiCad8 is needed):
 <ul>
 <li><a href="https://www.youtube.com/watch?v=3OTDnxtv-vc">Introductory video for chapter 2 (in German)</a>.</li>
 <li><a href="https://www.youtube.com/watch?v=HAzcSgKi0Kk">Introductory video for chapter 3 (in German)</a>.</li>
@@ -635,7 +729,7 @@ many of your needs, and if you have a special request, there are links to semico
 
     <div id="footer">
         <pframe>
-          <pic2>Author and Copyright: Holger Vogt, 2022. </pic2>
+          <pic2>Author and Copyright: Holger Vogt, 2024. </pic2>
           <pic1><a href="http://sourceforge.net"><img src=
           "https://sourceforge.net/sflogo.php?group_id=38962&amp;type=1" alt=
           "SourceForge.net Logo" border="0" height="31" width="88"></a></pic1>
