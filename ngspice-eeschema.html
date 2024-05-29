@@ -493,46 +493,43 @@ is needed.</p>
 ngspice uses the so-called U devices, which have been introduced by PSPICE or MicroCap.
 Model parameters are available at the <a href="https://ngspice.sourceforge.io/modelparams.html">
 Models for ngspice</a> page, especially in this
-<a href="https://ngspice.sourceforge.io/model-parameters/74xx-models.7z"> subset</a>.</p>
+<a href="https://ngspice.sourceforge.io/model-parameters/74xx-models.7z"> subset</a>. Models
+ready for easy use, including pin assignment, and multipart translation are available at
+<a href="https://ngspice.sourceforge.io/model-parameters/74HCxxxM.7z"> 74HCxxxM.7z</a>.</p>
 <p class="header">7.1) Prepare the digital models</p>
 <p class="justified">There is a caveat, though. Whereas for example the ngspice model for the 7400
 NAND gate has only 3 pins (2 in, 1 out), the KiCad symbol for the 7400 has 14 pins (4
 times a NAND gate, plus power and ground). There is an action required as already shown in the
 previous chapter. We need a subcircuit for the pin assignment, for translating the model's
 pins to the symbol's pins. But we need to do this only once for each new device we want to use
-in our simulation, it afterwards may be re-used for all simulations following.</p>
+in our simulation, it afterwards may be re-used for all simulations following. We have done this
+already for a few devices (NAND, NOR, INV, DFF, ...) to be found at 
+<a href="https://ngspice.sourceforge.io/model-parameters/74HCxxxM.7z"> 74HCxxxM.7z</a>. However,
+for the many devices still lacking multi-gate pin assignment, the following is a hint how
+to proceed.</p>
 <p class="justified">Let's start with a subcircuit.
 <pre>
 <code>
-.subckt 74HCT00m 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+.subckt 74HC00m 1 2 3 4 5 6 7 8 9 10 11 12 13 14
 .ends
 </code>
 </pre>
 This is our frame, .subckt is the beginning of the model description, .ends is its end. The subcircuit
-name is 74HCT00m. And then we have the14 pins.
-Next we add the NAND model from 74xx-models.7z, choosing the HCT variant (which still seems to be
-available from TI).
+name is 74HC00m. And then we have the14 pins.
+Next we add the NAND model from 74xx-models.7z, choosing the HC variant (which still seems to be
+available from distributors).
 <pre>
 <code>
-.subckt 74HCT00m 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+.subckt 74HC00m 1 2 3 4 5 6 7 8 9 10 11 12 13 14
 *
-* ----------------------------------------------------------- 74HCT00 ------
-*  Quad 2-Input Nand Gates
-*
-*  The High-Speed CMOS Logic Data Book, 1989, TI Pages 2-7 to 2-8
-*  jat 12/28/95
-*
-.SUBCKT 74HCT00  1A 1B 1Y
+.SUBCKT 74HC00  1A 1B 1Y
 +     optional: DPWR=$G_DPWR DGND=$G_DGND
 +     params: MNTYMXDLY=0 IO_LEVEL=0
-
 U1 nand(2) DPWR DGND
 +     1A 1B 1Y
-+     DLY_HCT00 IO_HCT MNTYMXDLY={MNTYMXDLY} IO_LEVEL={IO_LEVEL}
-
-.model DLY_HCT00 ugate (tplhTY=11ns tplhMX=20ns tphlTY=11ns tphlMX=20ns)
-
-.ENDS  74HCT00
++     DLY_HC00 IO_HC MNTYMXDLY={MNTYMXDLY} IO_LEVEL={IO_LEVEL}
+.model DLY_HC00 ugate (tplhTY=9ns tplhMX=18ns tphlTY=9ns tphlMX=18ns)
+.ENDS  74HC00
 *
 .ends
 </code>
@@ -546,45 +543,43 @@ canvas and have a look:
           "7400 symbols" width="100%" height="100%"></div>
           Fig. 19   7400 symbols
 </p>
-<p class="justified">Now we have to call 74HCT00 four times inside of 74HCT00m and
-check that each 1A 1B 1Y of 74HCT00 maps correctly onto 1 - 14 of 74HCT00m.
+<p class="justified">Now we have to call 74HC00 four times inside of 74HC00m and
+check that each 1A 1B 1Y of 74HC00 maps correctly onto 1 - 14 of 74HC00m.
 <pre>
 <code>
-.subckt 74HCT00m 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+.subckt 74HC00m 1 2 3 4 5 6 7 8 9 10 11 12 13 14
 *
-* ----------------------------------------------------------- 74HCT00 ------
+* ----------------------------------------------------------- 74HC00 ------
 *  Quad 2-Input Nand Gates
 *
-*  The High-Speed CMOS Logic Data Book, 1989, TI Pages 2-7 to 2-8
-*  jat 12/28/95
-*
-.SUBCKT 74HCT00  1A 1B 1Y
+.SUBCKT 74HC00  1A 1B 1Y
 +     optional: DPWR=$G_DPWR DGND=$G_DGND
 +     params: MNTYMXDLY=0 IO_LEVEL=0
-
 U1 nand(2) DPWR DGND
 +     1A 1B 1Y
-+     DLY_HCT00 IO_HCT MNTYMXDLY={MNTYMXDLY} IO_LEVEL={IO_LEVEL}
-
-.model DLY_HCT00 ugate (tplhTY=11ns tplhMX=20ns tphlTY=11ns tphlMX=20ns)
-
-.ENDS  74HCT00
++     DLY_HC00 IO_HC MNTYMXDLY={MNTYMXDLY} IO_LEVEL={IO_LEVEL}
+.model DLY_HC00 ugate (tplhTY=9ns tplhMX=18ns tphlTY=9ns tphlMX=18ns)
+.ENDS  74HC00
 *
-Xnand1 1 2 3 74HCT00
-Xnand2 4 5 6 74HCT00
-Xnand3 9 10 8 74HCT00
-Xnand4 12 13 11 74HCT00
+Xnand1 1 2 3 74HC00
+Xnand2 4 5 6 74HC00
+Xnand3 9 10 8 74HC00
+Xnand4 12 13 11 74HC00
 .ends
 </code>
 </pre>
 For this event based digital simulation we don't need the power pins 7 and 14, so just ignore them.
-Finally put this subcircuit into a file 74HCT00.lib for using it in the following examples.
+Finally put this subcircuit into a file 74HC00.lib for using it in the following examples.
 </p>
+<p class="justified">The procedure described above has been used to generate a small (but growing)
+number of 74HCxxx gates. We have INV, NAND, NOR, XOR, and DFF, to be downloaded from our 
+<a href="https://ngspice.sourceforge.io/modelparams.html">ngspice model page</a> as 
+<a href="https://ngspice.sourceforge.io/model-parameters/74HCxxxM.7z"> 74HCxxxM.7z</a>.</p>
 <p class="header">7.2) Simple NAND gate example</p>
 <p class="justified">Let us start with simulating a simple NAND gate. Grab the symbol, but place
-only its first part U1A and discard the rest. Attach our model from file 74HCT00.lib (Eeschema -->
-Double click onto U1A --> Simulation Model... --> Model SPICE from file --> select File: 74HCT00.lib -->
-Model: 74HCT00m --> ok --> ok.). For the input we use two VDC from library Simulation_SPICE. These
+only its first part U1A and discard the rest. Attach our model from file 74HC00.lib (Eeschema -->
+Double click onto U1A --> Simulation Model... --> Model SPICE from file --> select File: 74HC00.lib -->
+Model: 74HC00m --> ok --> ok.). For the input we use two VDC from library Simulation_SPICE. These
 are analog DC voltage sources, ngspice cares automatically for the interface to the digital event world.
 ngspice assumes a supply voltage of 3.3 V for the digital devices, so the analog input shall
 have the same value (3.3 V if you want to enter a "1" signal, 0 V if to enter "0"). If you want a different
@@ -631,43 +626,38 @@ in a single row), but plotting user-defined signals ("Spice Simulator" window --
 <p class="header">7.4) Divide by 4 with D-FF</p>
 <p class="justified">The "Divide by 4" circuit uses 2 D flip-flops, which are available as 7474
 in a single
-14 pin package. So we again have to design a subcircuit to match the model 74HCT74 with 6 pins
+14 pin package. So we again have to design a subcircuit to match the model 74HC74 with 6 pins
 to the symbol with 14 pins. It is the same procedure as has been described above. In the
-.subckt line of the final model  74HCT74M we have not used just numbers, but the pin names, in
+.subckt line of the final model  74HC74M we have not used just numbers, but the pin names, in
 their correct sequence, thus corresponding to the pin numbers 1 to 14.</p>
 <p class="justified">The procedure towards the simulation is now the same as described above:
 Draw the circuit (set, reset and power pins are not used), attached the subciruit
-model 74HCT74M to the symbol, define appropriate user-defined signal for plotting, set the
+model 74HC74M to the symbol, define appropriate user-defined signal for plotting, set the
 transient plot data (time step 2n, final time 2u, not using "Save all currents" nor
 "Save all power dissipations") and run the simulation.</p>
 <pre>
 <code>
-.subckt 74HCT74M _R1 D1 C1 _S1 Q1 _Q1 VGND _Q2 Q2 _S2 C2 D2 _R2 VCC
+.subckt 74HC4M _R1 D1 C1 _S1 Q1 _Q1 VGND _Q2 Q2 _S2 C2 D2 _R2 VCC
 
-* ----------------------------------------------------------- 74HCT74 ------
+* ----------------------------------------------------------- 74HC74 ------
 *  Dual D-Type Positive Edge Triggered Flip-Flops With  Preset And Clear
 *
-*  The High-Speed CMOS Logic Data Book, 1989, TI Pages 2-105 to 2-107
-*  bss    2/23/94
 *
-.SUBCKT 74HCT74 1PREBAR 1CLRBAR 1CLK 1D 1Q 1QBAR
+.SUBCKT 74HC74 1PREBAR 1CLRBAR 1CLK 1D 1Q 1QBAR
 +     optional:  DPWR=$G_DPWR DGND=$G_DGND
 +     params:  MNTYMXDLY=0 IO_LEVEL=0
-
 U1 DFF(1) DPWR DGND
 +     1PREBAR 1CLRBAR 1CLK 1D 1Q 1QBAR
-+     DLY_HCT74 IO_HCT MNTYMXDLY={MNTYMXDLY} IO_LEVEL={IO_LEVEL}
++     DLY_HC74 IO_HC MNTYMXDLY={MNTYMXDLY} IO_LEVEL={IO_LEVEL}
+.model DLY_HC74 ueff(tppcqlhTY=20ns tppcqlhMX=46ns tppcqhlTY=20ns
++                 tppcqhlMX=46ns twpclMN=25ns
++                 tpclkqlhTY=20ns tpclkqlhMX=35ns tpclkqhlTY=20ns
++                 tpclkqhlMX=35ns twclkhMN=20ns twclklMN=20ns
++                 tsudclkMN=25ns tsupcclkhMN=6ns)
+.ENDS 74HC74
 
-.model DLY_HCT74 ueff(tppcqlhTY=21ns tppcqlhMX=35ns tppcqhlTY=21ns
-+                 tppcqhlMX=35ns twpclMN=20ns
-+                 tpclkqlhTY=20ns tpclkqlhMX=28ns tpclkqhlTY=20ns
-+                 tpclkqhlMX=28ns twclkhMN=23ns twclklMN=23ns
-+                 tsudclkMN=15ns)
-
-.ENDS 74HCT74
-
-XUA  _S1 _R1 C1 D1 Q1 _Q1 74HCT74
-XUB  _S2 _R2 C2 D2 Q2 _Q2 74HCT74
+XUA  _S1 _R1 C1 D1 Q1 _Q1 74HC74
+XUB  _S2 _R2 C2 D2 Q2 _Q2 74HC74
 .ends
 </code>
 </pre>
