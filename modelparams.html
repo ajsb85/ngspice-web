@@ -117,22 +117,45 @@
           before 2000 has been collected by A. Roldan from University of Granada.
           While no longer available from the original web pages, it will be offered
           below.</p>
+          <ul>
+              <li><p><a href="./model-parameters/models_ugr.7z">
+              models_ugr.7z</a>
+             (maintained up to ca. 2010)</p></li>
+          </ul>
           <p class="justified"> Another very comprehensive selection of models and model parameters
           for devices, covering active and passive devices from many device vendors
           has been derived from the simulator package
           <a href="http://www.spectrum-soft.com/download/download.shtm">Micro-Cap 12</a>,
           a formerly (up to 2019) professionally maintained commercial spice simulator,
           now free and publicly available.</p>
-          <p class="justified">ngspice-39 supports a large set of models for digital 74xx devices,
-          mapping them onto XSPICE for true digital (or mixed signal with automatically set interfaces)
-          simulation.
           <ul>
-              <li><p><a href="./model-parameters/models_ugr.7z">
-              models_ugr.7z</a>
-             (maintained up to ca. 2010)</p></li>
               <li><p><a href="./model-parameters/MicroCap-LIBRARY.7z">
               MicroCap-LIBRARY.7z</a>
              (maintained up to 2019)</p></li>
+          </ul>
+          <p class="justified">There is a set of special models, home-made, for specific devices
+          available. You may find a bipolar and a CMOS version of the 555, a bipolar 741,
+          a bipolar ICL8038, behavioral LM3914, LR8 and LTC1044.</p>
+          <ul>
+              <li><p><a href="./model-parameters/special_models.zip">
+              special_models.zip</a>
+             </p></li>
+          </ul>
+          <p class="justified">ngspice-42 supports digital event based simulation, which is more than
+          50 times faster than analog simulation. If you are using KiCad as schematic entry, there is
+          a small (but growing) set of models for 74HCxxx devices available, which may directly be
+          attached to the appropriate 74xxx symbol.</p>
+          <ul>
+              <li><p><a href="./model-parameters/74HCxxxM.zip">
+              74HCxxxM.zip</a>
+             </p></li>
+          </ul>
+          <p class="justified">ngspice-42 supports a large set of models for digital 74xx devices,
+          mapping them onto XSPICE for true digital (or mixed signal with automatically set interfaces)
+          simulation. In ngspice the models may be used by simply calling the subcircuit of the required
+          device. In KiCad these models will need an appropriate pin assignment according to its symbol,
+          (or a subcircuit when used by a multi-part symbol).
+          <ul>
               <li><p><a href="./model-parameters/74xx-models.7z">
               74xx-models.7z</a>
              (models for 74xx digital devices, a ngspice subset derived from the MicroCap library)</p></li>
@@ -211,16 +234,22 @@
           in a setup called PDK (process design kit). ngspice is largely compatible to the
           HSPICE versions of the PDKs. These are typically made available
           by the foundry to the customer against an NDA (non-disclosure agreement).
-          There is one famous exception. Google/Skywater have made a PDK for a 130nm process
-          Open Source.  Please see <a href="./applic.html#sky">here</a> for more information.</p>
+          But now the Open Source community has become actively involved in PDK generation. 
+          Google/Skywater have made a PDK for a 130nm process
+          Open Source.  Please see <a href="./applic.html#sky">here</a> for more information. IHP
+          is working on a PDK for its 130 nm BiCMOS proces 
+          <a href="https://github.com/IHP-GmbH/IHP-Open-PDK"> SG13G2</a>.</p>
           <p class="justified">Other sources of models for advanced MOS (IC related, but not 
           necessarily linked to any foundry) are found here:
           <ul>
               <li><p><a href="https://github.com/DDD-FIT-CTU/CMOS-SPICE-Model-Collections">
               https://github.com/DDD-FIT-CTU/CMOS-SPICE-Model-Collections</a></p></li>
               
-              <li><p><a href="http://ptm.asu.edu/">
-              http://ptm.asu.edu/</a></p></li>
+              <li><p><a href="https://github.com/The-OpenROAD-Project/asap7">
+              asap7</a></p></li>
+              
+              <li><p><a href="https://analogicdesign.com/students/netlists-models/model-files/">
+              Models for 0.8u, 0.35u, 0.18u, 45nm, 7nm CMOS</a></p></li>
           </ul>
           </p>
           <div id="howto"></div>
