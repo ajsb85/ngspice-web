@@ -104,10 +104,14 @@
           a script ./paranoia_tests.sh will run these examples under Valgrind
           and summarize the results. Valgrind will detect memory leaks
           (a few are still there, new ones may be introduced during code
-          development). Unfortunately Valgrind is not available for MS Windows.
+          development). Unfortunately Valgrind is not available for MS Windows or macOS.
           Thus Linux is required to run the script. Running the tests, being paranoid,
           is a good attitude if large code changes are to be released.</p>
-
+          <p class="justified">Based on the paranoia test named above Brian Taylor has 
+          developed a parallel version of the test <a href="./tests/paranoia_parallel.7z">
+          Paranoia Parallel</a>, making use of today's multi-core machines. On
+          an 8-core machine it runs approx. 6 times faster than the serial
+          version. See the README for details.</p>
           <p class="header"><a name="KiCad" id="KiCad"></a>Test circuits for simulation in KiCad</p>
           <p class="justified">KiCad/Eeschema uses the ngspice shared library to
           allow simulating electronic circuits directly from the circuit diagram.
