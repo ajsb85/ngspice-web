@@ -124,12 +124,10 @@ Improve convergence, (almost) always return correct number of poles and zeros.</
 <li><span style="font-style: italic;">Verilog-A compact models:</span>
 Add support for Verilog-A compact models for access to modern devices,
 using OSDI/OpenVAF (almost done).</li>
-<li><span style="font-style: italic;">Add new Berkeley MOS
-models (IMG, CMG, Bulk) by OpenVAF compiled devices.</span> (ongoing)</li>
-<li><span style="font-style: italic;">Add noise
-support to OSDI/OpenVAF compiled devices.</span></li>
 <li><span style="font-style: italic;">Add basic noise simulation capability
 to analog code models.</span></li>
+<li><span style="font-style: italic;">Add large signal 
+transient noise simulation.</span></li>
 <li><span style="font-style: italic;">Add OTA code model to
 support LTSPICE A OTA device.</span></li>
 <li><span style="font-style: italic;">Add IBIS support.</span></li>
@@ -143,8 +141,7 @@ this one</a>).</li>
 <ul><li><span style="font-style: italic;">Update
 documentation with latest additions.</span> (ongoing)</li>
 <li><span style="font-style: italic;">Expand
-documentation with examples and recipes for the novice users.</span> (ongoing)</li>
-<li><span style="font-style: italic;">Provide web browseable documentation (done).</span></li>
+documentation with examples and recipes for the novice users.</span></li>
 </ul>
 <p class="header">Code quality related topics:</p>
 <ul>
@@ -158,8 +155,7 @@ the capabilities of modern GPUs?</span> (almost done, see
 <a href="./cuspice.html">CUSPICE)</a></li>
 <li><span style="font-style: italic;">Investigate if an alternative matrix solver can
 <a href="http://www.siam.org/news/news.php?id=1121">improve
-simulation speed </a></span>(KLU is available for testing, needs bug-fixing
-with XSPICE, and an upgrade for OSDI).<br>
+simulation speed </a></span>(KLU is available).<br>
 </li>
 </ul>
 <p class="header">Interfaces with other software:</p>
@@ -174,9 +170,10 @@ Add Verilog or VHDL interfaces. <a href="http://ghdl.free.fr/">GHDL</a> or the
 are potential candidates.</li>
 </ul>
 <p class="header">Other ngspice options:</p>
-<ul><li><span style="font-style: italic;">Audio WAVE:</span> There is a patch available
-to import sound files into ngspice for audio simulation.
-<a href="http://gareus.org/oss/spicesound/start">link</a></p>
+<ul><li><span style="font-style: italic;">Audio WAVE:</span> Add reading and writing
+sound files into ngspice for audio simulation permanently.
+<a href="https://sourceforge.net/p/ngspice/ngspice/ci/hv-wave/tree/">ngspice-41</a> 
+is available with wave support.</p>
 </div>
     </div>
 </div>
