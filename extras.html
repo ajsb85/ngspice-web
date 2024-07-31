@@ -155,16 +155,16 @@
             is sped up by event driven simulation of the digital sections.
             Various models already come along with ngspice to facilitating
             analog-digital co-simulation (see <a href=
-            "./docs/ngspice-manual.pdf">manual</a> chapt. 12). The user may
+            "./docs/ngspice-manual.pdf">manual</a> chapt. 8). The user may
             define his/her own analog, mixed, or digital devices and models
-            (see chapt. 25-29, especially 28).</li>
+            (see chapt. 21-25, especially 24).</li>
           </ul>
           <p class="header">Programming ngspice</p>
           <p class="justified">Various programming interface are available to
           add control flows to ngspice simulation or control ngspice from
           external programs or scripts.</p>
           <ul>
-            <li>The ngspice scripting language (see manual chapter 17) allows
+            <li>The ngspice scripting language (see manual chapter 13) allows
             to add control flows to a single simulation. You may run
             mathematical operations on simulation results, and start new
             simulations based on these data. Please have a look at the
@@ -174,7 +174,7 @@
             A <a href="#scripts">complete optimizer</a> may be written in this
             language.</li>
             <li>Ngspice may be controlled via input, output fifos. Please see
-            the manual at chapt. 16.12 for an example.</li>
+            the manual at chapt. 12.12 for an example.</li>
             <li>The <a href="./shared.html">shared ngspice option</a> is
             designed to compile ngspice as a shared library or dynamic link
             library, which may be loaded by any suitable application. This
@@ -191,7 +191,7 @@
           <p class="justified">Ngspice may be compiled as a shared library
           (*.so or *.dll). This will offer full control over the simulator from
           a calling process. See <a href="./shared.html">this page</a> or the
-          actual manual at chapter 19 for more information.</p>
+          actual manual at chapter 15 for more information.</p>
           <p class="header">Circuit optimization with ngspice</p>
           <p class="justified">Several methods of using ngspice in circuit
           optimization have been devised by users.</p>
@@ -204,7 +204,7 @@
             of scripts</a> is available.</li>
             <li>Optimization using tcl as scripting language. An example is
             provided with the <a href="./tclexamples.html">tclspice option</a>.
-            The manual at chapt. 20 has additional infos.</li>
+            The manual at chapt. 16 has additional infos.</li>
             <li>Werner Hoch has developed a ngspice optimization procedure
             based on the &#8217;differential evolution&#8217; algorithm. On his
             <a href=
@@ -218,23 +218,22 @@
             "https://ngspice.sourceforge.io/optimizers/asco-dist.7z">version
             0.4.7.1</a>, adding ngspice as a simulation engine, may be
             downloaded (including a MS Windows ngspice executable based on
-            CVS). Chapt. 23.5 of the actual manual describes the ngspice
-            specific integration issues and examples. You will need ngspice-24
-            to run the examples.</li>
+            CVS). Chapt. 19.5 of the actual manual describes the ngspice
+            specific integration issues and examples.</li>
           </ul>
           <p class="header">Statistical circuit analysis with ngspice</p>
           <p>ngspice offers random numbers, as well as dedicated functions and
           scripts to vary device parameters for circuit simulation.</p>
           <ul>
             <li>Functions like AGAUSS are available for voltage and current
-            sources (manual, chapt 22.2).</li>
+            sources (manual, chapt 18.2).</li>
             <li>Random voltage or current values may be generated directly
             (manual chapt. 4.1.8).</li>
             <li>Behavioral sources (B, E, G, R, L, C) include optionally
-            generated random number values (manual chapt. 22.3).</li>
+            generated random number values (manual chapt. 18.3).</li>
             <li>The ngspice scripting language uses the above mentioned
             functions and additional post processing functions (manual chapt.
-            22.4) for Monte Carlo analysis (manual chapt. 22.5). Example
+            22.4) for Monte Carlo analysis (manual chapt. 18.5). Example
             scripts are part of the ngspice distribution.</li>
             <li>Efficient noise voltage generators are part of the independent
             voltage and current sources (manual chapt. 4.1.7). Thermal noise,
@@ -254,9 +253,9 @@
             single and coupled lines.</li>
             <li>You may &#39;measure&#39; two port Scattering parameters of of
             your circuit and store them in a Touchstone file (see chapt.
-            17.8).</li>
+            13.8).</li>
             <li>ngspice incorporates a very efficient fast fourier analysis of
-            output vectors (see chapt. 17.4.23).</li>
+            output vectors (see chapt. 13.4.23).</li>
             <li>Periodic steady state analysis using a shooting method is under
             development. Test function are available (see chapt. 15.3.11).</li>
           </ul>
@@ -267,15 +266,9 @@
           simulation.</p>
           <ul>
             <li>An early adoption of this approach is the <a href=
-            "http://www.eecs.berkeley.edu/Pubs/TechRpts/1993/2382.html">cider
+            "https://www2.eecs.berkeley.edu/Pubs/TechRpts/1993/ERL-93-51.pdf">cider
             option</a>, fully integrated into ngspice. Part of the
-            documentation is available in the ngspice manual, chapt 30.</li>
-            <li>ngspice is integrated into a more recent TCAD tool <a href=
-            "./gss.html">gss</a>.</li>
-            <li>The successor to gss is the <a href=
-            "http://www.cogenda.com/article/download">Genius Device
-            Simulator</a> which applies ngspice for device and circuit
-            co-simulation.</li>
+            documentation is available in the ngspice manual, chapt 26.</li>
           </ul>
           <p>Please send your comments, suggestions, and corrections on this
           page to the <a href=
