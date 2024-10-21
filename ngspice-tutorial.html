@@ -140,15 +140,15 @@
 You have to create a netlist describing this circuit. The netlist is the input to ngspice, telling it about the circuit to be simulated. Together with some simulation commands this input cares for reading and parsing the netlist, starting the simulation and plotting the output. The output voltage (plotted in red) is the inverse of the (green) input. Both voltages are plotted versus time.</p>
 
 <p class="justified">The input to ngspice is read from a file, and it may be enhanced by commands given on the command line. The simulated output may be written to a file, or be plotted as a y-x graph or a smith chart. There is no graphical user interface with schematic capture of circuit diagrams and automatic netlist generation, however there are <a href="./resources.html">third party tools</a> available to draw the circuit and generate a ngspice netlist.</p>
-<p class="justified">There is a detailed <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/37/ngspice-37-manual.pdf/download">
+<p class="justified">There is a detailed <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/43/ngspice-43-manual.pdf/download">
 reference manual</a> available for ngspice. This manual describes all commands and procedures available in ngspice and lists numerous examples. However, it is not an ngspice how-to or introductory text. This tutorial here gives you some information how to start. If you are interested in getting more in-depth information, you may refer to our <a href="./books.html">book page</a> or to a list of third party <a href="./tutorials.html">tutorials</a>.</p>
 
 <br>
 <div id="downloadw"></div>
 <p class="header">1) Download and Install ngspice (MS Windows, 64 Bit)</p>
 
-<p class="justified">Download the zip file for<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/37/ngspice-37_64.zip">
-ngspice-37</a> (about 8.7 MB). Expand this zip file into directory C:\. In MS Windows 10 you might need admin rights to do so. Thus you will get C:\Spice64 with several sub-directories. The main program ngspice.exe resides in folder C:\Spice64\bin.</p>
+<p class="justified">Download the zip file for<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/43/ngspice-43_64.7z">
+ngspice-43</a> (about 8.1 MB). Expand this zip file into directory C:\. In MS Windows 10 you might need admin rights to do so. Thus you will get C:\Spice64 with several sub-directories. The main program ngspice.exe resides in folder C:\Spice64\bin.</p>
 
 <p class="justified">If you want to make use of PSPICE device models (often provided
 by the semicondctor companies), put a text file named .spiceinit into your user directory (C:\users\'your name', found also in
@@ -172,11 +172,11 @@ to .spiceinit. If the file name .spiceinit does not work for you, use the altern
 offers a <a href="./packages.html">ngspice package</a> for installation. You may then 
 use the distribution's package manager (apt, Yast, etc.) for installation.</p> 
 <p class="justified">If not, you will need to download 
-<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/37/ngspice-37.tar.gz/download">ngspice-37.tar.gz</a>
+<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/43/ngspice-43.tar.gz/download">ngspice-43.tar.gz</a>
 and compile ngspice with
 <pre>
 <code>
-./configure --with-x --enable-xspice --enable-cider --with-readline=yes --enable-openmp --disable-debug CFLAGS="-m64 -O2" LDFLAGS="-m64 -s"
+./configure --with-x --enable-cider --disable-debug CFLAGS="-m64 -O2" LDFLAGS="-m64 -s"
 make -j8
 sudo make install
 </code>
@@ -188,9 +188,9 @@ or by running the script compile_linux.sh from folder ngspice by
 </code>
 </pre>
 </p>
-<p class="justified">Please check chapt. 32.1 of the
-<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/37/ngspice-37-manual.pdf/download">ngspice manual</a> 
-for prerequisites and procedures for compiling ngspice-37. 
+<p class="justified">Please check chapt. 28.1 of the
+<a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/43/ngspice-43-manual.pdf/download">ngspice manual</a> 
+for prerequisites and procedures for compiling ngspice-43. 
 After compilation put a text file named .spiceinit into your 
 home/username directory (address to be found also in the
 environmental variable HOME). In admin mode, it may be the root 
@@ -367,7 +367,7 @@ plot ph(out)
 .end
 </code>
 </pre>
-We now may start ngspice by <code>ngspice rcrcac.cir</code>. The netlist is read, the commands in the .control section (ac simulation and plotting) are executed automatically. Still we would like to improve the graphics plot. We do this by using several extra commands, that we add to the .control section. All of them are described in the <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/35/ngspice-35-manual.pdf/download">ngspice manual</a>, chapt. 17.5. The complete input file now reads:
+We now may start ngspice by <code>ngspice rcrcac.cir</code>. The netlist is read, the commands in the .control section (ac simulation and plotting) are executed automatically. Still we would like to improve the graphics plot. We do this by using several extra commands, that we add to the .control section. All of them are described in the <a href="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/43/ngspice-43-manual.pdf/download">ngspice manual</a>, chapt. 13.5. The complete input file now reads:
 <pre>
 <code>
 .title dual rc ladder
