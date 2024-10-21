@@ -234,7 +234,7 @@
           for MS Windows (though not updated every night). It contains 64 bit ngspice
           binaries with GUI, console and the shared ngspice dll. Sources are drawn
           from the pre-master-44 branch at git. The last update has been made on
-          July 27th, 2024. It contains the KLU solver and the 
+          October 18th, 2024. It contains the KLU solver and the 
           <a href="https://openvaf.semimod.de/docs/getting-started/introduction/">
           OpenVAF/OSDI</a> interface for Verilog-A device models.</p>
 
@@ -257,19 +257,21 @@
           <div id="wav"></div>
           <p class="header">Ngspice for MS Windows, reading, simulating and writing wav audio files</p>
           <p class="justified"><a href=
-          "https://ngspice.sourceforge.io/experimental/Spice_wav_41.7z">
-          <strong>ngspice-41 64 bit wave audio</strong></a> is a ngspice for MS Windows
-          (based on branch hv-wave). It contains 64 bit ngspice, or 64 bit ngspice.dll, 
+          "https://ngspice.sourceforge.io/experimental/Spice_wav_43.7z">
+          <strong>ngspice-43 64 bit wave audio</strong></a> is ngspice for MS Windows
+          based on branch hv-wave-43. It reads wav audio files, use the contents as
+          voltage source input for simulation, and writes out the results again as
+          a wav file. The 7z archive contains 64 bit ngspice, or 64 bit ngspice.dll, 
           with all required extra
-          dlls and a section with some examples. Much more testing is required, and some
+          dlls and a section with some examples. Some testing is still required, and some
           know how in wav files and audio sampling may help. See file README.wavsim for some more
           details and acknowledgments and file README.examples for a list of the experimental
           files. Many thanks to Robin Gareus and Hannu Vuolasaho. Robin Gareus has provided
           an introduction and manual on his <a href="http://gareus.org/oss/spicesound/start">
           web pages</a>.</p>
-          <p class="justified"> To fulfill the LGPL requirements, the
-          sources for library libsamplerate-0.1.9 are available <a href=
-          "https://ngspice.sourceforge.io/experimental/libsamplerate-0.1.9.7z">here</a>.</p>
+          <p class="justified"> The additional libraries are <a href=
+          "https://github.com/libsndfile/libsamplerate/releases">samplerate.dll</a>,
+          and <a href="https://github.com/libsndfile/libsndfile/releases/">sndfile.dll</a>.</p>
 
           <div id="legacy"></div>
           <p class="header">Ngspice for legacy Windows OSs</p>
