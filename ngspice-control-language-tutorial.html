@@ -141,7 +141,7 @@ the <b>batch mode</b>. With an input netlist given (see <a href="#examplecircuit
 <code>ngspice -b -r inv-example.raw inv-example.cir</code> will start the simulation, executing the dot commands from the netlist,
 saving the simulation data in the 'raw' file, without any further user interaction. On the other hand we have
 the <b>interactive mode</b>. You start ngspice by <code>ngspice inv-example.cir</code>. ngspice sources the netlist and then waits 
-for user input. You may type any of the commands found in chapter 17.5 of the 
+for user input. You may type any of the commands found in chapter 13.5 of the 
 <a href="https://ngspice.sourceforge.io/docs/ngspice-manual.pdf">ngspice manual</a> or the <a href="https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml">ngspice xhtml manual</a>
 to initiate some action (e.g. running the simulation, plotting or saving the data etc.). The real power
 of using these commands however is unfolded in the third mode of running ngspice, the <b>control mode</b>.
@@ -157,9 +157,9 @@ and paste them into your input files to run simulation "experiments".</p>
 <p class="justified">The tutorial is not yet complete, is a work-in-progress, and user input is welcome
 to enhance it further. Please use the <a href="https://sourceforge.net/p/ngspice/discussion/133842/">
 discussion forum</a> for feedback and questions.</p>
-<p class="justified">More info on starting ngspice is available in chapter 16.4 of the <a href="https://ngspice.sourceforge.io/docs/ngspice-manual.pdf">
+<p class="justified">More info on starting ngspice is available in chapter 12.4 of the <a href="https://ngspice.sourceforge.io/docs/ngspice-manual.pdf">
 ngspice manual</a>. ngspice download and installation is described in the <a href="./ngspice-tutorial.html">
-ngspice tutorial</a>. Commands used in the scripts below are not all explained in detail, please use the <a href="https://ngspice.sourceforge.io/docs/ngspice-manual.pdf">ngspice manual</a> chapter 17.5 as your
+ngspice tutorial</a>. Commands used in the scripts below are not all explained in detail, please use the <a href="https://ngspice.sourceforge.io/docs/ngspice-manual.pdf">ngspice manual</a> chapter 13.5 as your
 reference.</p>
 
 
@@ -303,12 +303,12 @@ Fig. 2 is the result of the three <b>plot</b> commands:
           "Looping an inverter simulation" width="100%" height="100%"></div>
 <p class="justified"><em>Fig. 2 Inverter output, gain and current consumption versus input voltage</em></p>
 
-<p class="justified">Several new concepts are introduced in this script. Please refer to chapter 17.5
+<p class="justified">Several new concepts are introduced in this script. Please refer to chapter 13.5
 of the manual for details of the commands. <code>repeat 5 ... end</code> 
 will loop the enclosed commands five times. <code>let vccc = 1.2</code> creates a vector (of length 1)
 and assigns a value 1.2 to it. <code>let vccc = vccc + 0.2</code> adds 0.2 to the current vector value. 
 <code>alter Vcc $&vccc</code> changes the voltage Vcc according to the value of vector vccc. <code>$&vccc</code>
-returns the value of vector vccc. nounits and xbrushwidth are predefined variables (see manual chapter 17.7).
+returns the value of vector vccc. nounits and xbrushwidth are predefined variables (see manual chapter 13.7).
 Command <b>plot</b> generates a graphical output by plotting one or several vectors versus a scale
 vector (predefined is scale vector time for transient, v-sweep for dc). The results of
 the last and all previous dc simulations are accessed by <code>dc1.v(out) dc2.v(out) ...</code>.
@@ -321,7 +321,7 @@ voltage source Vcc, thus appearing negative.</p>
 <p class="header">4. About plots, variables and vectors</p>
 <p class="justified">The output data of any simulation is available as vectors. An operating point simulation
 will create vectors of length 1, dc simulation will create vectors with length determined by the number
-of points during sweeping. These vectors  are stored in plots, a traditional SPICE notion (see also chapter 17.3
+of points during sweeping. These vectors  are stored in plots, a traditional SPICE notion (see also chapter 13.3
 of the manual). 'Plot' here is not to be confused with a plot resulting from plotting data. So a plot is a group 
 of vectors. In our example the first <b>dc</b> command will generate several vectors within a plot <em>dc1</em>. 
 A subsequent <b>dc</b> command will store their vectors in plot <em>dc2</em> and so on. Transient simulation 
@@ -370,7 +370,7 @@ current through voltage source Vcc. The user may create their own vectors with t
 by <code>let vccc = 1.2</code>. As this command has been given before any simulation is run, the vector vccc will
 reside in plot <em>const</em>. All vectors in plot <em>const</em> are globally available, no need to prepend anything.</p>
 <p class="justified"> Another class of storage elements is created by the ngspice variables. These are globally accessible
-and may contain numbers, strings, or lists. There are pre-defined variables (see manual chapter 17.7) which
+and may contain numbers, strings, or lists. There are pre-defined variables (see manual chapter 13.7) which
 control many ngspice features. The command <b>set</b> will instantiate a variable and/or assign a content of it. in
 our example we have used the pre-defined <code>set xbrushwidth=2</code> to increase the plotting line width.</p>
 
@@ -530,7 +530,7 @@ end
 </pre>
 In the <a href="https://sourceforge.net/p/ngspice/ngspice/ci/master/tree/examples/loops/">
 Sourceforge git examples for loops</a> page you will find examples netlists for all loops,
-ready to run. You may also have a look at the manual, chapter 17.6 on Control Structures,
+ready to run. You may also have a look at the manual, chapter 13.6 on Control Structures,
 where additionally the commands <b>label</b>, <b>goto</b>, <b>break</b> and 
 <b>continue</b> are described.</p>
 

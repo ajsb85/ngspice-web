@@ -138,7 +138,7 @@ offers a vastly improved GUI for ngspice in its schematic editor Eeschema.
 It may ideally be used in cooperation with ngspice to allow schematic entry of
 electronic circuits, their simulation, and plotting of the results.</p>
 
-<p class="justified">All experiments described here require using KiCad 8 
+<p class="justified">All experiments described here require using KiCad 8
 and ngspice-42, and have been developed with a MS Windows 10 install.
 All items covered should be similar with KiCad/ngspice under LINUX
 or macOS.</p>
@@ -157,7 +157,7 @@ requires specific model parameters from an external source for the
 built-in transistor model. The third circuit is an
 OpAmp amplifier that relies again on a generic symbol and model or
 on an external OpAmp model for simulation. Then the usage of a
-multipart device (dual opamp in a single package) is described. 
+multipart device (dual opamp in a single package) is described.
 Next an introduction to digital simulation is given.</p>
 <p class="justified">Ngspice reads PSPICE device libs. These are often
 provided by the semiconductor device manufacturers for design support.
@@ -271,7 +271,7 @@ operating point). After running the op simulation, have a look at the circuit wi
           <div id="topimage"><img src="./ngspice-KiCad8-images/Fig7.png" alt=
           "bipolar amp circuit" width="100%" height="100%"></div>
 Fig. 7
-<p class="justified">Let's now do a transient simulation (TRAN) in addition to the OP. Check 
+<p class="justified">Let's now do a transient simulation (TRAN) in addition to the OP. Check
 the input voltage source VSIN: its amplitude is only 10 mV. Hit again
 the "New Analysis Tab (ctrl N), select transient (TRAN) from the dropdown menue, and add the
 required parameters: time step size 10u, final time 10m. The plot window will
@@ -311,6 +311,31 @@ get an idea of the sensitivity of this circuit against resistance variations.</p
           "tran output bipolar amp circuit" width="100%" height="100%"></div>
 Fig. 10
 
+<p class="justified"> There may be the need to use another bipolar transistor, like
+the BC817. Its spice model is available from industrial sources, e.g. from
+<a href="https://www.diodes.com/spice/download/2841/BC817-40.spice.txt">
+Diodes Inc.</a>, the symbol from the KiCad library. The circuit is shown in Fig. 9a.
+<p class="justified"></p>
+          <div id="topimage"><img src="./ngspice-KiCad8-images/Fig9a.png" alt=
+          "tran output bipolar amp circuit" width="100%" height="100%"></div>
+Fig. 9a
+<p class="justified"> Having a closer look at the transistor symbol, we now see that
+the collector node is at pin 3, the base node at pin 1 and the emitter at pin 2 of
+the symbol. This is due to its SOT23 package. ngspice (every spice indeed) however
+requires a different pin numbering, namely collector at 1, base at 2, and emitter
+at 3. So we need some translation between KiCad symbol and ngspice, the
+<strong>pin assignment</strong>. </p>
+<p class="justified">After attaching the model, as described above, open the
+'Pin Assignments' window in the 'Simulation Model Editor'. On the left you
+will find the 'Symbol Pin' column, derived from the symbol on the Eeschema
+canvas and thus is fixed. On the right there is the 'Model Pin' column, which
+has to be modified, so that collector meets collector in the same row,
+base meets base and emitter meets emitter. The result is shown in Fig. 9a. </p>
+<p class="justified">Btw. if you deal with discrete three pin MOSFETs, the
+sequence required by ngspice is drain (1), gate (2) and source (3). However,
+if you have attached a subcircuit model (often used for power MOS), then the
+pin sequence is determined by the model (its .subckt line), not by ngspice. For an
+example (with OpAmp) see <a href="#OpAmp1641">chapter 5</a> below.</p>
 <p class="justified"></p>
 <br>
 <br>
@@ -503,7 +528,7 @@ times a NAND gate, plus power and ground). There is an action required as alread
 previous chapter. We need a subcircuit for the pin assignment, for translating the model's
 pins to the symbol's pins. But we need to do this only once for each new device we want to use
 in our simulation, it afterwards may be re-used for all simulations following. We have done this
-already for a few devices (NAND, NOR, INV, DFF, ...) to be found at 
+already for a few devices (NAND, NOR, INV, DFF, ...) to be found at
 <a href="https://ngspice.sourceforge.io/model-parameters/74HCxxxM.7z"> 74HCxxxM.7z</a>. However,
 for the many devices still lacking multi-gate pin assignment, the following is a hint how
 to proceed.</p>
@@ -572,8 +597,8 @@ For this event based digital simulation we don't need the power pins 7 and 14, s
 Finally put this subcircuit into a file 74HC00.lib for using it in the following examples.
 </p>
 <p class="justified">The procedure described above has been used to generate a small (but growing)
-number of 74HCxxx gates. We have INV, NAND, NOR, XOR, and DFF, to be downloaded from our 
-<a href="https://ngspice.sourceforge.io/modelparams.html">ngspice model page</a> as 
+number of 74HCxxx gates. We have INV, NAND, NOR, XOR, and DFF, to be downloaded from our
+<a href="https://ngspice.sourceforge.io/modelparams.html">ngspice model page</a> as
 <a href="https://ngspice.sourceforge.io/model-parameters/74HCxxxM.7z"> 74HCxxxM.7z</a>.</p>
 <p class="header">7.2) Simple NAND gate example</p>
 <p class="justified">Let us start with simulating a simple NAND gate. Grab the symbol, but place
@@ -595,11 +620,11 @@ input and output voltages. If you change the input, the output will follow after
           "7400 NAND gate simulation" width="100%" height="100%"></div>
           Fig. 20   7400 NAND sim
 <p class="header">7.3) Full adder made with NAND gates</p>
-<p class="justified">The next circuit is a little bit more complex, a 2-bit 
+<p class="justified">The next circuit is a little bit more complex, a 2-bit
 <a href="https://www.electronicshub.org/half-adder-and-full-adder-circuits/">full adder</a> made from
 NAND gates we have already used in the previous chapter. It has three inputs, the two values to
 be added and the carry-in bit (from a potential previous adder stage). Two outputs are the sum and carry-out.</p>
-<p class="justified">Generally, for a digital simulation, we need three items: A stimulus which 
+<p class="justified">Generally, for a digital simulation, we need three items: A stimulus which
 provides adequate signals to stimulate the second item, the device under test, and thirdly we need some
 means to read and review the resulting data. Even for such a small circuit as shown in Fig. 21 with
 only three inputs and 2 outputs we need 8 input combinations (or "words") to achieve a full logic test.
@@ -664,7 +689,7 @@ XUB  _S2 _R2 C2 D2 Q2 _Q2 74HC74
           <div id="topimage"><img src="./ngspice-KiCad8-images/Fig23.png" alt=
           "2 bit full adder" width="100%" height="100%"></div>
           Fig. 23   Divide by 4 circuit with two D flip-flops 7474
-<p class="justified">The simulation result (input and output signal) in Fig. 24 
+<p class="justified">The simulation result (input and output signal) in Fig. 24
 indeed does show the "divide by 4" action of this circuit.</p>
           <div id="topimage"><img src="./ngspice-KiCad8-images/Fig24.png" alt=
           "2 bit full adder" width="100%" height="100%"></div>

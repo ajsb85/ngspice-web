@@ -145,7 +145,7 @@
           have installed Ngspice including the XSPICE option
           properly. The installation procedure has been described
           in the <a href="./docs/ngspice-manual.pdf">Ngspice
-          manual</a> at chapter 31.1 (for LINUX) or 31.2 (for MS
+          manual</a> at chapter 28.1 (for LINUX) or 28.2 (for MS
           Windows). Then run one or all of the examples to be found
           in the actual distribution or in git at <a href=
           "https://sourceforge.net/p/ngspice/ngspice/ci/master/tree/examples/xspice">
@@ -173,11 +173,11 @@
           ngspice/examples/memristor/memristor_x.sp</a>. Some
           details of its usage are available from the <a href=
           "./docs/ngspice-manual.pdf">Ngspice manual</a> at chapter
-          12.2.26.</p>
+          8.2.29.</p>
 
           <p class="justified">In the follwing you will find my
           ideas (h_vogt) on the implementation of this model.
-          Please consult the manual at chapter 12.1 and the model
+          Please consult the manual at chapter 8.1 and the model
           files cfunc.mod and ifspec.ifs from the actual ngspice
           git repository for further details.</p>
 
@@ -192,7 +192,7 @@
             point.</li>
 
             <li>Edit /memristor/ifspec.ifs (see also manual chapter
-            27.6): Change the Spice_Model_Name to memristor. This
+            24.6): Change the Spice_Model_Name to memristor. This
             will become the model name in the .model line. Replace
             the C_Function_Name cm_capacitor by cm_memristor.
             Select a suitable description. Select a port name (e.g.
@@ -232,12 +232,12 @@
             signal noise modelling is not possible for the same
             reason, but has not been integrated into XSPICE anyway.
             You may try using transient noise instead (manual
-            chapter 15.3.10).</li>
+            chapter 11.3.11).</li>
 
             <li>Compilation and installation of the new memristor
             code model is now a simple make, sudo make install !
             Using the model is described in the manual, chapter at
-            chapter 12.2.26.</li>
+            chapter 8.2.29.</li>
           </ul>
 
           <div id="topimage"><img src="./images/memrisoutp4.png"
