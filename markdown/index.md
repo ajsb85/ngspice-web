@@ -1,38 +1,8 @@
+# Ngspice - Open Source Spice Simulator
+
 ![NGSPICE](./images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](./images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
 
--   Home
--   [News](./news.html)
--   [Screenshots](https://sourceforge.net/projects/ngspice/)
--   [Download](./download.html)
--   [Documentation](./docs.html)
--   [Tutorials](./tutorials.html)
--   [Extras/Options](./extras.html)
--   [Applications](./applic.html)
--   [Development](./devel.html)
--   [Simulation Environments](./resources.html)
--   [Quality](./quality.html)
-
-Ngspice Home
-
--   [Home](#)
-
--   [What is ngspice ?](presentation.html)
-
--   [Features, Extras & Options](extras.html)
-
--   [F.A.Q.](faq.html)
-
--   [Tutorials](tutorials.html)
-
--   [Introductory and update videos](tutorials.html#videos)
-
--   
-
-    ------------------------------------------------------------------------
-
--   [Sourceforge Developer Pages](https://sourceforge.net/projects/ngspice/)
-
-ngspice - open source spice simulator
+## About Ngspice
 
 ngspice is the open source spice simulator for electric and electronic circuits.
 
@@ -42,9 +12,11 @@ ngspice offers a wealth of device models for active, passive, analog, and digita
 
 ngspice does not provide schematic entry. Its input is command line or file based. There are however [third party](https://ngspice.sourceforge.io/resources.html) interfaces available.
 
-
+## Compatibility
 
 ngspice is SPICE compatible. You may apply PSPICE or LTSPICE device model parameters and netlists for simulating discrete circuits. ngspice will also read HSPICE device libraries from semiconductor foundry PDKs for simulating integrated circuits.
+
+## Availability
 
 ngspice builds on many operating systems. The source code and binaries for MS Windows are available for download on our [sourceforge download page](https://sourceforge.net/projects/ngspice/files/ng-spice-rework/). All popular [Linux distributions, Cygwin or FreeBSD](packages.html) offer ngspice as well, as does [Homebrew](https://formulae.brew.sh/formula/ngspice) for macOS. The [F.A.Q.](faq.html) and [documentation](./docs.html) pages provide a lot of information, a detailed [manual](https://ngspice.sourceforge.io/docs.html) is available. [Mailing lists](https://sourceforge.net/p/ngspice/mailman/), [discussion forums](https://sourceforge.net/p/ngspice/discussion/) and a [bug tracker](https://sourceforge.net/p/ngspice/bugs/) are offered.
 
