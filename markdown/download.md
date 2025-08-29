@@ -1,6 +1,6 @@
 # - [Documentation](./Docs.Html)
 
-![NGSPICE](./images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](./images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
+![NGSPICE](../images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](../images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
 
 - [Home](./index.html)
 - [News](./news.html)
@@ -98,4 +98,4 @@ Ngspice download (old, obsolete stuff)
 
 Old releases (before rework-10), are available through this web site only (see the menu on the left), they are archived for historical purposes and are no longer maintained.
 
- All text is available under the terms of the GNU Free Documentation License ![](./images/spice.jpg)
+ All text is available under the terms of the GNU Free Documentation License ![](../images/spice.jpg)

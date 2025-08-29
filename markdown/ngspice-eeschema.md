@@ -1,6 +1,6 @@
 # - [Documentation](./Docs.Html)
 
-![NGSPICE](./images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](./images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
+![NGSPICE](../images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](../images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
 
 - [Home](./index.html)
 - [News](./news.html)
@@ -344,4 +344,4 @@ Below there are some introductory videos for KiCad/ngspice (update to KiCad8 is 
 - [Eric Bredder's video on simulating a diode](https://www.youtube.com/watch?v=yyx0MoS4QWM).
 - [Simulating a buck converter](https://www.youtube.com/watch?v=PKJIvCq0Oy8).
 
-Author and Copyright: Holger Vogt, 2024. [](http://sourceforge.net) All text is available under the terms of the Creative Commons Attribution Share-Alike (CC BY-SA) 4.0. ![](./images/spice.jpg)
+Author and Copyright: Holger Vogt, 2024. [](http://sourceforge.net) All text is available under the terms of the Creative Commons Attribution Share-Alike (CC BY-SA) 4.0. ![](../images/spice.jpg)

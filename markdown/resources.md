@@ -19,4 +19,4 @@ Tools for system and device modeling (and others) integrating ngspice
 [](https://openmeta.metamorphsoftware.com/)
 
 [OpenMETA](https://openmeta.metamorphsoftware.com/) is an open-source and free-to-use multi-domain modeling, analysis, and design toolset. It allows to bring models and analyses together to get a better view of system performance and trade-offs. ngspice is used by and included with the OpenMETA tools.
- All text is available under the terms of the GNU Free Documentation License ![](./images/spice.jpg)
+ All text is available under the terms of the GNU Free Documentation License ![](../images/spice.jpg)

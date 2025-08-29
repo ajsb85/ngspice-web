@@ -1,6 +1,6 @@
 # Ngspice - Open Source Spice Simulator
 
-![NGSPICE](./images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](./images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
+![NGSPICE](../images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](../images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
 
 ## About Ngspice
 
@@ -24,4 +24,4 @@ Introductory videos on the ngspice status and updates have been held at several 
 
 If you are new to Spice and ngspice, don't hesitate to give it a try, if you are a professional user, you will benefit from its robustness and flexibility.
 
-[](http://sourceforge.net) All text is available under the terms of the GNU Free Documentation License ![](./images/spice.jpg)
+[](http://sourceforge.net) All text is available under the terms of the GNU Free Documentation License ![](../images/spice.jpg)

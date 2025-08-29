@@ -1,6 +1,6 @@
 # - [Documentation](./Docs.Html)
 
-![NGSPICE](./images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](./images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
+![NGSPICE](../images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](../images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
 
 - [Home](./index.html)
 - [Screenshots](./screens.html)
@@ -53,4 +53,4 @@ Misc:
 - [SVATS](http://svats.sourceforge.net/): SVATS is a collection of Python scripts used for adding repetitive analysis capabilities to Electronic Circuit Simulators like Berkeley Spice 3F5; its main purpose is to perform FMEA-like analysis on analog and mixed analog-digital electronic circuits, to test circuit behaviour under components failure conditions.
 - [ThSim](https://sourceforge.net/projects/thsim/): Simulator for thermal conduction in solid material. Uses SPICE for calculations and wxWindows for providing Windows and Linux GUI.
 
- All text is available under the terms of the GNU Free Documentation License ![](./images/spice.jpg)
+ All text is available under the terms of the GNU Free Documentation License ![](../images/spice.jpg)

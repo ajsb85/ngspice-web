@@ -1,6 +1,6 @@
 # - [Documentation](./Docs.Html)
 
-![NGSPICE](./images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](./images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
+![NGSPICE](../images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](../images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
 
 - [Home](./index.html)
 - [News](./news.html)
@@ -332,4 +332,4 @@ A simple example of a resistor with temperature sensitivity is given below:
 
 Changing the instance parameter dtemp (the temperature difference between default and this device R1) will change the resistance value and thus the resulting current through V1.
 
-Author and Copyright: Holger Vogt, 2021. [](http://sourceforge.net) All text is available under the terms of the Creative Commons Attribution Share-Alike (CC BY-SA) 4.0. ![](./images/spice.jpg)
+Author and Copyright: Holger Vogt, 2021. [](http://sourceforge.net) All text is available under the terms of the Creative Commons Attribution Share-Alike (CC BY-SA) 4.0. ![](../images/spice.jpg)

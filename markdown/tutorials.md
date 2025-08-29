@@ -69,4 +69,4 @@ A comprehensive introduction to the internals of a Spice like simulator
 
 - [Slides of Course--EDA Introduction](http://aice.sjtu.edu.cn/msda/html/courseware.htm)
 
-[](http://sourceforge.net) All text is available under the terms of the GNU Free Documentation License ![](./images/spice.jpg)
+[](http://sourceforge.net) All text is available under the terms of the GNU Free Documentation License ![](../images/spice.jpg)

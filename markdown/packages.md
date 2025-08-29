@@ -1,6 +1,6 @@
 # Packages
 
-![NGSPICE](./images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](./images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
+![NGSPICE](../images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](../images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
 
 [Home](./index.html)
 
@@ -101,4 +101,4 @@ MacPorts provides a ngspice port for macOS (version 36).
 
 The list above is surely incomplete. If you know of other ngspice packages, please give details to the [ngspice-users forum](https://sourceforge.net/p/ngspice/discussion/133842//) .
 
-[](http://sourceforge.net) All text is available under the terms of the GNU Free Documentation License ![](./images/spice.jpg)
+[](http://sourceforge.net) All text is available under the terms of the GNU Free Documentation License ![](../images/spice.jpg)
