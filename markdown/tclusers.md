@@ -1,14 +1,4 @@
-
-
-
-
-[Home](./index.html)
-
-[Screenshots](./screens.html)
-
-[Download](./download.html)
-
-[Documentation](./docs.html)
+# Tclusers
 
 [Extras/Options](./extras.html)
 
@@ -22,42 +12,40 @@ Development
 
 Ngspice Development
 
--   [Developers Info](./devel.html)
+- [Developers Info](./devel.html)
 
--   [Bug Reports](./bugrep.html)
+- [Bug Reports](./bugrep.html)
 
--   [Git Access](./gitaccess.html)
+- [Git Access](./gitaccess.html)
 
--   [Docs for developers](./devdocs.html)
+- [Docs for developers](./devdocs.html)
 
--   [Mailing List Archives](./mlarch.html)
+- [Mailing List Archives](./mlarch.html)
 
--   [Releases Info](./relinfo.html)
+- [Releases Info](./relinfo.html)
 
--   [Roadmap](./roadmap.html)
+- [Roadmap](./roadmap.html)
 
--   [Writing Docs](./docwrite.html)
+- [Writing Docs](./docwrite.html)
 
--   
+- ------------------------------------------------------------------------
 
-    ------------------------------------------------------------------------
-
--   [Tests](./applic.html#test)
+- [Tests](./applic.html#test)
 
 OSDI/OpenVAF for ngspice
 
--   [What is OSDI/OpenVAF ?](./osdi.html)
+- [What is OSDI/OpenVAF ?](./osdi.html)
 
 GSS-TCAD
 
--   GSS
+- GSS
 
 TCLspice
 
--   [What TCLspice is ?](./tclspice.html)
--   [TCLspice users manual](./tclusers.html)
--   [TCLspice by examples](./tclexamples.html)
--   [Designer's note](./tclnotes.html)
+- [What TCLspice is ?](./tclspice.html)
+- [TCLspice users manual](./tclusers.html)
+- [TCLspice by examples](./tclexamples.html)
+- [Designer's note](./tclnotes.html)
 
 TCLspice Users Manual
 
@@ -79,10 +67,10 @@ As any complex software ngspice can have a lot of compiling options. Refer to th
 
 TCLSpice relies on several other packages. As Nobody tracked the dependencies before, there is no information on dependencies compatibility. I give the revision number I use. Don't hesitate to tell me your success and failures with other versions. In order to get tclspice compiled, you need to have on your computer those software:
 
--   tcl (using version 8.4)
--   tk (using version 8.4)
--   BLT (using v2.4)
--   tclreadline (using v1.2)(may be required at configuration time by error but it is not required at comppilation time)
+- tcl (using version 8.4)
+- tk (using version 8.4)
+- BLT (using v2.4)
+- tclreadline (using v1.2)(may be required at configuration time by error but it is not required at comppilation time)
 
 Compilation
 
@@ -116,9 +104,9 @@ Running tclspice by its absolute path does not require it to be placed in a spec
 
 If you want the library to be installed in another directory, you can proceed two ways:
 
--   Copy the libspice.so.\* files by hand. (Typically in src/.libs/ If it is not there, use find command to locate it).
+- Copy the libspice.so.\* files by hand. (Typically in src/.libs/ If it is not there, use find command to locate it).
 
--   Provide the install script with your custom installation path, using spicelibdir environement variable. In the example below, notice that there is NO -- before spicelibdir:
+- Provide the install script with your custom installation path, using spicelibdir environement variable. In the example below, notice that there is NO -- before spicelibdir:
 
     ./configure spicelibdir=/whereever/you/want --with-tcl
 
@@ -160,21 +148,17 @@ With blt::graph a plotting structure is allocated in memory. With pack it is pla
 
 Bibliography
 
--   Spice Information:
-    -   
-    -   
-    -   
--   Spice Usage:
-    -   [newton.ex.ac.uk/teaching/CDHW/Electronics2/userguide/index.html](http://newton.ex.ac.uk/teaching/CDHW/Electronics2/userguide/index.html)
--   Tcl and TCL/TK:
-    -   
-    -   
-    -    (French)
-    -   [http://www.bin-co.com/tcltutorial/contents.php](http://www.bin-co.com/tcl/tutorial/contents.php)
--   BLT (There is almost no documentation on BLT:
-    -   Introduction: [http://heim.ifi.uio.no/~hpl/Pmw.Blt/doc/tutorial.html](http://heim.ifi.uio.no/%7Ehpl/Pmw.Blt/doc/tutorial.html)
-    -   Official docs, download slides.pdf on 
-    -   On vectors usage: 
-    -   Extensive help is available in the sources tarball.
-    -   The manpages are available online (It is a directory listing. Choose your topic) 
-
+- Spice Information:
+  - -
+  - - Spice Usage:
+  - [newton.ex.ac.uk/teaching/CDHW/Electronics2/userguide/index.html](http://newton.ex.ac.uk/teaching/CDHW/Electronics2/userguide/index.html)
+- Tcl and TCL/TK:
+  - -
+  - (French)
+  - [http://www.bin-co.com/tcltutorial/contents.php](http://www.bin-co.com/tcl/tutorial/contents.php)
+- BLT (There is almost no documentation on BLT:
+  - Introduction: [http://heim.ifi.uio.no/~hpl/Pmw.Blt/doc/tutorial.html](http://heim.ifi.uio.no/%7Ehpl/Pmw.Blt/doc/tutorial.html)
+  - Official docs, download slides.pdf on
+  - On vectors usage:
+  - Extensive help is available in the sources tarball.
+  - The manpages are available online (It is a directory listing. Choose your topic)

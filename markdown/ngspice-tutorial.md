@@ -1,44 +1,46 @@
+# - [Documentation](./Docs.Html)
+
 ![NGSPICE](./images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](./images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
 
--   [Home](./index.html)
--   [News](./news.html)
--   [Screenshots](./screens.html)
--   [Download](./download.html)
--   [Documentation](./docs.html)
--   [Extras/Options](./extras.html)
--   [Applications](./applic.html)
--   [Development](./devel.html)
--   [Simulation Environments](./resources.html)
--   [Quality](./quality.html)
+- [Home](./index.html)
+- [News](./news.html)
+- [Screenshots](./screens.html)
+- [Download](./download.html)
+- [Documentation](./docs.html)
+- [Extras/Options](./extras.html)
+- [Applications](./applic.html)
+- [Development](./devel.html)
+- [Simulation Environments](./resources.html)
+- [Quality](./quality.html)
 
 XSPICE in ngspice
 
--   [What is XSPICE ?](./xspice.html)
--   [XSPICE and ngspice HOWTO](./xspicehowto.html)
+- [What is XSPICE ?](./xspice.html)
+- [XSPICE and ngspice HOWTO](./xspicehowto.html)
 
 ngspice as shared library
 
--   [Short Intro](./shared.html)
--   [ngspice parallel](./parallel.html)
+- [Short Intro](./shared.html)
+- [ngspice parallel](./parallel.html)
 
 CUSPICE
 
--   [CUSPICE Intro](./cuspice.html)
+- [CUSPICE Intro](./cuspice.html)
 
 OSDI/OpenVAF for ngspice
 
--   [What is OSDI/OpenVAF ?](./osdi.html)
+- [What is OSDI/OpenVAF ?](./osdi.html)
 
 GSS-TCAD
 
--   [GSS](./gss.html)
+- [GSS](./gss.html)
 
 TCLspice
 
--   [What is TCLspice ?](./tclspice.html)
--   [TCLspice users manual](./tclusers.html)
--   [TCLspice by examples](./tclexamples.html)
--   [Designer's note](./tclnotes.html)
+- [What is TCLspice ?](./tclspice.html)
+- [TCLspice users manual](./tclusers.html)
+- [TCLspice by examples](./tclexamples.html)
+- [Designer's note](./tclnotes.html)
 
 Tutorial: ngspice for beginners
 
@@ -56,8 +58,6 @@ Tutorial: ngspice for beginners
 Introduction
 
 ngspice is a circuit simulator that numerically solves equations describing (electronic) circuits: These are made of passive and active devices. Time varying currents and voltages are simulated as well as noise and small signal behavior. ngspice is the Open Source successor of the venerable spice3f5 from UC at Berkeley.
-
-
 
 Fig. 1
 
@@ -78,8 +78,6 @@ If you want to make use of PSPICE device models (often provided by the semicondc
 to .spiceinit. If the file name .spiceinit does not work for you, use the alternative file name spice.rc . And that's it!
 
 After a double click on C:\Spice64\bin\ngspice.exe, the ngspice main window pops up.
-
-
 
 Fig. 2
 
@@ -128,13 +126,11 @@ The input and output is now via the console. Below there is a typical view after
     vpower#branch                     -1.64402e-06
 
     No. of Data Rows : 222
-    ngspice 7 -> 
+    ngspice 7 ->
 
 3\) Circuit with Passive Elements, Operating Point
 
 Now let's do a first circuit. We need a dc voltage source and two resistors that build a simple resistive voltage divider.
-
-
 
 Fig. 3
 
@@ -175,8 +171,6 @@ Then the circuit is loaded immediately, and the next command you enter is `op` (
 
 The following example is a dual rc ladder, and we want to do a transient simulation. The input is a voltage waveform (a pulse) versus time, and the output is a waveform as well, as you might see on an oscilloscope. This is our circuit:
 
-
-
 Fig. 4
 
 The netlist then is
@@ -194,8 +188,6 @@ What is now the simulation time we will need? The time constant of our low pass 
     tran 50u 50m
 
 The result is shown in Fig. 5 after plotting with command `plot in int out`. The voltages at nodes 'int' and 'out' barely differ. This is because the first R1C1 dominates the circuit. The time constant of the second R2C2 is a factor of 100 smaller, so charging C2 is quick and easy compared to charging C1. The voltage at input node 'in' rises so fast that you do not see its slope.
-
-
 
 Fig. 5
 
@@ -250,20 +242,16 @@ We now may start ngspice by `ngspice rcrcac.cir`. The netlist is read, the comma
 
 And this is what we see after simulation and plotting:
 
-
-
 Fig. 6 Small Signal Magnitude and Phase for dual RC ladder
 6\) Download and Install a Simple GUI (MS Windows)
 
 I am used to MS Windows, and so I do not want to type in everything, but use the mouse to select files, start simulation and plot the results. Therefore I use (and have made available for [download](https://ngspice.sourceforge.io/download.html#bin1)) a small GUI that is shown in Fig. 7. To install, just expand the four files into a folder of your choice. DuSpiceStart.exe is the main executable. DuSpicePlot.exe reads a raw file and prepares plotting. DuSpiceStart.ini contain the setup data. plot\_spex3.xlsm contains some VB macros that allow plotting with EXCEL.
 
-
-
 Fig. 7 MS Windows GUI with Setup and Plot Window
 
 If you hover your mouse over a button or edit box, a small hint will pop up and give you some information on the usage of this item.
 
-Main window  
+Main window
 Drop down box on top: Select one of the recent 5 files as input for simulation
 
 Start batch: Start ngspice in batch mode, like `ngspice -b -r rcrcac.out -o rcrcac.log rcrcac.cir`
@@ -286,9 +274,7 @@ View \*.log: Open the log file (e.g. rcrcac.log) in the editor
 
 Quit: Quit the GUI
 
-
-
-Setup window  
+Setup window
 Viewer: Select a file viewer (recommended: Notepad++)
 
 Editor: Select an editor (recommended: Notepad++)
@@ -305,9 +291,7 @@ batch start options: If 'Start batch' from main window is selected, start either
 
 interactive log file options: Start interactive simulation either with output going to the ngspice output window or into the log file
 
-
-
-Plot window  
+Plot window
 plot Spice: Start another instance of ngspice, load the \*.out file and start plotting
 
 plot gnuplot: Start gnuplot (if available) and start plotting
@@ -329,8 +313,6 @@ quit: Quit plot window
 7\) Bipolar amplifier
 
 The next example is a bipolar amplifier. A npn bipolar transistor BC546 is the amplifying device. Two resistors R1, R2 determine the base current, R3 is the dc load resistor. RLoad is required because ngspice will not accept a capacitor that does not have a dc connection at each terminal. VCC is the power supply, Vin the input voltage source.
-
-
 
 Fig. 8
 
@@ -364,8 +346,6 @@ The .model line directly corresponds with the Q1 line in that it now delivers th
 
 If you are on MS Windows, start the GUI, New file bipamp.cir, Start batch, Plot, check v(out) and v(in), plot gnuplot: this is the result:
 
-
-
 Fig. 9 GUI, Plot window and gnuplot graph
 
 With Linux you might add a .control section like
@@ -379,8 +359,6 @@ to the input file bipamp.cir. Then cd into the folder containing the input file 
 
 The final example is an inverting amplifier using the operational amplifier LF356. Its gain is set by the ratio of R2 to R1. The amplifier inverts the input polarity. Thus the output will be V(out) = -R2/R1\*V(in) = -100\*V(in).
 
-
-
 Fig. 10 Inverting amplifier with OpAmp
 
 There is no model for OpAmps delivered with ngspice. So you have to search in the web for a device manufacturer's model, e.g. from the [TI web pages](http://www.ti.com/lit/zip/snom255) as LF356.mod. A wealth of models for discretes and ICs from the early 2000s is available at the [ngspice model collection](./model-parameters/models_ugr.7z) and its sub-folders.
@@ -391,11 +369,11 @@ How to add the LF356 model to the ngspice netlist? Copy the file LF356.mod into 
 
 How to invoke the model in the netlist? This is done by an X line (see manual chapt. 2.4) like `XU1 3 2 7 4 6 LF356/NS`. The pin numbers correspond to the pins of the IC as found in its data sheet. We have decided to use the pin numbers as node names for the netlist. We might have chosen other net names (e.g. the circuit pin names) as well. The 'circuit pin name'/'pin number' pairs are in- / 2, in+ / 3, V+ / 7, V- / 4, and out / 6. The model requires a sequence
 
--   non-inverting input
--   inverting input
--   positive power supply
--   negative power supply
--   output
+- non-inverting input
+- inverting input
+- positive power supply
+- negative power supply
+- output
 
 as described in the model file. Therefore the nodes in the X line have to be ordered into this sequence, i.e. 3 2 7 4 6. The complete netlist now looks like:
     .title Inverting OpAmp amplifier
@@ -424,8 +402,6 @@ to the netlist, cd into this input folder and run
 
 in the Cygwin or Linux console. The plotted output then is
 
-
-
 Fig. 11 OpAmp dc simulation in and out
 
 The input voltage variation is barely to be seen. The OpAmp output saturates already at +-3 V, far away from rail-to-rail +-5 V which is possible with modern OpAmps.
@@ -434,8 +410,8 @@ A final remark: If you want a GUI with schematic capture (that is entering the i
 
 For a ngspice simulation ngspice expects as input a netlist, simulation parameters, an output selection, and simulation models or parameters for the devices used in the netlist. A comprehensive selection of models and model parameters is found on our [ngspice model and model parameter page](./modelparams.html). Especially the two collections
 
--   [models\_ugr.7z](./model-parameters/models_ugr.7z)
--   [MicroCap-LIBRARY.7z](./model-parameters/MicroCap-LIBRARY.7z)
+- [models\_ugr.7z](./model-parameters/models_ugr.7z)
+- [MicroCap-LIBRARY.7z](./model-parameters/MicroCap-LIBRARY.7z)
 
 will give you almost everything needed.
 

@@ -1,33 +1,33 @@
+# - [Documentation](./Docs.Html)
+
 ![NGSPICE](./images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](./images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
 
--   [Home](./index.html)
--   [News](./news.html)
--   [Screenshots](https://sourceforge.net/projects/ngspice/)
--   [Download](./download.html)
--   [Documentation](./docs.html)
--   [Extras/Options](./extras.html)
--   [Applications](./applic.html)
--   [Development](./devel.html)
--   [Simulation Environments](./resources.html)
--   [Quality](./quality.html)
+- [Home](./index.html)
+- [News](./news.html)
+- [Screenshots](https://sourceforge.net/projects/ngspice/)
+- [Download](./download.html)
+- [Documentation](./docs.html)
+- [Extras/Options](./extras.html)
+- [Applications](./applic.html)
+- [Development](./devel.html)
+- [Simulation Environments](./resources.html)
+- [Quality](./quality.html)
 
 Models and model parameters for ngspice
 
--   [News](index.html)
+- [News](index.html)
 
--   [What is ngspice ?](presentation.html)
+- [What is ngspice ?](presentation.html)
 
--   [Features, Extras & Options](extras.html)
+- [Features, Extras & Options](extras.html)
 
--   [F.A.Q.](faq.html)
+- [F.A.Q.](faq.html)
 
--   [Tutorials](tutorials.html)
+- [Tutorials](tutorials.html)
 
--   
+- ------------------------------------------------------------------------
 
-    ------------------------------------------------------------------------
-
--   [Sourceforge Developer Pages](https://sourceforge.net/projects/ngspice/)
+- [Sourceforge Developer Pages](https://sourceforge.net/projects/ngspice/)
 
 Models for ngspice
 
@@ -39,75 +39,35 @@ A [basic model parameter set](./model-parameters/basic_models.7z) is available a
 
 A broad selection of models and model parameters for devices dated before 2000 has been collected by A. Roldan from University of Granada. While no longer available from the original web pages, it will be offered below.
 
--   [models\_ugr.7z](./model-parameters/models_ugr.7z) (maintained up to ca. 2010)
+- [models\_ugr.7z](./model-parameters/models_ugr.7z) (maintained up to ca. 2010)
 
 Another very comprehensive selection of models and model parameters for devices, covering active and passive devices from many device vendors has been derived from the simulator package [Micro-Cap 12](http://www.spectrum-soft.com/download/download.shtm), a formerly (up to 2019) professionally maintained commercial spice simulator, now free and publicly available.
 
--   [MicroCap-LIBRARY.7z](./model-parameters/MicroCap-LIBRARY.7z) (maintained up to 2019)
+- [MicroCap-LIBRARY.7z](./model-parameters/MicroCap-LIBRARY.7z) (maintained up to 2019)
 
 There is a set of special models, home-made, for specific devices available. You may find a bipolar and a CMOS version of the 555, a bipolar 741, a bipolar ICL8038, behavioral LM3914, LR8 and LTC1044.
 
--   [special\_models.zip](./model-parameters/special_models.zip)
+- [special\_models.zip](./model-parameters/special_models.zip)
 
 ngspice supports digital event based simulation, which is more than 50 times faster than analog simulation. If you are using KiCad as schematic entry, there is a small (but growing) set of models for 74HCxxx devices available, which may directly be attached to the appropriate 74xxx symbol.
 
--   [74HCxxxM.zip](./model-parameters/74HCxxxM.zip)
+- [74HCxxxM.zip](./model-parameters/74HCxxxM.zip)
 
 ngspice supports a large set of models for digital 74xx devices, mapping them onto XSPICE for true digital (or mixed signal with automatically set interfaces) simulation. In ngspice the models may be used by simply calling the subcircuit of the required device. In KiCad these models will need an appropriate pin assignment according to its symbol, (or a subcircuit when used by a multi-part symbol).
 
--   [74xx-models.7z](./model-parameters/74xx-models.7z) (models for 74xx digital devices, a ngspice subset derived from the MicroCap library)
+- [74xx-models.7z](./model-parameters/74xx-models.7z) (models for 74xx digital devices, a ngspice subset derived from the MicroCap library)
 
 Various sources from the web:
 
--    (partially outdated)
+- (partially outdated)
 
--   
-
--   
-
--   
-
--   
-
--    (as of 2012).
+- - - - - (as of 2012).
 
 Device vendor web pages:
 
--   
+- - - - (select the appropriate 'Document Type': PSPICE .lib, HSPICE or spice3 should be o.k.)
 
--   
-
--   
-
--    (select the appropriate 'Document Type': PSPICE .lib, HSPICE or spice3 should be o.k.)
-
--   
-
--   
-
--   
-
--   
-
--   
-
--   
-
--   
-
--   
-
--   
-
--   
-
--   
-
--   
-
--   
-
-For TI models, check for the product on the TI web pages. PSPICE models (use their \*.lib file in ngspice) may often be found in the 'Design & Development' section of the product page.
+- - - - - - - - - - - - - For TI models, check for the product on the TI web pages. PSPICE models (use their \*.lib file in ngspice) may often be found in the 'Design & Development' section of the product page.
 
 PDKs for IC design
 
@@ -115,11 +75,9 @@ For IC design very sophisticated model parameter sets are required for the compl
 
 Other sources of models for advanced MOS (IC related, but not necessarily linked to any foundry) are found here:
 
--   
+- - [asap7](https://github.com/The-OpenROAD-Project/asap7)
 
--   [asap7](https://github.com/The-OpenROAD-Project/asap7)
-
--   [Models for 0.8u, 0.35u, 0.18u, 45nm, 7nm CMOS](https://analogicdesign.com/students/netlists-models/model-files/)
+- [Models for 0.8u, 0.35u, 0.18u, 45nm, 7nm CMOS](https://analogicdesign.com/students/netlists-models/model-files/)
 
 How to add models and model parameters to the ngspice netlist
 

@@ -1,44 +1,46 @@
+# - [Documentation](./Docs.Html)
+
 ![NGSPICE](./images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](./images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
 
--   [Home](./index.html)
--   [News](./news.html)
--   [Screenshots](./screens.html)
--   [Download](./download.html)
--   [Documentation](./docs.html)
--   [Extras/Options](./extras.html)
--   [Applications](./applic.html)
--   [Development](./devel.html)
--   [Simulation Environments](./resources.html)
--   [Quality](./quality.html)
+- [Home](./index.html)
+- [News](./news.html)
+- [Screenshots](./screens.html)
+- [Download](./download.html)
+- [Documentation](./docs.html)
+- [Extras/Options](./extras.html)
+- [Applications](./applic.html)
+- [Development](./devel.html)
+- [Simulation Environments](./resources.html)
+- [Quality](./quality.html)
 
 XSPICE in ngspice
 
--   [What is XSPICE ?](./xspice.html)
--   [XSPICE and ngspice HOWTO](./xspicehowto.html)
+- [What is XSPICE ?](./xspice.html)
+- [XSPICE and ngspice HOWTO](./xspicehowto.html)
 
 ngspice as shared library
 
--   [Short Intro](./shared.html)
--   [ngspice parallel](./parallel.html)
+- [Short Intro](./shared.html)
+- [ngspice parallel](./parallel.html)
 
 CUSPICE
 
--   [CUSPICE Intro](./cuspice.html)
+- [CUSPICE Intro](./cuspice.html)
 
 OSDI/OpenVAF for ngspice
 
--   [What is OSDI/OpenVAF ?](./osdi.html)
+- [What is OSDI/OpenVAF ?](./osdi.html)
 
 GSS-TCAD
 
--   [GSS](./gss.html)
+- [GSS](./gss.html)
 
 TCLspice
 
--   [What is TCLspice ?](./tclspice.html)
--   [TCLspice users manual](./tclusers.html)
--   [TCLspice by examples](./tclexamples.html)
--   [Designer's note](./tclnotes.html)
+- [What is TCLspice ?](./tclspice.html)
+- [TCLspice users manual](./tclusers.html)
+- [TCLspice by examples](./tclexamples.html)
+- [Designer's note](./tclnotes.html)
 
 Tutorial: ngspice control language
 
@@ -140,8 +142,6 @@ If you want to execute more than one simulation in a single run, it might be adv
 
 Fig. 1 is what you get with the two **plot** commands:
 
-
-
 *Fig. 1 Inverter input/output versus time and inverter output versus input voltage*
 
 Command **reset** is required to set back internal data after a transient simulation. If you do not want a graphical output, but just the output into a file, you might modify the script by adding the **quit** command:
@@ -178,8 +178,6 @@ The next script executes a repeat loop. For five times the inverter supply volta
     .endc
 
 Fig. 2 is the result of the three **plot** commands:
-
-
 
 *Fig. 2 Inverter output, gain and current consumption versus input voltage*
 
@@ -258,8 +256,6 @@ An alternative to the `destroy all` is to delete only the most recent (current) 
     ...
 
 Fig. 3 is the final result. For smoothing the curve by more data points, the following commands have been modified: `let loops = 11` and `let vccc = vccc + 0.1`.
-
-
 
 *Fig. 3 Inverter gain versus supply voltage*
 
@@ -357,7 +353,7 @@ Some comments to this script are due: `*ng_script` in the upper left of the firs
 In the following netlist there is a very simple circuit: 3 resistors in series, powered by a voltage source. We want to change each resistor using the **alter** command. We use 3 interlaced **while** loops.
     3 interlaced while loops, simple circuit
 
-    R1 1 11 1 
+    R1 1 11 1
     R2 11 12 1
     R3 12 0 1
 
@@ -468,8 +464,6 @@ In the future ngspice may be enabled to translating such **.step** commands into
 
 Fig. 4 is what you get with the two **plot** commands:
 
-
-
 *Fig. 4 Gain and phase of RC circuit, 27 simulation runs in total*
 
 The output file, written by command **wrdata**, looks like this:
@@ -525,7 +519,7 @@ Again there are three nested loops, but now we use the *while ... end* loop comm
           reset                         ; activate the parameter changes by reloading the ciruit
           altermod BC546B VAF = $&mvaf  ; change the VAF model parameter
           run                           ; run the op simulation
-          print v(cc) v(bb) i(q1:c) i(q1:b) ; the data output, i(q1:c) is the same as q1:c#branch 
+          print v(cc) v(bb) i(q1:c) i(q1:b) ; the data output, i(q1:c) is the same as q1:c#branch
           let rr1 = rr1 + 2k            ; new resistance value
           let index = index + 1
         end
@@ -615,8 +609,6 @@ with its option *oct* implies a non-linear distribution of input parameters (her
 
 Here we use a multiplicator to alter the voltage value, derived from the information "5 values per octave". After calculating the total number of steps, we create and use 2 vectors vecx, vecy to store the result of the op simulation versus the V1 value. Some checking against wrong point numbers is done. A pointplot in Fig. 5 demonstrates the uniform x value distribution, when plotted logarithmically.
 
-
-
 *Fig. 5 Output current versus logarithmic voltage value distribution*
 
 11\. Modify a circuit on the fly
@@ -697,8 +689,6 @@ In the next example we choose from 2 different operational amplifiers. We have t
 Finally we use two **meas(ure)** commands to find the frequency where the opamp gain has rolled off by -3 dB.
 
 The results of both simulations are presented in Fig. 6:
-
-
 
 *Fig. 6 Gain of RC circuit and two operational amplifiers versus frequency*
 

@@ -1,26 +1,26 @@
+# - [Documentation](./Docs.Html)
+
 ![NGSPICE](./images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](./images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
 
--   [Home](./index.html)
--   [News](./news.html)
--   [Screenshots](https://sourceforge.net/projects/ngspice/)
--   [Download](./download.html)
--   [Documentation](./docs.html)
--   [Extras/Options](./extras.html)
--   [Applications](./applic.html)
--   [Development](./devel.html)
--   [Simulation Environments](./resources.html)
--   Recipes
+- [Home](./index.html)
+- [News](./news.html)
+- [Screenshots](https://sourceforge.net/projects/ngspice/)
+- [Download](./download.html)
+- [Documentation](./docs.html)
+- [Extras/Options](./extras.html)
+- [Applications](./applic.html)
+- [Development](./devel.html)
+- [Simulation Environments](./resources.html)
+- Recipes
 
 Recipes with (ng)spice(s)
 
--   Recipes
--   [Interfacing with Octave](./octavespice.html)
--   [Kjwaves frontend](./kjwaves.html)
--   [---](#)
+- Recipes
+- [Interfacing with Octave](./octavespice.html)
+- [Kjwaves frontend](./kjwaves.html)
+- [---](#)
 
 Recipes with ngspice
-
-
 
 **Recipe** Rec"i\*pe (re^s"i^\*p-e), n.; pl. Recipes (re^s"i^\*p=ez). L., imperative of recipere to take back, take in, receive. See Receive.
 

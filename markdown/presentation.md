@@ -1,22 +1,7 @@
+# Presentation
 
-
-
-
--   Home
--   [Screenshots](./screens.html)
--   [Download](./download.html)
--   [Documentation](./docs.html)
--   [Extras/Options](./extras.html)
--   [Contributions](./contrib.html)
--   [Development](./devel.html)
--   [Simulation Environments](./resources.html)
--   [Quality](./quality.html)
-
-Ngspice Home
-
--   [News](index.html)
--   What is ngspice ?
--   [F.A.Q.](faq.html)
+- What is ngspice ?
+- [F.A.Q.](faq.html)
 
 What is ngspice ?
 
@@ -33,4 +18,3 @@ Ngspice is, anyway, a little more than the simple sum of the packages above, as 
 Ngspice is an ongoing project, growing everyday from users contributions, suggestions and reports. What we will be able to do depends mostly on user interests, contributions and feedback.
 
 If you are interested, [join the users' mailing list](http://lists.sourceforge.net/lists/listinfo/ngspice-users).
-

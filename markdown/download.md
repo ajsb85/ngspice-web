@@ -1,30 +1,32 @@
+# - [Documentation](./Docs.Html)
+
 ![NGSPICE](./images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](./images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
 
--   [Home](./index.html)
--   [News](./news.html)
--   [Screenshots](https://sourceforge.net/projects/ngspice/)
--   [Download](https://sourceforge.net/project/showfiles.php?group_id=38962)
--   [Documentation](./docs.html)
--   [Tutorials](./tutorials.html)
--   [Extras/Options](./extras.html)
--   [Applications](./applic.html)
--   [Development](./devel.html)
--   [Simulation Environments](./resources.html)
--   [Quality](./quality.html)
+- [Home](./index.html)
+- [News](./news.html)
+- [Screenshots](https://sourceforge.net/projects/ngspice/)
+- [Download](https://sourceforge.net/project/showfiles.php?group_id=38962)
+- [Documentation](./docs.html)
+- [Tutorials](./tutorials.html)
+- [Extras/Options](./extras.html)
+- [Applications](./applic.html)
+- [Development](./devel.html)
+- [Simulation Environments](./resources.html)
+- [Quality](./quality.html)
 
 Ngspice Download
 
--   [Download](https://sourceforge.net/project/showfiles.php?group_id=38962)
--   [Git Access](gitaccess.html)
--   [Prereleases](prereleases.html)
--   [Old Releases](oldreleases.html)
--   [Packages](packages.html)
+- [Download](https://sourceforge.net/project/showfiles.php?group_id=38962)
+- [Git Access](gitaccess.html)
+- [Prereleases](prereleases.html)
+- [Old Releases](oldreleases.html)
+- [Packages](packages.html)
 
 Ngspice download (stable release)
 
 All ngspice stable releases, including the most recent one, can be downloaded from [Sourceforge.net File Release System](https://sourceforge.net/projects/ngspice/files/ng-spice-rework/). Ngspice is released as a gzipped tar archive containing all source files of the simulator. They compile under various operating systems, e.g. LINUX, MS Windows, MAC, BSD, Solaris, and maybe others. Binary packages are distributed for MS Windows and MAC OS X.
 
--   [**ngspice-44**](https://sourceforge.net/projects/ngspice/files/ng-spice-rework/44/): this is the folder with the latest stable release. It does not contain last minute code and experimental features. This is the release intended for end-users. All sources are assembled into a tarball for download. Binary packages for MS Windows and MAC OS X are to be found here as well.
+- [**ngspice-44**](https://sourceforge.net/projects/ngspice/files/ng-spice-rework/44/): this is the folder with the latest stable release. It does not contain last minute code and experimental features. This is the release intended for end-users. All sources are assembled into a tarball for download. Binary packages for MS Windows and MAC OS X are to be found here as well.
 
 Ngspice installation (quick intro)
 
@@ -38,11 +40,9 @@ If you are interested in the [ngspice nightly](./download.html#nightly) for MS W
 
 Ngspice source code download via browser or snapshot (code under development)
 
--   [**ngspice tree view of master branch**](https://sourceforge.net/p/ngspice/ngspice/ci/master/tree/): This is the master branch of the code actually under development. It contains the most recent features and has already got lots of testing. Use this link to access the individual source code files via your browser. Select 'Download Snapshot' from this page to download the complete and actual master branch source code. Check one of the 'Branches' buttons (or 'More Branches' to display all branches) to switch to another branch and then again use 'Download Snapshot'. Another development branch example is given in the next bullet point.
+- [**ngspice tree view of master branch**](https://sourceforge.net/p/ngspice/ngspice/ci/master/tree/): This is the master branch of the code actually under development. It contains the most recent features and has already got lots of testing. Use this link to access the individual source code files via your browser. Select 'Download Snapshot' from this page to download the complete and actual master branch source code. Check one of the 'Branches' buttons (or 'More Branches' to display all branches) to switch to another branch and then again use 'Download Snapshot'. Another development branch example is given in the next bullet point.
 
-
-
--   [**ngspice tree view of branch pre-master-45**](https://sourceforge.net/p/ngspice/ngspice/ci/pre-master-45/tree/): This is the current development branch with very recent source code additions. After testing they may make it into the master branch and the next stable release. Use this link to access the source code files via your browser or download the complete snapshot by 'Download snapshot'.
+- [**ngspice tree view of branch pre-master-45**](https://sourceforge.net/p/ngspice/ngspice/ci/pre-master-45/tree/): This is the current development branch with very recent source code additions. After testing they may make it into the master branch and the next stable release. Use this link to access the source code files via your browser or download the complete snapshot by 'Download snapshot'.
 
 Ngspice source code download using git (code under development)
 
@@ -59,8 +59,6 @@ For github or gitlab users, there are up-to-date clones (not managed by the ngsp
 Ngspice GUI for MS Windows
 
 A simple GUI for starting ngspice and plotting (binaries for MS Windows, 64 bit) is available [**here**](https://ngspice.sourceforge.io/experimental/ngspice_start.7z), along with its [**source code**](https://ngspice.sourceforge.io/experimental/ng_gui_sources.7z) that compiles with [**Lazarus**](https://www.lazarus-ide.org/) IDE.
-
-
 
 Ngspice-44+ for MS Windows (pre-master-45 branch, 64 bit)
 

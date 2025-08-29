@@ -1,54 +1,54 @@
+# - [Documentation](./Docs.Html)
+
 ![NGSPICE](./images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](./images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
 
--   [Home](./index.html)
--   [Screenshots](./screens.html)
--   [Download](./download.html)
--   [Documentation](./docs.html)
--   [Extras/Options](./extras.html)
--   [Applications](./applic.html)
--   Development
--   [Simulation Environments](./resources.html)
--   [Quality](./quality.html)
--   [Contributions](./contrib.html)
+- [Home](./index.html)
+- [Screenshots](./screens.html)
+- [Download](./download.html)
+- [Documentation](./docs.html)
+- [Extras/Options](./extras.html)
+- [Applications](./applic.html)
+- Development
+- [Simulation Environments](./resources.html)
+- [Quality](./quality.html)
+- [Contributions](./contrib.html)
 
 Ngspice Development
 
--   [Developers Info](./devel.html)
+- [Developers Info](./devel.html)
 
--   [Bug Reports](./bugrep.html)
+- [Bug Reports](./bugrep.html)
 
--   Git Access
+- Git Access
 
--   [Docs for developers](./devdocs.html)
+- [Docs for developers](./devdocs.html)
 
--   [Mailing List Archives](./mlarch.html)
+- [Mailing List Archives](./mlarch.html)
 
--   [Releases Info](./relinfo.html)
+- [Releases Info](./relinfo.html)
 
--   [Roadmap](./roadmap.html)
+- [Roadmap](./roadmap.html)
 
--   [Writing Docs](./docwrite.html)
+- [Writing Docs](./docwrite.html)
 
--   
+- ------------------------------------------------------------------------
 
-    ------------------------------------------------------------------------
-
--   [Tests](./applic.html#test)
+- [Tests](./applic.html#test)
 
 OSDI/OpenVAF for ngspice
 
--   [What ADMS is ?](./osdi.html)
+- [What ADMS is ?](./osdi.html)
 
 GSS-TCAD
 
--   [GSS](./gss.html)
+- [GSS](./gss.html)
 
 TCLspice
 
--   [What TCLspice is ?](./tclspice.html)
--   [TCLspice users manual](./tclusers.html)
--   [TCLspice by examples](./tclexamples.html)
--   [Designer's note](./tclnotes.html)
+- [What TCLspice is ?](./tclspice.html)
+- [TCLspice users manual](./tclusers.html)
+- [TCLspice by examples](./tclexamples.html)
+- [Designer's note](./tclnotes.html)
 
 Ngspice Git access
 
@@ -98,7 +98,7 @@ Accessing ngspice Git repositories via the Sourceforge web interface
 
 Though Git repositories are most commonly accessed using a Git client, Sourceforge.net also provide a web-based interface to view Git repositories. Browsing the Git tree gives you a great view into the current status of this project's code. You may also view the complete histories of any file in the repository.
 
--   [Ngspice Git repository](https://sourceforge.net/p/ngspice/ngspice/ci/master/tree/)
+- [Ngspice Git repository](https://sourceforge.net/p/ngspice/ngspice/ci/master/tree/)
 
 ngspice or ngspice-manuals may be selected. If you choose ngspice, then the master branch becomes visible. On the left you will find buttons to select any of the other development branches. On the top right you may download as a snapshot the complete tarball of the selected branch.
 
