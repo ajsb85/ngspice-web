@@ -1,5 +1,3 @@
-
-
 # Writing Documentation for Ngspice
 
 Ngspice is really a complex software, and it is almost impossible to use it without a manual. A manual for ngspice is under development. In addition (we are fortunate) many good texts and manuals have been written on spice and can be used with ngspice. Then you may ask:

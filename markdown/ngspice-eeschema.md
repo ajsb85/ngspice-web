@@ -1,44 +1,46 @@
+# - [Documentation](./Docs.Html)
+
 ![NGSPICE](./images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](./images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
 
--   [Home](./index.html)
--   [News](./news.html)
--   [Screenshots](./screens.html)
--   [Download](./download.html)
--   [Documentation](./docs.html)
--   [Extras/Options](./extras.html)
--   [Applications](./applic.html)
--   [Development](./devel.html)
--   [Simulation Environments](./resources.html)
--   [Quality](./quality.html)
+- [Home](./index.html)
+- [News](./news.html)
+- [Screenshots](./screens.html)
+- [Download](./download.html)
+- [Documentation](./docs.html)
+- [Extras/Options](./extras.html)
+- [Applications](./applic.html)
+- [Development](./devel.html)
+- [Simulation Environments](./resources.html)
+- [Quality](./quality.html)
 
 XSPICE in ngspice
 
--   [What is XSPICE ?](./xspice.html)
--   [XSPICE and ngspice HOWTO](./xspicehowto.html)
+- [What is XSPICE ?](./xspice.html)
+- [XSPICE and ngspice HOWTO](./xspicehowto.html)
 
 ngspice as shared library
 
--   [Short Intro](./shared.html)
--   [ngspice parallel](./parallel.html)
+- [Short Intro](./shared.html)
+- [ngspice parallel](./parallel.html)
 
 CUSPICE
 
--   [CUSPICE Intro](./cuspice.html)
+- [CUSPICE Intro](./cuspice.html)
 
 OSDI/OpenVAF for ngspice
 
--   [What is OSDI/OpenVAF ?](./osdi.html)
+- [What is OSDI/OpenVAF ?](./osdi.html)
 
 GSS-TCAD
 
--   [GSS](./gss.html)
+- [GSS](./gss.html)
 
 TCLspice
 
--   [What is TCLspice ?](./tclspice.html)
--   [TCLspice users manual](./tclusers.html)
--   [TCLspice by examples](./tclexamples.html)
--   [Designer's note](./tclnotes.html)
+- [What is TCLspice ?](./tclspice.html)
+- [TCLspice users manual](./tclusers.html)
+- [TCLspice by examples](./tclexamples.html)
+- [Designer's note](./tclnotes.html)
 
 Tutorial: ngspice simulation in KiCad/Eeschema
 
@@ -80,15 +82,11 @@ As a non-admin user you may not be allowed to store the file rcrc.kicad\_sch in 
 
 Now we select and interconnect the components. Check the 'Add symbols (A)' button from the right column. The 'Choose Symbol' window opens. For this example we select and place the '0' and 'VDC' symbols from the Simulation\_SPICE library, as well as R and C and draw the appropriate connections between the devices (see Fig. 1). Ground (0) is required because ngspice references all voltages to a ground pin. VDC is required to deliver the input signal, labbelled 'in', and we the may view the 'out' signal after simulation.
 
-
-
 Fig. 1
 
 Next we have to add values to the symbols. Names with appropriate numbering (annotation) are already given to each device. Values to the resistors may be added by double click onto the 'R' and entering the value into the edit box, same with 'C'. VDC is special because it has to deliver the ngspice input. For an ac simulation we don't care for the dc value (set it to 0), but we have to enable the small signal ac input. This is achieved by double click onto the symbol, then button 'Simulation Model...'. In the 'Parameter' table, set dc value to 0 and AC magnitude (AC) to 1. then hit o.k.
 
 Fig.2 now shows the complete input.
-
-
 
 Fig. 2
 
@@ -96,46 +94,32 @@ Finally we have to tell ngspice what to simulate. We want an AC simulation, whic
 
 There is, however, a more comfortable way (without the need to having a look at the ngspice manual). Open the simulator window with Eeschema -&gt; Inspect -&gt; Simulator. The simulator window pops up. Choose button "New Analysis Tab" or Ctrl+N. Select "AC - Small Singnal Ananlysis" from the "Analysis type" drop dwon menue. Enter the values for Number, Start and Stop (10 1 100k from above). On the right, select V(0ut) (gain) and V(out) (phase) for plotting. Run the simulation by hitting the (R) button. Immediately you see the simulated gain and phase of the "out" node (Fig.3), reflecting the two RC poles we have in the circuit.
 
-
-
 Fig. 3
 
 As a next test we are interested in a transient simulation. All signals shall now be computed versus time.
 
 First we have to change the input voltage signal. A step voltage from 0 to 5 V is intended. This will be available (see ngspice manual chapt. 4.1.1) with the PULSE voltage source. Open the "Choose symbol" window by the "Add symbols" button. Type VPULSE into the filter edit box, get the VSOURCE and use it to replace the VDC source in your circuit. We want the input voltage rising from 0 to 5 V after a delay of 2 us. Rise and fall times are set to 1 us as well. Pulse width and repetition time are 1s, and thus are far beyond the simulation time of 100 ms. So within our simulation time we will see only the rising edge of the input signal.
 
-
-
 Fig. 4
 
 The simulation command now shall contain 100 us step size and a final time of 100 ms. So open again the "New Analysis Tab" window, now select "tran" from the drop-down menue and enter step and final time. After running the simulation (button (R)), the output (V(out) plotted versus time) does show the expected behavior, rising from 0 to 5 V, and is shown in Fig.5.
 
-
-
-Fig. 5  
+Fig. 5
 3\) Bipolar amplifier
 
 The next example is a bipolar amplifier. Two resistors R2, R3 determine the base current, R1 is the dc load, R5 provides some negative feedback. R4 is required because ngspice will not accept a capacitor that does not have a dc connection at each terminal (node "in" uses V2 for this purpose). The transistor symbol NPN stems from the Simulation\_Spice library. It already involves internally provided model parameters and has a ngspice compatible pin number sequence 1, 2, and 3 for C, B, and E. The GND symbol is equivalent to the "0" symbol. The circuit is shown in Fig. 6.
-
-
 
 Fig. 6
 
 The first simulation now will be the determination of an operating point, with all voltages applied and the resulting currents simulated. Thus open the "Spice Simulator" window, open the "New Analysis Tab (ctrl N), and acknowledge to run a DC operating point. The plot window now states that there will be no plot (because you will obtain only a single operating point). After running the op simulation, have a look at the circuit window (Fig. 7):
 
-
-
 Fig. 7
 
 Let's now do a transient simulation (TRAN) in addition to the OP. Check the input voltage source VSIN: its amplitude is only 10 mV. Hit again the "New Analysis Tab (ctrl N), select transient (TRAN) from the dropdown menue, and add the required parameters: time step size 10u, final time 10m. The plot window will show up, you might add signals V(in) and V(out) for plotting. After running the simulation (button (R)), the plot is visible (see Fig. 8):
 
-
-
 Fig. 8
 
 As a next step we want to replace the generic bipolar model by a suitable real world small signal NPN transistor, say the BC546. So search for the symbol (button "Add symbol" (A)) and replace the generic symbol we had in the previous example. Fortunately the new symbol has the same pin sequence (1, 2, 3 is C, B, E), so this is o.k.. The specific transistor requires a model parameter set for this device. KiCad ngspice does not provide these special device models with their distribution, you have to look for it elsewhere, e.g. at our [Models for ngspice](https://ngspice.sourceforge.io/modelparams.html) page, or others sources from the web. The [basic model parameter set](https://ngspice.sourceforge.io/model-parameters/basic_models.7z) contains the BC546 model. Copy the BC546.lib file into your project directory. Double click onto the transistor symbol. In the "Symbol Properties" window (Fig. 9) --&gt; Simulation Model... --&gt; Spice Model from File --&gt; File BC546.lib --&gt; Model BC546B --&gt; o.k. --&gt; o.k..
-
-
 
 Fig. 9
 
@@ -143,13 +127,9 @@ When we now run the simulation, the output voltage of the amplifier V(out) seems
 
 An elegant method is offered by the tuning tool. Run the transient simulation, click the "Select a value to be tuned (T)" button, select R2 and R3 on the circuit diagram and move back to the "Spice Simulator" window. Now two sliders for tuning R2 and R3 are visible (Fig. 10). As soon as we move one slider, a new simulation is started. With a little flair we may find the optimum value, and also get an idea of the sensitivity of this circuit against resistance variations.
 
-
-
 Fig. 10
 
 There may be the need to use another bipolar transistor, like the BC817. Its spice model is available from industrial sources, e.g. from [Diodes Inc.](https://www.diodes.com/spice/download/2841/BC817-40.spice.txt), the symbol from the KiCad library. The circuit is shown in Fig. 9a.
-
-
 
 Fig. 9a
 
@@ -162,21 +142,13 @@ Btw. if you deal with discrete three pin MOSFETs, the sequence required by ngspi
 
 The next example presents a simple inverting amplifier using an Operational Amplifier. The circuit is shown in Fig. 11. To set it up, we have used the Opamp symbol from the Simulation\_SPICE library (which includes the model), generic resistors R, two VDC voltage sources for power, and a VSIN source (all three from Simulation\_SPICE symbol library). The resistance ratio R2/R1 = 10 sets the amplification.
 
-
-
 Fig. 11
 
 We may set up three different simulations in the Spice Simulator window, using three times the "New Analysis" (crtl N) button: a DC simulation (varying V3 from -0.1 to 0.1 with step 0.01, a TRAN (transient) simulation with time step 10u and final time 10m, and an AC simulation with 10 points per decade, start 1 and stop 1 Meg. The resultas are shown in Figs. 12 to 14.
 
-
-
 Fig. 12
 
-
-
 Fig. 13
-
-
 
 Fig. 14
 
@@ -184,9 +156,7 @@ The simulation setting '.dc Vin -0.1 0.1 0.01' results in a linear Vout with a n
 
 How to change parameters of the generic opamp model? The model offers 4 parameters, accessible through double-click onto the symbol, click onto "Simulation Model...", POLE (single pole frequency response), GAIN (open loop gain), VOFF (offset voltage), and ROUT (output resistance). Change a value (Fig. 15) and re-run the simulation.
 
-
-
-Fig. 15  
+Fig. 15
 5\) OpAmp OPA1641
 
 Now we want to simulate a "real world" operational amplifier, like the low noise audio amp OPA1641. Unfortunately there is no model for OpAmps delivered with ngspice. Nor does KiCad deliver such a model. So you have to search in the web for a device maker's model, e.g. from the [TI web pages](https://www.ti.com/product/de-de/OPA1642) as [PSPICE model for OPA1641](https://www.ti.com/lit/zip/sbom627), where you have to extract OPA164x.LIB and put it into directory of your choice. Common sources for models are assembled at our [ngspice model page](https://ngspice.sourceforge.io/modelparams.html).
@@ -197,11 +167,11 @@ How to add the ngspice model? Double click on the OPA1641 symbol in the circuit 
 
 Another issue has to be addressed: The pin numbering of the model description does not comply with the pin numbering of the KiCad OPA1641 symbol U1. The KiCad symbol/pin pairs are (in)-/2 (in)+/3 V+/7 V-/4 out/6. To start pin assignment, open the "Pin Assignment" window in the "Simulation Model Editor". The "Reference" window does show the model text. Scroll down until the line `.SUBCKT OPA164x IN+ IN- VCC VEE OUT` becomes visible. According to the .subckt line in OPA164x.LIB the model requires a pin sequence
 
--   non-inverting input (IN+)
--   inverting input (IN-)
--   positive power supply (VCC)
--   negative power supply (VEE)
--   output (OUT)
+- non-inverting input (IN+)
+- inverting input (IN-)
+- positive power supply (VCC)
+- negative power supply (VEE)
+- output (OUT)
 
 The symbol pins are given in the left column of Fig. 16a, the sequence of the model pins has to be transformed to match the symbol pins. Fig. 16a shows the starting sequence after loading the model, Fig. 16b the final solution, which is then used to create the proper ngspice netlist entry.
 
@@ -210,8 +180,6 @@ The symbol pins are given in the left column of Fig. 16a, the sequence of the mo
 As already seen in chapt.5, KiCad symbols and Spice model files often do not fit. Especially if multi-part devices are designed in, there has to be some intermediate action. Here as an example we want to set up a bandpass filter that adds two Sallen-Key filters. Such a low pass filter is distributed with KiCad in the folder "KiCad\share\kicad\demos\simulation\sallen\_key". The bandpass will need two Sallen-Keys in series, on high-pass and one low-pass filter with suitable cut-off frequencies.
 
 For designing the filter, we need two operational amplifiers. It is reasonable to select a dual OpAmp, e.g. a TI TL072 that contains two amplifiers in an 8 pin package. Start the design in Eeschema by selecting the TL072 from the Amplifier\_Operational library. Place all three units (UnitA as ampflifier 1, UnitB as amp 2, and UnitC as the power pins). Select the passives, connections, ground, input voltage and power supply, as shown in fig. 17.
-
-
 
 Fig. 17 Bandpass filter with dual OpAmp
 
@@ -227,8 +195,6 @@ You need to add the spice model for the opamp. Download the model TL072.301 from
 The .subckt line contains 8 subcircuit nodes, following after the ".subckt" token and the subcircuit name. The sequence of these nodes (1out 1in- 1in+ vcc- 2in+ 2in- 2out vcc+) is chosen so that it fits the TL072 pin number sequence (1 2 3 4 5 6 7 8) as given in the data sheet. The .include line includes the TI model. The XU1A and XU1B lines are the instantiations of the two amplifiers. Their node sequence is determined by the model (see file TL072.301). Amp 1 uses 1out 1in- 1in+, amp 2 uses 2in+ 2in- 2out, the power pins are common for both amps. In fact the subcircuit transfers the pin numbers 1 - 8 via the nodes on the .subckt line to the proper nodes in the model.
 
 You will need to add TL072-dual.lib as a subcircuit model to one unit of the amplifier IC (now called U1A, U1B and U1C in the Eeschma circuit drawing). This is done by double clicking onto the unit, and then selecting the button "Simulation Model..." --&gt; Model --&gt; "Spice Model from File", adding TL072-dual.lib and choosing model TL072c. Eeschema automatically generates an instance of the complete TL072 with its nodes 1 - 8. Thus no alternative pin assignmant is required during editing the spice model in eeschema. If done, you are ready for simulating. The ac simulation result of the /bandpass node (magnitude in dB and phase in degrees versus frequency) is presented in Fig. 17.
-
-
 
 Fig. 18 Bandpass filter ac simulation output
 
@@ -263,8 +229,6 @@ This is our frame, .subckt is the beginning of the model description, .ends is i
 
 How get to know what the pins 1 to 14 are used for? Well, have a look at the data sheet, or better grab the symbol and place it with all component onto the Eeschema canvas and have a look:
 
-
-
 Fig. 19 7400 symbols
 
 Now we have to call 74HC00 four times inside of 74HC00m and check that each 1A 1B 1Y of 74HC00 maps correctly onto 1 - 14 of 74HC00m.
@@ -298,8 +262,6 @@ Let us start with simulating a simple NAND gate. Grab the symbol, but place only
 
 For simulation we use a quick operating point (OP) sim (Eeschema --&gt; Inspect --&gt; Simulator --&gt; New Ananlysis (ctrl N) --&gt; OP --&gt; unselect "Save all currents" and "Save all power dissipations" --&gt; ok. --&gt; Run simulation (R). On the canvas (Fig. 20) you see the resulting input and output voltages. If you change the input, the output will follow after a new simulation.
 
-
-
 Fig. 20 7400 NAND sim
 
 7.3) Full adder made with NAND gates
@@ -308,13 +270,9 @@ The next circuit is a little bit more complex, a 2-bit [full adder](https://www.
 
 Generally, for a digital simulation, we need three items: A stimulus which provides adequate signals to stimulate the second item, the device under test, and thirdly we need some means to read and review the resulting data. Even for such a small circuit as shown in Fig. 21 with only three inputs and 2 outputs we need 8 input combinations (or "words") to achieve a full logic test. In the example in Fig. 21 we use 3 pulsed voltage sources and a transient (voltage versus time) simulation. This is not meant to extract timing data, but just to cover all 8 input combinations.
 
-
-
 Fig. 21 2-bit full adder circuit
 
 The input/output plot in Fig. 22 plots the three inputs and the two outputs on top of each other, like this was a digital plot. The lower three signals are the pulsed voltage sources, and their timing is chosen so that all input combinations are covered. You may check if the output reflects the truth table given in the [literature](https://www.electronicshub.org/half-adder-and-full-adder-circuits/) (it does).
-
-
 
 Fig. 22 2 bit full adder simulation results
 
@@ -348,13 +306,9 @@ The procedure towards the simulation is now the same as described above: Draw th
     XUB  _S2 _R2 C2 D2 Q2 _Q2 74HC74
     .ends
 
-
-
 Fig. 23 Divide by 4 circuit with two D flip-flops 7474
 
 The simulation result (input and output signal) in Fig. 24 indeed does show the "divide by 4" action of this circuit.
-
-
 
 Fig. 24 Input and output of Divide by 4 circuit
 8\) Using external ngspice
@@ -377,17 +331,17 @@ Links to Eeschema/ngspice examples:
 
 Links to Eeschema/ngspice manuals:
 
--   [Official Eeschema/ngspice manual for version 7.0.10](https://docs.kicad.org/7.0/en/eeschema/eeschema.html#simulator).
--   [ngspice manual](https://ngspice.sourceforge.io/docs/ngspice-manual.pdf).
--   [KiCad Tips And Tricks / Simulation](https://blog.mbedded.ninja/electronics/general/kicad/kicad-tips-and-tricks/#_simulation).
+- [Official Eeschema/ngspice manual for version 7.0.10](https://docs.kicad.org/7.0/en/eeschema/eeschema.html#simulator).
+- [ngspice manual](https://ngspice.sourceforge.io/docs/ngspice-manual.pdf).
+- [KiCad Tips And Tricks / Simulation](https://blog.mbedded.ninja/electronics/general/kicad/kicad-tips-and-tricks/#_simulation).
 
 Below there are some introductory videos for KiCad/ngspice (update to KiCad8 is needed):
 
--   [Introductory video for chapter 2 (in German)](https://www.youtube.com/watch?v=3OTDnxtv-vc).
--   [Introductory video for chapter 3 (in German)](https://www.youtube.com/watch?v=HAzcSgKi0Kk).
--   [Woolsey's Workshop](https://www.woolseyworkshop.com/2019/07/01/performing-a-circuit-simulation-in-kicad/).
--   [Eric Bredder's video on chapter 2](https://www.youtube.com/watch?v=VFaI6ZzFMfM).
--   [Eric Bredder's video on simulating a diode](https://www.youtube.com/watch?v=yyx0MoS4QWM).
--   [Simulating a buck converter](https://www.youtube.com/watch?v=PKJIvCq0Oy8).
+- [Introductory video for chapter 2 (in German)](https://www.youtube.com/watch?v=3OTDnxtv-vc).
+- [Introductory video for chapter 3 (in German)](https://www.youtube.com/watch?v=HAzcSgKi0Kk).
+- [Woolsey's Workshop](https://www.woolseyworkshop.com/2019/07/01/performing-a-circuit-simulation-in-kicad/).
+- [Eric Bredder's video on chapter 2](https://www.youtube.com/watch?v=VFaI6ZzFMfM).
+- [Eric Bredder's video on simulating a diode](https://www.youtube.com/watch?v=yyx0MoS4QWM).
+- [Simulating a buck converter](https://www.youtube.com/watch?v=PKJIvCq0Oy8).
 
 Author and Copyright: Holger Vogt, 2024. [](http://sourceforge.net) All text is available under the terms of the Creative Commons Attribution Share-Alike (CC BY-SA) 4.0. ![](./images/spice.jpg)

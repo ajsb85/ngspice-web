@@ -15,7 +15,7 @@ This directory contains clean Markdown versions of all website pages including:
 
 - Main pages (index, download, docs, etc.)
 - Tutorial pages
-- Development documentation  
+- Development documentation
 - Application guides
 - Technical references
 

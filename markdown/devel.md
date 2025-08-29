@@ -1,44 +1,42 @@
+# - [Documentation](./Docs.Html)
+
 ![NGSPICE](./images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](./images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
 
--   [Home](./index.html)
--   [News](./news.html)
--   [Screenshots](https://sourceforge.net/projects/ngspice/)
--   [Download](./download.html)
--   [Documentation](./docs.html)
--   [Extras/Options](./extras.html)
--   [Applications](./applic.html)
--   Development
--   [Roadmap](./roadmap.html)
--   [Simulation Environments](./resources.html)
--   [Quality](./quality.html)
+- [Home](./index.html)
+- [News](./news.html)
+- [Screenshots](https://sourceforge.net/projects/ngspice/)
+- [Download](./download.html)
+- [Documentation](./docs.html)
+- [Extras/Options](./extras.html)
+- [Applications](./applic.html)
+- Development
+- [Roadmap](./roadmap.html)
+- [Simulation Environments](./resources.html)
+- [Quality](./quality.html)
 
 Ngspice Development
 
--   Developers Info
+- Developers Info
 
--   [Bug Reports](./bugrep.html)
+- [Bug Reports](./bugrep.html)
 
--   [Git Access](./gitaccess.html)
+- [Git Access](./gitaccess.html)
 
--   [Docs for developers](./devdocs.html)
+- [Docs for developers](./devdocs.html)
 
--   [Mailing List Archives](./mlarch.html)
+- [Mailing List Archives](./mlarch.html)
 
--   [Roadmap](./roadmap.html)
+- [Roadmap](./roadmap.html)
 
--   [Writing Docs](./docwrite.html)
+- [Writing Docs](./docwrite.html)
 
--   
+- ------------------------------------------------------------------------
 
-    ------------------------------------------------------------------------
+- [Tests](./applic.html#test)
 
--   [Tests](./applic.html#test)
+- ------------------------------------------------------------------------
 
--   
-
-    ------------------------------------------------------------------------
-
--   [Sourceforge Summary Page](https://sourceforge.net/projects/ngspice/)
+- [Sourceforge Summary Page](https://sourceforge.net/projects/ngspice/)
 
 How can I help develop ngspice ?
 

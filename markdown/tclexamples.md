@@ -1,14 +1,4 @@
-
-
-
-
-[Home](./index.html)
-
-[Screenshots](./screens.html)
-
-[Download](./download.html)
-
-[Documentation](./docs.html)
+# Tclexamples
 
 [Extras/Options](./extras.html)
 
@@ -22,42 +12,40 @@ Development
 
 Ngspice Development
 
--   [Developers Info](./devel.html)
+- [Developers Info](./devel.html)
 
--   [Bug Reports](./bugrep.html)
+- [Bug Reports](./bugrep.html)
 
--   [Git Access](./gitaccess.html)
+- [Git Access](./gitaccess.html)
 
--   [Docs for developers](./devdocs.html)
+- [Docs for developers](./devdocs.html)
 
--   [Mailing List Archives](./mlarch.html)
+- [Mailing List Archives](./mlarch.html)
 
--   [Releases Info](./relinfo.html)
+- [Releases Info](./relinfo.html)
 
--   [Roadmap](./roadmap.html)
+- [Roadmap](./roadmap.html)
 
--   [Writing Docs](./docwrite.html)
+- [Writing Docs](./docwrite.html)
 
--   
+- ------------------------------------------------------------------------
 
-    ------------------------------------------------------------------------
-
--   [Tests](./applic.html#test)
+- [Tests](./applic.html#test)
 
 OSDI/OpenVAF for ngspice
 
--   [What is OSDI/OpenVAF ?](./osdi.html)
+- [What is OSDI/OpenVAF ?](./osdi.html)
 
 GSS-TCAD
 
--   GSS
+- GSS
 
 TCLspice
 
--   [What TCLspice is ?](./tclspice.html)
--   [TCLspice users manual](./tclusers.html)
--   [TCLspice by examples](./tclexamples.html)
--   [Designer's note](./tclnotes.html)
+- [What TCLspice is ?](./tclspice.html)
+- [TCLspice users manual](./tclusers.html)
+- [TCLspice by examples](./tclexamples.html)
+- [Designer's note](./tclnotes.html)
 
 Learn TCLspice by examples
 
@@ -236,6 +224,3 @@ namespace import blt::\* wm title . "Vector Test script" wm geometry . 800x600+4
 A strip chart with labels but without data is created and displayed (packed)
 
 stripchart .chart pack .chart -side top -fill both -expand true .chart axis configure x -title "Time" spice::source example.cir spice::bg run after 1000 vector create a0 vector create b0 vector create a1 vector create b1 vector create stime proc bltupdate {} {     puts \[spice::spice\_data\]         spice::spicetoblt a0 a0         spice::spicetoblt b0 b0         spice::spicetoblt a1 a1         spice::spicetoblt b1 b1         spice::spicetoblt time stime         after 100 bltupdate  }  bltupdate      .chart element create a0 -color red -xdata stime -ydata a0  .chart element create b0 -color blue -xdata stime -ydata b0  .chart element create a1 -color yellow -xdata stime -ydata a1  .chart element create b1 -color black -xdata stime -ydata b1
-
- 
-

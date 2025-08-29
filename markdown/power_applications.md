@@ -1,25 +1,27 @@
+# - [Documentation](./Docs.Html)
+
 ![NGSPICE](./images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](./images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
 
--   [Home](./index.html)
--   [News](./news.html)
--   [Screenshots](https://sourceforge.net/projects/ngspice/)
--   [Download](./download.html)
--   [Documentation](./docs.html)
--   [Tutorials](./tutorials.html)
--   [Extras/Options](./extras.html)
--   Applications
--   [Development](./devel.html)
--   [Simulation Environments](./resources.html)
--   [Quality](./quality.html)
+- [Home](./index.html)
+- [News](./news.html)
+- [Screenshots](https://sourceforge.net/projects/ngspice/)
+- [Download](./download.html)
+- [Documentation](./docs.html)
+- [Tutorials](./tutorials.html)
+- [Extras/Options](./extras.html)
+- Applications
+- [Development](./devel.html)
+- [Simulation Environments](./resources.html)
+- [Quality](./quality.html)
 
 Ngspice Applications
 
--   [Google/SkyWater Open Source PDK](applic.html#sky)
--   [Phase-Locked Loop](applic.html#pll)
--   [Delta-Sigma Converter](applic.html#dsc)
--   [Memristor](applic.html#memr)
--   [Example Circuits](applic.html#exam)
--   [Device model parameters for simulation](applic.html#mparam)
+- [Google/SkyWater Open Source PDK](applic.html#sky)
+- [Phase-Locked Loop](applic.html#pll)
+- [Delta-Sigma Converter](applic.html#dsc)
+- [Memristor](applic.html#memr)
+- [Example Circuits](applic.html#exam)
+- [Device model parameters for simulation](applic.html#mparam)
 
 \_\_\_\_\_ Applications (power regulators and amplifiers) \_\_\_\_\_
 

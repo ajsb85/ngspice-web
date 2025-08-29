@@ -1,40 +1,42 @@
+# - [Documentation](./Docs.Html)
+
 ![NGSPICE](./images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](./images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
 
--   [Home](./index.html)
--   [News](./news.html)
--   [Screenshots](./screens.html)
--   [Download](./download.html)
--   [Documentation](./docs.html)
--   [Extras/Options](./extras.html)
--   [Applications](./applic.html)
--   [Development](./devel.html)
--   [Simulation Environments](./resources.html)
--   [Quality](./quality.html)
+- [Home](./index.html)
+- [News](./news.html)
+- [Screenshots](./screens.html)
+- [Download](./download.html)
+- [Documentation](./docs.html)
+- [Extras/Options](./extras.html)
+- [Applications](./applic.html)
+- [Development](./devel.html)
+- [Simulation Environments](./resources.html)
+- [Quality](./quality.html)
 
 XSPICE in ngspice
 
--   [What is XSPICE ?](./xspice.html)
--   [XSPICE and ngspice HOWTO](./xspicehowto.html)
+- [What is XSPICE ?](./xspice.html)
+- [XSPICE and ngspice HOWTO](./xspicehowto.html)
 
 ngspice as shared library
 
--   [Short Intro](./shared.html)
--   [ngspice parallel](./parallel.html)
+- [Short Intro](./shared.html)
+- [ngspice parallel](./parallel.html)
 
 CUSPICE
 
--   [CUSPICE Intro](./cuspice.html)
+- [CUSPICE Intro](./cuspice.html)
 
 OSDI/OpenVAF for ngspice
 
--   [What is OSDI/OpenVAF ?](./osdi.html)
+- [What is OSDI/OpenVAF ?](./osdi.html)
 
 TCLspice
 
--   [What is TCLspice ?](./tclspice.html)
--   [TCLspice users manual](./tclusers.html)
--   [TCLspice by examples](./tclexamples.html)
--   [Designer's note](./tclnotes.html)
+- [What is TCLspice ?](./tclspice.html)
+- [TCLspice users manual](./tclusers.html)
+- [TCLspice by examples](./tclexamples.html)
+- [Designer's note](./tclnotes.html)
 
 Tutorial: ngspice electro-thermal simulation
 
@@ -108,12 +110,10 @@ The ngspice netlist contains both the electrical and the thermal circuits and so
 
 The result of the electrical circuit is a power of 250 mW dissipated in the resistor as heat. This heat flows through the thermal resistance of 200 K/W, yielding a temperature difference of 50 K. The ambient temp is 40 ºC, the resistor thus heats up to 90 ºC.
 
-\[1\] 
+\[1\]
 3\) Resistor with heat sink
 
 The next example is a power resistor R1 in a TO263 package, mounted on a heat sink. Again a voltage V1 is applied, resulting in a dissipated power I1 \* V1, where I1 is the current through R1. The 0 V voltage source Vmeas serves to measure this current. The thermal circuit is somewhat more complex now, so there is a circuit diagram shown below in Fig.1.
-
-
 
 *Fig. 1 Electrical and thermal circuit of a resistor with heatsink*
 
@@ -179,21 +179,19 @@ And we may check the simulation results: At gate voltage 4.31 V we have a drain 
 
 \[4\] [https://www.infineon.com/dgdl/Thermal+Modeling.pdf](https://www.infineon.com/dgdl/Thermal+Modeling.pdf?fileId=db3a30431441fb5d011472fd33c70aa3)
 
-\[5\] 
+\[5\]
 
-\[6\] 
+\[6\]
 7\) Amplifier with Power MOS
 
 A small analog circuit, a 10 W power amplifier with 2 NMOS power transistors in the output stage \[7\] serves as an example for the electro-thermal simulation. Again we are using the NMOS symbol with two extra thermal nodes. The nodes tj are tied to dummy load resistors, one can read the junction temperature here. Nodes tcase are connected to heat sinks, which have a thermal resistance and a thermal capacitance. The resulting KiCad/Eeschema and ngspice circuit files are available [here](./el-th-images/Dual-NMOS-Amp.7z).
-
-
 
 *Fig. 8 Dual NMOS Amplifier*
 The Eeschema circuit schematic is accompanied by a ngspice script (see fig. 9). This script allows simulating the circuit from within Eeschema as well as simulating it off-line by standard ngspice, starting with Eeschema by Tools--&gt; Generate Netlist File...--&gt;Spice--&gt;Run Simulator, as has been described [here](https://ngspice.sourceforge.io/ngspice-eeschema.html#external).
 
 A simulation showing the junction and case temperatures of both power MOS devices versus time is shown in fig. 10. Only after about 10 s the temperature has settled to a final value. Thermal time constants are in the seconds range, whereas the amplifier is driven by a 100 Hz signal. To achieve sufficient precision and allow a successful feedback loop, we have to simulate with high time resolution, e.g. 200 µs. To cover 20 s of simulated time, a relatively large CPU time may be required.
 
-\[7\] 
+\[7\]
 8\) Boost converter with GaN transistor
 
 A warning: simulation in this chapter requires at least ngspice-31.
@@ -225,8 +223,6 @@ Again in this chapter there will be a circuit example. Nelson Pass has developed
 
 Shown here in Fig. 13 is the schematic of the F5 Turbo V2. The simulation setup for Eeschema and/or ngspice is available [here](./el-th-images/PassLabF5-web.7z).
 
-
-
 *Fig. 13 Pass Labs F5 Turbo V2 Amplifier*
 
 The simulation of this amplifier yields excellent results: 50 W into 8 Ohm, 98 W into 4 Ohm, damping factor 58, voltage gain 22 dB (a factor of 12), all simulated at 2 V peak (1.41 V rms) and 1 kHz input. The frequency response is flat from 10 Hz to 500 kHz and shows a moderate neg. phase shift, etc..
@@ -244,8 +240,6 @@ This is exactly what heat sinks are doing.
 
 The static thermal circuit of a heat sink looks like
 
-
-
 *Fig. 16 Static thermal circuit of a heatsink*
 
 Rjc (junction-to-case) is set by the transistor construction, die size and package.
@@ -262,8 +256,6 @@ We have also to consider some dynamic, i.e. time depending behavior of the heats
 
 The dynamic thermal circuit of a heat sink looks like
 
-
-
 *Fig. 17 Thermal circuit of a heatsink with heat storage*
 
 Two capacitors have been added to the thermal circuit. Cj denotes the heat storage capacity of the power MOS package. Ch is the heat capacity of the heatsink. There is also an additional resistor inside of the transistor package:
@@ -272,7 +264,7 @@ Rca (case-to-ambient) describes the inevitable heat path from the transistor to 
 
 11\) Appendix 1: Some equations
 
-11.1 Thermal resistance
+### Thermal resistance
 
 *Rth = d/(k·A)*
 
@@ -282,7 +274,7 @@ Rca (case-to-ambient) describes the inevitable heat path from the transistor to 
 >
 > *k* thermal conductivity
 
-11.2 Thermal capacitance
+### Thermal capacitance
 
 *Cth = A · d· c · ρ*
 
@@ -294,7 +286,7 @@ Rca (case-to-ambient) describes the inevitable heat path from the transistor to 
 >
 > *ρ* density
 
-11.3 Temperature increase of junction and case against ambient temperature
+### Temperature increase of junction and case against ambient temperature
 
 *Tj = P·(Rjc + Rch + Rha) + Tamb*
 
@@ -314,7 +306,7 @@ Rca (case-to-ambient) describes the inevitable heat path from the transistor to 
 
 More details are available for example in \[8\].
 
-\[8\] 
+\[8\]
 
 12\) Appendix 2: How temperature is handled in ngspice
 

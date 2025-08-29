@@ -1,14 +1,4 @@
-
-
-
-
-[Home](./index.html)
-
-[Screenshots](./screens.html)
-
-[Download](./download.html)
-
-[Documentation](./docs.html)
+# Kjwaves
 
 [Extras/Options](./extras.html)
 
@@ -22,16 +12,14 @@ Recipes
 
 Recipes with (ng)spice(s)
 
--   [Quality](./quality.html)
--   [Interfacing with Octave](./octavespice.html)
--   Kjwaves frontend
--   [---](#)
+- [Quality](./quality.html)
+- [Interfacing with Octave](./octavespice.html)
+- Kjwaves frontend
+- [---](#)
 
 Using ngspice with Kjwaves
 
 Original contribution by Kurt Peters
-
-
 
 What is Kjwaves ?
 
@@ -43,7 +31,7 @@ Installing Kjwaves
 
 Using ngspice with kjwaves is easy, first you need to install a Java virtual machine, version 1.5 or higher. On most operating systems you may skip this step since a java virtual machine has already been installed. If not, look for an 1.5 virtual machine suitable for your platform. Once done with Java you have to download Kjwaves.
 
--   [Download Kjwaves](https://sourceforge.net/projects/kjwaves/)
+- [Download Kjwaves](https://sourceforge.net/projects/kjwaves/)
 
 Now unzip the package and follow installation instructions. In the following example a working installation of kjwaves is assumed.
 
@@ -88,4 +76,3 @@ We can plot the sum of vectors v(4) and v(5) like in the picture below:
 ![Kjwaves DC plot window](./images/kjdcplot2.jpg)
 
 That's all! Happy playing with Kjwaves.
-

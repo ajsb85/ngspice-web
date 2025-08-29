@@ -1,47 +1,34 @@
-
-
-
-
--   [Home](./index.html)
--   [Screenshots](./screens.html)
--   [Download](./download.html)
--   [Documentation](./docs.html)
--   [Extras/Options](./extras.html)
--   [Applications](./applic.html)
--   [Development](./devel.html)
--   [Simulation Environments](./resources.html)
--   [Quality](./quality.html)
--   [Contributions](./contrib.html)
+# - [Tutorial For Eeschema With Ngspice](./Ngspice-Eeschema.Html)
 
 XSPICE in ngspice
 
--   [What is XSPICE ?](./xspice.html)
--   [XSPICE and ngspice HOWTO](./xspicehowto.html)
+- [What is XSPICE ?](./xspice.html)
+- [XSPICE and ngspice HOWTO](./xspicehowto.html)
 
 KiCad/Eeschema as GUI for ngspice
 
--   [Tutorial for Eeschema with ngspice](./ngspice-eeschema.html)
+- [Tutorial for Eeschema with ngspice](./ngspice-eeschema.html)
 
 ngspice as shared library
 
--   [Short Intro](./shared.html)
--   [ngspice parallel](./parallel.html)
+- [Short Intro](./shared.html)
+- [ngspice parallel](./parallel.html)
 
 OSDI/OpenVAF for ngspice
 
--   [What is OSDI/OpenVAF ?](./osdi.html)
--   [ADMS and ngspice HOWTO](./admshowto.html)
+- [What is OSDI/OpenVAF ?](./osdi.html)
+- [ADMS and ngspice HOWTO](./admshowto.html)
 
 GSS-TCAD
 
--   [GSS](./gss.html)
+- [GSS](./gss.html)
 
 TCLspice
 
--   [What is TCLspice ?](./tclspice.html)
--   [TCLspice users manual](./tclusers.html)
--   [TCLspice by examples](./tclexamples.html)
--   [Designer's note](./tclnotes.html)
+- [What is TCLspice ?](./tclspice.html)
+- [TCLspice users manual](./tclusers.html)
+- [TCLspice by examples](./tclexamples.html)
+- [Designer's note](./tclnotes.html)
 
 Ngspice as a Shared Library
 
@@ -68,4 +55,3 @@ Three executables (coming with source code) serve as examples for controlling ng
 ng\_start64.exe is a MS Windows application loadinga 64 bit ngspice.dll dynamically. All functions and callbacks of the interface are assessed. The [source code](https://ngspice.sourceforge.io/ngspice-shared-lib/ng_start64_sources.7z) is compiled with [Lazarus](http://www.lazarus-ide.org/), an Open Source Delphi compatible cross-platform IDE for Rapid Application Development with Pascal. The binaries compiled for 64 Bit are [here](https://ngspice.sourceforge.io/ngspice-shared-lib/ng_start64_binaries.7z), including ngspice.dll, codemodels and some example input files.
 
 Two C language console applications, compilable with LINUX, CYGWIN, MINGW or MS Visual Studio, are available [as source code](https://ngspice.sourceforge.io/ngspice-shared-lib/ngspice_cb.7z), demonstrating either statical linking or linking shared ngspice at runtime. A simple feedback loop is shown in tests 3 and 4, where a device parameter is changed upon having an output vector value crossing a limit.
-

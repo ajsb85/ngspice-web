@@ -1,24 +1,26 @@
+# - [Documentation](./Docs.Html)
+
 ![NGSPICE](./images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](./images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
 
--   [Home](./index.html)
--   [News](./news.html)
--   [Screenshots](https://sourceforge.net/projects/ngspice/)
--   [Download](./download.html)
--   [Documentation](./docs.html)
--   [Extras/Options](./extras.html)
--   Development
--   [Simulation Environments](./resources.html)
--   [Quality](./quality.html)
+- [Home](./index.html)
+- [News](./news.html)
+- [Screenshots](https://sourceforge.net/projects/ngspice/)
+- [Download](./download.html)
+- [Documentation](./docs.html)
+- [Extras/Options](./extras.html)
+- Development
+- [Simulation Environments](./resources.html)
+- [Quality](./quality.html)
 
 Ngspice Development
 
--   [Developers Info](./devel.html)
--   [Bug Reports](./bugrep.html)
--   [Git Access](./gitaccess.html)
--   [Docs for developers](./devdocs.html)
--   Mailing List Archives
--   [Roadmap](./roadmap.html)
--   [Writing Docs](./docwrite.html)
+- [Developers Info](./devel.html)
+- [Bug Reports](./bugrep.html)
+- [Git Access](./gitaccess.html)
+- [Docs for developers](./devdocs.html)
+- Mailing List Archives
+- [Roadmap](./roadmap.html)
+- [Writing Docs](./docwrite.html)
 
 Mailing list archives
 

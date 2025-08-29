@@ -1,8 +1,6 @@
+# [Documentation](./Docs.Html)
+
 no
-
-
-
-
 
 [Home](./index.html)
 
@@ -24,16 +22,14 @@ Recipes
 
 Recipes with (ng)spice(s)
 
--   [Quality](./quality.html)
--   Interfacing with Octave
--   [Kjwaves frontend](./kjwaves.html)
--   [---](#)
+- [Quality](./quality.html)
+- Interfacing with Octave
+- [Kjwaves frontend](./kjwaves.html)
+- [---](#)
 
 Interfacing ngspice with GNU Octave
 
 Original contribution by Werner Hoch
-
-
 
 [GNU Octave](http://www.octave.org) is a high-level language, primarily intended for numerical computations. It provides a convenient command line interface for solving linear and nonlinear problems numerically, and for performing other numerical experiments using a language that is mostly compatible with Matlab. It may also be used as a batch-oriented language.
 
@@ -43,13 +39,11 @@ Octave Spice
 
 *Octave Spice* is a filter, written in Octave language, to import ngspice and spice plot. Octave spice can be downloaded from a ngspice download site.
 
--   [Dowload Octave Spice](https://sourceforge.net/projects/ngspice/files/ng-spice-rework/old-releases/contrib/)
+- [Dowload Octave Spice](https://sourceforge.net/projects/ngspice/files/ng-spice-rework/old-releases/contrib/)
 
 Example:
 
 We want simulate the transient response of the RC2 circuit and analyze the results with Octave. RC2 is the rc network depicted in the picture below.
-
-
 
 The corresponding netlist is:
 
@@ -61,7 +55,7 @@ user@host:~$ ngspice -b rc2.cir
 
 Now we can import the file ngspice produced ( named rawspice.raw) into octave with the following command:
 
-user@host:~$ octave GNU Octave, version 2.1.69 (i386-pc-linux-gnu). Copyright (C) 2005 John W. Eaton. This is free software; see the source code for copying conditions. There is ABSOLUTELY NO WARRANTY; not even for MERCHANTIBILITY or FITNESS FOR A PARTICULAR PURPOSE. For details, type \`warranty'. Additional information about Octave is available at http://www.octave.org. Please contribute if you find this software useful. For more information, visit http://www.octave.org/help-wanted.html Report bugs to &lt;bug@octave.org&gt; (but first, please read http://www.octave.org/bugs.html to learn how to write a helpful report). octave:1&gt; k=spice\_readfile("rawspice.raw");
+user@host:~$ octave GNU Octave, version 2.1.69 (i386-pc-linux-gnu). Copyright (C) 2005 John W. Eaton. This is free software; see the source code for copying conditions. There is ABSOLUTELY NO WARRANTY; not even for MERCHANTIBILITY or FITNESS FOR A PARTICULAR PURPOSE. For details, type \`warranty'. Additional information about Octave is available at http://www.octave.org. Please contribute if you find this software useful. For more information, visit http://www.octave.org/help-wanted.html Report bugs to <bug@octave.org> (but first, please read http://www.octave.org/bugs.html to learn how to write a helpful report). octave:1&gt; k=spice\_readfile("rawspice.raw");
 
 The plot contained in file "rawspice.raw" is put into the **k** vector and the following output is generated:
 
@@ -73,7 +67,4 @@ octane:2&gt;plot (k)
 
 ... and the results is shown below
 
-
-
 Once imported into GNU Octave you can manipulate vectors using its powerful language and produce better (than nutmeg) plots with GNUplot.
-

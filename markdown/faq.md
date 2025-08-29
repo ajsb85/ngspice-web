@@ -1,8 +1,7 @@
-
 # Ngspice Frequently Asked Questions
 
-**Document Revision**: 1.7  
-**Document Maintainer**: Holger Vogt  
+**Document Revision**: 1.7
+**Document Maintainer**: Holger Vogt
 **Last Update**: 17-03-2018
 
 ## Table of Contents
@@ -89,44 +88,30 @@ Ngspice merges three different simulators: spice3f5 and CIDER are covered by the
 
 There are two active mailing lists dedicated to the ngspice project.
 
-Users mailing list: &lt;ngspice-users@lists.sourceforge.net&gt; This list is for ngspice users, examples, problems, bug reports and general discussion on ngspice can be sent here.
+Users mailing list: <ngspice-users@lists.sourceforge.net> This list is for ngspice users, examples, problems, bug reports and general discussion on ngspice can be sent here.
 
-Developers mailing list: &lt;ngspice-devel@lists.sourceforge.net&gt; The list dedicated to ngspice development. Developers shold subscribe here, to follow the program development. May be used to send patches, and technical discussion on ngspice.
+Developers mailing list: <ngspice-devel@lists.sourceforge.net> The list dedicated to ngspice development. Developers shold subscribe here, to follow the program development. May be used to send patches, and technical discussion on ngspice.
 
 Send an empty message with Subject "help" to the following addresses to get instructions.
 
-
-
-
-
 Send an empty message to the following address to Subscribe.
 
-
-
-
-
 Documentation about the user interface of these mailing lists can be found at:
-
-
 
 1.7. Are the mailing lists archived anywhere ?
 
 Yes, the lists are archived. There are two places where to look for archives. The project started on the IEEE Central and South Italy web server and then moved to sourceforge. Sourceforge provides an archiving service that cam be accessed via the summary page:
 
-
-
 1.8. What newsgroups exist for ngspice ?
 
 There is no ngspice specific newsgroup. Anyway ngspice threads appear on newsgroups dedicated to circuit simulation and electronic design. An (incomplete) list is:
 
--   sci.electronics.cad
--   comp.lsi.cad
+- sci.electronics.cad
+- comp.lsi.cad
 
 1.9. Where can I get a copy of ngspice ?
 
 You can download ngspice from:
-
-
 
 1.10. Where should I look on the World Wide Web for ngspice stuff?
 
@@ -140,27 +125,19 @@ There are a lot of Internet sites that have information on spice, the best way i
 
 The Spice Home Page:
 
-
-
 The Spice Download Page:
-
-
 
 Cider Page:
 
-
-
 Spice benchmarks:
 
-
-
-2\. DEVELOPMENT
+## DEVELOPMENT
 
 2.1. What is the current version ?
 
 The latest version released is:
 
--   ngspice-36 (released on 01/01/2022)
+- ngspice-36 (released on 01/01/2022)
 
 2.2. What are the latest features in the current release ?
 
@@ -186,7 +163,7 @@ To join the development just code the feature you want to add and send your patc
 
 There is no bureaucracy here.
 
-3\. SOLUTIONS TO COMMON MISCELLANEOUS PROBLEMS
+## SOLUTIONS TO COMMON MISCELLANEOUS PROBLEMS
 
 3.1. What systems are supported ?
 
@@ -202,7 +179,7 @@ Write a mail to the user's list describing the problem and providing information
 
 Read old messages from the mailing list archive, search the web site or read the docs. Upgrade to the latest version of ngspice, many problems are fixed in the new versions. If you still can't find an answer, post your question to the mailing lists.
 
-4\. ADMINISTRATIVE INFORMATION AND ACKNOWLEDGEMENTS
+## ADMINISTRATIVE INFORMATION AND ACKNOWLEDGEMENTS
 
 4.1. Feedback
 
@@ -221,4 +198,3 @@ Parts of the questions and answers are originate from Paolo Nenzi.
 4.4. Disclaimer and Copyright
 
 This document is provided as is. The information in it is not warranted to be correct: you use it at your own risk.
-

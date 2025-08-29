@@ -1,43 +1,37 @@
+# Parallel
 
-
-
-
--   [Home](./index.html)
--   [Screenshots](./screens.html)
--   [Download](./download.html)
--   [Documentation](./docs.html)
--   Extras/Options
--   [Applications](./applic.html)
--   [Development](./devel.html)
--   [Simulation Environments](./resources.html)
--   [Quality](./quality.html)
--   [Contributions](./contrib.html)
+- Extras/Options
+- [Applications](./applic.html)
+- [Development](./devel.html)
+- [Simulation Environments](./resources.html)
+- [Quality](./quality.html)
+- [Contributions](./contrib.html)
 
 XSPICE in ngspice
 
--   [What is XSPICE ?](./xspice.html)
--   [XSPICE and ngspice HOWTO](./xspicehowto.html)
+- [What is XSPICE ?](./xspice.html)
+- [XSPICE and ngspice HOWTO](./xspicehowto.html)
 
 ngspice as shared library
 
--   [Short Intro](./shared.html)
--   [ngspice parallel](./parallel.html)
+- [Short Intro](./shared.html)
+- [ngspice parallel](./parallel.html)
 
 OSDI/OpenVAF for ngspice
 
--   [What is OSDI/OpenVAF ?](./osdi.html)
--   [ADMS and ngspice HOWTO](./admshowto.html)
+- [What is OSDI/OpenVAF ?](./osdi.html)
+- [ADMS and ngspice HOWTO](./admshowto.html)
 
 GSS-TCAD
 
--   [GSS](./gss.html)
+- [GSS](./gss.html)
 
 TCLspice
 
--   [What is TCLspice ?](./tclspice.html)
--   [TCLspice users manual](./tclusers.html)
--   [TCLspice by examples](./tclexamples.html)
--   [Designer's note](./tclnotes.html)
+- [What is TCLspice ?](./tclspice.html)
+- [TCLspice users manual](./tclusers.html)
+- [TCLspice by examples](./tclexamples.html)
+- [Designer's note](./tclnotes.html)
 
 Ngspice Parallel
 
@@ -48,4 +42,3 @@ Details of the shared ngspice API are documented in chapter 15 of the current [m
 A console master program, compilable with (LINUX, CYGWIN, MINGW t.b.d.) MS Visual Studio, is available as source code and MS Windows executables [here](https://ngspice.sourceforge.io/ngspice-shared-lib/ngspice_sync_win.7z), demonstrating an inverter chain, partitioned into three parts, being simulated in parallel in three ngspice shared libraries loaded dynamically. This is a very crude example of partitioning and synchronization, just touching the potential offered by the ngspice parallel approach.
 
 The demonstrator thus is a call for adventurous ngspice developers to invest some effort into exploring the ngspice shared api and create improved control and synchronization flows for parallel simulation.
-

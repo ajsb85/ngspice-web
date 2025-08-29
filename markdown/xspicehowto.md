@@ -1,64 +1,64 @@
+# - [Documentation](./Docs.Html)
+
 ![NGSPICE](./images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](./images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
 
--   [Home](./index.html)
--   [News](./news.html)
--   [Screenshots](./screens.html)
--   [Download](./download.html)
--   [Documentation](./docs.html)
--   [Extras/Options](./extras.html)
--   [Applications](./applic.html)
--   Development
--   [Simulation Environments](./resources.html)
--   [Quality](./quality.html)
+- [Home](./index.html)
+- [News](./news.html)
+- [Screenshots](./screens.html)
+- [Download](./download.html)
+- [Documentation](./docs.html)
+- [Extras/Options](./extras.html)
+- [Applications](./applic.html)
+- Development
+- [Simulation Environments](./resources.html)
+- [Quality](./quality.html)
 
 Ngspice Development
 
--   [Developers Info](./devel.html)
+- [Developers Info](./devel.html)
 
--   [Bug Reports](./bugrep.html)
+- [Bug Reports](./bugrep.html)
 
--   [GIT Access](./gitaccess.html)
+- [GIT Access](./gitaccess.html)
 
--   [Docs for developers](./devdocs.html)
+- [Docs for developers](./devdocs.html)
 
--   [Mailing List Archives](./mlarch.html)
+- [Mailing List Archives](./mlarch.html)
 
--   [Releases Info](./relinfo.html)
+- [Releases Info](./relinfo.html)
 
--   [Roadmap](./roadmap.html)
+- [Roadmap](./roadmap.html)
 
--   [Writing Docs](./docwrite.html)
+- [Writing Docs](./docwrite.html)
 
--   
+- ------------------------------------------------------------------------
 
-    ------------------------------------------------------------------------
-
--   [Tests](./applic.html#test)
+- [Tests](./applic.html#test)
 
 XSPICE in ngspice
 
--   [What is XSPICE ?](./xspice.html)
--   XSPICE and ngspice HOWTO
--   [XSPICE Usage](./xspiceusage.html)
+- [What is XSPICE ?](./xspice.html)
+- XSPICE and ngspice HOWTO
+- [XSPICE Usage](./xspiceusage.html)
 
 KiCad/Eeschema as GUI for ngspice
 
--   [Tutorial for Eeschema with ngspice](./ngspice-eeschema.html)
+- [Tutorial for Eeschema with ngspice](./ngspice-eeschema.html)
 
 OSDI/OpenVAF for ngspice
 
--   [What is OSDI/OpenVAF ?](./osdi.html)
+- [What is OSDI/OpenVAF ?](./osdi.html)
 
 GSS-TCAD
 
--   [GSS](./gss.html)
+- [GSS](./gss.html)
 
 TCLspice
 
--   [What is TCLspice ?](./tclspice.html)
--   [TCLspice users manual](./tclusers.html)
--   [TCLspice by examples](./tclexamples.html)
--   [Designer's note](./tclnotes.html)
+- [What is TCLspice ?](./tclspice.html)
+- [TCLspice users manual](./tclusers.html)
+- [TCLspice by examples](./tclexamples.html)
+- [Designer's note](./tclnotes.html)
 
 XSPICE in Ngspice howto
 
@@ -76,12 +76,10 @@ A memristor subcircuit model, available from git at [ngspice/examples/memristor/
 
 In the follwing you will find my ideas (h\_vogt) on the implementation of this model. Please consult the manual at chapter 8.1 and the model files cfunc.mod and ifspec.ifs from the actual ngspice git repository for further details.
 
--   The model is added to the already existing code model library xtradev. So create a new directory /src/xspice/icm/xtradev/memristor/. Add the directory name 'memristor' to file /src/xspice/icm/xtradev/modpath.lst. Copy the two files cfunc.mod and ifspec.ifs from /icm/xtradev/capacitor/ to /icm/xtradev/memristor/, so to have a starting point.
--   Edit /memristor/ifspec.ifs (see also manual chapter 24.6): Change the Spice\_Model\_Name to memristor. This will become the model name in the .model line. Replace the C\_Function\_Name cm\_capacitor by cm\_memristor. Select a suitable description. Select a port name (e.g. memris), to be used in cfunc.mod. We want to describe a resistor, so we have two terminals, which are input and output at the same time, therefore Direction: is inout. Our resistor has voltage as input and current as output, so we select Default\_Type: gd (differential voltage controlled current source), and no other than \[gd\] allowed. The parameter table lists the 6 model parameters rmin, rmax, rinit, alpha, beat, and vt, with their defaults, all being real values.
--   Edit /memristor/cfunc.mod (see also manual chapter 27.7): Replace cm\_capacitor by cm\_memristor. This is the central function containing the model code. We have to rewrite it completely, when started with cm\_capacitor(). After defining some variables and getting some of the parameters by using the PARAM macro, we have to allocate memory for the state variable rval and initialize it to rinit. For transient simulation we then calculate the output according to the given model equations. The resistance relies in a specific fashion on the time integral of the input voltage (see argument to the cm\_analog\_integrate() function). A special consideration has to be given to the PARTIAL macro. Partial derivatives are required by the simulator to allow it to solve the non-linear equations that describe circuit behavior for analog nodes. We have I = V/Rval, so we have to find dI/dV = 1/Rval + V\*(d(1/Rval)/dV). As a first approximation we just use dI/dV = 1/Rval, but this shurely can be improved. DC and AC simulation are not defined for a memristor, because calculation of a dc bias point, without taking the time into acount, will not be possible. The model for now just returns rinit. Small signal noise modelling is not possible for the same reason, but has not been integrated into XSPICE anyway. You may try using transient noise instead (manual chapter 11.3.11).
--   Compilation and installation of the new memristor code model is now a simple make, sudo make install ! Using the model is described in the manual, chapter at chapter 8.2.29.
-
-
+- The model is added to the already existing code model library xtradev. So create a new directory /src/xspice/icm/xtradev/memristor/. Add the directory name 'memristor' to file /src/xspice/icm/xtradev/modpath.lst. Copy the two files cfunc.mod and ifspec.ifs from /icm/xtradev/capacitor/ to /icm/xtradev/memristor/, so to have a starting point.
+- Edit /memristor/ifspec.ifs (see also manual chapter 24.6): Change the Spice\_Model\_Name to memristor. This will become the model name in the .model line. Replace the C\_Function\_Name cm\_capacitor by cm\_memristor. Select a suitable description. Select a port name (e.g. memris), to be used in cfunc.mod. We want to describe a resistor, so we have two terminals, which are input and output at the same time, therefore Direction: is inout. Our resistor has voltage as input and current as output, so we select Default\_Type: gd (differential voltage controlled current source), and no other than \[gd\] allowed. The parameter table lists the 6 model parameters rmin, rmax, rinit, alpha, beat, and vt, with their defaults, all being real values.
+- Edit /memristor/cfunc.mod (see also manual chapter 27.7): Replace cm\_capacitor by cm\_memristor. This is the central function containing the model code. We have to rewrite it completely, when started with cm\_capacitor(). After defining some variables and getting some of the parameters by using the PARAM macro, we have to allocate memory for the state variable rval and initialize it to rinit. For transient simulation we then calculate the output according to the given model equations. The resistance relies in a specific fashion on the time integral of the input voltage (see argument to the cm\_analog\_integrate() function). A special consideration has to be given to the PARTIAL macro. Partial derivatives are required by the simulator to allow it to solve the non-linear equations that describe circuit behavior for analog nodes. We have I = V/Rval, so we have to find dI/dV = 1/Rval + V\*(d(1/Rval)/dV). As a first approximation we just use dI/dV = 1/Rval, but this shurely can be improved. DC and AC simulation are not defined for a memristor, because calculation of a dc bias point, without taking the time into acount, will not be possible. The model for now just returns rinit. Small signal noise modelling is not possible for the same reason, but has not been integrated into XSPICE anyway. You may try using transient noise instead (manual chapter 11.3.11).
+- Compilation and installation of the new memristor code model is now a simple make, sudo make install ! Using the model is described in the manual, chapter at chapter 8.2.29.
 
 On the right you see the output plot of memristor current versus voltage, as obtained from memristor\_x.sp. The exciting voltage is a sine with frequency increasing from tran1 over tran2 to tran3 by 20% per step.
 
@@ -119,9 +117,9 @@ For developers using MS Visual Studio I have provided a Visual Studio project [x
 
 Relevant Links
 
--   [XSPICE and Ngspice introduction](./xspice.html): XSPICE code model support for Ngspice.
--   [Ngspice manual](./docs/ngspice-manual.pdf): The actual ngspice manual, XSPICE is covered in chapts. 12 and 25 - 29.
--   [Spice OPUS](http://fides.fe.uni-lj.si/spice/xspice.html): XSPICE page for the Spice OPUS simulator.
--   [ICAP/4](http://www.intusoft.com/articles/xspiceover.htm): XSPICE for the ICAP/4 simulator.
+- [XSPICE and Ngspice introduction](./xspice.html): XSPICE code model support for Ngspice.
+- [Ngspice manual](./docs/ngspice-manual.pdf): The actual ngspice manual, XSPICE is covered in chapts. 12 and 25 - 29.
+- [Spice OPUS](http://fides.fe.uni-lj.si/spice/xspice.html): XSPICE page for the Spice OPUS simulator.
+- [ICAP/4](http://www.intusoft.com/articles/xspiceover.htm): XSPICE for the ICAP/4 simulator.
 
 [](http://sourceforge.net) All text is available under the terms of the GNU Free Documentation License ![](./images/spice.jpg)
