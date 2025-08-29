@@ -1,6 +1,6 @@
 # - [Documentation](./Docs.Html)
 
-![NGSPICE](./images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](./images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
+![NGSPICE](../images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](../images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
 
 - [Home](./index.html)
 - [News](./news.html)
@@ -48,4 +48,4 @@ make check
 
 If you build ngspice on macOS, Linux or Cywin(Windows), you may run the `make check` command. A regression test is started, using the [regression circuits](https://sourceforge.net/p/ngspice/ngspice/ci/master/tree/tests/regression) that are distributed with ngspice. After various short syntax checks and functional tests we use the QA (quality assurance) simulation approach to verify the correctness of the BSIM3, BSIM4, HiSIM, and HICUM model implementations. As this check may require a large amount of CPU time, there is a configure option `--enable-shortcheck` available, which focuses the check upon BSIM3 and BSIM4.
 
- All text is available under the terms of the GNU Free Documentation License ![](./images/spice.jpg)
+ All text is available under the terms of the GNU Free Documentation License ![](../images/spice.jpg)

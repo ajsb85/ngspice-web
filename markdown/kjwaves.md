@@ -47,32 +47,32 @@ user@host:~$ startKJWaves
 
 If Kjwaves is installed correctly, then the main window will appear.
 
-![Kjwaves main window](./images/kjmain.jpg)
+![Kjwaves main window](../images/kjmain.jpg)
 
 Now we load the netlist from "File" menu with "Open SPICE circuit". If the netlist loads without errors, the main windows should be filled with netlist data like the one below:
 
-![Kjwaves main window after loading a circuit](./images/kjcirc.jpg)
+![Kjwaves main window after loading a circuit](../images/kjcirc.jpg)
 
 Starting from top left, you can see the two listboxes, containing the list of node names in the circuits and the list of components. The tabbed panel on top right allows users to define new analyses (not all analyses available to ngspice are supported yet). The lower part of the window is occpupied bya a tabbed panel where you can look at the netlist ("circuit" tab), or check the interaction with the simulation engine ("console" and "simulation" tabs).
 
 To run the transient anaysis specified in the netlist press the "run" button over the bottom tabbed panel. Kjwaves will ask you about saving the output file and then will ask you about reloading it, answer "Yes" to both requests. A new window should appear where we will select the vectors to plot. Note that we can plot simple functions of one or two vectors.
 
-![Kjwaves axis selection window](./images/kjselplot.jpg)
+![Kjwaves axis selection window](../images/kjselplot.jpg)
 
 We choose "time" as X-axis variable and both V(4) and V(5) as Y-axis variables. Then we press "Add to Plot Window" and the desired plot comes up:
 
-![Kjwaves transient plot window](./images/kjtranplot.jpg)
+![Kjwaves transient plot window](../images/kjtranplot.jpg)
 
 It is possible to zoom one area of the plot:
 
-![Kjwaves transient plot window](./images/kjtranplotZ.jpg)
+![Kjwaves transient plot window](../images/kjtranplotZ.jpg)
 
 Ok, we have made our first simulation with Kjwaves. Now we will modify the netlist from the "circuit" tab" in the main window. For example uncomment the dc analysis and rerun the circuit. As always, anser "Yes" to the requesters. In the window where we select the axes variable, a new voice appears in the listbox at the left. Now we have two different analyses. Choose "DC transfer characteristic" and "v-sweep" for X-axis and V(4), V(5) for Y-Axes. You should get the following plot:
 
-![Kjwaves DC plot window](./images/kjdcplot.jpg)
+![Kjwaves DC plot window](../images/kjdcplot.jpg)
 
 We can plot the sum of vectors v(4) and v(5) like in the picture below:
 
-![Kjwaves DC plot window](./images/kjdcplot2.jpg)
+![Kjwaves DC plot window](../images/kjdcplot2.jpg)
 
 That's all! Happy playing with Kjwaves.

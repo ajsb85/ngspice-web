@@ -1,6 +1,6 @@
 # - [Documentation](./Docs.Html)
 
-![NGSPICE](./images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](./images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
+![NGSPICE](../images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](../images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
 
 - [Home](./index.html)
 - [Screenshots](./screens.html)
@@ -51,4 +51,4 @@ Other interesting circuit simulators:
 - [XspiceHDL](http://usysinc.com/main.htm): Mixed-signal simulator that integrates a spice and Verilog.
 - [zspice](http://mot-zspice.sourceforge.net/): zspice is a simple reconfigurable spice simulator. Its device library is created using adms.
 
- All text is available under the terms of the GNU Free Documentation License ![](./images/spice.jpg)
+ All text is available under the terms of the GNU Free Documentation License ![](../images/spice.jpg)

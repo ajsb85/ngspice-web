@@ -1,6 +1,6 @@
 # - Documentation
 
-![NGSPICE](./images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](./images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
+![NGSPICE](../images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](../images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
 
 - [Home](./index.html)
 - [Screenshots](./screens.html)
@@ -282,4 +282,4 @@ Extremely easy-to-follow due to its natural progression tutorial approach on how
 
 Editorial review.
 
-[](http://sourceforge.net) All text is available under the terms of the GNU Free Documentation License ![](./images/spice.jpg)
+[](http://sourceforge.net) All text is available under the terms of the GNU Free Documentation License ![](../images/spice.jpg)

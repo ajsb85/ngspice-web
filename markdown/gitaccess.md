@@ -1,6 +1,6 @@
 # - [Documentation](./Docs.Html)
 
-![NGSPICE](./images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](./images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
+![NGSPICE](../images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](../images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
 
 - [Home](./index.html)
 - [Screenshots](./screens.html)
@@ -102,4 +102,4 @@ Though Git repositories are most commonly accessed using a Git client, Sourcefor
 
 ngspice or ngspice-manuals may be selected. If you choose ngspice, then the master branch becomes visible. On the left you will find buttons to select any of the other development branches. On the top right you may download as a snapshot the complete tarball of the selected branch.
 
-[](http://sourceforge.net) All text is available under the terms of the GNU Free Documentation License ![](./images/spice.jpg)
+[](http://sourceforge.net) All text is available under the terms of the GNU Free Documentation License ![](../images/spice.jpg)

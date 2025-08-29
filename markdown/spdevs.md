@@ -1,6 +1,6 @@
 # - [Documentation](./Docs.Html)
 
-![NGSPICE](./images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](./images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
+![NGSPICE](../images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](../images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
 
 - [Home](./index.html)
 - [News](./news.html)
@@ -42,4 +42,4 @@ Organizations:
 - [IEEE EDS Compact Modeling Technical Committee](http://www.ntu.edu.sg/home/exzhou/CM/index.htm)
 - [MOS-AK](http://www.mos-ak.org)
 
- All text is available under the terms of the GNU Free Documentation License ![](./images/spice.jpg)
+ All text is available under the terms of the GNU Free Documentation License ![](../images/spice.jpg)

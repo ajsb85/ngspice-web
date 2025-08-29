@@ -1,6 +1,6 @@
 # - [Documentation](./Docs.Html)
 
-![NGSPICE](./images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](./images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
+![NGSPICE](../images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](../images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
 
 - [Home](./index.html)
 - [News](./news.html)
@@ -696,4 +696,4 @@ The results of both simulations are presented in Fig. 6:
 
 A lot of example netlist are provided with the ngspice distribution. You may also find them in our [Sourceforge git](https://sourceforge.net/p/ngspice/ngspice/ci/master/tree/examples/) pages. Especially the Monte Carlo simulations make heavy use of more or less complex control scripts. As an external source, provided by astx, scripts are published for completely characterizing audio amplifiers. See the thread [installing-and-using-ngspice](https://www.diyaudio.com/community/threads/installing-and-using-ngspice-an-opensource-simulator.331656/) at diyAudio.
 
-Author and Copyright: Holger Vogt, 2022. [](https://sourceforge.net) All text is available under the terms of the Creative Commons Attribution Share-Alike (CC BY-SA) 4.0. ![](./images/spice.jpg)
+Author and Copyright: Holger Vogt, 2022. [](https://sourceforge.net) All text is available under the terms of the Creative Commons Attribution Share-Alike (CC BY-SA) 4.0. ![](../images/spice.jpg)

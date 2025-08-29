@@ -1,6 +1,6 @@
 # - [Documentation](./Docs.Html)
 
-![NGSPICE](./images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](./images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
+![NGSPICE](../images/nglogo.jpg) ![Mixed mode - mixed level circuit simulator - based on Berkeley's Spice3f5](../images/ngtext2.jpg) [](https://sourceforge.net/projects/ngspice)
 
 - [Home](./index.html)
 - [News](./news.html)
@@ -78,4 +78,4 @@ Therefore a "private" license is not acceptable, because we are no lawyers and d
 
 Unfortunately using code that is licensed according to GPL is also not acceptable because GPL forbids a non GPLed source (like ngspice) to link to GPLed code.
 
-[](http://sourceforge.net) All text is available under the terms of the GNU Free Documentation License ![](./images/spice.jpg)
+[](http://sourceforge.net) All text is available under the terms of the GNU Free Documentation License ![](../images/spice.jpg)
